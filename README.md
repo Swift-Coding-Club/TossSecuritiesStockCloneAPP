@@ -16,6 +16,9 @@
 ## 사용한 라이브러리
 - `Alamofire` , `Kingfisher` , `SwiftLint`
 
+## 사용할 협업툴 
+- `jira` , `confluence` , `Notion` , `Figma`
+
 ## 디자인 패턴
 - MVVM 패턴 
 
