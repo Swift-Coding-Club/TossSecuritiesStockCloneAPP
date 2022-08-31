@@ -9,4 +9,5 @@ import SwiftUI
 
 struct ColorAsset {
     static let mainColor = Color("MainColor")
+    static let subColor = Color("MainColor2")
 }
