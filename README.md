@@ -54,5 +54,5 @@ Commit 메세지 </br>
 
 ### Git flow
 - `main` 브랜 치는 앱 출시 
-- `Dev`는 테스트 및 각정 파일 merge
+- `Dev`는 테스트 및 각종 파일 merge
 - 각 스텝 뱔로 브런치 생성해서 관리 
