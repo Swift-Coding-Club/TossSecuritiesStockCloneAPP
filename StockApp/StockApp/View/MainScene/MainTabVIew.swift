@@ -54,5 +54,6 @@ struct MainTabVIew: View {
 struct MainTabVIew_Previews: PreviewProvider {
     static var previews: some View {
         MainTabVIew()
+   
     }
 }
