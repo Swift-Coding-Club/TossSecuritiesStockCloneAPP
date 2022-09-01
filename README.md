@@ -1,10 +1,10 @@
 # TossSecuritiesStockCloneAPP
-토스 증권 클론 및  앱 출시  예정 프로젝트 
+토스 증권 클론 및  앱 출시  예정 프로젝트  
 
 
 ## Projects
 ## 초보자들을 위한 주식앱 및 NFT 마켓 앱 앱 출시 계획 
-🗓 프로젝트 소개 : 보자들을 위한 주식앰 !</br>
+🗓 프로젝트 소개 : 초보자들을 위한 주식앱 !</br>
 🗓 기간 : 2022.08.03 ~   </br>
 🗓 팀원: [로이](https://github.com/Roy-wonji) ,[성현](https://github.com/seonghyeonOrNot)</br>
 🗓 리뷰어: 
@@ -54,5 +54,5 @@ Commit 메세지 </br>
 
 ### Git flow
 - `main` 브랜 치는 앱 출시 
-- `Dev`는 테스트 및 각정 파일 merge
+- `Dev`는 테스트 및 각종 파일 merge
 - 각 스텝 뱔로 브런치 생성해서 관리 
