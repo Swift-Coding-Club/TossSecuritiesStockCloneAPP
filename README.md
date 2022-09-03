@@ -19,7 +19,7 @@
 ## 사용할 협업툴 
 - `jira` , `confluence` , `Notion` , `Figma`
 
-## 디자인 패턴
+## 디자인 패턴 #
 - MVVM 패턴 
 
 
