@@ -4,7 +4,7 @@
 
 ## Projects
 ## 초보자들을 위한 주식앱 및 NFT 마켓 앱 앱 출시 계획 
-🗓 프로젝트 소개 : 초보자들을 위한 주식앱 !</br>
+🗓 프로젝트 소개 : 초초보자들을 위한 주식앱 !</br>
 🗓 기간 : 2022.08.03 ~   </br>
 🗓 팀원: [로이](https://github.com/Roy-wonji) ,[성현](https://github.com/seonghyeonOrNot)</br>
 🗓 리뷰어: 
