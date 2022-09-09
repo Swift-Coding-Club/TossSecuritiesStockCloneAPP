@@ -117,6 +117,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7F06911D28CB0E99005F840E /* FontAsset */ = {
+			isa = PBXGroup;
+			children = (
+				7FE8372728BFA11F003761FE /* SpoqaHanSansNeo-Bold.ttf */,
+				7FE8372428BFA11D003761FE /* SpoqaHanSansNeo-Light.ttf */,
+				7FE8372628BFA11E003761FE /* SpoqaHanSansNeo-Regular.ttf */,
+				7FE8372528BFA11D003761FE /* SpoqaHanSansNeo-Thin.ttf */,
+				7FE8372828BFA120003761FE /* SpoqaHanSansNeo-Medium.ttf */,
+			);
+			path = FontAsset;
+			sourceTree = "<group>";
+		};
 		7FE836D528BF95B0003761FE = {
 			isa = PBXGroup;
 			children = (
@@ -264,11 +276,7 @@
 		7FE8371528BF9737003761FE /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				7FE8372728BFA11F003761FE /* SpoqaHanSansNeo-Bold.ttf */,
-				7FE8372428BFA11D003761FE /* SpoqaHanSansNeo-Light.ttf */,
-				7FE8372828BFA120003761FE /* SpoqaHanSansNeo-Medium.ttf */,
-				7FE8372628BFA11E003761FE /* SpoqaHanSansNeo-Regular.ttf */,
-				7FE8372528BFA11D003761FE /* SpoqaHanSansNeo-Thin.ttf */,
+				7F06911D28CB0E99005F840E /* FontAsset */,
 				7FE8372228BF9D37003761FE /* FontAsset.swift */,
 			);
 			path = Font;
@@ -718,6 +726,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StockApp/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -732,6 +741,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Roy.com.StockApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -751,6 +763,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StockApp/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -765,6 +778,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Roy.com.StockApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
