@@ -133,6 +133,14 @@
 			path = FontAsset;
 			sourceTree = "<group>";
 		};
+		7F06912828CB1E6E005F840E /* Secret */ = {
+			isa = PBXGroup;
+			children = (
+				7F06911E28CB14C5005F840E /* SecretKey.swift */,
+			);
+			path = Secret;
+			sourceTree = "<group>";
+		};
 		7FE836D528BF95B0003761FE = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +247,7 @@
 		7FE8371028BF96C7003761FE /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				7F06912828CB1E6E005F840E /* Secret */,
 				7FE8371128BF96D0003761FE /* ApI */,
 			);
 			path = Network;
@@ -247,7 +256,6 @@
 		7FE8371128BF96D0003761FE /* ApI */ = {
 			isa = PBXGroup;
 			children = (
-				7F06911E28CB14C5005F840E /* SecretKey.swift */,
 				7F06912028CB14E3005F840E /* NetworkManger.swift */,
 			);
 			path = ApI;
