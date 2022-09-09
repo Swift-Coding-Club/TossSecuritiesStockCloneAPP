@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5B3A62F5D906C92EE9FF9617 /* Pods_StockAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC84B86DC1B6E0A77842287F /* Pods_StockAppTests.framework */; };
 		62BDC5145DE85FF7DAE6C5A6 /* Pods_StockApp_StockAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAFD54349891F696D6153BCE /* Pods_StockApp_StockAppUITests.framework */; };
+		7F06911F28CB14C5005F840E /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F06911E28CB14C5005F840E /* Secret.swift */; };
+		7F06912128CB14E3005F840E /* NetworkManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F06912028CB14E3005F840E /* NetworkManger.swift */; };
 		7F1C8EDD28BFA787004E49A1 /* SpoqaHanSansNeo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FE8372728BFA11F003761FE /* SpoqaHanSansNeo-Bold.ttf */; };
 		7F1C8EDE28BFA787004E49A1 /* SpoqaHanSansNeo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FE8372428BFA11D003761FE /* SpoqaHanSansNeo-Light.ttf */; };
 		7F1C8EDF28BFA787004E49A1 /* SpoqaHanSansNeo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FE8372828BFA120003761FE /* SpoqaHanSansNeo-Medium.ttf */; };
@@ -48,6 +50,8 @@
 
 /* Begin PBXFileReference section */
 		6029A6BEFA431F3632AB664E /* Pods-StockAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockAppTests.release.xcconfig"; path = "Target Support Files/Pods-StockAppTests/Pods-StockAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		7F06911E28CB14C5005F840E /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
+		7F06912028CB14E3005F840E /* NetworkManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManger.swift; sourceTree = "<group>"; };
 		7F1C8EE228BFABC9004E49A1 /* TabBarKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarKind.swift; sourceTree = "<group>"; };
 		7F1C8EE428BFACA3004E49A1 /* MainTabVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabVIew.swift; sourceTree = "<group>"; };
 		7FE836DE28BF95B0003761FE /* StockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -243,6 +247,8 @@
 		7FE8371128BF96D0003761FE /* ApI */ = {
 			isa = PBXGroup;
 			children = (
+				7F06911E28CB14C5005F840E /* Secret.swift */,
+				7F06912028CB14E3005F840E /* NetworkManger.swift */,
 			);
 			path = ApI;
 			sourceTree = "<group>";
@@ -558,6 +564,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FE836E428BF95B0003761FE /* ContentView.swift in Sources */,
+				7F06911F28CB14C5005F840E /* Secret.swift in Sources */,
+				7F06912128CB14E3005F840E /* NetworkManger.swift in Sources */,
 				7FE8372328BF9D37003761FE /* FontAsset.swift in Sources */,
 				7FE8371B28BF991C003761FE /* ColorAsset.swift in Sources */,
 				7F1C8EE328BFABC9004E49A1 /* TabBarKind.swift in Sources */,
