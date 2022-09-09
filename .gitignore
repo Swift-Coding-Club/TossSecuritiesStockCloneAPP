@@ -1,4 +1,11 @@
- Created by https://www.toptal.com/developers/gitignore/api/xcode,swift,cocoapods
+.DS_Store
+ios/.DS_Store
+*/UserInterfaceState.xcuserstate
+Podfile.lock 
+SecretKey.swift
+
+
+Created by https://www.toptal.com/developers/gitignore/api/xcode,swift,cocoapods
 # Edit at https://www.toptal.com/developers/gitignore?templates=xcode,swift,cocoapods
 
 ### CocoaPods ###
@@ -8,7 +15,6 @@
 #           - Also handy if you have a large number of dependant pods
 #           - AS PER https://guides.cocoapods.org/using/using-cocoapods.html NEVER IGNORE THE LOCK FILE
 Pods/
-SecretKey.swift
 ### Swift ###
 # Xcode
 #
