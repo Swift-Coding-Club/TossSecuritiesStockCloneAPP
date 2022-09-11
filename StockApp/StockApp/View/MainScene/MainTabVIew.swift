@@ -21,7 +21,6 @@ struct MainTabVIew: View {
                 ContentView()
                 .tabItem {
                     Image(systemName: "wonsign.circle")
-                        .foregroundColor(ColorAsset.subColor)
                     Text("국내주식")
                 }
                 
@@ -35,13 +34,14 @@ struct MainTabVIew: View {
                     .tabItem {
                     Image(systemName: "text.justify")
                     Text("전체")
+                            .foregroundColor(Color.colorAssets.blue)
                 }
         }
-        .accentColor(ColorAsset.mauvepurple)
+        .accentColor(Color.colorAssets.mauvepurple)
         .onAppear(){
             UITabBar.appearance().barTintColor = .white
-            UITabBar.appearance().tintColor = UIColor(ColorAsset.subColor)
-            UITabBar.appearance().unselectedItemTintColor = UIColor(ColorAsset.navy)
+            UITabBar.appearance().tintColor = UIColor(Color.colorAssets.subColor)
+            UITabBar.appearance().unselectedItemTintColor = UIColor(Color.colorAssets.navy)
           
         }
     }

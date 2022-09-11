@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct ColorAsset {
-    static let mainColor = Color("MainColor")
-    static let subColor = Color("MainColor2")
-    static let black = Color("Black")
-    static let blue = Color("Blue")
-    static let blue2 = Color("Blue2")
-    static let blue3 = Color("Blue3")
-    static let  lightgreen  = Color("LightGreen")
-    static let lightRed = Color("LightRed")
-    static let mauvepurple = Color("Mauve")
-    static let navy = Color("Navy")
-    static let navy2 = Color("Navy2")
-    static let skyblue = Color("Skyblue")
-    static let white = Color("White")
+    let mainColor = Color("MainColor")
+    let subColor = Color("MainColor2")
+    let black = Color("Black")
+    let blue = Color("Blue")
+    let blue2 = Color("Blue2")
+    let blue3 = Color("Blue3")
+    let  lightgreen  = Color("LightGreen")
+    let lightRed = Color("LightRed")
+    let mauvepurple = Color("Mauve")
+    let navy = Color("Navy")
+    let navy2 = Color("Navy2")
+    let skyblue = Color("Skyblue")
+    let white = Color("White")
+}
+
+extension Color {
+    static let colorAssets = ColorAsset()
 }
