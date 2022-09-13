@@ -10,49 +10,48 @@ import SwiftUI
 struct MainTabVIew: View {
     @State var tabIndex = TabBarKind.home
     var body: some View {
-        TabView(selection: $tabIndex, content: {
-            ContentView().tabItem {
-                VStack{
+        TabView(selection: $tabIndex){
+                ContentView()
+                .tabItem {
                     Image(systemName: "house")
-                        Text("홈")
+                    Text("홈")
                         .font(.custom(FontAsset.mediumFont, size: 20))
                 }
-            }
-            
-            ContentView().tabItem {
-                VStack{
+                
+                ContentView()
+                .tabItem {
                     Image(systemName: "wonsign.circle")
-                        .foregroundColor(ColorAsset.subColor)
                     Text("국내주식")
                 }
-            }
-            
-            ContentView().tabItem {
-                VStack{
+                
+                ContentView()
+                .tabItem {
                     Image(systemName: "dollarsign.circle")
                     Text("해외주식")
                 }
-            }
-            
-            ContentView().tabItem {
-                VStack{
+
+            ContentView()
+                    .tabItem {
                     Image(systemName: "text.justify")
                     Text("전체")
+                            .foregroundColor(Color.colorAssets.blue)
                 }
-                .onAppear(){
-                    UITabBar.appearance().barTintColor = .gray
-                }
-            }
-        })
-        .accentColor(ColorAsset.subColor)
+        }
+        .accentColor(Color.colorAssets.mauvepurple)
         .onAppear(){
-            UITabBar.appearance().barTintColor = .gray
+            UITabBar.appearance().barTintColor = .white
+            UITabBar.appearance().tintColor = UIColor(Color.colorAssets.subColor)
+            UITabBar.appearance().unselectedItemTintColor = UIColor(Color.colorAssets.navy)
+          
         }
     }
 }
 
+
+
 struct MainTabVIew_Previews: PreviewProvider {
     static var previews: some View {
         MainTabVIew()
+        
     }
 }
