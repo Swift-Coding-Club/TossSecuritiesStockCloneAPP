@@ -37,7 +37,7 @@ struct MainTabVIew: View {
                             .foregroundColor(Color.colorAssets.blue)
                 }
         }
-        .accentColor(Color.colorAssets.mauvepurple)
+        .accentColor(Color.colorAssets.skyblue)
         .onAppear(){
             UITabBar.appearance().barTintColor = .white
             UITabBar.appearance().tintColor = UIColor(Color.colorAssets.subColor)
@@ -46,8 +46,6 @@ struct MainTabVIew: View {
         }
     }
 }
-
-
 
 struct MainTabVIew_Previews: PreviewProvider {
     static var previews: some View {
