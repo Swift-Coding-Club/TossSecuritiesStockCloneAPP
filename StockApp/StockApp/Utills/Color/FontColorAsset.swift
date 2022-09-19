@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FontColorAsset {
     let mainFontColor = Color("FontColor")
+    let accentColor = Color("AccentColor")
 }
 
 extension Color {

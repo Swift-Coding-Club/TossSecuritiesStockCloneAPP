@@ -16,8 +16,10 @@ struct ColorAsset {
     let blue3 = Color("Blue3")
     let blue4 = Color("Blue4")
     let lightBlue = Color("LightBlue")
+    let green = Color("GreenColor")
     let lightgreen  = Color("LightGreen")
     let lightgreen2  = Color("LightGreen2")
+    let red = Color("RedColor")
     let lightRed = Color("LightRed")
     let mauvepurple = Color("Mauve")
     let mauvepurple2 = Color("Mauve2")
@@ -30,6 +32,8 @@ struct ColorAsset {
     let skyblue2 = Color("Skyblue2")
     let white = Color("White")
     let white2 = Color("White2")
+    let textColor = Color("SecondaryTextColor")
+    let backGroundColor = Color("BackgroundColor")
 }
 
 extension Color {
