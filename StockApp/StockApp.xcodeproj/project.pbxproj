@@ -23,8 +23,13 @@
 		7F39713D28D234F2007823C4 /* FontColorAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F39713C28D234F2007823C4 /* FontColorAsset.swift */; };
 		7F492D1128CDFA45004E5142 /* ClosedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F492D1028CDFA45004E5142 /* ClosedButtonView.swift */; };
 		7F492D1328CDFB51004E5142 /* BottomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F492D1228CDFB51004E5142 /* BottomModel.swift */; };
+		7FC3563A28D8A221002E0E63 /* CryptoMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC3563928D8A221002E0E63 /* CryptoMainView.swift */; };
+		7FC3563D28D8AE7A002E0E63 /* StockMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC3563C28D8AE7A002E0E63 /* StockMainView.swift */; };
+		7FC3564028D8AFB5002E0E63 /* ProfileMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC3563F28D8AFB5002E0E63 /* ProfileMainView.swift */; };
+		7FC3564328D8B06F002E0E63 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC3564228D8B06F002E0E63 /* HomeView.swift */; };
+		7FC3564628D8B0EC002E0E63 /* AddMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC3564528D8B0EC002E0E63 /* AddMainView.swift */; };
+		7FC3564B28D8B4CF002E0E63 /* CircleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC3564A28D8B4CF002E0E63 /* CircleButtonView.swift */; };
 		7FE836E228BF95B0003761FE /* StockAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE836E128BF95B0003761FE /* StockAppApp.swift */; };
-		7FE836E428BF95B0003761FE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE836E328BF95B0003761FE /* ContentView.swift */; };
 		7FE836E628BF95B7003761FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FE836E528BF95B7003761FE /* Assets.xcassets */; };
 		7FE836E928BF95B7003761FE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FE836E828BF95B7003761FE /* Preview Assets.xcassets */; };
 		7FE836F328BF95B7003761FE /* StockAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE836F228BF95B7003761FE /* StockAppTests.swift */; };
@@ -64,9 +69,14 @@
 		7F39713C28D234F2007823C4 /* FontColorAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontColorAsset.swift; sourceTree = "<group>"; };
 		7F492D1028CDFA45004E5142 /* ClosedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosedButtonView.swift; sourceTree = "<group>"; };
 		7F492D1228CDFB51004E5142 /* BottomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomModel.swift; sourceTree = "<group>"; };
+		7FC3563928D8A221002E0E63 /* CryptoMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoMainView.swift; sourceTree = "<group>"; };
+		7FC3563C28D8AE7A002E0E63 /* StockMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockMainView.swift; sourceTree = "<group>"; };
+		7FC3563F28D8AFB5002E0E63 /* ProfileMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMainView.swift; sourceTree = "<group>"; };
+		7FC3564228D8B06F002E0E63 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		7FC3564528D8B0EC002E0E63 /* AddMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMainView.swift; sourceTree = "<group>"; };
+		7FC3564A28D8B4CF002E0E63 /* CircleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonView.swift; sourceTree = "<group>"; };
 		7FE836DE28BF95B0003761FE /* StockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FE836E128BF95B0003761FE /* StockAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAppApp.swift; sourceTree = "<group>"; };
-		7FE836E328BF95B0003761FE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7FE836E528BF95B7003761FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7FE836E828BF95B7003761FE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7FE836EE28BF95B7003761FE /* StockAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +168,76 @@
 				7F492D1228CDFB51004E5142 /* BottomModel.swift */,
 			);
 			path = ModelView;
+			sourceTree = "<group>";
+		};
+		7FC3563728D89339002E0E63 /* Crypto */ = {
+			isa = PBXGroup;
+			children = (
+				7FC3563928D8A221002E0E63 /* CryptoMainView.swift */,
+			);
+			path = Crypto;
+			sourceTree = "<group>";
+		};
+		7FC3563828D89365002E0E63 /* CryptoViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CryptoViewModel;
+			sourceTree = "<group>";
+		};
+		7FC3563B28D8AE4A002E0E63 /* Stock */ = {
+			isa = PBXGroup;
+			children = (
+				7FC3563C28D8AE7A002E0E63 /* StockMainView.swift */,
+			);
+			path = Stock;
+			sourceTree = "<group>";
+		};
+		7FC3563E28D8AEF0002E0E63 /* MyProfile */ = {
+			isa = PBXGroup;
+			children = (
+				7FC3563F28D8AFB5002E0E63 /* ProfileMainView.swift */,
+			);
+			path = MyProfile;
+			sourceTree = "<group>";
+		};
+		7FC3564128D8B03D002E0E63 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7FC3564228D8B06F002E0E63 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		7FC3564428D8B0CF002E0E63 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				7FC3564528D8B0EC002E0E63 /* AddMainView.swift */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		7FC3564728D8B22D002E0E63 /* StockViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = StockViewModel;
+			sourceTree = "<group>";
+		};
+		7FC3564828D8B4A7002E0E63 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				7FC3564928D8B4B7002E0E63 /* CircleButton */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		7FC3564928D8B4B7002E0E63 /* CircleButton */ = {
+			isa = PBXGroup;
+			children = (
+				7FC3564A28D8B4CF002E0E63 /* CircleButtonView.swift */,
+			);
+			path = CircleButton;
 			sourceTree = "<group>";
 		};
 		7FE836D528BF95B0003761FE = {
@@ -253,6 +333,8 @@
 		7FE8370E28BF969F003761FE /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				7FC3564728D8B22D002E0E63 /* StockViewModel */,
+				7FC3563828D89365002E0E63 /* CryptoViewModel */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -284,19 +366,24 @@
 		7FE8371228BF96EC003761FE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7FE8371328BF970D003761FE /* MainScene */,
-				7F1C8EE228BFABC9004E49A1 /* TabBarKind.swift */,
+				7FC3564828D8B4A7002E0E63 /* Components */,
+				7FE8371328BF970D003761FE /* TabBar */,
+				7FC3564128D8B03D002E0E63 /* Home */,
+				7FC3563B28D8AE4A002E0E63 /* Stock */,
+				7FC3564428D8B0CF002E0E63 /* Add */,
+				7FC3563728D89339002E0E63 /* Crypto */,
+				7FC3563E28D8AEF0002E0E63 /* MyProfile */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		7FE8371328BF970D003761FE /* MainScene */ = {
+		7FE8371328BF970D003761FE /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				7FE836E328BF95B0003761FE /* ContentView.swift */,
+				7F1C8EE228BFABC9004E49A1 /* TabBarKind.swift */,
 				7F1C8EE428BFACA3004E49A1 /* MainTabVIew.swift */,
 			);
-			path = MainScene;
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		7FE8371428BF972F003761FE /* Color */ = {
@@ -594,9 +681,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FE836E428BF95B0003761FE /* ContentView.swift in Sources */,
+				7FC3564028D8AFB5002E0E63 /* ProfileMainView.swift in Sources */,
+				7FC3563D28D8AE7A002E0E63 /* StockMainView.swift in Sources */,
 				7F492D1128CDFA45004E5142 /* ClosedButtonView.swift in Sources */,
+				7FC3563A28D8A221002E0E63 /* CryptoMainView.swift in Sources */,
+				7FC3564328D8B06F002E0E63 /* HomeView.swift in Sources */,
 				7F06911F28CB14C5005F840E /* SecretKey.swift in Sources */,
+				7FC3564B28D8B4CF002E0E63 /* CircleButtonView.swift in Sources */,
 				7F39713D28D234F2007823C4 /* FontColorAsset.swift in Sources */,
 				7F06912128CB14E3005F840E /* NetworkManger.swift in Sources */,
 				7F39713928D2336F007823C4 /* GradiantColorAsset.swift in Sources */,
@@ -607,6 +698,7 @@
 				7FE836E228BF95B0003761FE /* StockAppApp.swift in Sources */,
 				7F492D1328CDFB51004E5142 /* BottomModel.swift in Sources */,
 				7F1C8EE528BFACA3004E49A1 /* MainTabVIew.swift in Sources */,
+				7FC3564628D8B0EC002E0E63 /* AddMainView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
