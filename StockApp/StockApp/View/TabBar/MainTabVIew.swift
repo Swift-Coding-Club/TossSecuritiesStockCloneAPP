@@ -48,7 +48,6 @@ struct MainTabVIew: View {
             UITabBar.appearance().barTintColor = .white
             UITabBar.appearance().tintColor = UIColor(Color.colorAssets.subColor)
             UITabBar.appearance().unselectedItemTintColor = UIColor(Color.colorAssets.subColor)
-            
         }
     }
 }

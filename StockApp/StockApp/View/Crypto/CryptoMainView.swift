@@ -9,8 +9,8 @@ import SwiftUI
 
 struct CryptoMainView: View {
     //MARK: - @state 및 뷰모델 선언
-    @State private var showPortfolio: Bool = false
-
+    @State private var showPortfolio: Bool = true
+    
     //MARK: - 뷰를 그리는 곳
     var body: some View {
         ZStack {
@@ -20,23 +20,9 @@ struct CryptoMainView: View {
             
             //MARK: - 각 뷰에 관련 된 부분
             VStack {
-                HStack {
-                    CircleButtonView(iconName: "info")
-                    Spacer()
-                    Text("코인 시세")
-                        .font(.custom(FontAsset.mediumFont, size: 20))
-                        .fontWeight(.heavy)
-                        .foregroundColor(Color.fontColor.accentColor)
-                    Spacer()
-                    CircleButtonView(iconName: "chevron.right")
-                        .rotationEffect(Angle(degrees: showPortfolio ? 180 : 0))
-                        .onTapGesture {
-                            withAnimation(.spring()) {
-                                showPortfolio.toggle()
-                            }
-                        }
-                }
-                .padding(.horizontal)
+                //MARK: - 상단  hedaer 부분
+                homeHeader
+                Spacer(minLength: .zero)
             }
         }
     }
@@ -48,5 +34,35 @@ struct CryptoMainView_Previews: PreviewProvider {
             CryptoMainView()
                 .navigationBarHidden(true)
         }
+    }
+}
+
+//MARK: - CryptoMainView 확장으로 main body 뷰 코드를 줄이기
+extension CryptoMainView {
+    //MARK: - 코인 뷰 에 상단 부분
+    private var homeHeader: some View {
+        HStack {
+            CircleButtonView(iconName: showPortfolio ? "plus" : "info")
+                .animation(.none)
+                .background(
+                    CircleButtonAnimationVIew(animate: $showPortfolio)
+                )
+            Spacer()
+            Text(showPortfolio ? "보유 수량" : "코인 시세")
+                .font(.headline)
+                .fontWeight(.heavy)
+                .foregroundColor(Color.fontColor.accentColor)
+                .animation(.none)
+            Spacer()
+            CircleButtonView(iconName: "chevron.right")
+                .rotationEffect(Angle(degrees: showPortfolio ? 180 : 0))
+                .onTapGesture {
+                    withAnimation(.spring()) {
+                        showPortfolio.toggle()
+                    }
+                }
+        }
+        .padding(.horizontal)
+        
     }
 }
