@@ -20,20 +20,26 @@ struct MainTabVIew: View {
                 
                 ContentView()
                 .tabItem {
-                    Image(systemName: "wonsign.circle")
+                    Image(systemName: "chart.bar.fill")
                     Text("국내주식")
                 }
                 
                 ContentView()
                 .tabItem {
-                    Image(systemName: "dollarsign.circle")
-                    Text("해외주식")
+                    Image(systemName: "plus.circle.fill")
+                    Text("추가")
+                }
+            
+                ContentView()
+                .tabItem {
+                    Image(systemName: "dollarsign.circle.fill")
+                    Text("코인")
                 }
 
-            ContentView()
+                ContentView()
                     .tabItem {
-                    Image(systemName: "text.justify")
-                    Text("전체")
+                    Image(systemName: "person.fill")
+                    Text("프로필")
                             .foregroundColor(Color.colorAssets.blue)
                 }
         }
