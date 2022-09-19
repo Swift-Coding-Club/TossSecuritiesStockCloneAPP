@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct GradiantColorAsset {
     let blue = Color("Blue")
     let darkBlue = Color("DarkBlue")
