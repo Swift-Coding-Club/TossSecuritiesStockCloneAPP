@@ -31,6 +31,7 @@ struct MainTabVIew: View {
                 }
             
             CryptoMainView()
+            
                 .tabItem {
                     Image(systemName: "dollarsign.circle.fill")
                     Text("코인")
