@@ -7,7 +7,7 @@
 🗓 프로젝트 소개 : 초초보자들을 위한 주식앱 !</br>
 🗓 기간 : 2022.08.03 ~   </br>
 🗓 팀원: [로이](https://github.com/Roy-wonji) ,[성현](https://github.com/seonghyeonOrNot)</br>
-🗓 리뷰어: 
+🗓 리뷰어:  [리아]("https://github.com/Lia316") , [리이오]("https://github.com/M1zz")
 
 ## 디자인
 - [피그마디자인](https://www.figma.com/file/zR1dKPOlDJUMRL2PRlUD3A/ios%EA%B0%9C%EB%B0%9C%ED%81%B4%EB%9F%BD%3A%EA%B3%B5%EB%B6%80%EA%B0%80%EB%8B%B5%EC%9D%B4%EB%8B%A4?node-id=0%3A1)
