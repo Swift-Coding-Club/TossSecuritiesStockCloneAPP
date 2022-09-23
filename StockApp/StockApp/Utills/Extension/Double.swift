@@ -9,7 +9,7 @@ import Foundation
 
 extension Double {
     
-    //MARK:  -  코인 단위 관련  2자리 6자리
+    //MARK:  -  코인 단위 관련  1자리 6자리
     private var currencyForatter6 : NumberFormatter {
         let formatter = NumberFormatter()
         formatter.usesGroupingSeparator = true
@@ -17,7 +17,7 @@ extension Double {
         formatter.locale = .current   // 국가 관련
         formatter.currencyCode = "krw"
         formatter.currencySymbol = "KRW"
-        formatter.minimumIntegerDigits = 2
+        formatter.minimumIntegerDigits = 1
         formatter.maximumIntegerDigits = 6
         return formatter
     }

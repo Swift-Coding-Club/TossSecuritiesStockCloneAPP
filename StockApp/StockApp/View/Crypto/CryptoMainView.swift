@@ -25,17 +25,19 @@ struct CryptoMainView: View {
                 homeHeader
                 
                 columnTitles
-                
+                //TODO: - 스크롤 했을경우 tabbar hidden 처리하고 다시 올리거나 그랬을경우 다시 보여주기
+
                 if !showPortfolio {
                     allCoinList
                         .transition(.move(edge: .leading))
+                        .padding(.bottom, 5)
                 }
                 
                 if showPortfolio {
                     protfolioCoinList
+                        .padding(.bottom, 5)
                         .transition(.move(edge: .trailing))
                 }
-                
                 
                 Spacer(minLength: .zero)
             }
