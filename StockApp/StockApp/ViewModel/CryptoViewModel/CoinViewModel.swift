@@ -6,16 +6,28 @@
 //
 
 import Foundation
+import Combine
+
 // ObservableObject 로 뷰를 관찰및 접근
 class CoinViewModel: ObservableObject {
     
     @Published var allCoins: [CoinModel] = [ ]
     @Published var profilioCoins : [CoinModel] =  [ ]
     
+    private let dataService = CoinDataService()         // 데이터 서비스 변수 
+    private var cancelables = Set <AnyCancellable>()   // 구독 취소하는 변수
+    
+    //MARK:  - 데이터 받아 오기전 초기화
     init() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            self.allCoins.append(DevloperPreview.instance.coin)
-            self.profilioCoins.append(DevloperPreview.instance.coin)
-        }
+      addSubscribers()
+    }
+    
+    //MARK:  - 데이터 통신 하는부분
+    func addSubscribers() {
+        dataService.$allcoins
+            .sink {  [weak self] (returnedCoins) in
+                self?.allCoins = returnedCoins
+            }
+            .store(in: &cancelables)
     }
 }

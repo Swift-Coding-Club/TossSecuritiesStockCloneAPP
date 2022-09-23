@@ -27,8 +27,8 @@ struct CryptoMainView: View {
                 columnTitles
                 
                 if !showPortfolio {
-                   allCoinList
-                    .transition(.move(edge: .leading))
+                    allCoinList
+                        .transition(.move(edge: .leading))
                 }
                 
                 if showPortfolio {
@@ -40,6 +40,7 @@ struct CryptoMainView: View {
                 Spacer(minLength: .zero)
             }
         }
+        
     }
 }
 
@@ -92,7 +93,7 @@ extension CryptoMainView {
         }
         .listStyle(PlainListStyle())
     }
-
+    
     //MARK: -   보유 수량 코인 리스트
     private var protfolioCoinList: some View {
         List {
@@ -103,9 +104,9 @@ extension CryptoMainView {
         }
         .listStyle(PlainListStyle())
     }
- 
+    
     //MARK:  - 코인 리스트 타이틀
-
+    
     private var columnTitles: some View {
         HStack {
             Text("코인")

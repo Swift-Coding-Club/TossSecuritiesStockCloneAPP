@@ -13,10 +13,10 @@ extension Double {
     private var currencyForatter6 : NumberFormatter {
         let formatter = NumberFormatter()
         formatter.usesGroupingSeparator = true
-        formatter.numberStyle = .currency  // 숫자 스타일
-//        formatter.locale = .current   // 국가 관련
-//        formatter.currencyCode = "krw"
-//        formatter.currencySymbol = "KRW"
+        formatter.numberStyle = .currency // 숫자 스타일
+        formatter.locale = .current   // 국가 관련
+        formatter.currencyCode = "krw"
+        formatter.currencySymbol = "KRW"
         formatter.minimumIntegerDigits = 2
         formatter.maximumIntegerDigits = 6
         return formatter

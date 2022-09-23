@@ -14,7 +14,7 @@ struct CoinRowView: View {
     
     var body: some View {
         HStack(spacing: .zero) {
-           leftColumn
+            leftColumn
             Spacer()
             if showHoldingsColumn {
                 centerColumn
