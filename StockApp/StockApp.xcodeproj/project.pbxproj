@@ -52,6 +52,7 @@
 		7FEF4F7228DF297800DA9AEB /* CoinImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEF4F7128DF297800DA9AEB /* CoinImageView.swift */; };
 		7FEF4F7428DF2D6B00DA9AEB /* CoinImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEF4F7328DF2D6B00DA9AEB /* CoinImageViewModel.swift */; };
 		7FEF4F7628DF316D00DA9AEB /* CoinImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEF4F7528DF316D00DA9AEB /* CoinImageService.swift */; };
+		7FEF4F7928DF43AE00DA9AEB /* LocalFileManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEF4F7828DF43AE00DA9AEB /* LocalFileManger.swift */; };
 		80F05FC9B56D11ECB5690C94 /* Pods_StockApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A04C9DD73DC3CFF6691BEC92 /* Pods_StockApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +122,7 @@
 		7FEF4F7128DF297800DA9AEB /* CoinImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageView.swift; sourceTree = "<group>"; };
 		7FEF4F7328DF2D6B00DA9AEB /* CoinImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageViewModel.swift; sourceTree = "<group>"; };
 		7FEF4F7528DF316D00DA9AEB /* CoinImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageService.swift; sourceTree = "<group>"; };
+		7FEF4F7828DF43AE00DA9AEB /* LocalFileManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManger.swift; sourceTree = "<group>"; };
 		850A2B80330CE2E329948726 /* Pods-StockApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockApp.debug.xcconfig"; path = "Target Support Files/Pods-StockApp/Pods-StockApp.debug.xcconfig"; sourceTree = "<group>"; };
 		9934495D29B85B6332BEF850 /* Pods-StockApp-StockAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockApp-StockAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-StockApp-StockAppUITests/Pods-StockApp-StockAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A04C9DD73DC3CFF6691BEC92 /* Pods_StockApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StockApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -383,6 +385,7 @@
 		7FE8370C28BF9681003761FE /* Utills */ = {
 			isa = PBXGroup;
 			children = (
+				7FEF4F7728DF439600DA9AEB /* FileManger */,
 				7F729EDD28DB3AD700FEAE43 /* Extension */,
 				7F492D0F28CDFA21004E5142 /* ModelView */,
 				7FE8371528BF9737003761FE /* Font */,
@@ -502,6 +505,14 @@
 				7FEF4F7128DF297800DA9AEB /* CoinImageView.swift */,
 			);
 			path = CoinImage;
+			sourceTree = "<group>";
+		};
+		7FEF4F7728DF439600DA9AEB /* FileManger */ = {
+			isa = PBXGroup;
+			children = (
+				7FEF4F7828DF43AE00DA9AEB /* LocalFileManger.swift */,
+			);
+			path = FileManger;
 			sourceTree = "<group>";
 		};
 		E8D1B2D0E67DC5DBB1C3A836 /* Pods */ = {
@@ -790,6 +801,7 @@
 				7FC3564328D8B06F002E0E63 /* HomeView.swift in Sources */,
 				7F06911F28CB14C5005F840E /* SecretKey.swift in Sources */,
 				7FC3564B28D8B4CF002E0E63 /* CircleButtonView.swift in Sources */,
+				7FEF4F7928DF43AE00DA9AEB /* LocalFileManger.swift in Sources */,
 				7FEF4F7228DF297800DA9AEB /* CoinImageView.swift in Sources */,
 				7F2382C528DEB39C00103AE7 /* ApIKey.swift in Sources */,
 				7F39713D28D234F2007823C4 /* FontColorAsset.swift in Sources */,
