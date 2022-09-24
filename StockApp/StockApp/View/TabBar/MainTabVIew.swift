@@ -31,7 +31,6 @@ struct MainTabVIew: View {
                 }
             
             CryptoMainView()
-            
                 .tabItem {
                     Image(systemName: "dollarsign.circle.fill")
                     Text("코인")
@@ -56,6 +55,6 @@ struct MainTabVIew: View {
 struct MainTabVIew_Previews: PreviewProvider {
     static var previews: some View {
         MainTabVIew()
-        
+            .environmentObject(dev.coinViewModel)
     }
 }
