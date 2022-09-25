@@ -23,11 +23,13 @@ struct CryptoMainView: View {
             VStack {
                 //MARK: - 상단  hedaer 부분
                 homeHeader
+                //MARK: - 마켓 시세 관련 뷰
+                CryptoStatView(showPortfolio: $showPortfolio)
+
                 //MARK: - 코인 검색창
                 SearchBarView(searchBarTextField:  $viewModel.searchText)
                 
                 //MARK: - 코인 리스트 타이틀
-                
                 columnTitles
                 
                 //MARK:  -  코인 리스트
@@ -104,7 +106,7 @@ extension CryptoMainView {
     //MARK: -   보유 수량 코인 리스트
     private var protfolioCoinList: some View {
         List {
-            ForEach(viewModel.allCoins) { coin in
+            ForEach(viewModel.profilioCoins) { coin in
                 CoinRowView(coin: coin, showHoldingsColumn: true)
                     .listRowInsets(.init(top: 10, leading: .zero, bottom: 10, trailing: 10))
             }

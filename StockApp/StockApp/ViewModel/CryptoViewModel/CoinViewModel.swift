@@ -11,6 +11,14 @@ import Combine
 // ObservableObject 로 뷰를 관찰및 접근
 class CoinViewModel: ObservableObject {
     
+    @Published var statistic: [StatisticModel] = [
+        StatisticModel(title: "title", value: "value", percentageChange: 1),
+        StatisticModel(title: "title", value: "value"),
+        StatisticModel(title: "title", value: "value"),
+        StatisticModel(title: "title", value: "value", percentageChange: -7),
+    ]
+    
+
     @Published var allCoins: [CoinModel] = [ ]
     @Published var profilioCoins : [CoinModel] =  [ ]
     @Published var searchText: String = "" // 검색 관련
