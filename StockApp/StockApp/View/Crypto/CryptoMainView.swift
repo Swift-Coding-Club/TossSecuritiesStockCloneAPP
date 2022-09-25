@@ -23,9 +23,15 @@ struct CryptoMainView: View {
             VStack {
                 //MARK: - 상단  hedaer 부분
                 homeHeader
+                //MARK: - 코인 검색창
+                SearchBarView(searchBarTextField:  $viewModel.searchText)
+                
+                //MARK: - 코인 리스트 타이틀
                 
                 columnTitles
-                //TODO: - 스크롤 했을경우 tabbar hidden 처리하고 다시 올리거나 그랬을경우 다시 보여주기
+                
+                //MARK:  -  코인 리스트
+                
                 if !showPortfolio {
                     allCoinList
                         .transition(.move(edge: .leading))
@@ -51,7 +57,7 @@ struct CryptoMainView_Previews: PreviewProvider {
             CryptoMainView()
                 .navigationBarHidden(true)
         }
-        .environmentObject(dev.coinViewModel) 
+        .environmentObject(dev.coinViewModel)
     }
 }
 
@@ -107,7 +113,6 @@ extension CryptoMainView {
     }
     
     //MARK:  - 코인 리스트 타이틀
-
     private var columnTitles: some View {
         HStack {
             Text("코인")
