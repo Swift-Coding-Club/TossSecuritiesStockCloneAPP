@@ -25,31 +25,23 @@ struct CryptoMainView: View {
                 homeHeader
                 //MARK: - 마켓 시세 관련 뷰
                 CryptoStatView(showPortfolio: $showPortfolio)
-
                 //MARK: - 코인 검색창
                 SearchBarView(searchBarTextField:  $viewModel.searchText)
-                
                 //MARK: - 코인 리스트 타이틀
                 columnTitles
-                
-                //MARK:  -  코인 리스트
-                
+                //MARK:  -  코인 및 보유  시세 리스트
                 if !showPortfolio {
                     allCoinList
                         .transition(.move(edge: .leading))
                         .padding(.bottom, 5)
-                }
-                
-                if showPortfolio {
+                } else {
                     protfolioCoinList
                         .padding(.bottom, 5)
                         .transition(.move(edge: .trailing))
                 }
-                
                 Spacer(minLength: .zero)
             }
         }
-        
     }
 }
 
@@ -89,7 +81,6 @@ extension CryptoMainView {
                 }
         }
         .padding(.horizontal)
-        
     }
     
     //MARK:  - 코인시세 리스트
@@ -123,7 +114,7 @@ extension CryptoMainView {
                 Text("보유수량")
             }
             Text("가격")
-                .frame(width: UIScreen.main.bounds.width / 3.5 , alignment: .trailing)
+                .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
         }
         .font(.custom(FontAsset.regularFont, size: 13))
         .foregroundColor(Color.colorAssets.textColor)
