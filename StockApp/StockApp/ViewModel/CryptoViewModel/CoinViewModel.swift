@@ -25,10 +25,28 @@ class CoinViewModel: ObservableObject {
     
     //MARK:  - 데이터 통신 하는부분
     func addSubscribers() {
-        dataService.$allcoins
-            .sink {  [weak self] (returnedCoins) in
+        //MARK:  - update allcoins
+        $searchText
+            .combineLatest(dataService.$allcoins)        //데이터 서비스에서 모든 코인을 수신하면
+            .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)      // 빠르게 입력할때  0.5 초동안  지연
+            .map(fillterCoins)
+            .sink { [weak self] (returnedCoins) in
                 self?.allCoins = returnedCoins
             }
             .store(in: &cancelables)
     }
+    
+    private func fillterCoins(text: String, coins: [CoinModel]) -> [CoinModel] {
+        guard !text.isEmpty else {
+            return coins
+        }
+        // 텍스트 대문자 또는 소문자로 입력 하면 인식
+        let lowerCasedText = text.lowercased()
+        return coins.filter { (coin)  -> Bool in
+            return coin.name.lowercased().contains(lowerCasedText) ||
+            coin.symbol.lowercased().contains(lowerCasedText) ||
+            coin.id.lowercased().contains(lowerCasedText)
+        }
+    }
+    
 }
