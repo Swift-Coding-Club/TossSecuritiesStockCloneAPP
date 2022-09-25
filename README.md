@@ -260,12 +260,9 @@ class LocalFileManger {
     }
 }
 
+```
 
-``
-
-
-
-### 컬러및 폰트 공용 
+## 컬러및 폰트 공용 
 
 ```swift
 
