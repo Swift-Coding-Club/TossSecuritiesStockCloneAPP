@@ -11,6 +11,12 @@ import SwiftUI
 struct StockAppApp: App {
     @State var viewModel = CoinViewModel()
     
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.colorAssets.subColor), .font : UIFont(name: FontAsset.regularFont, size: 28) ?? ""]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor(Color.colorAssets.subColor),
+            .font : UIFont(name: FontAsset.regularFont, size: 28) ?? ""]
+    }
+    
     var body: some Scene {
         WindowGroup {
             NavigationView {

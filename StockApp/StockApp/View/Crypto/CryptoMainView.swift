@@ -9,8 +9,9 @@ import SwiftUI
 
 struct CryptoMainView: View {
     //MARK: - @state 및 뷰모델 선언
-    @State private var showPortfolio: Bool = true
+    @State private var showPortfolio: Bool = true       // 오른 쪽으로 넘기는 액션
     @EnvironmentObject private var viewModel: CoinViewModel
+    @State private var showPortfolioView: Bool = false       // + 버튼 누르면  bottomsheet 으로 나오게 구현
     
     //MARK: - 뷰를 그리는 곳
     var body: some View {
@@ -18,6 +19,10 @@ struct CryptoMainView: View {
             //MARK: - 배경 색상 관련
             Color.colorAssets.backGroundColor
                 .ignoresSafeArea()
+                .sheet(isPresented: $showPortfolioView) {
+                    PortfolioView()
+                        .environmentObject(viewModel)
+                }
             
             //MARK: - 각 뷰에 관련 된 부분
             VStack {
@@ -62,6 +67,11 @@ extension CryptoMainView {
         HStack {
             CircleButtonView(iconName: showPortfolio ? "plus" : "info")
                 .animation(.none)
+                .onTapGesture {
+                    if showPortfolio {
+                        showPortfolioView.toggle()
+                    }
+                }
                 .background(
                     CircleButtonAnimationVIew(animate: $showPortfolio)
                 )
