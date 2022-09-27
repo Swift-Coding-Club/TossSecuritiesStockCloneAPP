@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PortfolioView: View {
     
-    
     @Environment(\.dismiss) private var dismiss    // dismiss 하는 환견변수
     @EnvironmentObject  private var viewModel: CoinViewModel
     @State private var selectedCoin: CoinModel? = nil
@@ -23,8 +22,8 @@ struct PortfolioView: View {
                     //MARK: - 검색 창
                     SearchBarView(searchBarTextField: $viewModel.searchText)
                     //MARK: - 코인 로고
-                   coinLogoList()
-                    
+                    coinLogoList()
+                    //MARK:  - 코인 서택 되었을겨우 form 보여주기
                     if selectedCoin != nil {
                         portfolioInputSection()
                     }
@@ -33,11 +32,7 @@ struct PortfolioView: View {
             .navigationTitle( "보유 수량 추가 하기")
             .toolbar(content: {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        dismiss()
-                    }label: {
-                        Image(systemName: "xmark")
-                    }
+                   leadingNavigaionXmarkButton()
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     trallingNavigaionView()
@@ -60,7 +55,7 @@ struct PortfolioView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack(spacing: 10) {
                 ForEach(viewModel.allCoins) { coin in
-                   CoinLogoView(coin: coin)
+                    CoinLogoView(coin: coin)
                         .frame(width: 75)
                         .padding(4)
                         .onTapGesture {
@@ -69,8 +64,8 @@ struct PortfolioView: View {
                             }
                         }
                         .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(selectedCoin?.id == coin.id ? Color.colorAssets.navy : Color.clear , lineWidth: 1)
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(selectedCoin?.id == coin.id ? Color.colorAssets.navy : Color.clear , lineWidth: 1)
                         )
                 }
             }
@@ -86,7 +81,7 @@ struct PortfolioView: View {
                 Text("보유한 코인 \(selectedCoin?.symbol.uppercased() ?? "" ) : ")
                 Spacer()
                 Text(selectedCoin?.currentPrice.asCurrencyWith6Decimals() ?? "")
-                }
+            }
             Divider()
             
             HStack {
@@ -106,6 +101,15 @@ struct PortfolioView: View {
         .animation(.none)
         .padding()
         .font(.custom(FontAsset.mediumFont, size: 15))
+    }
+    //MARK: - navigaionleadingtoolbar xmark button
+    @ViewBuilder
+    private func leadingNavigaionXmarkButton() -> some View {
+        Button {
+            dismiss()
+        }label: {
+            Image(systemName: "xmark")
+        }
     }
     //MARK:  - bottom tralling navigaion view
     @ViewBuilder
@@ -127,8 +131,8 @@ struct PortfolioView: View {
     private func savedButtonPressed() {
         guard let coin  = selectedCoin else { return }
         
-         // saved 코인
-          
+        // saved 코인
+        
         //  체크 마크 보여주기
         withAnimation(.easeIn) {
             showCheckMark = true
