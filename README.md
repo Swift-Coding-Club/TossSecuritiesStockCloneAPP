@@ -351,7 +351,7 @@ class CoinViewModel: ObservableObject {
         return stats
     }
 }
-
+```
 
 ```swift
 import SwiftUI
