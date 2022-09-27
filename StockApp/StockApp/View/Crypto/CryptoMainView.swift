@@ -92,6 +92,31 @@ extension CryptoMainView {
         }
         .padding(.horizontal)
     }
+    //MARK:  - 코인 리스트 타이틀
+    private var columnTitles: some View {
+        HStack {
+            Text("코인")
+            Spacer()
+            if showPortfolio {
+                Text("보유수량")
+            }
+            Text("가격")
+                .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
+            
+            Button{
+                withAnimation(.linear(duration: 2.0)) {
+                    viewModel.reloadData()
+                }
+            }label: {
+                Image(systemName: "goforward")
+            }
+            .rotationEffect(Angle(degrees: viewModel.isLoading ? 360 : .zero),
+            anchor: .center)
+        }
+        .font(.custom(FontAsset.regularFont, size: 13))
+        .foregroundColor(Color.colorAssets.textColor)
+        .padding(.horizontal)
+    }
     
     //MARK:  - 코인시세 리스트
     private var allCoinList: some View {
@@ -115,19 +140,4 @@ extension CryptoMainView {
         .listStyle(PlainListStyle())
     }
     
-    //MARK:  - 코인 리스트 타이틀
-    private var columnTitles: some View {
-        HStack {
-            Text("코인")
-            Spacer()
-            if showPortfolio {
-                Text("보유수량")
-            }
-            Text("가격")
-                .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
-        }
-        .font(.custom(FontAsset.regularFont, size: 13))
-        .foregroundColor(Color.colorAssets.textColor)
-        .padding(.horizontal)
-    }
 }

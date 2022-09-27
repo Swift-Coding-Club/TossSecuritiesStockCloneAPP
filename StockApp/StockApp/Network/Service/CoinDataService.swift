@@ -19,7 +19,7 @@ class CoinDataService {
     }
     
     //MARK:  - 데이터 통신 부분
-    private func getCoins() {
+    func getCoins() {
         guard let url = URL(string: URLManger.coinURL) else { return }
         
         coinSubscription =   NetworkingManger.downloadUrl(url: url)

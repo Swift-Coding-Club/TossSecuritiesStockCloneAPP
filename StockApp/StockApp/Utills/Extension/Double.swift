@@ -18,7 +18,7 @@ extension Double {
         formatter.currencyCode = "krw"
         formatter.currencySymbol = "KRW"
         formatter.minimumIntegerDigits = 1
-        formatter.maximumIntegerDigits = 6
+        formatter.maximumIntegerDigits = 8
         return formatter
     }
 
