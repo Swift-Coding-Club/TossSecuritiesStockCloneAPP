@@ -32,12 +32,17 @@ struct PortfolioView: View {
             .navigationTitle( "보유 수량 추가 하기")
             .toolbar(content: {
                 ToolbarItem(placement: .navigationBarLeading) {
-                   leadingNavigaionXmarkButton()
+                    leadingNavigaionXmarkButton()
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     trallingNavigaionView()
                 }
             })
+            .onChange(of: viewModel.searchText) { newValue in
+                if newValue == "" {
+                    removeSelectedCoin()
+                }
+            }
         }
     }
     
@@ -48,19 +53,18 @@ struct PortfolioView: View {
         }
         return .zero
     }
-    
     //MARK: - 코인 로고 viewBuilder
     @ViewBuilder
     private func coinLogoList() -> some View{
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack(spacing: 10) {
-                ForEach(viewModel.allCoins) { coin in
+                ForEach(viewModel.searchText.isEmpty ? viewModel.profilioCoins : viewModel.allCoins) { coin in
                     CoinLogoView(coin: coin)
                         .frame(width: 75)
                         .padding(4)
                         .onTapGesture {
                             withAnimation(.easeIn) {
-                                selectedCoin = coin
+                                updateSelectedCoin(coin: coin)
                             }
                         }
                         .background(
@@ -73,6 +77,17 @@ struct PortfolioView: View {
             .padding(.leading)
         }
     }
+    //MARK: - 코인 업데이트
+    private func updateSelectedCoin(coin: CoinModel) {
+        selectedCoin = coin
+        if  let portfolioCoin = viewModel.profilioCoins.first(where: { $0.id == coin.id}),
+            let amount = portfolioCoin.currentHoldings {
+            quantityText = "\(amount)"
+        } else {
+            quantityText = ""
+        }
+    }
+    
     //MARK: - 코인 수량 쓰는 form
     @ViewBuilder
     private func portfolioInputSection() -> some View {
@@ -129,10 +144,12 @@ struct PortfolioView: View {
     }
     //MARK: - save button 눌렀을때 실행 되는
     private func savedButtonPressed() {
-        guard let coin  = selectedCoin else { return }
+        guard
+            let coin  = selectedCoin,
+            let amont = Double(quantityText) else { return }
         
         // saved 코인
-        
+        viewModel.updatePortfolio(coin: coin, amount: amont)
         //  체크 마크 보여주기
         withAnimation(.easeIn) {
             showCheckMark = true

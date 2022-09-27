@@ -18,9 +18,10 @@ class CoinViewModel: ObservableObject {
     @Published var profilioCoins : [CoinModel] =  [ ]
     @Published var searchText: String = "" // 검색 관련
     
-    private let coinDataService = CoinDataService()         // 코인 데이터 서비스 변수
+    private let coinDataService = CoinDataService()                    // 코인 데이터 서비스 변수
     private let marketDataService = CoinMarketDataService()
-    private var cancelables = Set <AnyCancellable>()   // 구독 취소하는 변수
+    private let portfolioDataService = PortfolioDataService()   //  보유 수량 데이터 서비스
+    private var cancelables = Set <AnyCancellable>()                  // 구독 취소하는 변수
     
     //MARK:  - 데이터 받아 오기전 초기화
     init() {
@@ -46,8 +47,30 @@ class CoinViewModel: ObservableObject {
                 self?.statistic = returnedStats
             }
             .store(in: &cancelables)
+        
+        //MARK:  - 보유 수량 데이터 업데이트
+        $allCoins
+            .combineLatest(portfolioDataService.$savedEntites)
+            .map { (coinModels, portfolioEntites)  ->  [CoinModel] in
+                coinModels
+                    .compactMap { (coin) -> CoinModel? in
+                        guard let entity = portfolioEntites.first(where:  {$0.coinId == coin.id }) else {
+                            return nil
+                        }
+                        return coin.updateHoldings(amount: entity.amount)
+                    }
+            }
+            .sink { [weak self] (returnedCoin) in
+                self?.profilioCoins = returnedCoin
+            }
+            .store(in: &cancelables)
+        
     }
-    
+    //MARK: - 보유 수량 update
+    func updatePortfolio(coin: CoinModel, amount: Double) {
+        portfolioDataService.updatePortfolio(coin: coin, amount: amount)
+    }
+    //MARK: - 검색창 필터
     private func fillterCoins(text: String, coins: [CoinModel]) -> [CoinModel] {
         guard !text.isEmpty else {
             return coins
@@ -60,7 +83,7 @@ class CoinViewModel: ObservableObject {
             coin.id.lowercased().contains(lowerCasedText)
         }
     }
-    
+    //MARK: - 마켓 데이터
     private func mapGlobalMarketData(marketDataModel: MarketDataModel?) -> [StatisticModel] {
         var stats: [StatisticModel] = [ ]
         
