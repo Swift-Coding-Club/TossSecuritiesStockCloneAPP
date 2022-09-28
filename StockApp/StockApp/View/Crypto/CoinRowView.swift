@@ -38,7 +38,6 @@ struct CoinRowView_Previews: PreviewProvider {
     }
 }
 
-
 extension CoinRowView {
     
     private var leftColumn: some View {
@@ -56,7 +55,6 @@ extension CoinRowView {
                 .foregroundColor(Color.fontColor.accentColor)
         }
     }
-    
     
     private var centerColumn: some View {
         VStack(alignment: .trailing) {

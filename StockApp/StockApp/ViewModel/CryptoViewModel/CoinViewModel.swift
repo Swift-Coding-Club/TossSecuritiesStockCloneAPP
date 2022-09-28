@@ -76,7 +76,7 @@ class CoinViewModel: ObservableObject {
         }
         // 텍스트 대문자 또는 소문자로 입력 하면 인식
         let lowerCasedText = text.lowercased()
-        return coins.filter { (coin)  -> Bool in
+        return coins.filter { (coin) -> Bool in
             return coin.name.lowercased().contains(lowerCasedText) ||
             coin.symbol.lowercased().contains(lowerCasedText) ||
             coin.id.lowercased().contains(lowerCasedText)

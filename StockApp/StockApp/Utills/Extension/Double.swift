@@ -44,7 +44,6 @@ extension Double {
         return currencyForatter6.string(from: number) ?? "0.00 KRW"
     }
     
-    
     //MARK:  - % 관련
     func asNumberString() -> String {
         return String(format: "%.2f", self)

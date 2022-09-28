@@ -17,6 +17,7 @@ static let instance = DevloperPreview( )
     let state1 = StatisticModel(title: "Market Cap" , value: "$12.58m", percentageChange: 25.34)
     let state2 = StatisticModel(title: "TotalVolume", value: "$12.31Tr")
     let state3 = StatisticModel(title: "보유 수량" , value: "$12.58m", percentageChange: -12.34)
+    
     let coin = CoinModel (
        id: "bitcoin",
        symbol: "btc",
@@ -217,7 +218,6 @@ static let instance = DevloperPreview( )
        priceChangePercentage24HInCurrency: 3952.64,
        currentHoldings: 1.5)
     
-    
 }
 
 extension PreviewProvider {
@@ -225,6 +225,4 @@ extension PreviewProvider {
     static var dev: DevloperPreview {
         return DevloperPreview.instance
     }
-    
-   
 }

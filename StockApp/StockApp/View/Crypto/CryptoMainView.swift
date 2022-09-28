@@ -117,7 +117,6 @@ extension CryptoMainView {
         .foregroundColor(Color.colorAssets.textColor)
         .padding(.horizontal)
     }
-    
     //MARK:  - 코인시세 리스트
     private var allCoinList: some View {
         List {
@@ -128,7 +127,6 @@ extension CryptoMainView {
         }
         .listStyle(PlainListStyle())
     }
-    
     //MARK: -   보유 수량 코인 리스트
     private var protfolioCoinList: some View {
         List {
