@@ -7,7 +7,7 @@
 🗓 프로젝트 소개 : 초보자들을 위한 주식앱 !</br>
 🗓 기간 : 2022.08.03 ~   </br>
 🗓 팀원: [로이](https://github.com/Roy-wonji) ,[성현](https://github.com/seonghyeonOrNot)</br>
-🗓 리뷰어:  [리아]("https://github.com/Lia316") , [리이오]("https://github.com/M1zz")
+🗓 리뷰어:  [리아](https://github.com/Lia316) , [리이오](https://github.com/M1zz)
 
 ## 디자인
 - [피그마디자인](https://www.figma.com/file/zR1dKPOlDJUMRL2PRlUD3A/ios%EA%B0%9C%EB%B0%9C%ED%81%B4%EB%9F%BD%3A%EA%B3%B5%EB%B6%80%EA%B0%80%EB%8B%B5%EC%9D%B4%EB%8B%A4?node-id=0%3A1)
@@ -18,6 +18,9 @@
 
 ## 사용한 라이브러리
 - `Alamofire` , `Kingfisher` , `SwiftLint`
+
+## 사용한 api
+- [코인 게코](https://www.coingecko.com/ko)
 
 ## 사용할 협업툴 
 - `jira` , `Notion` , `Figma`
@@ -37,6 +40,8 @@
 - `extension view`
 - `url session 통신`
 - `FILEMANGER`
+- `Search bar`
+- `Core data`
 
 
 ### 폴더링
@@ -53,14 +58,13 @@
 - 자신이 보유 하고있는 코인 설정
 - 카카오 로그인 구현
 - 애플 로그인 구현 
-- coredata 사용 
-- FILEMANGER 로 파일 다운로드
-
+- CoreData로 코인 보유 수량 저장
+- FILEMANGER 로 코인 로고 파일 다운로드
 
 ## 네트워크 통신
 
 > 코인 관련시세 및 코인 변화율 및 코인 로고 다운로드를 위해  json 및 urlSession 으로 json 방식으로 데이터 통신을 위해 네트워크통신을 사용해서 구현 
-
+> 마케 시세 및 보유 한 코인데이터 네트워크 구현 
 
 ```swift
 import Combine
@@ -127,6 +131,114 @@ class CoinImageService {
     }
 }
 
+```
+
+```swift
+import Foundation
+import Combine
+
+class CoinMarketDataService {
+    
+    @Published var marketData:  MarketDataModel? = nil           //allcoin을  통해서 접근해서 사용
+    var marketCoinSubscription: AnyCancellable?                  //구독 취소 하는 변수
+    
+    init() {
+        getMarketData()
+    }
+    
+    private func getMarketData() {
+        guard let url = URL(string: URLManger.coinMartURL) else { return }
+     
+        marketCoinSubscription =   NetworkingManger.downloadUrl(url: url)
+            .decode(type: GlobalData.self, decoder: JSONDecoder())
+            .sink(receiveCompletion: NetworkingManger.handleCompletion,
+                  receiveValue: {  [weak self] (returnedGlobalData) in
+                self?.marketData = returnedGlobalData.data
+                self?.marketCoinSubscription?.cancel()
+            })
+        
+    }
+}
+
+```
+
+```swift
+class PortfolioDataService {
+    
+    //MARK: - core data 셋팅
+    private let container : NSPersistentContainer
+    private let containerName: String = "PortofolioModel"
+    private let entityName: String = "PortfolioEntity"
+    
+    @Published var savedEntites: [PortfolioEntity] = [ ]
+    
+    init() {
+        container = NSPersistentContainer(name: containerName)
+        container.loadPersistentStores { (_ , error) in
+            if let error = error {
+                debugPrint("Error loading Core Data! \(error.localizedDescription)")
+            }
+            self.getPortfolio()
+        }
+    }
+    
+    //MARK: - 보유 수량 값을 뷰모델 또는 다른 파일에 전달
+    func updatePortfolio(coin: CoinModel, amount: Double) {
+        // 보유 수량이 코인 이 있는 확인
+        if let entity = savedEntites.first(where: {$0.coinId == coin.id}) {
+            if amount > .zero {
+                update(entity: entity, amunt: amount)
+            } else {
+                removePortfolio(entity: entity)
+            }
+        } else{
+            addPortfolio(coin: coin, amount: amount)
+        }
+    }
+    
+    //MARK: - 보유 수량  저장 한데이터 가져오기
+    private func getPortfolio() {
+        let request = NSFetchRequest<PortfolioEntity>(entityName: entityName)
+        do {
+            savedEntites = try container.viewContext.fetch(request)
+        } catch let error {
+            debugPrint("Error fetching portfolio Entites . \(error.localizedDescription)")
+        }
+    }
+    
+    //MARK:  - 보유 수량  core data 추가 하기
+    private func addPortfolio(coin: CoinModel, amount: Double) {
+        let entity = PortfolioEntity(context: container.viewContext)
+        entity.coinId = coin.id
+        entity.amount = amount
+        applyChange()
+    }
+    //MARK:  - 보유 수량 값  업데이트
+    private func update(entity: PortfolioEntity, amunt: Double) {
+        entity.amount = amunt
+        applyChange()
+    }
+    //MARK:  - 보유 수량 값  삭제
+    private func removePortfolio(entity: PortfolioEntity) {
+        container.viewContext.delete(entity)
+        applyChange()
+    }
+    
+    //MARK:  - 코어 데이터에 저장하기
+    private func savePortfolio() {
+        do {
+            try container.viewContext.save()
+        } catch let error {
+            debugPrint("Error saving to Core Data . \(error.localizedDescription)")
+        }
+    }
+    //MARK:  - 저장한 값 적용
+    private func applyChange() {
+        savePortfolio()
+        getPortfolio()
+    }
+    
+}
 
 ```
 
@@ -141,26 +253,105 @@ import Combine
 // ObservableObject 로 뷰를 관찰및 접근
 class CoinViewModel: ObservableObject {
     
+    @Published var statistic: [StatisticModel] = [ ]
+    
+    
     @Published var allCoins: [CoinModel] = [ ]
     @Published var profilioCoins : [CoinModel] =  [ ]
+    @Published var searchText: String = "" // 검색 관련
     
-    private let dataService = CoinDataService()         // 데이터 서비스 변수 
-    private var cancelables = Set <AnyCancellable>()   // 구독 취소하는 변수
+    private let coinDataService = CoinDataService()                    // 코인 데이터 서비스 변수
+    private let marketDataService = CoinMarketDataService()
+    private let portfolioDataService = PortfolioDataService()   //  보유 수량 데이터 서비스
+    private var cancelables = Set <AnyCancellable>()                  // 구독 취소하는 변수
     
     //MARK:  - 데이터 받아 오기전 초기화
     init() {
-      addSubscribers()
+        addSubscribers()
     }
     
     //MARK:  - 데이터 통신 하는부분
     func addSubscribers() {
-        dataService.$allcoins
-            .sink {  [weak self] (returnedCoins) in
+        //MARK:  - update allcoins
+        $searchText
+            .combineLatest(coinDataService.$allcoins)        //데이터 서비스에서 모든 코인을 수신하면
+            .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)      // 빠르게 입력할때  0.5 초동안  지연
+            .map(fillterCoins)
+            .sink { [weak self] (returnedCoins) in
                 self?.allCoins = returnedCoins
             }
             .store(in: &cancelables)
+        
+        //MARK: - 마켓 데이터 업데이트
+        marketDataService.$marketData
+            .map(mapGlobalMarketData)
+            .sink { [weak self] (returnedStats) in
+                self?.statistic = returnedStats
+            }
+            .store(in: &cancelables)
+        
+        //MARK:  - 보유 수량 데이터 업데이트
+        $allCoins
+            .combineLatest(portfolioDataService.$savedEntites)
+            .map { (coinModels, portfolioEntites)  ->  [CoinModel] in
+                coinModels
+                    .compactMap { (coin) -> CoinModel? in
+                        guard let entity = portfolioEntites.first(where:  {$0.coinId == coin.id }) else {
+                            return nil
+                        }
+                        return coin.updateHoldings(amount: entity.amount)
+                    }
+            }
+            .sink { [weak self] (returnedCoin) in
+                self?.profilioCoins = returnedCoin
+            }
+            .store(in: &cancelables)
+        
+    }
+    //MARK: - 보유 수량 update
+    func updatePortfolio(coin: CoinModel, amount: Double) {
+        portfolioDataService.updatePortfolio(coin: coin, amount: amount)
+    }
+    //MARK: - 검색창 필터
+    private func fillterCoins(text: String, coins: [CoinModel]) -> [CoinModel] {
+        guard !text.isEmpty else {
+            return coins
+        }
+        // 텍스트 대문자 또는 소문자로 입력 하면 인식
+        let lowerCasedText = text.lowercased()
+        return coins.filter { (coin)  -> Bool in
+            return coin.name.lowercased().contains(lowerCasedText) ||
+            coin.symbol.lowercased().contains(lowerCasedText) ||
+            coin.id.lowercased().contains(lowerCasedText)
+        }
+    }
+    //MARK: - 마켓 데이터
+    private func mapGlobalMarketData(marketDataModel: MarketDataModel?) -> [StatisticModel] {
+        var stats: [StatisticModel] = [ ]
+        
+        guard let data = marketDataModel else {
+            return stats
+        }
+        //MARK: - 마켓 cap
+        let marketCap = StatisticModel(title: "Market Cap", value: data.marketCap,
+                                       percentageChange: data.marketCapChangePercentage24HUsd)
+        //MARK: - 24시간 코인 시세
+        let volume = StatisticModel(title: "24시간  코인 시세", value: data.volume)
+        //MARK: - 비트 코인 시세
+        let btcDomainance = StatisticModel(title: "비트코인 시세", value: data.btcDominance)
+        //MARK: - 보유 수량
+        let portfolio = StatisticModel(title: "보유 수량 ", value: "0.00", percentageChange: .zero)
+        //MARK:- StatisticModel에 append
+        stats.append(contentsOf: [
+            marketCap,
+            volume,
+            btcDomainance,
+            portfolio
+        ])
+        return stats
     }
 }
+```
 
 ```swift
 import SwiftUI
@@ -260,12 +451,9 @@ class LocalFileManger {
     }
 }
 
+```
 
-``
-
-
-
-### 컬러및 폰트 공용 
+## 컬러및 폰트 공용 
 
 ```swift
 
@@ -350,4 +538,5 @@ Commit 메세지 </br>
 - `main` 브랜 치는 앱 출시 
 - `Dev`는 테스트 및 각종 파일 merge
 - 각 스텝 뱔로 브런치 생성해서 관리 
+
 

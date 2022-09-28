@@ -6,12 +6,11 @@
 //
 
 import Combine
-import Alamofire
+import Foundation
 
 class CoinDataService {
     
     @Published var allcoins:  [CoinModel] = [ ]  //allcoin을  통해서 접근해서 사용
-    var cancellabels = Set<AnyCancellable>()    // 구독 취소 하는 변수
     
     var coinSubscription: AnyCancellable?
     
@@ -20,8 +19,8 @@ class CoinDataService {
     }
     
     //MARK:  - 데이터 통신 부분
-    private func getCoins() {
-        guard let url = URL(string: URLManger.coinUrl) else { return }
+    func getCoins() {
+        guard let url = URL(string: URLManger.coinURL) else { return }
         
         coinSubscription =   NetworkingManger.downloadUrl(url: url)
             .decode(type: [CoinModel].self, decoder: JSONDecoder())

@@ -9,8 +9,9 @@ import SwiftUI
 
 struct CryptoMainView: View {
     //MARK: - @state 및 뷰모델 선언
-    @State private var showPortfolio: Bool = true
+    @State private var showPortfolio: Bool = true       // 오른 쪽으로 넘기는 액션
     @EnvironmentObject private var viewModel: CoinViewModel
+    @State private var showPortfolioView: Bool = false       // + 버튼 누르면  bottomsheet 으로 나오게 구현
     
     //MARK: - 뷰를 그리는 곳
     var body: some View {
@@ -18,30 +19,34 @@ struct CryptoMainView: View {
             //MARK: - 배경 색상 관련
             Color.colorAssets.backGroundColor
                 .ignoresSafeArea()
+                .sheet(isPresented: $showPortfolioView) {
+                    PortfolioView()
+                        .environmentObject(viewModel)
+                }
             
             //MARK: - 각 뷰에 관련 된 부분
             VStack {
                 //MARK: - 상단  hedaer 부분
                 homeHeader
-                
+                //MARK: - 마켓 시세 관련 뷰
+                CryptoStatView(showPortfolio: $showPortfolio)
+                //MARK: - 코인 검색창
+                SearchBarView(searchBarTextField:  $viewModel.searchText)
+                //MARK: - 코인 리스트 타이틀
                 columnTitles
-                //TODO: - 스크롤 했을경우 tabbar hidden 처리하고 다시 올리거나 그랬을경우 다시 보여주기
+                //MARK:  -  코인 및 보유  시세 리스트
                 if !showPortfolio {
                     allCoinList
                         .transition(.move(edge: .leading))
                         .padding(.bottom, 5)
-                }
-                
-                if showPortfolio {
+                } else {
                     protfolioCoinList
                         .padding(.bottom, 5)
                         .transition(.move(edge: .trailing))
                 }
-                
                 Spacer(minLength: .zero)
             }
         }
-        
     }
 }
 
@@ -51,7 +56,7 @@ struct CryptoMainView_Previews: PreviewProvider {
             CryptoMainView()
                 .navigationBarHidden(true)
         }
-        .environmentObject(dev.coinViewModel) 
+        .environmentObject(dev.coinViewModel)
     }
 }
 
@@ -62,6 +67,11 @@ extension CryptoMainView {
         HStack {
             CircleButtonView(iconName: showPortfolio ? "plus" : "info")
                 .animation(.none)
+                .onTapGesture {
+                    if showPortfolio {
+                        showPortfolioView.toggle()
+                    }
+                }
                 .background(
                     CircleButtonAnimationVIew(animate: $showPortfolio)
                 )
@@ -81,9 +91,32 @@ extension CryptoMainView {
                 }
         }
         .padding(.horizontal)
-        
     }
-    
+    //MARK:  - 코인 리스트 타이틀
+    private var columnTitles: some View {
+        HStack {
+            Text("코인")
+            Spacer()
+            if showPortfolio {
+                Text("보유수량")
+            }
+            Text("가격")
+                .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
+            
+            Button{
+                withAnimation(.linear(duration: 2.0)) {
+                    viewModel.reloadData()
+                }
+            }label: {
+                Image(systemName: "goforward")
+            }
+            .rotationEffect(Angle(degrees: viewModel.isLoading ? 360 : .zero),
+            anchor: .center)
+        }
+        .font(.custom(FontAsset.regularFont, size: 13))
+        .foregroundColor(Color.colorAssets.textColor)
+        .padding(.horizontal)
+    }
     //MARK:  - 코인시세 리스트
     private var allCoinList: some View {
         List {
@@ -94,11 +127,10 @@ extension CryptoMainView {
         }
         .listStyle(PlainListStyle())
     }
-    
     //MARK: -   보유 수량 코인 리스트
     private var protfolioCoinList: some View {
         List {
-            ForEach(viewModel.allCoins) { coin in
+            ForEach(viewModel.profilioCoins) { coin in
                 CoinRowView(coin: coin, showHoldingsColumn: true)
                     .listRowInsets(.init(top: 10, leading: .zero, bottom: 10, trailing: 10))
             }
@@ -106,20 +138,4 @@ extension CryptoMainView {
         .listStyle(PlainListStyle())
     }
     
-    //MARK:  - 코인 리스트 타이틀
-
-    private var columnTitles: some View {
-        HStack {
-            Text("코인")
-            Spacer()
-            if showPortfolio {
-                Text("보유수량")
-            }
-            Text("가격")
-                .frame(width: UIScreen.main.bounds.width / 3.5 , alignment: .trailing)
-        }
-        .font(.custom(FontAsset.regularFont, size: 13))
-        .foregroundColor(Color.colorAssets.textColor)
-        .padding(.horizontal)
-    }
 }
