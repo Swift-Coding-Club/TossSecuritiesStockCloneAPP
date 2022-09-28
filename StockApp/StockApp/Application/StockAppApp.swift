@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct StockAppApp: App {
+    @State var viewModel = CoinViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            MainTabVIew()
+            NavigationView {
+                MainTabVIew()
+                    .navigationBarHidden(true)
+            }
+            .environmentObject(viewModel)
         }
     }
 }
