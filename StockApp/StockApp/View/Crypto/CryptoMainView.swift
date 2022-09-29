@@ -95,13 +95,45 @@ extension CryptoMainView {
     //MARK:  - 코인 리스트 타이틀
     private var columnTitles: some View {
         HStack {
-            Text("코인")
+            HStack(spacing: 4) {
+                Text("코인")
+                Image(systemName: "chevron.down")
+                    .opacity((viewModel.sortOption == .rank || viewModel.sortOption == .rankReversed) ? 1.0 : 0.0)
+                    .rotationEffect(Angle(degrees: viewModel.sortOption == .rank ? 0 : 180))
+            }
+            .onTapGesture {
+                withAnimation(.default) {
+                viewModel.sortOption = viewModel.sortOption == .rank ? .rankReversed : .rank
+                }
+            }
+            
             Spacer()
             if showPortfolio {
-                Text("보유수량")
+                HStack(spacing: 4) {
+                    Text("보유수량")
+                    Image(systemName: "chevron.down")
+                        .opacity((viewModel.sortOption == .holdings || viewModel.sortOption == .holdingsReversed) ? 1.0 : .zero)
+                        .rotationEffect(Angle(degrees: viewModel.sortOption == .holdings ? .zero : 180))
+                }
+                .onTapGesture {
+                    withAnimation(.default) {
+                        viewModel.sortOption = viewModel.sortOption == .holdings ? .holdingsReversed : .holdings
+                    }
+                }
             }
-            Text("가격")
+            
+            HStack(spacing: 4) {
+                Text("가격")
+                Image(systemName: "chevron.down")
+                    .opacity((viewModel.sortOption == .price || viewModel.sortOption == .priceReversed) ? 1.0 : .zero)
+                    .rotationEffect(Angle(degrees: viewModel.sortOption == .price ? .zero : 180))
+            }
                 .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
+                .onTapGesture {
+                    withAnimation(.default) {
+                        viewModel.sortOption = viewModel.sortOption == .price ? .priceReversed : .price
+                    }
+                }
             
             Button{
                 withAnimation(.linear(duration: 2.0)) {
