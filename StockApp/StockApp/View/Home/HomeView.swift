@@ -15,8 +15,6 @@ struct HomeView: View {
                 
                 VStack{
                     Text("홈 화면 ")
-            
-                    
                     
                     Spacer(minLength: .zero)
                 }

@@ -16,7 +16,6 @@ struct SearchBarView: View {
                 .foregroundColor(
                     searchBarTextField.isEmpty ? Color.colorAssets.textColor :
                         Color.fontColor.accentColor
-                    
                 )
             
             TextField("검색힐 코인을 입력해주세요...", text: $searchBarTextField)
@@ -27,7 +26,7 @@ struct SearchBarView: View {
                         .padding()
                         .offset(x: 10)
                         .foregroundColor(Color.fontColor.accentColor)
-                        .opacity(searchBarTextField.isEmpty ? 0.0 : 1.0)
+                        .opacity(searchBarTextField.isEmpty ? .zero : 1.0)
                         .onTapGesture {
                             UIApplication.shared.endEditing()
                             searchBarTextField = ""

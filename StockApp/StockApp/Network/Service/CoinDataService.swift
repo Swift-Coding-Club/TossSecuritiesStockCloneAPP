@@ -5,8 +5,9 @@
 //  Created by 서원지 on 2022/09/23.
 //
 
+import SwiftUI
 import Combine
-import Foundation
+
 
 class CoinDataService {
     

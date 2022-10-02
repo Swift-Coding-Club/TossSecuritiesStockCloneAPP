@@ -1,13 +1,13 @@
 //
-//  StatisticView.swift
+//  CardStatisticView.swift
 //  StockApp
 //
-//  Created by 서원지 on 2022/09/25.
+//  Created by 서원지 on 2022/10/03.
 //
 
 import SwiftUI
 
-struct StatisticView: View {
+struct CardStatisticView: View {
     let stat : StatisticModel
     var body: some View {
         VStack(alignment: .leading) {
@@ -30,14 +30,18 @@ struct StatisticView: View {
             .foregroundColor((stat.percentageChange ?? .zero) >= .zero ? Color.colorAssets.green : Color.colorAssets.red )
             .opacity(stat.percentageChange == nil ? 0.0: 1.0)
         }
+        .frame(width: 110, height: 110)
+        .background() {
+            RoundedRectangle(cornerRadius: 15)
+                .foregroundColor(Color.colorAssets.backGroundColor)
+                .shadow(color: Color.fontColor.accentColor.opacity(0.15),
+                         radius: 10, x: .zero, y: .zero)
+        }
     }
 }
 
-struct StatisticView_Previews: PreviewProvider {
+struct CardStatisticView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            StatisticView(stat: dev.state1)
-            
-        }
+        CardStatisticView(stat: dev.state3)
     }
 }

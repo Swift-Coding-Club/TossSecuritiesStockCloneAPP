@@ -12,6 +12,7 @@ import Combine
 class CoinViewModel: ObservableObject {
     
     @Published var statistic: [StatisticModel] = [ ]
+    @Published var portfolioStatistic: [StatisticModel] = [ ]
     @Published var allCoins: [CoinModel] = [ ]
     @Published var profilioCoins : [CoinModel] =  [ ]
     @Published var searchText: String = ""                                      // 검색 관련
@@ -59,8 +60,16 @@ class CoinViewModel: ObservableObject {
                 self?.isLoading = false
             }
             .store(in: &cancelables)
+        
+        marketDataService.$portfolioData
+            .combineLatest($profilioCoins)
+            .map(mapPortfolioData)
+            .sink { [weak self] (returnedStats) in
+                self?.portfolioStatistic = returnedStats
+                self?.isLoading = false
+            }
+            .store(in: &cancelables)
     }
-    
     //MARK: - 보유 수량 update
     func updatePortfolio(coin: CoinModel, amount: Double) {
         portfolioDataService.updatePortfolio(coin: coin, amount: amount)
@@ -135,7 +144,7 @@ class CoinViewModel: ObservableObject {
         let percentageChange = ((portfolioValue - previousValue) / previousValue) * 100
         
         let portfolio = StatisticModel(
-            title: "보유 수량 ",
+            title: "총 보유 수량 ",
             value: portfolioValue.asCurrencyWith2Decimals(),
             percentageChange: percentageChange)
         //MARK:- StatisticModel에 append
@@ -143,6 +152,33 @@ class CoinViewModel: ObservableObject {
             marketCap,
             volume,
             btcDomainance,
+        ])
+        return stats
+    }
+    
+    private func mapPortfolioData(marketDataModel: MarketDataModel?, portfolioCoins: [CoinModel]) -> [StatisticModel] {
+        var stats: [StatisticModel] = [ ]
+        
+        //MARK: - 보유 수량
+        let portfolioValue = portfolioCoins.map({ $0.currentHoldingsValue})
+            .reduce(.zero, +)
+        
+        let previousValue = portfolioCoins.map { (coin) -> Double in
+            let currentValue = coin.currentHoldingsValue
+            let percentChange = (coin.priceChangePercentage24H ?? .zero) / 100
+            let previousValue = currentValue / (1 + percentChange)
+            return previousValue
+        }
+            .reduce(.zero, +)
+        //MARK:  - 보유 수량 %
+        let percentageChange = ((portfolioValue - previousValue) / previousValue) * 100
+        
+        let portfolio = StatisticModel(
+            title: " 총 보유 수량 ",
+            value: portfolioValue.asCurrencyWith2Decimals(),
+            percentageChange: percentageChange)
+        //MARK:- StatisticModel에 append
+        stats.append(contentsOf: [
             portfolio
         ])
         return stats

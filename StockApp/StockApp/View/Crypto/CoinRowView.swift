@@ -22,6 +22,9 @@ struct CoinRowView: View {
             rightColumn
         }
         .font(.custom(FontAsset.mediumFont, size: 15))
+        .background(
+            Color.colorAssets.backGroundColor.opacity(0.001)
+        )
     }
 }
 
@@ -78,5 +81,4 @@ extension CoinRowView {
         }
         .frame(width: UIScreen.main.bounds.width / 3.5 , alignment: .trailing)
     }
-    
 }

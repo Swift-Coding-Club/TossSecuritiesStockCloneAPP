@@ -15,11 +15,11 @@ struct CryptoStatView: View {
     var body: some View {
         HStack {
             ForEach(viewModel.statistic) { stat in
-                StatisticView(stat: stat)
-                    .frame(width: UIScreen.main.bounds.width / 3)
+                CardStatisticView(stat: stat)
+                    .frame(width: (UIScreen.main.bounds.width / 3) - 10)
             }
         }
-        .frame(width: UIScreen.main.bounds.width, alignment: showPortfolio ? .trailing : .leading)
+        .frame(width: UIScreen.main.bounds.width, alignment: .center)
     }
 }
 

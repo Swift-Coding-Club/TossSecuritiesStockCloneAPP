@@ -9,9 +9,11 @@ import SwiftUI
 
 struct CryptoMainView: View {
     //MARK: - @state 및 뷰모델 선언
-    @State private var showPortfolio: Bool = true       // 오른 쪽으로 넘기는 액션
+    @State private var showPortfolio: Bool = true                 // 오른 쪽으로 넘기는 액션
     @EnvironmentObject private var viewModel: CoinViewModel
     @State private var showPortfolioView: Bool = false       // + 버튼 누르면  bottomsheet 으로 나오게 구현
+    @State private var selectionCoin: CoinModel? = nil      // 코인이  선택 되었을때
+    @State private var showDetailView: Bool = false          // 다테일 뷰 보여주기 
     
     //MARK: - 뷰를 그리는 곳
     var body: some View {
@@ -28,25 +30,36 @@ struct CryptoMainView: View {
             VStack {
                 //MARK: - 상단  hedaer 부분
                 homeHeader
+                    .padding(.vertical, 5)
                 //MARK: - 마켓 시세 관련 뷰
                 CryptoStatView(showPortfolio: $showPortfolio)
+                    .padding(.vertical, 5)
+                NavigationLink {
+                    CryptoPortfolioView()
+                } label: {
+                    CryptoCoinCardView()
+                }
                 //MARK: - 코인 검색창
                 SearchBarView(searchBarTextField:  $viewModel.searchText)
                 //MARK: - 코인 리스트 타이틀
                 columnTitles
                 //MARK:  -  코인 및 보유  시세 리스트
-                if !showPortfolio {
-                    allCoinList
-                        .transition(.move(edge: .leading))
-                        .padding(.bottom, 5)
-                } else {
-                    protfolioCoinList
-                        .padding(.bottom, 5)
-                        .transition(.move(edge: .trailing))
-                }
+                allCoinList
+                    .transition(.move(edge: .leading))
+                    .padding(.bottom, 5)
                 Spacer(minLength: .zero)
             }
         }
+        .padding(.vertical)
+        //MARK: - 코인을 선택해을때  네빅게이션
+        .background(
+            NavigationLink(
+                destination: CryptoDetailLoadingView(coin: $selectionCoin),
+                isActive: $showDetailView,
+                label: { EmptyView() }
+            )
+        )
+        
     }
 }
 
@@ -65,7 +78,7 @@ extension CryptoMainView {
     //MARK: - 코인 뷰 에 상단 부분
     private var homeHeader: some View {
         HStack {
-            CircleButtonView(iconName: showPortfolio ? "plus" : "info")
+            CircleButtonView(iconName: "plus" )
                 .animation(.none)
                 .onTapGesture {
                     if showPortfolio {
@@ -76,21 +89,16 @@ extension CryptoMainView {
                     CircleButtonAnimationVIew(animate: $showPortfolio)
                 )
             Spacer()
-            Text(showPortfolio ? "보유 수량" : "코인 시세")
+            Text("코인 시세")
                 .font(.headline)
                 .fontWeight(.heavy)
                 .foregroundColor(Color.fontColor.accentColor)
                 .animation(.none)
             Spacer()
-            CircleButtonView(iconName: "chevron.right")
-                .rotationEffect(Angle(degrees: showPortfolio ? 180 : 0))
-                .onTapGesture {
-                    withAnimation(.spring()) {
-                        showPortfolio.toggle()
-                    }
-                }
+            Spacer()
         }
-        .padding(.horizontal)
+            .frame(height: UIScreen.main.bounds.height / 15)
+            .padding(.horizontal)
     }
     //MARK:  - 코인 리스트 타이틀
     private var columnTitles: some View {
@@ -98,42 +106,27 @@ extension CryptoMainView {
             HStack(spacing: 4) {
                 Text("코인")
                 Image(systemName: "chevron.down")
-                    .opacity((viewModel.sortOption == .rank || viewModel.sortOption == .rankReversed) ? 1.0 : 0.0)
-                    .rotationEffect(Angle(degrees: viewModel.sortOption == .rank ? 0 : 180))
+                    .opacity((viewModel.sortOption == .rank || viewModel.sortOption == .rankReversed) ? 1.0 : .zero)
+                    .rotationEffect(Angle(degrees: viewModel.sortOption == .rank ? .zero : 180))
             }
             .onTapGesture {
                 withAnimation(.default) {
-                viewModel.sortOption = viewModel.sortOption == .rank ? .rankReversed : .rank
+                    viewModel.sortOption = viewModel.sortOption == .rank ? .rankReversed : .rank
                 }
             }
-            
             Spacer()
-            if showPortfolio {
-                HStack(spacing: 4) {
-                    Text("보유수량")
-                    Image(systemName: "chevron.down")
-                        .opacity((viewModel.sortOption == .holdings || viewModel.sortOption == .holdingsReversed) ? 1.0 : .zero)
-                        .rotationEffect(Angle(degrees: viewModel.sortOption == .holdings ? .zero : 180))
-                }
-                .onTapGesture {
-                    withAnimation(.default) {
-                        viewModel.sortOption = viewModel.sortOption == .holdings ? .holdingsReversed : .holdings
-                    }
-                }
-            }
-            
             HStack(spacing: 4) {
                 Text("가격")
                 Image(systemName: "chevron.down")
                     .opacity((viewModel.sortOption == .price || viewModel.sortOption == .priceReversed) ? 1.0 : .zero)
                     .rotationEffect(Angle(degrees: viewModel.sortOption == .price ? .zero : 180))
             }
-                .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
-                .onTapGesture {
-                    withAnimation(.default) {
-                        viewModel.sortOption = viewModel.sortOption == .price ? .priceReversed : .price
-                    }
+            .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
+            .onTapGesture {
+                withAnimation(.default) {
+                    viewModel.sortOption = viewModel.sortOption == .price ? .priceReversed : .price
                 }
+            }
             
             Button{
                 withAnimation(.linear(duration: 2.0)) {
@@ -143,7 +136,7 @@ extension CryptoMainView {
                 Image(systemName: "goforward")
             }
             .rotationEffect(Angle(degrees: viewModel.isLoading ? 360 : .zero),
-            anchor: .center)
+                            anchor: .center)
         }
         .font(.custom(FontAsset.regularFont, size: 13))
         .foregroundColor(Color.colorAssets.textColor)
@@ -155,6 +148,9 @@ extension CryptoMainView {
             ForEach(viewModel.allCoins) { coin in
                 CoinRowView(coin: coin, showHoldingsColumn: false)
                     .listRowInsets(.init(top: 10, leading: .zero, bottom: 10, trailing: 10))
+                    .onTapGesture {
+                        segue(coin: coin)
+                    }
             }
         }
         .listStyle(PlainListStyle())
@@ -165,9 +161,17 @@ extension CryptoMainView {
             ForEach(viewModel.profilioCoins) { coin in
                 CoinRowView(coin: coin, showHoldingsColumn: true)
                     .listRowInsets(.init(top: 10, leading: .zero, bottom: 10, trailing: 10))
+                    .onTapGesture {
+                        segue(coin: coin)
+                    }
             }
         }
         .listStyle(PlainListStyle())
     }
     
+    //MARK: - 네비게이션  segue
+    private func segue(coin: CoinModel) {
+        selectionCoin = coin
+        showDetailView.toggle()
+    }
 }
