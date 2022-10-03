@@ -42,7 +42,8 @@
 - `FILEMANGER`
 - `Search bar`
 - `Core data`
-
+- `ScrollView`
+- `LazyVGrid`
 
 ### 폴더링
  <img src = "https://i.imgur.com/alds38X.png" width="30%"> 
