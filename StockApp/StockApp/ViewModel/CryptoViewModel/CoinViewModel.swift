@@ -29,7 +29,7 @@ class CoinViewModel: ObservableObject {
         addSubscribers()
     }
     
-    //MARK:  - 데이터 통신 하는부분
+    //MARK:  - viewModel 구독 추가 부분
     func addSubscribers() {
         //MARK:  - update allcoins
         $searchText
@@ -122,7 +122,7 @@ class CoinViewModel: ObservableObject {
             return stats
         }
         //MARK: - 마켓 cap
-        let marketCap = StatisticModel(title: "Market Cap", value: data.marketCap,
+        let marketCap = StatisticModel(title: "시가 총액", value: data.marketCap,
                                        percentageChange: data.marketCapChangePercentage24HUsd)
         //MARK: - 24시간 코인 시세
         let volume = StatisticModel(title: "24시간  코인 시세", value: data.volume)

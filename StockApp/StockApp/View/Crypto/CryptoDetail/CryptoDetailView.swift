@@ -23,45 +23,65 @@ struct CryptoDetailView: View {
         ScrollView{
             VStack(spacing: 20) {
                 Text("")
-                    .frame(height: 150)
-                
-                Text("코인 설명")
-                    .font(.custom(FontAsset.mediumFont, size: 25))
-                    .bold()
-                    .foregroundColor(Color.fontColor.accentColor)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Divider()
-                
-                LazyVGrid(columns: colums,
-                          alignment: .leading,
-                          spacing:  spacing,
-                          pinnedViews: [ ] ) {
-                    ForEach(0..<6) { _ in
-                        StatisticView(stat: StatisticModel(title: "title", value: "value"))
-                    }
-                }
-                
-                Text("추가 세부 사항")
-                    .font(.custom(FontAsset.mediumFont, size: 25))
-                    .bold()
-                    .foregroundColor(Color.fontColor.accentColor)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Divider()
-                
-                LazyVGrid(columns: colums,
-                          alignment: .leading,
-                          spacing:  spacing,
-                          pinnedViews: [ ] ) {
-                    ForEach(0..<6) { _ in
-                        StatisticView(stat: StatisticModel(title: "title", value: "value"))
-                    }
-                }
+                    .frame(height: 250)
+                //MARK: - 코인 개요
+                overViewTitle()
+                //MARK: - 코인 개요 부분 grid
+                overViewGrid()
+                //MARK: - 추가 세부 사항
+                additionalTitle()
+                //MARK: - 추가 세부 사항 grid
+                additionalGrid()
                 
             }
             .padding()
         }
         .navigationTitle(viewModel.coin.name)
     }
+    //MARK: - 코인 개요 타이틀
+    @ViewBuilder
+    private func overViewTitle() -> some View {
+        Text("코인 개요")
+            .font(.custom(FontAsset.mediumFont, size: 25))
+            .bold()
+            .foregroundColor(Color.fontColor.accentColor)
+            .frame(maxWidth: .infinity, alignment: .leading)
+        Divider()
+    }
+    //MARK: - 코인 개요 Grid
+    @ViewBuilder
+    private func overViewGrid() -> some View {
+        LazyVGrid(columns: colums,
+                  alignment: .leading,
+                  spacing:  spacing,
+                  pinnedViews: [ ] ) {
+            ForEach(viewModel.overViewStatistics) { stat in
+               StatisticView(stat: stat)
+            }
+        }
+    }
+    //MARK: - 코인 추가 설명 타이틀
+    @ViewBuilder
+    private func additionalTitle() -> some View {
+        Text("추가 세부 사항")
+            .font(.custom(FontAsset.mediumFont, size: 25))
+            .bold()
+            .foregroundColor(Color.fontColor.accentColor)
+            .frame(maxWidth: .infinity, alignment: .leading)
+        Divider()
+    }
+    //MARK: - 코인 추가 사항 grid
+@ViewBuilder
+    private func additionalGrid() -> some View {
+        LazyVGrid(columns: colums,
+                  alignment: .leading,
+                  spacing:  spacing,
+                  pinnedViews: [ ] ) {
+            ForEach(viewModel.additionalStatistics) { stat in
+                StatisticView(stat: stat)
+            }
+        }
+        }
 }
 
 struct CryptoDetailView_Previews: PreviewProvider {
