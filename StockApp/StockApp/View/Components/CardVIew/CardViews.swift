@@ -54,7 +54,7 @@ struct CardViews: View {
         .background(
             RoundedRectangle(cornerRadius: 15)
                 .foregroundColor(Color.colorAssets.backGroundColor)
-                .shadow(color: .gray, radius: 5, x: .zero, y: .zero)
+                .shadow(color:Color.fontColor.accentColor.opacity(0.15), radius: 5, x: .zero, y: .zero)
         )
         .padding(.horizontal, 20)
     }

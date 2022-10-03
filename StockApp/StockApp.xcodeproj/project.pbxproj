@@ -11,6 +11,7 @@
 		62BDC5145DE85FF7DAE6C5A6 /* Pods_StockApp_StockAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAFD54349891F696D6153BCE /* Pods_StockApp_StockAppUITests.framework */; };
 		7F02A5FE28E7316E00F4B56C /* CryptoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F02A5FD28E7316E00F4B56C /* CryptoDetailView.swift */; };
 		7F02A60028E7382F00F4B56C /* CryptoDetailLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F02A5FF28E7382F00F4B56C /* CryptoDetailLoadingView.swift */; };
+		7F03A51428EB34300020079E /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F03A51328EB34300020079E /* String.swift */; };
 		7F06911F28CB14C5005F840E /* SecretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F06911E28CB14C5005F840E /* SecretKey.swift */; };
 		7F06912128CB14E3005F840E /* NetworkManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F06912028CB14E3005F840E /* NetworkManger.swift */; };
 		7F1C8EDD28BFA787004E49A1 /* SpoqaHanSansNeo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FE8372728BFA11F003761FE /* SpoqaHanSansNeo-Bold.ttf */; };
@@ -102,6 +103,7 @@
 		6029A6BEFA431F3632AB664E /* Pods-StockAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockAppTests.release.xcconfig"; path = "Target Support Files/Pods-StockAppTests/Pods-StockAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		7F02A5FD28E7316E00F4B56C /* CryptoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoDetailView.swift; sourceTree = "<group>"; };
 		7F02A5FF28E7382F00F4B56C /* CryptoDetailLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoDetailLoadingView.swift; sourceTree = "<group>"; };
+		7F03A51328EB34300020079E /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		7F06911E28CB14C5005F840E /* SecretKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKey.swift; sourceTree = "<group>"; };
 		7F06912028CB14E3005F840E /* NetworkManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManger.swift; sourceTree = "<group>"; };
 		7F1C8EE228BFABC9004E49A1 /* TabBarKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarKind.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				7FEF4F9D28E0809E00DA9AEB /* UIApplication.swift */,
 				7FBF6B7828E34E710079D68A /* HapticManger.swift */,
 				7F324C7628EB122C00A22FFC /* Date.swift */,
+				7F03A51328EB34300020079E /* String.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -957,6 +960,7 @@
 				7FE8372328BF9D37003761FE /* FontAsset.swift in Sources */,
 				7FEF4FA328E09E3800DA9AEB /* StatisticView.swift in Sources */,
 				7FE8371B28BF991C003761FE /* ColorAsset.swift in Sources */,
+				7F03A51428EB34300020079E /* String.swift in Sources */,
 				7F39713B28D23444007823C4 /* GradiantColor.swift in Sources */,
 				7F1C8EE328BFABC9004E49A1 /* TabBarKind.swift in Sources */,
 				7F729EDF28DB3B0000FEAE43 /* PreviewProvider.swift in Sources */,

@@ -12,7 +12,9 @@ class CryptoDetailViewModel: ObservableObject {
     
     @Published var overViewStatistics: [StatisticModel] = [ ]                    // 코인 개요 구독
     @Published var additionalStatistics: [StatisticModel] = [  ]               // 추가 세부 사항
-    
+    @Published var coinDescription: String? = nil                                    // 코인 자세한 설명
+    @Published var webSiteURL: String? = nil                                           // 웹사이트 url
+    @Published var redditURL: String? = nil                                           // 코인 페이지 관련 url
     //MARK: - 코인 디테일 서비스 관련
     @Published var coin: CoinModel
     private let coinDetailService: CoinDetailSetvice
@@ -33,6 +35,15 @@ class CryptoDetailViewModel: ObservableObject {
                 debugPrint("코인 디테일 관련  데이터 로딩")
                 self?.overViewStatistics = returnedCoinsArrays.overView
                 self?.additionalStatistics = returnedCoinsArrays.additional
+            }
+            .store(in: &cancelables)
+    
+        //MARK:  - 코인 설명 에 관련 한 데이터
+        coinDetailService.$coinDetail
+            .sink { [weak self] (returnedCoinDetails) in
+                self?.coinDescription = returnedCoinDetails?.readableDescription
+                self?.webSiteURL = returnedCoinDetails?.links?.homepage?.first
+                self?.redditURL = returnedCoinDetails?.links?.subredditURL
             }
             .store(in: &cancelables)
     }
