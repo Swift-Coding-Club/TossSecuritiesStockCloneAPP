@@ -21,22 +21,41 @@ struct CryptoDetailView: View {
     
     var body: some View {
         ScrollView{
-            VStack(spacing: 20) {
-                Text("")
-                    .frame(height: 250)
-                //MARK: - 코인 개요
-                overViewTitle()
-                //MARK: - 코인 개요 부분 grid
-                overViewGrid()
-                //MARK: - 추가 세부 사항
-                additionalTitle()
-                //MARK: - 추가 세부 사항 grid
-                additionalGrid()
-                
+            VStack {
+                //MARK:  - 차트 뷰
+                CryptoChartView(coin: viewModel.coin)
+                    .padding(.vertical)
+    
+                VStack(spacing: 20) {
+                    //MARK: - 코인 개요
+                    overViewTitle()
+                    //MARK: - 코인 개요 부분 grid
+                    overViewGrid()
+                    //MARK: - 추가 세부 사항
+                    additionalTitle()
+                    //MARK: - 추가 세부 사항 grid
+                    additionalGrid()
+                    
+                }
+                .padding()
             }
-            .padding()
         }
-        .navigationTitle(viewModel.coin.name)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                navigationBarTrallingItem()
+            }
+        }
+    }
+    //MARK: - toolbar item
+    @ViewBuilder
+    private func navigationBarTrallingItem() -> some View {
+        HStack {
+            Text(viewModel.coin.symbol.uppercased())
+                .font(.custom(FontAsset.regularFont, size: 20))
+            .foregroundColor(Color.colorAssets.textColor)
+            CoinImageView(coin: viewModel.coin)
+                .frame(width: 25, height: 25)
+        }
     }
     //MARK: - 코인 개요 타이틀
     @ViewBuilder

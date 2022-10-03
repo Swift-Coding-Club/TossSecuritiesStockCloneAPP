@@ -30,7 +30,7 @@ struct CryptoMainView: View {
             ScrollView(showsIndicators: false) {
                 //MARK: - 상단  hedaer 부분
                 homeHeader
-                    .padding(.vertical, 5)
+                    .padding(.vertical, 3)
                 //MARK: - 마켓 시세 관련 뷰
                 CryptoStatView(showPortfolio: $showPortfolio)
                     .padding(.vertical, 5)

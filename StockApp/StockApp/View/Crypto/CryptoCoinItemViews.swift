@@ -16,7 +16,7 @@ struct CryptoCoinItemViews: View {
             Text(coin.symbol.uppercased())
                 .font(.custom(FontAsset.mediumFont, size: 20))
             
-            Text(coin.currentHoldingsValue.asCurrencyWith2Decimals())
+            Text(coin.currentPrice.asCurrencyWith6Decimals())
                 .font(.custom(FontAsset.mediumFont, size: 13))
                 .foregroundColor(Color.colorAssets.textColor)
             

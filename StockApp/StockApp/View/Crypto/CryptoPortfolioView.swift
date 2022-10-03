@@ -24,8 +24,6 @@ struct CryptoPortfolioView: View {
             
             ScrollView {
                 VStack(alignment: .leading) {
-                    cryptoHeader()
-                        .padding(.horizontal, 10)
                     cryptoCoinItems()
                     //MARK: - 마켓 시세 관련 뷰
                     CryptoCoinCardView()
@@ -37,6 +35,11 @@ struct CryptoPortfolioView: View {
                     //MARK:  -  코인 보유 시세
                     protfolioCoinList()
                     Spacer(minLength: .zero)
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    cryptoHeader()
                 }
             }
         }
@@ -54,8 +57,8 @@ struct CryptoPortfolioView: View {
     private func cryptoHeader() -> some View {
         VStack {
             Text("코인 보유 수량")
-                .font(.custom(FontAsset.mediumFont, size: 25))
-                .fontWeight(.heavy)
+                .font(.custom(FontAsset.mediumFont, size: 20))
+                .fontWeight(.medium)
                 .foregroundColor(Color.colorAssets.subColor)
         }
         .frame(height: UIScreen.main.bounds.height / 15)
