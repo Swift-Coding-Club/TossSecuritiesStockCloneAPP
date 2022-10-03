@@ -12,15 +12,14 @@ struct CardViews: View {
     private let colums: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible())]     // griditem 관련
-    private let spacing: CGFloat = 40    // griditem spacing 관련
+    private let spacing: CGFloat = 10    // griditem spacing 관련
     var body: some View {
         VStack(alignment: .leading) {
-            HStack {
-                Text(stat.title)
-                    .foregroundColor(Color.colorAssets.subColor)
-                    .font(.custom(FontAsset.mediumFont, size: 23))
-            }
-            
+            Text(stat.title)
+                .foregroundColor(Color.colorAssets.subColor)
+                .font(.custom(FontAsset.mediumFont, size: 23))
+                .padding(.top, 10)
+                .padding(.leading , 12)
             LazyVGrid(columns: colums,
                       alignment: .leading,
                       spacing:  spacing,
@@ -28,7 +27,6 @@ struct CardViews: View {
                 Text(stat.value)
                     .font(.custom(FontAsset.boldFont, size: 15))
                     .foregroundColor(Color.fontColor.accentColor)
-                    .padding(.leading, 5)
                 HStack{
                     Spacer(minLength: 45)
                     VStack(alignment: .leading){
@@ -43,23 +41,22 @@ struct CardViews: View {
                             Text(stat.percentageChange?.asPercentString() ?? "")
                                 .font(.custom(FontAsset.lightFont, size: 15))
                                 .bold()
-                            Spacer()
                         }
                         .foregroundColor((stat.percentageChange ?? .zero) >= .zero ? Color.colorAssets.green : Color.colorAssets.red )
                         .opacity(stat.percentageChange == nil ? 0.0: 1.0)
-           
+                        
                     }
                 }
-                
             }
+                      .padding(.horizontal)
         }
-        .padding()
+        .padding(.vertical)
         .background(
-        RoundedRectangle(cornerRadius: 15)
-            .foregroundColor(Color.colorAssets.backGroundColor)
-            .shadow(color: .gray, radius: 5, x: .zero, y: .zero)
+            RoundedRectangle(cornerRadius: 15)
+                .foregroundColor(Color.colorAssets.backGroundColor)
+                .shadow(color: .gray, radius: 5, x: .zero, y: .zero)
         )
-        .padding(.horizontal, 10)
+        .padding(.horizontal, 20)
     }
 }
 

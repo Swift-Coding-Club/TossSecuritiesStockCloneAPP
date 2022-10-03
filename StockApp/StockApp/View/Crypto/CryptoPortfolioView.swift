@@ -14,15 +14,15 @@ struct CryptoPortfolioView: View {
     @State private var selectionCoin: CoinModel? = nil      // 코인이  선택 되었을때
     @State private var showDetailView: Bool = false          // 다테일 뷰 보여주기
     
-    
     var body: some View {
-       
-        NavigationView {
-            ZStack {
-                //MARK: - 배경 색상 관련
-                Color.colorAssets.backGroundColor
-                    .ignoresSafeArea()
-                //MARK: - 코인 보유 시세
+        
+        ZStack {
+            //MARK: - 배경 색상 관련
+            Color.colorAssets.backGroundColor
+                .ignoresSafeArea()
+            //MARK: - 코인 보유 시세
+            
+            ScrollView {
                 VStack(alignment: .leading) {
                     cryptoHeader()
                         .padding(.horizontal, 10)
@@ -40,18 +40,27 @@ struct CryptoPortfolioView: View {
                 }
             }
         }
+        //MARK: - 코인을 선택해을때  네비게이션
+        .background(
+            NavigationLink(
+                destination: CryptoDetailLoadingView(coin: $selectionCoin),
+                isActive: $showDetailView,
+                label: { EmptyView() }
+            )
+        )
     }
-    
+    //MARK: - 상단 바
     @ViewBuilder
     private func cryptoHeader() -> some View {
         VStack {
             Text("코인 보유 수량")
-                   .font(.custom(FontAsset.mediumFont, size: 25))
-                   .fontWeight(.heavy)
-                   .foregroundColor(Color.colorAssets.subColor)
+                .font(.custom(FontAsset.mediumFont, size: 25))
+                .fontWeight(.heavy)
+                .foregroundColor(Color.colorAssets.subColor)
         }
         .frame(height: UIScreen.main.bounds.height / 15)
     }
+    //MARK: - 보유수량 코인 리스트
     @ViewBuilder
     private func cryptoCoinItems() -> some View {
         ScrollView(.horizontal) {
@@ -62,6 +71,7 @@ struct CryptoPortfolioView: View {
             }
         }
     }
+    //MARK: - 코인 리스트 타이틀
     @ViewBuilder
     private func columnTitles() -> some View {
         HStack {
@@ -115,17 +125,19 @@ struct CryptoPortfolioView: View {
         .foregroundColor(Color.colorAssets.textColor)
         .padding(.horizontal)
     }
+    //MARK: - 보유 수량 코인 리스트
     @ViewBuilder
     private func protfolioCoinList() -> some View {
-        List {
+        ScrollView {
             ForEach(viewModel.profilioCoins) { coin in
                 CoinRowView(coin: coin, showHoldingsColumn: true)
-                    .listRowInsets(.init(top: 10, leading: .zero, bottom: 10, trailing: 10))
+                
                     .onTapGesture {
                         segue(coin: coin)
                     }
             }
         }
+        .padding(.init(top: 10, leading: .zero, bottom: 10, trailing: 10))
         .listStyle(PlainListStyle())
     }
     //MARK: - 네비게이션  segue

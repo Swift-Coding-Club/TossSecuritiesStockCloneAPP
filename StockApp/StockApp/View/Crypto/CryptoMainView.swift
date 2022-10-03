@@ -27,7 +27,7 @@ struct CryptoMainView: View {
                 }
             
             //MARK: - 각 뷰에 관련 된 부분
-            VStack {
+            ScrollView(showsIndicators: false) {
                 //MARK: - 상단  hedaer 부분
                 homeHeader
                     .padding(.vertical, 5)
@@ -45,7 +45,6 @@ struct CryptoMainView: View {
                 columnTitles
                 //MARK:  -  코인 및 보유  시세 리스트
                 allCoinList
-                    .transition(.move(edge: .leading))
                     .padding(.bottom, 5)
                 Spacer(minLength: .zero)
             }
@@ -144,31 +143,16 @@ extension CryptoMainView {
     }
     //MARK:  - 코인시세 리스트
     private var allCoinList: some View {
-        List {
+        ScrollView {
             ForEach(viewModel.allCoins) { coin in
                 CoinRowView(coin: coin, showHoldingsColumn: false)
-                    .listRowInsets(.init(top: 10, leading: .zero, bottom: 10, trailing: 10))
                     .onTapGesture {
                         segue(coin: coin)
                     }
             }
         }
-        .listStyle(PlainListStyle())
+        .padding(.init(top: 10, leading: .zero, bottom: 10, trailing: 10))
     }
-    //MARK: -   보유 수량 코인 리스트
-    private var protfolioCoinList: some View {
-        List {
-            ForEach(viewModel.profilioCoins) { coin in
-                CoinRowView(coin: coin, showHoldingsColumn: true)
-                    .listRowInsets(.init(top: 10, leading: .zero, bottom: 10, trailing: 10))
-                    .onTapGesture {
-                        segue(coin: coin)
-                    }
-            }
-        }
-        .listStyle(PlainListStyle())
-    }
-    
     //MARK: - 네비게이션  segue
     private func segue(coin: CoinModel) {
         selectionCoin = coin
