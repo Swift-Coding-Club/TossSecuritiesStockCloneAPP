@@ -24,7 +24,7 @@ struct HomeView: View {
                 Divider()
                 portfolioCoinList()
                 Spacer()
-                    .frame(height: 20)
+                    .frame(height: 20)  
             }
         }
     }
