@@ -16,7 +16,7 @@ struct CardStatisticView: View {
                 .foregroundColor(Color.colorAssets.textColor)
             Text(stat.value)
                 .font(.custom(FontAsset.boldFont, size: 14))
-                .foregroundColor(Color.fontColor.accentColor)
+                .foregroundColor(Color.fontColor.mainFontColor)
             
             HStack(spacing: 4) {
                 Image(systemName: "triangle.fill")

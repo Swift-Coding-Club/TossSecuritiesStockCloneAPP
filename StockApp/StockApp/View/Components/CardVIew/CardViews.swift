@@ -26,7 +26,7 @@ struct CardViews: View {
                       pinnedViews: [ ] ) {
                 Text(stat.value)
                     .font(.custom(FontAsset.boldFont, size: 15))
-                    .foregroundColor(Color.fontColor.accentColor)
+                    .foregroundColor(Color.fontColor.mainFontColor)
                 HStack{
                     Spacer(minLength: 45)
                     VStack(alignment: .leading){

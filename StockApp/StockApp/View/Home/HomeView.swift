@@ -19,12 +19,12 @@ struct HomeView: View {
                 Divider()
                 coinList()
                 Spacer()
-                    .frame(height: 20)
+                    .frame(height: 30)
                 portfolioHeader()
                 Divider()
                 portfolioCoinList()
                 Spacer()
-                    .frame(height: 20)  
+                    .frame(height: 20)
             }
         }
     }
@@ -35,7 +35,7 @@ struct HomeView: View {
         HStack {
             Text("코인 리스트 ")
                 .font(.custom(FontAsset.mediumFont, size: 15))
-                .foregroundColor(Color.fontColor.accentColor)
+                .foregroundColor(Color.fontColor.mainFontColor)
             Spacer()
             
             NavigationLink {
@@ -66,8 +66,8 @@ struct HomeView: View {
     private func portfolioHeader() -> some View {
         HStack {
             Text("보유한 코인 리스트 ")
-                .font(.custom(FontAsset.mediumFont, size: 15))
-                .foregroundColor(Color.fontColor.accentColor)
+                .font(.custom(FontAsset.mediumFont, size: 20))
+                .foregroundColor(Color.fontColor.mainFontColor)
             Spacer()
             
             NavigationLink {

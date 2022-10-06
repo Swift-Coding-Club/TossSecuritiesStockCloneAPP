@@ -91,7 +91,7 @@ extension CryptoMainView {
             Text("코인 시세")
                 .font(.headline)
                 .fontWeight(.heavy)
-                .foregroundColor(Color.fontColor.accentColor)
+                .foregroundColor(Color.fontColor.mainFontColor)
                 .animation(.none)
             Spacer()
             Spacer()
