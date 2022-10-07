@@ -8,7 +8,6 @@
 import SwiftUI
 import Combine
 
-
 class CoinDataService {
     
     @Published var allcoins:  [CoinModel] = [ ]  //allcoin을  통해서 접근해서 사용

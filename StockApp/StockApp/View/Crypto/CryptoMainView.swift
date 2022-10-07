@@ -58,7 +58,6 @@ struct CryptoMainView: View {
                 label: { EmptyView() }
             )
         )
-        
     }
 }
 
