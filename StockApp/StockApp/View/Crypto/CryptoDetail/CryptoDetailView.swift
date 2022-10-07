@@ -67,7 +67,7 @@ struct CryptoDetailView: View {
         Text("코인 개요")
             .font(.custom(FontAsset.mediumFont, size: 25))
             .bold()
-            .foregroundColor(Color.fontColor.accentColor)
+            .foregroundColor(Color.fontColor.mainFontColor)
             .frame(maxWidth: .infinity, alignment: .leading)
         Divider()
     }
@@ -117,7 +117,7 @@ struct CryptoDetailView: View {
         Text("추가 세부 사항")
             .font(.custom(FontAsset.mediumFont, size: 25))
             .bold()
-            .foregroundColor(Color.fontColor.accentColor)
+            .foregroundColor(Color.fontColor.mainFontColor)
             .frame(maxWidth: .infinity, alignment: .leading)
         Divider()
     }
