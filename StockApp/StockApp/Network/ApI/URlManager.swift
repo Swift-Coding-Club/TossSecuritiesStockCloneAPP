@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct URLManger {
+struct URLManager {
     
     static let mainUrl: String = "https://api.coingecko.com/"
     

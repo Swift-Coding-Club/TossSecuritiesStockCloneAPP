@@ -22,7 +22,7 @@ class CoinDetailSetvice {
     }
     //MARK: - 코인  디데일 관련  통신
     func getCoinDetail() {
-        guard let url  = URL(string: "\(URLManger.mainUrl)\(URLManger.coinCatergory)\(coin.id)?localization=\(URLManger.localiztaion)&tickers=true&market_data=false&community_data=false&developer_data=false&sparkline=false") else { return }
+        guard let url  = URL(string: "\(URLManager.mainUrl)\(URLManager.coinCatergory)\(coin.id)?localization=\(URLManager.localiztaion)&tickers=true&market_data=false&community_data=false&developer_data=false&sparkline=false") else { return }
         
         coinDetailSubscription =   NetworkingManger.downloadUrl(url: url)
             .decode(type: CoinDetailModel.self, decoder: JSONDecoder())

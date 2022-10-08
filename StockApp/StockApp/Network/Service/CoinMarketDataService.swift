@@ -19,7 +19,7 @@ class CoinMarketDataService {
     }
     
     func getMarketData() {
-        guard let url = URL(string: URLManger.coinMartURL) else { return }
+        guard let url = URL(string: URLManager.coinMartURL) else { return }
      
         marketCoinSubscription =   NetworkingManger.downloadUrl(url: url)
             .decode(type: GlobalData.self, decoder: JSONDecoder())
