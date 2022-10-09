@@ -23,6 +23,7 @@ struct ClosedButtonView: View {
                     .padding(20)
             }
         }
+        .cornerRadius(30)
     }
 }
 

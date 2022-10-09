@@ -8,105 +8,140 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var emailText: String = ""
-    @State private var passworldText: String = ""
+    @State private var emailTextField: String = ""
+    @State private var passworldTextField: String = ""
     @State private var showBottomSheet: Bool = false
     
     var body: some View {
-        NavigationView {
-            ZStack {
-              backgroundColor()
-                
-                VStack {
-                    Spacer()
-                        .frame(height: 100)
-                    
-                    topViewTitle()
-                
-                    Spacer()
-                        .frame(height: 100)
-                    
-                    emailTextField()
-                    
-                    Spacer()
-                        .frame(height: 20)
-                    
-                    passworldTextField()
-                    
-                    Spacer()
-                        .frame(height: 40)
-                    
-                    authorizationButton()
-                    
-                    Spacer(minLength: .zero)
-                }
+        ZStack {
+            Color.colorAssets.backGroundColor
+            .sheet(isPresented: $showBottomSheet) {
+                ClosedButtonView()
+                    .presentationDetents([.height(300)])
+                  
             }
+          
+            
+            VStack {
+                //MARK: - 로그인 상단  타이틀
+                loginHeaderTitle()
+                //MARK: -  이메일 및  텍스트 필드
+                authorizationTextField()
+                //MARK: - 비밀 번호 찾기 버튼
+                forgotPasswordButton()
+                //MARK: - 로그인 버튼
+                loginButton()
+                //MARK: - 다른 방법으로 로그인
+                anotherLoginButton()
+                Spacer()
+                //MARK: - 회원 가입 버튼
+                signUPButton()
+                
+            }
+            .ignoresSafeArea()
+            .navigationBarHidden(true)
         }
+       
     }
-    //MARK: -  배경 색상
+    //MARK: - 로그인 타이틀
     @ViewBuilder
-    private func backgroundColor() -> some View {
-        LinearGradient(gradient: Gradient(colors: [Color.colorAssets.skyblue2, Color.colorAssets.white]),
-                                startPoint: .top, endPoint: .leading)
-        .ignoresSafeArea(.all)
+    private func loginHeaderTitle() -> some View {
+        VStack(alignment: .leading) {
+            HStack { Spacer()  }
+            
+            Text("안녕하세요")
+                .font(.custom(FontAsset.mediumFont, size: 30))
+                .fontWeight(.semibold)
+            
+            Text("어서오세요 코인 모여 서비스에 오신걸 ")
+                .font(.custom(FontAsset.regularFont, size: 23))
+                .fontWeight(.semibold)
+            
+            Text("환영합니다")
+                .font(.custom(FontAsset.regularFont, size: 25))
+                .fontWeight(.semibold)
+        }
+        .frame(height: 260)
+        .padding(.leading)
+        .background(Color.colorAssets.mainColor)
+        .foregroundColor(Color.colorAssets.white)
+        //MARK:  - 바텀 쪽 코너를 둥굴게 구현
+        .clipShape(RoundShape(corners: [.bottomRight]))
     }
-    //MARK:  - 이메일  로그 타이틀
+    //MARK:  -  이메일  & 비빌번호  텍스트 필드
     @ViewBuilder
-    private func topViewTitle() -> some View {
+    private func authorizationTextField() -> some View {
+        VStack(spacing: 40) {
+            TextField("이메일을 입력해주세요", text: $emailTextField)
+            
+            SecureField("비밀 번호를 입력 해주세요" , text: $passworldTextField)
+        }
+        .padding(.horizontal, 32)
+        .padding(.top, 44)
+    }
+    //MARK: - 비밀 번호 찾기
+    @ViewBuilder
+    private func forgotPasswordButton() -> some View {
         HStack {
-            Text (" 로그인  창 ")
-                .font(.custom(FontAsset.mediumFont, size: 25))
-        }
-    }
-    //MARK:  -  이메일  텍스트 필드
-    @ViewBuilder
-    private func emailTextField() -> some View {
-        VStack {
-            TextField("이메일 및 아이디 로그인 ", text: $emailText)
-                .foregroundColor(Color.fontColor.mainFontColor)
-                .font(.custom(FontAsset.mediumFont, size: 20))
-                .frame(height: 50)
-        }
-        .background(
-            RoundedRectangle(cornerRadius: 20)
-                .foregroundColor(Color.colorAssets.backGroundColor)
-                .shadow(color: Color.fontColor.accentColor.opacity(0.15), radius: 10, x: .zero, y: .zero)
-        )
-        .padding(.horizontal, 5)
-    }
-    //MARK: - 비빌 번호  텍스트 필드
-    @ViewBuilder
-    private func passworldTextField() -> some View {
-        VStack {
-            SecureField("비밀 번호 로그인  ", text: $passworldText)
-                .foregroundColor(Color.fontColor.mainFontColor)
-                .font(.custom(FontAsset.mediumFont, size: 20))
-                .frame(height: 50)
-        }
-        .padding(.horizontal)
-        .background(
-            RoundedRectangle(cornerRadius: 20)
-                .foregroundColor(Color.colorAssets.backGroundColor)
-                .shadow(color: Color.fontColor.accentColor.opacity(0.15), radius: 10, x: .zero, y: .zero)
-        )
-    }
-    //MARK:  - 로그인 및 회원 가입 버튼
-    @ViewBuilder
-    private func  authorizationButton() -> some View {
-        HStack {
-            Button {
-                showBottomSheet.toggle()
+            Spacer()
+            
+            NavigationLink {
+                
             } label: {
-                Text("로그인 ")
-                    .font(.custom(FontAsset.mediumFont, size: 20))
-                    .foregroundColor(Color.fontColor.mainFontColor)
+                Text("비밀 번호를 잊으셨나요 ?")
+                    .font(.custom(FontAsset.mediumFont, size: 15))
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color.colorAssets.subColor)
+                    .padding(.top)
+                    .padding(.trailing, 24)
             }
         }
-        .sheet(isPresented: $showBottomSheet) {
-            ClosedButtonView()
-                .presentationDetents([.height(500)])
+    }
+    //MARK:  - 로그인 버튼
+    @ViewBuilder
+    private func loginButton() -> some View {
+        Button {
+            
+        }label: {
+            Text("로그인")
+                .font(.custom(FontAsset.regularFont, size: 20))
+                .foregroundColor(.white)
+                .frame(width: 340, height: 50)
+                .background(Color.colorAssets.mainColor)
+                .clipShape(Capsule())
+                .padding()
         }
-        .cornerRadius(100)
+        .shadow(color: .gray.opacity(0.5), radius: 10, x: .zero, y: .zero)
+    }
+    @ViewBuilder
+    private func anotherLoginButton() -> some View {
+        Button {
+            showBottomSheet.toggle()
+        } label: {
+            Text("다른 방법으로 로그인 ")
+                .font(.custom(FontAsset.regularFont, size: 20))
+                .fontWeight(.semibold)
+                .foregroundColor(Color.colorAssets.subColor)
+        }
+    }
+    //MARK: - 회원가입 버튼
+    @ViewBuilder
+    private func signUPButton() -> some View {
+        NavigationLink {
+            SIgnUpVIew()
+            //                        .navigationBarHidden(true)
+        } label: {
+            HStack {
+                Text("혹시 계정이 없으신가요 ??")
+                    .font(.custom(FontAsset.lightFont, size: 13))
+                
+                Text("회원 가입")
+                    .font(.custom(FontAsset.mediumFont, size: 15))
+                    .fontWeight(.semibold)
+            }
+        }
+        .padding(.bottom , 32)
+        .foregroundColor(Color.colorAssets.subColor)
     }
 }
 
