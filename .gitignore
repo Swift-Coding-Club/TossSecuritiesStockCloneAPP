@@ -9,11 +9,12 @@
 #           - AS PER https://guides.cocoapods.org/using/using-cocoapods.html NEVER IGNORE THE LOCK FILE
 Pods/
 
+
 ### Swift ###
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
-SecretKey.swift
+Network/Secret/
 
 ## User settings
 xcuserdata/
