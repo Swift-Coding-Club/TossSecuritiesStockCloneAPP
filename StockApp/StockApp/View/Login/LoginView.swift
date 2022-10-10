@@ -11,16 +11,15 @@ struct LoginView: View {
     @State private var emailTextField: String = ""
     @State private var passworldTextField: String = ""
     @State private var showBottomSheet: Bool = false
+    @State private var saveloginInfo: Bool = false
     
     var body: some View {
         ZStack {
             Color.colorAssets.backGroundColor
             .sheet(isPresented: $showBottomSheet) {
-                ClosedButtonView()
+                AnotherLoginModalView()
                     .presentationDetents([.height(300)])
-                  
             }
-          
             
             VStack {
                 //MARK: - 로그인 상단  타이틀
@@ -113,6 +112,8 @@ struct LoginView: View {
         }
         .shadow(color: .gray.opacity(0.5), radius: 10, x: .zero, y: .zero)
     }
+    //MARK: - 다른 뷰 로그인
+
     @ViewBuilder
     private func anotherLoginButton() -> some View {
         Button {

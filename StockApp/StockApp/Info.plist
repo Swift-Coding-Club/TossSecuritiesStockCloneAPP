@@ -2,6 +2,24 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>kakaolink</string>
+		<string>kakaokompassauth</string>
+	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>url</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>kako{fa99930d02eafd803fe53947279dca4c}</string>
+			</array>
+		</dict>
+	</array>
 	<key>Localizationnativedevelopmentregion</key>
 	<string>Korea</string>
 	<key>UIAppFonts</key>

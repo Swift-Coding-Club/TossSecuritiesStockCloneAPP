@@ -56,6 +56,9 @@
 		7FC3564B28D8B4CF002E0E63 /* CircleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC3564A28D8B4CF002E0E63 /* CircleButtonView.swift */; };
 		7FC3564D28D8C3C9002E0E63 /* CircleButtonAnimationVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC3564C28D8C3C9002E0E63 /* CircleButtonAnimationVIew.swift */; };
 		7FD9E45028F4021E003528D4 /* SecretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD9E44F28F4021E003528D4 /* SecretKey.swift */; };
+		7FD9E45228F4057E003528D4 /* AnotherLoginModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD9E45128F4057E003528D4 /* AnotherLoginModalView.swift */; };
+		7FD9E45628F40FF8003528D4 /* SNSLoginManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD9E45528F40FF8003528D4 /* SNSLoginManger.swift */; };
+		7FD9E45928F4141C003528D4 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD9E45828F4141C003528D4 /* SignInViewModel.swift */; };
 		7FE836E228BF95B0003761FE /* StockAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE836E128BF95B0003761FE /* StockAppApp.swift */; };
 		7FE836E628BF95B7003761FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FE836E528BF95B7003761FE /* Assets.xcassets */; };
 		7FE836E928BF95B7003761FE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FE836E828BF95B7003761FE /* Preview Assets.xcassets */; };
@@ -148,6 +151,9 @@
 		7FC3564A28D8B4CF002E0E63 /* CircleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonView.swift; sourceTree = "<group>"; };
 		7FC3564C28D8C3C9002E0E63 /* CircleButtonAnimationVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonAnimationVIew.swift; sourceTree = "<group>"; };
 		7FD9E44F28F4021E003528D4 /* SecretKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKey.swift; sourceTree = "<group>"; };
+		7FD9E45128F4057E003528D4 /* AnotherLoginModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherLoginModalView.swift; sourceTree = "<group>"; };
+		7FD9E45528F40FF8003528D4 /* SNSLoginManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSLoginManger.swift; sourceTree = "<group>"; };
+		7FD9E45828F4141C003528D4 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		7FE836DE28BF95B0003761FE /* StockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FE836E128BF95B0003761FE /* StockAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAppApp.swift; sourceTree = "<group>"; };
 		7FE836E528BF95B7003761FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -266,11 +272,8 @@
 		7F2382BE28DDEBF200103AE7 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				7F2382BF28DDEC4E00103AE7 /* CoinDataService.swift */,
-				7FEF4F7528DF316D00DA9AEB /* CoinImageService.swift */,
-				7FEF4FA828E0B88000DA9AEB /* CoinMarketDataService.swift */,
-				7F21333C28E32BE200CE0BE2 /* PortfolioDataService.swift */,
-				7F2AEB4428E83E0500FA86AD /* CoinDetailSetvice.swift */,
+				7FD9E45428F40FE2003528D4 /* Login */,
+				7FD9E45328F40FCE003528D4 /* Crypto */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -436,6 +439,34 @@
 			path = CircleButton;
 			sourceTree = "<group>";
 		};
+		7FD9E45328F40FCE003528D4 /* Crypto */ = {
+			isa = PBXGroup;
+			children = (
+				7F2382BF28DDEC4E00103AE7 /* CoinDataService.swift */,
+				7FEF4F7528DF316D00DA9AEB /* CoinImageService.swift */,
+				7FEF4FA828E0B88000DA9AEB /* CoinMarketDataService.swift */,
+				7F21333C28E32BE200CE0BE2 /* PortfolioDataService.swift */,
+				7F2AEB4428E83E0500FA86AD /* CoinDetailSetvice.swift */,
+			);
+			path = Crypto;
+			sourceTree = "<group>";
+		};
+		7FD9E45428F40FE2003528D4 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				7FD9E45528F40FF8003528D4 /* SNSLoginManger.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		7FD9E45728F413E0003528D4 /* AuthorizationViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7FD9E45828F4141C003528D4 /* SignInViewModel.swift */,
+			);
+			path = AuthorizationViewModel;
+			sourceTree = "<group>";
+		};
 		7FE836D528BF95B0003761FE = {
 			isa = PBXGroup;
 			children = (
@@ -533,6 +564,7 @@
 		7FE8370E28BF969F003761FE /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				7FD9E45728F413E0003528D4 /* AuthorizationViewModel */,
 				7FC3564728D8B22D002E0E63 /* StockViewModel */,
 				7FC3563828D89365002E0E63 /* CryptoViewModel */,
 				7F2AEB3F28E8391800FA86AD /* CryotoDetailViewModel */,
@@ -668,6 +700,7 @@
 			isa = PBXGroup;
 			children = (
 				7FF3434F28F05C5000FD34EC /* LoginView.swift */,
+				7FD9E45128F4057E003528D4 /* AnotherLoginModalView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -975,6 +1008,7 @@
 				7F729EDA28DA013600FEAE43 /* CoinModel.swift in Sources */,
 				7FC3564028D8AFB5002E0E63 /* ProfileMainView.swift in Sources */,
 				7FC3563D28D8AE7A002E0E63 /* StockMainView.swift in Sources */,
+				7FD9E45628F40FF8003528D4 /* SNSLoginManger.swift in Sources */,
 				7FF4835A28E51DC2004DEC37 /* SortOption.swift in Sources */,
 				7F2382C028DDEC4E00103AE7 /* CoinDataService.swift in Sources */,
 				7F729EE328DB533600FEAE43 /* CoinViewModel.swift in Sources */,
@@ -998,11 +1032,13 @@
 				7F2382C528DEB39C00103AE7 /* APIKey.swift in Sources */,
 				7F324C6828E9A8A800A22FFC /* CardViews.swift in Sources */,
 				7F39713D28D234F2007823C4 /* FontColorAsset.swift in Sources */,
+				7FD9E45928F4141C003528D4 /* SignInViewModel.swift in Sources */,
 				7FEF4FA028E0963300DA9AEB /* StatisticModel.swift in Sources */,
 				7FEF4F7628DF316D00DA9AEB /* CoinImageService.swift in Sources */,
 				7F06912128CB14E3005F840E /* NetworkManger.swift in Sources */,
 				7FF19D5828E1EB3600BF93B3 /* CoinLogoView.swift in Sources */,
 				7FEF4FA728E0B4D400DA9AEB /* MarketDataModel.swift in Sources */,
+				7FD9E45228F4057E003528D4 /* AnotherLoginModalView.swift in Sources */,
 				7FEF4FA528E0A32800DA9AEB /* CryptoStatView.swift in Sources */,
 				7F324C7528EB06F400A22FFC /* CryptoChartView.swift in Sources */,
 				7FEF4F6F28DF17F300DA9AEB /* NetworkingError.swift in Sources */,
@@ -1206,6 +1242,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1243,6 +1280,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

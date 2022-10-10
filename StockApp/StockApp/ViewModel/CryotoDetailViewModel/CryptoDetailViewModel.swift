@@ -35,6 +35,7 @@ class CryptoDetailViewModel: ObservableObject {
                 debugPrint("코인 디테일 관련  데이터 로딩")
                 self?.overViewStatistics = returnedCoinsArrays.overView
                 self?.additionalStatistics = returnedCoinsArrays.additional
+                debugPrint("\(returnedCoinsArrays)")
             }
             .store(in: &cancelables)
     
