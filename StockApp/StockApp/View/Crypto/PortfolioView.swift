@@ -87,7 +87,6 @@ struct PortfolioView: View {
             quantityText = ""
         }
     }
-    
     //MARK: - 코인 수량 쓰는 form
     @ViewBuilder
     private func portfolioInputSection() -> some View {
@@ -138,7 +137,7 @@ struct PortfolioView: View {
                 Text("Save".uppercased())
             }
             .opacity(
-                (selectedCoin != nil  && selectedCoin?.currentHoldings != Double(quantityText)) ? 1.0 : 0.0)
+                (selectedCoin != nil  && selectedCoin?.currentHoldings != Double(quantityText)) ? 1.0 : .zero)
         }
         .font(.custom(FontAsset.mediumFont, size: 15))
     }

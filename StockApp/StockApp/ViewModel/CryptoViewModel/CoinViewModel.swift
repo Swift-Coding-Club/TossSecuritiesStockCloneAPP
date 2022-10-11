@@ -12,10 +12,12 @@ import Combine
 class CoinViewModel: ObservableObject {
     
     @Published var statistic: [StatisticModel] = [ ]
+    @Published var portfolioStatistic: [StatisticModel] = [ ]
     @Published var allCoins: [CoinModel] = [ ]
     @Published var profilioCoins : [CoinModel] =  [ ]
     @Published var searchText: String = ""                                      // 검색 관련
-    @Published var isLoading: Bool = false                                  // 로딩 관련
+    @Published var isLoading: Bool = false                                      // 로딩 관련
+    @Published var sortOption: SortOption   = .holdings                   //  정렬  관련
     
     private let coinDataService = CoinDataService()                    // 코인 데이터 서비스 변수
     private let marketDataService = CoinMarketDataService()
@@ -27,23 +29,25 @@ class CoinViewModel: ObservableObject {
         addSubscribers()
     }
     
-    //MARK:  - 데이터 통신 하는부분
+    //MARK:  - viewModel 구독 추가 부분
     func addSubscribers() {
         //MARK:  - update allcoins
         $searchText
-            .combineLatest(coinDataService.$allcoins)        //데이터 서비스에서 모든 코인을 수신하면
+            .combineLatest(coinDataService.$allcoins, $sortOption)        //데이터 서비스에서 모든 코인을 수신하면, 정렬 관련
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)      // 빠르게 입력할때  0.5 초동안  지연
-            .map(fillterCoins)
+            .map(filterAndSortCoins)
             .sink { [weak self] (returnedCoins) in
                 self?.allCoins = returnedCoins
             }
             .store(in: &cancelables)
+        
         //MARK:  - 보유 수량 데이터 업데이트
         $allCoins
             .combineLatest(portfolioDataService.$savedEntites)
             .map(mapAllcoinsToPortfolioCoins)
             .sink { [weak self] (returnedCoin) in
-                self?.profilioCoins = returnedCoin
+                guard let self = self else { return }
+                self.profilioCoins = self.sortPortfolioCoinsNeed(coins: returnedCoin)
             }
             .store(in: &cancelables)
         
@@ -53,6 +57,15 @@ class CoinViewModel: ObservableObject {
             .map(mapGlobalMarketData)
             .sink { [weak self] (returnedStats) in
                 self?.statistic = returnedStats
+                self?.isLoading = false
+            }
+            .store(in: &cancelables)
+        
+        marketDataService.$portfolioData
+            .combineLatest($profilioCoins)
+            .map(mapPortfolioData)
+            .sink { [weak self] (returnedStats) in
+                self?.portfolioStatistic = returnedStats
                 self?.isLoading = false
             }
             .store(in: &cancelables)
@@ -69,6 +82,12 @@ class CoinViewModel: ObservableObject {
         marketDataService.getMarketData()
         HapticManger.notification(type: .success)
     }
+    //MARK:  - 검색 과 정렬 관련
+    private func filterAndSortCoins(text: String, coins: [CoinModel], sort: SortOption) -> [CoinModel]  {
+        var fillerCoins = fillterCoins(text: text, coins: coins)
+        sortCoins(sort: sort, coins: &fillerCoins)            // 코인 정렬 및  fillter coin을 구독
+        return fillerCoins
+    }
     //MARK: - 검색창 필터
     private func fillterCoins(text: String, coins: [CoinModel]) -> [CoinModel] {
         guard !text.isEmpty else {
@@ -82,6 +101,19 @@ class CoinViewModel: ObservableObject {
             coin.id.lowercased().contains(lowerCasedText)
         }
     }
+    //MARK:  - 코인 정렬
+    private func sortCoins(sort: SortOption, coins: inout [CoinModel])  {
+        switch sort {
+        case .rank, .holdings:
+            coins.sort(by: { $0.rank < $1.rank })
+        case .rankReversed, .holdingsReversed:
+            coins.sort(by: { $0.rank > $1.rank })
+        case .price:
+            coins.sort(by: { $0.currentPrice > $1.currentPrice })
+        case .priceReversed:
+            coins.sort(by: { $0.currentPrice < $1.currentPrice })
+        }
+    }
     //MARK: - 마켓 데이터
     private func mapGlobalMarketData(marketDataModel: MarketDataModel?, portfolioCoins: [CoinModel]) -> [StatisticModel] {
         var stats: [StatisticModel] = [ ]
@@ -90,7 +122,7 @@ class CoinViewModel: ObservableObject {
             return stats
         }
         //MARK: - 마켓 cap
-        let marketCap = StatisticModel(title: "Market Cap", value: data.marketCap,
+        let marketCap = StatisticModel(title: "시가 총액", value: data.marketCap,
                                        percentageChange: data.marketCapChangePercentage24HUsd)
         //MARK: - 24시간 코인 시세
         let volume = StatisticModel(title: "24시간  코인 시세", value: data.volume)
@@ -98,7 +130,7 @@ class CoinViewModel: ObservableObject {
         let btcDomainance = StatisticModel(title: "비트코인 시세", value: data.btcDominance)
         //MARK: - 보유 수량
         let portfolioValue = portfolioCoins.map({ $0.currentHoldingsValue})
-            .reduce(0, +)
+            .reduce(.zero, +)
         
         let previousValue = portfolioCoins.map { (coin) -> Double in
             let currentValue = coin.currentHoldingsValue
@@ -106,13 +138,13 @@ class CoinViewModel: ObservableObject {
             let previousValue = currentValue / (1 + percentChange)
             return previousValue
         }
-            .reduce(0, +)
+            .reduce(.zero, +)
         
         //MARK:  - 보유 수량 %
         let percentageChange = ((portfolioValue - previousValue) / previousValue) * 100
         
         let portfolio = StatisticModel(
-            title: "보유 수량 ",
+            title: "총 보유 수량 ",
             value: portfolioValue.asCurrencyWith2Decimals(),
             percentageChange: percentageChange)
         //MARK:- StatisticModel에 append
@@ -120,6 +152,33 @@ class CoinViewModel: ObservableObject {
             marketCap,
             volume,
             btcDomainance,
+        ])
+        return stats
+    }
+    
+    private func mapPortfolioData(marketDataModel: MarketDataModel?, portfolioCoins: [CoinModel]) -> [StatisticModel] {
+        var stats: [StatisticModel] = [ ]
+        
+        //MARK: - 보유 수량
+        let portfolioValue = portfolioCoins.map({ $0.currentHoldingsValue})
+            .reduce(.zero, +)
+        
+        let previousValue = portfolioCoins.map { (coin) -> Double in
+            let currentValue = coin.currentHoldingsValue
+            let percentChange = (coin.priceChangePercentage24H ?? .zero) / 100
+            let previousValue = currentValue / (1 + percentChange)
+            return previousValue
+        }
+            .reduce(.zero, +)
+        //MARK:  - 보유 수량 %
+        let percentageChange = ((portfolioValue - previousValue) / previousValue) * 100
+        
+        let portfolio = StatisticModel(
+            title: " 총 보유 수량 ",
+            value: portfolioValue.asCurrencyWith2Decimals(),
+            percentageChange: percentageChange)
+        //MARK:- StatisticModel에 append
+        stats.append(contentsOf: [
             portfolio
         ])
         return stats
@@ -134,5 +193,18 @@ class CoinViewModel: ObservableObject {
                 }
                 return coin.updateHoldings(amount: entity.amount)
             }
+    }
+    
+    //MARK:  - 보유 수량 정렬
+    private func sortPortfolioCoinsNeed(coins: [CoinModel]) -> [CoinModel] {
+        // 자신이 보유 한 코인들만  정렬
+        switch sortOption {
+        case .holdings:
+            return coins.sorted(by: {$0.currentHoldingsValue > $1.currentHoldingsValue})
+        case .holdingsReversed:
+            return coins.sorted(by: {$0.currentHoldingsValue < $1.currentHoldingsValue})
+        default:
+            return coins
+        }
     }
 }

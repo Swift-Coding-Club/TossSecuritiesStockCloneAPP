@@ -22,6 +22,9 @@ struct CoinRowView: View {
             rightColumn
         }
         .font(.custom(FontAsset.mediumFont, size: 15))
+        .background(
+            Color.colorAssets.backGroundColor.opacity(0.001)
+        )
     }
 }
 
@@ -52,7 +55,7 @@ extension CoinRowView {
             Text(coin.symbol.uppercased())
                 .font(.custom(FontAsset.mediumFont, size: 15))
                 .padding(.leading, 6)
-                .foregroundColor(Color.fontColor.accentColor)
+                .foregroundColor(Color.fontColor.mainFontColor)
         }
     }
     
@@ -62,14 +65,14 @@ extension CoinRowView {
                 .bold()
             Text((coin.currentHoldings ?? .zero).asNumberString())
         }
-        .foregroundColor(Color.fontColor.accentColor)
+        .foregroundColor(Color.fontColor.mainFontColor)
     }
     
     private var rightColumn: some View {
         VStack(alignment: .trailing) {
             Text(coin.currentPrice.asCurrencyWith6Decimals())
                 .bold()
-                .foregroundColor(Color.fontColor.accentColor)
+                .foregroundColor(Color.fontColor.mainFontColor)
             Text(coin.priceChangePercentage24H?.asPercentString() ?? "")
                 .foregroundColor(
                     (coin.priceChangePercentage24H ?? 0) >= .zero ?
@@ -78,5 +81,4 @@ extension CoinRowView {
         }
         .frame(width: UIScreen.main.bounds.width / 3.5 , alignment: .trailing)
     }
-    
 }

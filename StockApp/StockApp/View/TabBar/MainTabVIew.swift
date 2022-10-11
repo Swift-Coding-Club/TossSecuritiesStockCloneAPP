@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct MainTabVIew: View {
-    @State var tabIndex = TabBarKind.home
     var body: some View {
-        TabView(selection: $tabIndex){
+        TabView {
             HomeView()
                 .tabItem {
                     Image(systemName: "house")
