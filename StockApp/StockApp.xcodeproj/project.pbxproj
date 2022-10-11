@@ -43,6 +43,7 @@
 		7F324C7328E9F3D900A22FFC /* CardStatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F324C7228E9F3D900A22FFC /* CardStatisticView.swift */; };
 		7F324C7528EB06F400A22FFC /* CryptoChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F324C7428EB06F300A22FFC /* CryptoChartView.swift */; };
 		7F324C7728EB122C00A22FFC /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F324C7628EB122C00A22FFC /* Date.swift */; };
+		7F38DA0A28F5CAAB00D0D324 /* SecretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F38DA0928F5CAAB00D0D324 /* SecretKey.swift */; };
 		7F39713928D2336F007823C4 /* GradiantColorAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F39713828D2336F007823C4 /* GradiantColorAsset.swift */; };
 		7F39713B28D23444007823C4 /* GradiantColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F39713A28D23444007823C4 /* GradiantColor.swift */; };
 		7F39713D28D234F2007823C4 /* FontColorAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F39713C28D234F2007823C4 /* FontColorAsset.swift */; };
@@ -61,7 +62,6 @@
 		7FC3564628D8B0EC002E0E63 /* AddMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC3564528D8B0EC002E0E63 /* AddMainView.swift */; };
 		7FC3564B28D8B4CF002E0E63 /* CircleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC3564A28D8B4CF002E0E63 /* CircleButtonView.swift */; };
 		7FC3564D28D8C3C9002E0E63 /* CircleButtonAnimationVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC3564C28D8C3C9002E0E63 /* CircleButtonAnimationVIew.swift */; };
-		7FD9E45028F4021E003528D4 /* SecretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD9E44F28F4021E003528D4 /* SecretKey.swift */; };
 		7FD9E45228F4057E003528D4 /* AnotherLoginModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD9E45128F4057E003528D4 /* AnotherLoginModalView.swift */; };
 		7FD9E45628F40FF8003528D4 /* SNSLoginManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD9E45528F40FF8003528D4 /* SNSLoginManger.swift */; };
 		7FD9E45928F4141C003528D4 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD9E45828F4141C003528D4 /* SignInViewModel.swift */; };
@@ -144,6 +144,7 @@
 		7F324C7228E9F3D900A22FFC /* CardStatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStatisticView.swift; sourceTree = "<group>"; };
 		7F324C7428EB06F300A22FFC /* CryptoChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoChartView.swift; sourceTree = "<group>"; };
 		7F324C7628EB122C00A22FFC /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		7F38DA0928F5CAAB00D0D324 /* SecretKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SecretKey.swift; path = StockApp/View/Components/Alert/SecretKey.swift; sourceTree = SOURCE_ROOT; };
 		7F39713828D2336F007823C4 /* GradiantColorAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradiantColorAsset.swift; sourceTree = "<group>"; };
 		7F39713A28D23444007823C4 /* GradiantColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradiantColor.swift; sourceTree = "<group>"; };
 		7F39713C28D234F2007823C4 /* FontColorAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontColorAsset.swift; sourceTree = "<group>"; };
@@ -162,7 +163,6 @@
 		7FC3564528D8B0EC002E0E63 /* AddMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMainView.swift; sourceTree = "<group>"; };
 		7FC3564A28D8B4CF002E0E63 /* CircleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonView.swift; sourceTree = "<group>"; };
 		7FC3564C28D8C3C9002E0E63 /* CircleButtonAnimationVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonAnimationVIew.swift; sourceTree = "<group>"; };
-		7FD9E44F28F4021E003528D4 /* SecretKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKey.swift; sourceTree = "<group>"; };
 		7FD9E45128F4057E003528D4 /* AnotherLoginModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherLoginModalView.swift; sourceTree = "<group>"; };
 		7FD9E45528F40FF8003528D4 /* SNSLoginManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSLoginManger.swift; sourceTree = "<group>"; };
 		7FD9E45828F4141C003528D4 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
@@ -276,7 +276,7 @@
 		7F06912828CB1E6E005F840E /* Secret */ = {
 			isa = PBXGroup;
 			children = (
-				7FD9E44F28F4021E003528D4 /* SecretKey.swift */,
+				7F38DA0928F5CAAB00D0D324 /* SecretKey.swift */,
 			);
 			path = Secret;
 			sourceTree = "<group>";
@@ -1093,6 +1093,7 @@
 				7FD9E45228F4057E003528D4 /* AnotherLoginModalView.swift in Sources */,
 				7FEF4FA528E0A32800DA9AEB /* CryptoStatView.swift in Sources */,
 				7F324C7528EB06F400A22FFC /* CryptoChartView.swift in Sources */,
+				7F38DA0A28F5CAAB00D0D324 /* SecretKey.swift in Sources */,
 				7FEF4F6F28DF17F300DA9AEB /* NetworkingError.swift in Sources */,
 				7F29425628F31C4D00A44CDD /* RoundShape.swift in Sources */,
 				7FEF4FA928E0B88000DA9AEB /* CoinMarketDataService.swift in Sources */,
@@ -1120,7 +1121,6 @@
 				7F324C6C28E9B98600A22FFC /* CryptoPortfolioView.swift in Sources */,
 				7F492D1328CDFB51004E5142 /* BottomModel.swift in Sources */,
 				7F1C8EE528BFACA3004E49A1 /* MainTabVIew.swift in Sources */,
-				7FD9E45028F4021E003528D4 /* SecretKey.swift in Sources */,
 				7F2AEB4128E8395D00FA86AD /* CryptoDetailViewModel.swift in Sources */,
 				7FEF4F7428DF2D6B00DA9AEB /* CoinImageViewModel.swift in Sources */,
 				7FFEF7CA28EF090E0023AACC /* StockModel.swift in Sources */,

@@ -19,6 +19,7 @@ struct SIgnUpVIew: View {
     @State private var checkUserNameRegister: Bool = false
     @State private var checkNickNameRegister: Bool = false
     @Environment(\.dismiss) private var dissmiss
+    
     init() {
         checkRegisterTextField()
     }
@@ -27,9 +28,6 @@ struct SIgnUpVIew: View {
     var body: some View {
         ZStack {
             Color.colorAssets.backGroundColor
-            
-               
-            
             
             VStack {
                 //MARK: - 회원 가입 상단  타이틀
@@ -89,6 +87,7 @@ struct SIgnUpVIew: View {
             checkEmailRegister.toggle()
             checkPhoneRegister.toggle()
             checkPassowrdRegister.toggle()
+            
         }label: {
             Text("회원가입")
                 .font(.custom(FontAsset.regularFont, size: 20))
@@ -99,11 +98,12 @@ struct SIgnUpVIew: View {
                 .padding()
         }
         .shadow(color: .gray.opacity(0.5), radius: 10, x: .zero, y: .zero)
+        
         .showCheckAlertMessage(showAlert: $checkUserNameRegister,  message: "이름을 확인해주세요")
         .showCheckAlertMessage(showAlert: $checkNickNameRegister,  message: "별명을 확인해주세요")
         .showCheckAlertMessage(showAlert: $checkEmailRegister, message: "이메일 양식을 확인 해주세요")
         .showCheckAlertMessage(showAlert: $checkPhoneRegister, message: "핸드폰 번호를 확인해주세요")
-        .showCheckAlertMessage(showAlert: $checkPassowrdRegister,  message: "비밀 번호를 확인해주세요")
+        //        .showCheckAlertMessage(showAlert: $checkPassowrdRegister,  message: "비밀 번호를 확인해주세요")
     }
     //MARK: - 이미 계정이 있으면  로그인 하러 가기 버튼
     @ViewBuilder
@@ -134,7 +134,7 @@ struct SIgnUpVIew: View {
             debugPrint("check phoneNumber \(phoneNumber)")
         } else if !CheckRegister.isValidatePassword(passowrd) {
             debugPrint("check passowrd \(passowrd)")
-        } else {}
+        }else {}
     }
 }
 
