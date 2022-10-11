@@ -12,8 +12,7 @@ import KakaoSDKUser
 struct AnotherLoginModalView: View {
     @Environment (\.dismiss) private var dismiss
     @StateObject var snsloginManager: SNSLoginManger = SNSLoginManger()
-    
-    
+    @State private var mainTabview: Bool = false
     var body: some View {
         NavigationView {
             
@@ -25,13 +24,18 @@ struct AnotherLoginModalView: View {
                     
                     Button {
                         snsloginManager.kakoLogin()
-                        
-                        
+                        mainTabview.toggle()
                     } label: {
                         Image("kakao_login")
                             .resizable()
                             .frame(height: 50)
                             .scaledToFit()
+                    }
+                    .onTapGesture {
+                        NavigationLink (
+                        destination: MainTabVIew(),
+                        isActive: $mainTabview,
+                        label:  { EmptyView()})
                     }
                     .cornerRadius(20)
                     .padding(.horizontal)
