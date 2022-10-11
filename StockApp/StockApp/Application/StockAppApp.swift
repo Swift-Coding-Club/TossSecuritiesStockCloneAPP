@@ -21,6 +21,7 @@ struct StockAppApp: App {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.colorAssets.subColor), .font : UIFont(name: FontAsset.regularFont, size: 28) ?? ""]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor(Color.colorAssets.subColor),
                                                             .font : UIFont(name: FontAsset.regularFont, size: 28) ?? ""]
+        
     }
     
     var body: some Scene {

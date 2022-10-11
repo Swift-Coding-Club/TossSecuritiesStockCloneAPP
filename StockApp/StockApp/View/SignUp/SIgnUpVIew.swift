@@ -24,7 +24,6 @@ struct SIgnUpVIew: View {
         checkRegisterTextField()
     }
     
-    
     var body: some View {
         ZStack {
             Color.colorAssets.backGroundColor

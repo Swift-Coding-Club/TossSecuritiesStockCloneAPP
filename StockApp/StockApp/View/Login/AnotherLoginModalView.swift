@@ -23,6 +23,7 @@ struct AnotherLoginModalView: View {
                 HStack {
                     
                     Button {
+//                        if(UserApi.shared.success)
                         snsloginManager.kakoLogin()
                         mainTabview.toggle()
                     } label: {

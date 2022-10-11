@@ -20,7 +20,7 @@ class SNSLoginManger: ObservableObject {
     var snsCallback: ((_ snsId: String, _ email: String, _ accessToken: String) -> Void)?
     
     init() {
-        
+        MainTabVIew()
     }
 }
 
@@ -28,13 +28,13 @@ extension SNSLoginManger {
     func kakoLogin() {
         // 카카오톡 설치 여부
         if (UserApi.isKakaoTalkLoginAvailable()) {
-            UserApi.shared.loginWithKakaoTalk { (oauthToken , error) in
+            UserApi.shared.loginWithKakaoAccount  { (oauthToken , error) in
                 if let error = error {
                     debugPrint(" [🔥] 카카오톡 로그인 error \(error.localizedDescription)")
                 } else  {
                     debugPrint("카카오톡 로그인 sucess ")
                     _ = oauthToken
-                    MainTabVIew()
+                    
                 }
             }
         } else {
@@ -44,8 +44,6 @@ extension SNSLoginManger {
                 } else  {
                     debugPrint("카카오톡 로그인 sucess ")
                     _ = oauthToken
-                    
-                    
                 }
             }
         }
