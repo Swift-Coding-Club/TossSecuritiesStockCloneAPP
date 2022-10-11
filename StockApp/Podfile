@@ -11,7 +11,13 @@ target 'StockApp' do
   pod 'KakaoSDKCommon', '~> 2.11.1'  # 필수 요소를 담은 공통 모듈
   pod 'KakaoSDKAuth', '~> 2.11.1'  # 사용자 인증
   pod 'KakaoSDKUser', '~> 2.11.1'  # 카카오 로그인, 사용자 관리
-  
+  #파이어베이스 
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Auth'
   
   target 'StockAppTests' do
     inherit! :search_paths
