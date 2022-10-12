@@ -23,7 +23,9 @@ struct LoginView: View {
             
             VStack {
                 //MARK: - 로그인 상단  타이틀
-                loginHeaderTitle()
+                AuthHeaderView(authTopHeaderTitle: "안녕하세요",
+                               authCenterHeaderTitle: "어서오세요 코인 모여 서비스에 오신걸 ",
+                               authBottomHeaderTitle: "환영합니다")
                 //MARK: -  이메일 및  텍스트 필드
                 authorizationTextField()
                 //MARK: - 비밀 번호 찾기 버튼
@@ -42,38 +44,17 @@ struct LoginView: View {
         }
        
     }
-    //MARK: - 로그인 타이틀
-    @ViewBuilder
-    private func loginHeaderTitle() -> some View {
-        VStack(alignment: .leading) {
-            HStack { Spacer()  }
-            
-            Text("안녕하세요")
-                .font(.custom(FontAsset.mediumFont, size: 30))
-                .fontWeight(.semibold)
-            
-            Text("어서오세요 코인 모여 서비스에 오신걸 ")
-                .font(.custom(FontAsset.regularFont, size: 23))
-                .fontWeight(.semibold)
-            
-            Text("환영합니다")
-                .font(.custom(FontAsset.regularFont, size: 25))
-                .fontWeight(.semibold)
-        }
-        .frame(height: 260)
-        .padding(.leading)
-        .background(Color.colorAssets.mainColor)
-        .foregroundColor(Color.colorAssets.white)
-        //MARK:  - 바텀 쪽 코너를 둥굴게 구현
-        .clipShape(RoundShape(corners: [.bottomRight]))
-    }
     //MARK:  -  이메일  & 비빌번호  텍스트 필드
     @ViewBuilder
     private func authorizationTextField() -> some View {
         VStack(spacing: 40) {
-            TextField("이메일을 입력해주세요", text: $emailTextField)
+            CustomInputField(imageName: "envelope",
+                             placeHolderText: "이메일을 입력해주세요",
+                             text: $emailTextField)
             
-            SecureField("비밀 번호를 입력 해주세요" , text: $passworldTextField)
+            CustomSecureInputField(imageName: "lock",
+                                   placeHolderText: "비밀 번호를 입력 해주세요",
+                                   text: $passworldTextField)
         }
         .padding(.horizontal, 32)
         .padding(.top, 44)
@@ -113,7 +94,6 @@ struct LoginView: View {
         .shadow(color: .gray.opacity(0.5), radius: 10, x: .zero, y: .zero)
     }
     //MARK: - 다른 뷰 로그인
-
     @ViewBuilder
     private func anotherLoginButton() -> some View {
         Button {
