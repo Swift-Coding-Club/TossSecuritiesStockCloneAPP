@@ -11,10 +11,17 @@ import KakaoSDKUser
 
 struct AnotherLoginModalView: View {
     @Environment (\.dismiss) private var dismiss
+    
     @StateObject var snsloginManager: SNSLoginManger = SNSLoginManger()
+    @StateObject var signInviewModel: SignInViewModel = SignInViewModel()
     @State private var mainTabview: Bool = false
+    
     var body: some View {
-        NavigationView {
+        ZStack {
+            Color.colorAssets.backGroundColor
+//            .fullScreenCover(isPresented: $mainTabview) {
+//                MainTabVIew(view: $mainTabview)
+//            }
             
             VStack {
                 //MARK: - 창을  닫는 버튼
@@ -23,28 +30,41 @@ struct AnotherLoginModalView: View {
                 HStack {
                     
                     Button {
-//                        if(UserApi.shared.success)
+                        snsloginManager.snsCallback = {(userid , email, acessToken) in
+                            signInviewModel.signIn(userid, email: email, provider: SignType.kakao, saveLogInInfo: false)
+                            
+                        }
+                        
                         snsloginManager.kakoLogin()
-                        mainTabview.toggle()
+                        
                     } label: {
                         Image("kakao_login")
                             .resizable()
                             .frame(height: 50)
                             .scaledToFit()
                     }
-                    .onTapGesture {
-                        NavigationLink (
-                        destination: MainTabVIew(),
-                        isActive: $mainTabview,
-                        label:  { EmptyView()})
-                    }
                     .cornerRadius(20)
                     .padding(.horizontal)
+                   
                     
                 }
+                
+
+                NavigationLink(destination: MainTabVIew(),
+                               isActive: $mainTabview,
+                               label:{ EmptyView() })
+                
+//                NavigationLink  {
+//                    MainTabVIew()
+//                }, label: {
+//                    EmptyView()
+//                }
+
+                
                 Spacer(minLength: .zero)
             }
         }
+       
     }
     
     //MARK: - 창 닫는 뷰

@@ -2,11 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>kakaolink</string>
-		<string>kakaokompassauth</string>
-	</array>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -19,6 +14,27 @@
 				<string>kako{fa99930d02eafd803fe53947279dca4c}</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.1060378286730-d080s67ukoj1bll1ejs0bu154mbna1j7</string>
+			</array>
+		</dict>
+	</array>
+<!--	<key>FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED</key>-->
+<!--	<true/>-->
+<!--    <key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>-->
+<!--    <true/>-->
+<!--	<key>FirebaseAppDelegateProxyEnabled</key>-->
+<!--	<false/>-->
+<!--	<key>FirebaseAutomaticScreenReportingEnabled</key>-->
+<!--	<false/>-->
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>kakaolink</string>
+		<string>kakaokompassauth</string>
 	</array>
 	<key>Localizationnativedevelopmentregion</key>
 	<string>Korea</string>

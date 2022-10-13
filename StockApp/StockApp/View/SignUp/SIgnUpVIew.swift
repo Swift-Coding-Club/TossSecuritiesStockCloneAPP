@@ -20,6 +20,8 @@ struct SIgnUpVIew: View {
     @State private var checkNickNameRegister: Bool = false
     @Environment(\.dismiss) private var dissmiss
     
+    @EnvironmentObject var viewModel: SignUpVIewModel
+    
     init() {
         checkRegisterTextField()
     }
@@ -86,7 +88,7 @@ struct SIgnUpVIew: View {
             checkEmailRegister.toggle()
             checkPhoneRegister.toggle()
             checkPassowrdRegister.toggle()
-            
+            viewModel.register(withEmail: email, password: passowrd, fullname: nickName, phoneNumber: phoneNumber, userName: userName)
         }label: {
             Text("회원가입")
                 .font(.custom(FontAsset.regularFont, size: 20))

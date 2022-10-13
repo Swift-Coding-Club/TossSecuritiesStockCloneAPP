@@ -11,6 +11,7 @@ import Combine
 class SignInViewModel: ObservableObject {
     
     private var loginCancellable: AnyCancellable?
+    @Published var isLoginSuccess: Bool = false
     
     //MARK: - sns 로그인
     func signIn(_ userid: String, email: String, provider: SignType, saveLogInInfo: Bool) {
@@ -21,6 +22,8 @@ class SignInViewModel: ObservableObject {
     func signInSns(_ userId: String, email: String, provider: SignType, saveLogInInfo: Bool, isLoginAfterSignUp: Bool) {
         if let cancellables = loginCancellable {
             cancellables.cancel()
+        } else  {
+            self.isLoginSuccess = true
         }
     }
 }

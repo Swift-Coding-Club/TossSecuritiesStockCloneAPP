@@ -12,6 +12,12 @@ struct LoginView: View {
     @State private var passworldTextField: String = ""
     @State private var showBottomSheet: Bool = false
     @State private var saveloginInfo: Bool = false
+    @State private var showmainview : Bool = false
+    
+    @StateObject var snsloginManager: SNSLoginManger = SNSLoginManger()
+    @StateObject var signInviewModel: SignInViewModel = SignInViewModel()
+    
+    @EnvironmentObject var viewModel: SignUpVIewModel
     
     var body: some View {
         ZStack {
@@ -34,6 +40,7 @@ struct LoginView: View {
                 loginButton()
                 //MARK: - 다른 방법으로 로그인
                 anotherLoginButton()
+                
                 Spacer()
                 //MARK: - 회원 가입 버튼
                 signUPButton()
@@ -81,7 +88,7 @@ struct LoginView: View {
     @ViewBuilder
     private func loginButton() -> some View {
         Button {
-            
+            viewModel.login(withEmail: emailTextField, password: passworldTextField)
         }label: {
             Text("로그인")
                 .font(.custom(FontAsset.regularFont, size: 20))

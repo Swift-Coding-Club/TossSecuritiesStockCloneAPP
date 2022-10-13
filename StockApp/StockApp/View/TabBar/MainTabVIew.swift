@@ -8,7 +8,19 @@
 import SwiftUI
 
 struct MainTabVIew: View {
+    @EnvironmentObject var viewModel: SignUpVIewModel
+    
     var body: some View {
+        if viewModel.userSession == nil {
+            LoginView()
+        } else  {
+            //MARK: - 로그인 을 했으면  maintab view  로직을
+            mainTabView()
+        }
+    }
+    
+    @ViewBuilder
+    private func mainTabView() -> some View {
         TabView {
             HomeView()
                 .tabItem {
@@ -42,6 +54,7 @@ struct MainTabVIew: View {
                         .foregroundColor(Color.colorAssets.blue)
                 }
         }
+        .navigationBarHidden(true)
         .accentColor(Color.colorAssets.skyblue2)
         .onAppear(){
             UITabBar.appearance().barTintColor = .white
@@ -54,6 +67,7 @@ struct MainTabVIew: View {
 struct MainTabVIew_Previews: PreviewProvider {
     static var previews: some View {
         MainTabVIew()
-            .environmentObject(dev.coinViewModel)
+//            .environmentObject(dev.coinViewModel)
+            .environmentObject(dev.signUpViewModel)
     }
 }

@@ -8,9 +8,17 @@
 import SwiftUI
 
 struct ProfileMainView: View {
+    @Environment(\.dismiss)  private var dismiss
     var body: some View {
         VStack {
             Text("프로필 관련 페이지")
+            
+            Button (action: {
+                dismiss()
+            }, label: {
+                Text("로그아웃")
+            })
+            
                 .font(.title)
         }
     }

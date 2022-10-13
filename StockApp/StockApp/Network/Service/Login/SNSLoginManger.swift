@@ -20,7 +20,7 @@ class SNSLoginManger: ObservableObject {
     var snsCallback: ((_ snsId: String, _ email: String, _ accessToken: String) -> Void)?
     
     init() {
-        MainTabVIew()
+//        MainTabVIew()
     }
 }
 
@@ -44,6 +44,7 @@ extension SNSLoginManger {
                 } else  {
                     debugPrint("카카오톡 로그인 sucess ")
                     _ = oauthToken
+                    self.kakaoGetUser(oauthToken?.accessToken ?? "")
                 }
             }
         }
@@ -56,6 +57,13 @@ extension SNSLoginManger {
             }
             else  {
                 debugPrint("카카오톡 유저 가져오기  sucess ")
+                _ = user
+                
+                let userid = "\(user?.id ?? .zero)"
+                let email = user?.kakaoAccount?.email ?? ""
+                if let callback = self.snsCallback {
+                    callback(userid, email, accessToken)
+                }
             }
         }
     }

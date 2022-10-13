@@ -5,6 +5,9 @@
       location = "group:StockApp.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:StockApp/../GoogleService-Info.plist">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
