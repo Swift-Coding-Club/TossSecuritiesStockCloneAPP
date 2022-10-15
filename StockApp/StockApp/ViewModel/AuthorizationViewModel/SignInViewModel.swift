@@ -7,6 +7,8 @@
 
 import SwiftUI
 import Combine
+import KakaoSDKAuth
+import KakaoSDKUser
 
 class SignInViewModel: ObservableObject {
     

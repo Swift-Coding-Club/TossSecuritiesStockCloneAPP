@@ -15,6 +15,7 @@ struct LoginView: View {
     @State private var showmainview : Bool = false
     
     @StateObject var snsloginManager: SNSLoginManger = SNSLoginManger()
+    
     @StateObject var signInviewModel: SignInViewModel = SignInViewModel()
     
     @EnvironmentObject var viewModel: SignUpVIewModel
@@ -23,8 +24,13 @@ struct LoginView: View {
         ZStack {
             Color.colorAssets.backGroundColor
             .sheet(isPresented: $showBottomSheet) {
-                AnotherLoginModalView()
-                    .presentationDetents([.height(300)])
+                if #available(iOS 16.0, *) {
+                    AnotherLoginModalView()
+                        .presentationDetents([.height(300)])
+                        .ignoresSafeArea()
+                } else {
+                    // Fallback on earlier versions
+                }
             }
             
             VStack {
@@ -41,7 +47,7 @@ struct LoginView: View {
                 //MARK: - 다른 방법으로 로그인
                 anotherLoginButton()
                 
-                Spacer()
+               Spacer()
                 //MARK: - 회원 가입 버튼
                 signUPButton()
                 

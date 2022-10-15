@@ -28,7 +28,7 @@ struct AuthHeaderView: View {
                 .font(.custom(FontAsset.regularFont, size: 23))
                 .fontWeight(.semibold)
         }
-        .frame(height: 260)
+        .frame(height: (UIScreen.main.bounds.height / 4) + 30)
         .padding(.leading)
         .background(Color.colorAssets.mainColor)
         .foregroundColor(Color.colorAssets.white)

@@ -8,6 +8,7 @@
 import SwiftUI
 import KakaoSDKUser
 import Foundation
+import UIKit
 
 enum SignType: String, Codable {
     case kakao = "kakao"
@@ -15,16 +16,21 @@ enum SignType: String, Codable {
     case apple = "apple"
 }
 
-class SNSLoginManger: ObservableObject {
+class SNSLoginManger:  ObservableObject {
     //MARK: - sns callback
     var snsCallback: ((_ snsId: String, _ email: String, _ accessToken: String) -> Void)?
-    
+//    var snsCallback2: ((_ snsId: String, _ email: String, _ accessToken: String) -> Void)?
     init() {
 //        MainTabVIew()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
 extension SNSLoginManger {
+  
     func kakoLogin() {
         // 카카오톡 설치 여부
         if (UserApi.isKakaoTalkLoginAvailable()) {
@@ -35,6 +41,11 @@ extension SNSLoginManger {
                     debugPrint("카카오톡 로그인 sucess ")
                     _ = oauthToken
                     
+                    NavigationLink {
+                        MainTabVIew()
+                    } label: {
+                        EmptyView()
+                    }
                 }
             }
         } else {
@@ -44,6 +55,17 @@ extension SNSLoginManger {
                 } else  {
                     debugPrint("카카오톡 로그인 sucess ")
                     _ = oauthToken
+//                     let vc  = MainTabVIew()
+                    
+                    NavigationLink {
+                        MainTabVIew()
+                    } label: {
+                        EmptyView()
+                    }
+
+                   
+                
+                    
                     self.kakaoGetUser(oauthToken?.accessToken ?? "")
                 }
             }

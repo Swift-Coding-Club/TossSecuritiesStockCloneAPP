@@ -42,7 +42,6 @@ struct StockAppApp: App {
             }
             .environmentObject(signUpViewModel)
             .environmentObject(viewModel)
-           
         }
     }
 }

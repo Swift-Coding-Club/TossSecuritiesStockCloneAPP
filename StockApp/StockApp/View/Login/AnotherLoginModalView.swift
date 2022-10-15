@@ -8,6 +8,7 @@
 import SwiftUI
 import KakaoSDKAuth
 import KakaoSDKUser
+import KakaoSDKCommon
 
 struct AnotherLoginModalView: View {
     @Environment (\.dismiss) private var dismiss
@@ -19,52 +20,42 @@ struct AnotherLoginModalView: View {
     var body: some View {
         ZStack {
             Color.colorAssets.backGroundColor
-//            .fullScreenCover(isPresented: $mainTabview) {
-//                MainTabVIew(view: $mainTabview)
-//            }
-            
-            VStack {
-                //MARK: - 창을  닫는 버튼
-                closeViewButton()
-                
-                HStack {
+            //            .fullScreenCover(isPresented: $mainTabview) {
+            //                MainTabVIew(view: $mainTabview)
+            //            }
+            NavigationView {
+                VStack {
+                    //MARK: - 창을  닫는 버튼
+                    closeViewButton()
                     
-                    Button {
-                        snsloginManager.snsCallback = {(userid , email, acessToken) in
-                            signInviewModel.signIn(userid, email: email, provider: SignType.kakao, saveLogInInfo: false)
-                            
-                        }
-                        
-                        snsloginManager.kakoLogin()
-                        
-                    } label: {
-                        Image("kakao_login")
-                            .resizable()
-                            .frame(height: 50)
-                            .scaledToFit()
-                    }
-                    .cornerRadius(20)
-                    .padding(.horizontal)
-                   
+                    kakoLoginImage()
                     
+                    Spacer(minLength: .zero)
                 }
                 
-
-                NavigationLink(destination: MainTabVIew(),
-                               isActive: $mainTabview,
-                               label:{ EmptyView() })
-                
-//                NavigationLink  {
-//                    MainTabVIew()
-//                }, label: {
-//                    EmptyView()
-//                }
-
-                
-                Spacer(minLength: .zero)
             }
         }
-       
+    }
+    
+    @ViewBuilder
+    private func kakoLoginImage() -> some View {
+        Button {
+            snsloginManager.snsCallback = {(userid , email, acessToken) in
+                signInviewModel.signIn(userid, email: email, provider: SignType.kakao, saveLogInInfo: false)
+                
+            }
+            
+            snsloginManager.kakoLogin()
+            
+        } label: {
+            Image("kakao_login")
+                .resizable()
+                .frame(height: 50)
+                .scaledToFit()
+        }
+        .cornerRadius(20)
+        .padding(.horizontal)
+        
     }
     
     //MARK: - 창 닫는 뷰

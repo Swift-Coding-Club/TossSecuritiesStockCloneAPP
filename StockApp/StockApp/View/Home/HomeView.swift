@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject private var viewModel: CoinViewModel
+    
     var body: some View {
         ZStack {
             Color.colorAssets.backGroundColor

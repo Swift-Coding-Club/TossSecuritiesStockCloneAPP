@@ -23,14 +23,6 @@
 			</array>
 		</dict>
 	</array>
-<!--	<key>FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED</key>-->
-<!--	<true/>-->
-<!--    <key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>-->
-<!--    <true/>-->
-<!--	<key>FirebaseAppDelegateProxyEnabled</key>-->
-<!--	<false/>-->
-<!--	<key>FirebaseAutomaticScreenReportingEnabled</key>-->
-<!--	<false/>-->
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>kakaolink</string>
@@ -40,6 +32,8 @@
 	<string>Korea</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>나눔손글씨 맛있는체.ttf</string>
+		<string>나눔손글씨 둥근인연.ttf</string>
 		<string>SpoqaHanSansNeo-Bold.ttf</string>
 		<string>SpoqaHanSansNeo-Light.ttf</string>
 		<string>SpoqaHanSansNeo-Medium.ttf</string>

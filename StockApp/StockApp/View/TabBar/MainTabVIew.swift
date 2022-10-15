@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct MainTabVIew: View {
     @EnvironmentObject var viewModel: SignUpVIewModel
