@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import _AuthenticationServices_SwiftUI
 
 struct LoginView: View {
     @State private var emailTextField: String = ""
@@ -16,22 +17,21 @@ struct LoginView: View {
     
     @StateObject var snsloginManager: SNSLoginManger = SNSLoginManger()
     
-    @StateObject var signInviewModel: SignInViewModel = SignInViewModel()
+ 
     
-    @EnvironmentObject var viewModel: SignUpVIewModel
+    @EnvironmentObject var viewModel: AuthorizationVIewModel
     
     var body: some View {
         ZStack {
             Color.colorAssets.backGroundColor
-            .sheet(isPresented: $showBottomSheet) {
-                if #available(iOS 16.0, *) {
-                    AnotherLoginModalView()
-                        .presentationDetents([.height(300)])
-                        .ignoresSafeArea()
-                } else {
-                    // Fallback on earlier versions
+                .sheet(isPresented: $showBottomSheet) {
+                    if #available(iOS 16.0, *) {
+                        AnotherLoginModalView()
+                            .presentationDetents([.height(300)])
+                    } else {
+                        // Fallback on earlier versions
+                    }
                 }
-            }
             
             VStack {
                 //MARK: - 로그인 상단  타이틀
@@ -45,9 +45,10 @@ struct LoginView: View {
                 //MARK: - 로그인 버튼
                 loginButton()
                 //MARK: - 다른 방법으로 로그인
+                
                 anotherLoginButton()
                 
-               Spacer()
+                Spacer()
                 //MARK: - 회원 가입 버튼
                 signUPButton()
                 
@@ -55,8 +56,9 @@ struct LoginView: View {
             .ignoresSafeArea()
             .navigationBarHidden(true)
         }
-       
+        
     }
+    
     //MARK:  -  이메일  & 비빌번호  텍스트 필드
     @ViewBuilder
     private func authorizationTextField() -> some View {
