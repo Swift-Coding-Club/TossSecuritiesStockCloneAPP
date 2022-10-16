@@ -1,27 +1,16 @@
 //
-//  UIApplication.swift
+//  AppleLogin.swift
 //  StockApp
 //
-//  Created by 서원지 on 2022/09/25.
+//  Created by 서원지 on 2022/10/16.
 //
 
-import SwiftUI
+import Foundation
 import CryptoKit
 
-extension UIApplication {
-    //MARK:  - 키보드에서 end 하면  키보드 내리기
-    func endEditing() {
-        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
+struct AppleLogin {
     
-    func rootController() -> UIViewController {
-        guard let window = connectedScenes.first as?  UIWindowScene else { return .init() }
-        guard let viewController = window.windows.last?.rootViewController else { return  .init()}
-        
-        return viewController
-    }
-    
-    func sha256(_ input: String) -> String {
+    static func sha256(_ input: String) -> String {
         let inputData = Data(input.utf8)
         let hashedData = SHA256.hash(data: inputData)
         let hashString = hashedData.compactMap {
@@ -33,7 +22,7 @@ extension UIApplication {
     
     
     
-     func randomNonceString(length: Int = 32) -> String {
+    static func randomNonceString(length: Int = 32) -> String {
         precondition(length > 0)
         let charset: [Character] =
         Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")

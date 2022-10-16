@@ -26,6 +26,7 @@ disabled_rules :
 - comma
 - no_space_in_method_call
 - type_body_length
+- shorthand_operator
 
 
 included :

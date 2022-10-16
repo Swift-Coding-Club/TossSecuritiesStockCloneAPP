@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileMainView: View {
     @Environment(\.dismiss)  private var dismiss
-    @EnvironmentObject var viewModel: SignUpVIewModel
+    @EnvironmentObject var viewModel: AuthorizationVIewModel
     
     var body: some View {
         VStack {

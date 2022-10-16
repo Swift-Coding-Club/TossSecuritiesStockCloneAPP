@@ -9,7 +9,7 @@ import SwiftUI
 import UIKit
 
 struct MainTabVIew: View {
-    @EnvironmentObject var viewModel: SignUpVIewModel
+    @EnvironmentObject var viewModel: AuthorizationVIewModel
     
     var body: some View {
         if viewModel.userSession == nil {

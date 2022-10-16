@@ -8,25 +8,39 @@
 import SwiftUI
 
 struct HomeView: View {
+    
     @EnvironmentObject private var viewModel: CoinViewModel
+    @AppStorage("log_status") var log_Status = false
     
     var body: some View {
         ZStack {
             Color.colorAssets.backGroundColor
             
-            ScrollView {
-                //MARK: - 모든 코인 리스트
-                coinListHeader()
-                Divider()
-                coinList()
-                Spacer()
-                    .frame(height: 30)
-                portfolioHeader()
-                Divider()
-                portfolioCoinList()
-                Spacer()
-                    .frame(height: 20)
+            if #available(iOS 16.0, *) {
+                NavigationStack {
+                    if log_Status {
+                        ScrollView {
+                            //MARK: - 모든 코인 리스트
+                            coinListHeader()
+                            Divider()
+                            coinList()
+                            Spacer()
+                                .frame(height: 30)
+                            portfolioHeader()
+                            Divider()
+                            portfolioCoinList()
+                            Spacer()
+                                .frame(height: 20)
+                        }
+                    } else {
+                        LoginView()
+                        
+                    }
+                }
+            } else {
+                // Fallback on earlier versions
             }
+          
         }
     }
     

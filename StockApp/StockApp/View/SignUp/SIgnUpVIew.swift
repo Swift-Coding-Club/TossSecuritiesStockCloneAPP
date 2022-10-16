@@ -22,7 +22,7 @@ struct SIgnUpVIew: View {
     
     @Environment(\.dismiss) private var dissmiss
     
-    @EnvironmentObject var viewModel: SignUpVIewModel
+    @EnvironmentObject var viewModel: AuthorizationVIewModel
     @StateObject private var keyboardHandler = KeyboardHandler()
     init() {
         checkRegisterTextField()
