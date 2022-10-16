@@ -27,12 +27,13 @@ struct ProfileMainView: View {
                
                 
                 
-//                 Button (action: {
-//                     viewModel.signOut()
-//                 }, label: {
-//                     Text("로그아웃")
-//                 })
-//                     .font(.title)
+                 Button (action: {
+                     viewModel.signOut()
+                 }, label: {
+                     Text("로그아웃")
+                 })
+                     .font(.title)
+                
                  Spacer()
             }
             .toolbar {
