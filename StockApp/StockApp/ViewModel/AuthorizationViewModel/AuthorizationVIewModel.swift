@@ -12,9 +12,7 @@ import KakaoSDKAuth
 import AuthenticationServices
 import GoogleSignIn
 
-
-class AuthorizationVIewModel: NSObject, ObservableObject, GIDSignInDelegate {
-    
+class AuthorizationVIewModel: ObservableObject {
     
     //MARK: - 유저
     @Published var userSession: FirebaseAuth.User?
@@ -23,9 +21,8 @@ class AuthorizationVIewModel: NSObject, ObservableObject, GIDSignInDelegate {
     @AppStorage("log_status") var log_Status = false
     
     
-    override init() {
+    init() {
         self.userSession = Auth.auth().currentUser
-        GIDSignIn.sharedInstance().delegate = self
         debugPrint("DEBUG: User session is \(self.userSession)")
         
     }
@@ -107,7 +104,6 @@ class AuthorizationVIewModel: NSObject, ObservableObject, GIDSignInDelegate {
     //MARK: - 구글 로그인
     func googleLogin() {
         GIDSignIn.sharedInstance().signIn()
-        
         
     }
     

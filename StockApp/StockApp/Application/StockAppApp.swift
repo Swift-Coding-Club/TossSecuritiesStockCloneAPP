@@ -25,8 +25,8 @@ struct StockAppApp: App {
       
 
         //MARK: - 네비게이션 바 설정
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.colorAssets.subColor), .font : UIFont(name: FontAsset.regularFont, size: 28) ?? ""]
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor(Color.colorAssets.subColor),
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.fontColor.mainFontColor), .font : UIFont(name: FontAsset.regularFont, size: 28) ?? ""]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor(Color.fontColor.mainFontColor),
                                                             .font : UIFont(name: FontAsset.regularFont, size: 28) ?? ""]
     }
     
