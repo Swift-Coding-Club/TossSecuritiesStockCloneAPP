@@ -21,6 +21,7 @@ struct CustomSecureInputField: View {
                     .foregroundColor(Color(.darkGray))
                 
                 SecureField(placeHolderText, text: $text)
+                    .font(.custom(FontAsset.shareCircleFont, size: 20))
             }
             
             Divider()

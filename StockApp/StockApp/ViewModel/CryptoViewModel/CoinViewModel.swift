@@ -46,6 +46,7 @@ class CoinViewModel: ObservableObject {
             .combineLatest(portfolioDataService.$savedEntites)
             .map(mapAllcoinsToPortfolioCoins)
             .sink { [weak self] (returnedCoin) in
+                debugPrint("[🔥] DEBUG : 코인 리스트  : \(returnedCoin)")
                 guard let self = self else { return }
                 self.profilioCoins = self.sortPortfolioCoinsNeed(coins: returnedCoin)
             }
@@ -56,6 +57,7 @@ class CoinViewModel: ObservableObject {
             .combineLatest($profilioCoins)
             .map(mapGlobalMarketData)
             .sink { [weak self] (returnedStats) in
+                debugPrint("[🔥] DEBUG : 마켓  리스트  :  \(returnedStats)")
                 self?.statistic = returnedStats
                 self?.isLoading = false
             }
@@ -64,8 +66,9 @@ class CoinViewModel: ObservableObject {
         marketDataService.$portfolioData
             .combineLatest($profilioCoins)
             .map(mapPortfolioData)
-            .sink { [weak self] (returnedStats) in
-                self?.portfolioStatistic = returnedStats
+            .sink { [weak self] (returnedStatsPortfolio) in
+                debugPrint("[🔥] DEBUG : 보유 하고 있는 코인 마켓 리스트  :  \(returnedStatsPortfolio)")
+                self?.portfolioStatistic = returnedStatsPortfolio
                 self?.isLoading = false
             }
             .store(in: &cancelables)

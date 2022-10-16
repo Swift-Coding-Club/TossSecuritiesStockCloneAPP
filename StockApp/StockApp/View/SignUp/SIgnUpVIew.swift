@@ -13,15 +13,17 @@ struct SIgnUpVIew: View {
     @State private var nickName: String = ""
     @State private var phoneNumber: String = ""
     @State private var passowrd: String = ""
+    
     @State private var checkEmailRegister: Bool = false
     @State private var checkPhoneRegister: Bool = false
     @State private var checkPassowrdRegister: Bool = false
     @State private var checkUserNameRegister: Bool = false
     @State private var checkNickNameRegister: Bool = false
+    
     @Environment(\.dismiss) private var dissmiss
     
-    @EnvironmentObject var viewModel: SignUpVIewModel
-    
+    @EnvironmentObject var viewModel: AuthorizationVIewModel
+    @StateObject private var keyboardHandler = KeyboardHandler()
     init() {
         checkRegisterTextField()
     }
@@ -36,14 +38,21 @@ struct SIgnUpVIew: View {
                                authCenterHeaderTitle: "코인 모여  회원가입 서비스 ",
                                authBottomHeaderTitle: "")
                 
-                //MARK: - 회원가입  필드
-                signUPTextField()
-                
-                signUPButton()
-                
-                Spacer()
-                //MARK: - 이미계정이 있는 경우 버튼
-                alreadyAccount()
+                ScrollView {
+                    //MARK: - 회원가입  필드
+                    signUPTextField()
+                    
+                    signUPButton()
+                 
+
+
+                    
+                    
+                    Spacer()
+                    //MARK: - 이미계정이 있는 경우 버튼
+                    alreadyAccount()
+                    
+                }
             }
             .ignoresSafeArea(.all)
         }
@@ -72,9 +81,6 @@ struct SIgnUpVIew: View {
             CustomSecureInputField(imageName: "lock",
                                    placeHolderText: "비밀번호를 입력해주세요",
                                    text: $passowrd)
-            //            CustomSecureInputField(imageName: "lock",
-            //                                   placeHolderText: "비밀번호를  한번더  입력해주세요",
-            //                                   text: $passowrd)
         }
         .padding(32)
     }
@@ -83,12 +89,9 @@ struct SIgnUpVIew: View {
     private func signUPButton() -> some View {
         Button {
             checkRegisterTextField()
-            checkUserNameRegister.toggle()
-            checkNickNameRegister.toggle()
-            checkEmailRegister.toggle()
-            checkPhoneRegister.toggle()
-            checkPassowrdRegister.toggle()
+            checkRegisterSIgnUpTextFileld()
             viewModel.register(withEmail: email, password: passowrd, fullname: nickName, phoneNumber: phoneNumber, userName: userName)
+            UIApplication.shared.endEditing()
         }label: {
             Text("회원가입")
                 .font(.custom(FontAsset.regularFont, size: 20))
@@ -98,6 +101,7 @@ struct SIgnUpVIew: View {
                 .clipShape(Capsule())
                 .padding()
         }
+        .padding(.bottom, keyboardHandler.keyboardHeight)
         .shadow(color: .gray.opacity(0.5), radius: 10, x: .zero, y: .zero)
         
         .showCheckAlertMessage(showAlert: $checkUserNameRegister,  message: "이름을 확인해주세요")
@@ -106,6 +110,14 @@ struct SIgnUpVIew: View {
         .showCheckAlertMessage(showAlert: $checkPhoneRegister, message: "핸드폰 번호를 확인해주세요")
         //        .showCheckAlertMessage(showAlert: $checkPassowrdRegister,  message: "비밀 번호를 확인해주세요")
     }
+    private func checkRegisterSIgnUpTextFileld() {
+        checkUserNameRegister.toggle()
+        checkNickNameRegister.toggle()
+        checkEmailRegister.toggle()
+        checkPhoneRegister.toggle()
+        checkPassowrdRegister.toggle()
+    }
+    
     //MARK: - 이미 계정이 있으면  로그인 하러 가기 버튼
     @ViewBuilder
     private func alreadyAccount() -> some  View {

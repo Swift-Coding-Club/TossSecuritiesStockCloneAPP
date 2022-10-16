@@ -9,8 +9,8 @@ import Foundation
 
 enum TabBarKind: Hashable{
     case home
-    case benefit
-    case koreaStock
-    case globalStock
-    case allMenu
+    case stock
+    case nft
+    case crypto
+    case profile
 }

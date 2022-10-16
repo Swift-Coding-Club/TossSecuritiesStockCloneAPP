@@ -13,4 +13,7 @@ struct FontAsset {
     static let mediumFont: String = "SpoqaHanSansNeo-Medium"
     static let regularFont: String = "SpoqaHanSansNeo-Regular"
     static let thinFont: String = "SpoqaHanSansNeo-Thin"
+    static let shareCircleFont: String = "나눔손글씨 둥근인연"
+    static let shareFont: String = "나눔손글씨 맛있는체"
+    
 }
