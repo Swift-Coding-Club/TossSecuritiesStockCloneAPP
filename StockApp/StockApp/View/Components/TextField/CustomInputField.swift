@@ -22,6 +22,7 @@ struct CustomInputField: View {
                     .foregroundColor(Color(.darkGray))
                 
                 TextField(placeHolderText, text: $text)
+                    .font(.custom(FontAsset.shareCircleFont, size: 20))
             }
             
             Divider()

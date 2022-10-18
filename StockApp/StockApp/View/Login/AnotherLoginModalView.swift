@@ -6,45 +6,43 @@
 //
 
 import SwiftUI
-import KakaoSDKAuth
-import KakaoSDKUser
+import AuthenticationServices
+import Firebase
 
 struct AnotherLoginModalView: View {
     @Environment (\.dismiss) private var dismiss
+    
     @StateObject var snsloginManager: SNSLoginManger = SNSLoginManger()
     @State private var mainTabview: Bool = false
+    @State private var showErrorMessage: Bool = false
+    
+    @EnvironmentObject var viewModel: AuthorizationVIewModel
+    
+    
+    public var delegate: SnsLoginDelegate?
+    
     var body: some View {
-        NavigationView {
+        ZStack {
+            Color.colorAssets.backGroundColor
             
             VStack {
                 //MARK: - 창을  닫는 버튼
                 closeViewButton()
                 
-                HStack {
-                    
-                    Button {
-//                        if(UserApi.shared.success)
-                        snsloginManager.kakoLogin()
-                        mainTabview.toggle()
-                    } label: {
-                        Image("kakao_login")
-                            .resizable()
-                            .frame(height: 50)
-                            .scaledToFit()
-                    }
-                    .onTapGesture {
-                        NavigationLink (
-                        destination: MainTabVIew(),
-                        isActive: $mainTabview,
-                        label:  { EmptyView()})
-                    }
-                    .cornerRadius(20)
-                    .padding(.horizontal)
-                    
-                }
+//                kakoLoginButton()
+                appleLoginButton()
+                
+                Spacer()
+                    .frame(height: 20)
+                
+                googleLoginButton()
+                
+                
                 Spacer(minLength: .zero)
+                
             }
         }
+        .ignoresSafeArea()
     }
     
     //MARK: - 창 닫는 뷰
@@ -61,6 +59,88 @@ struct AnotherLoginModalView: View {
             }
             Spacer()
         }
+    }
+    //MARK: - 카카오 로그인 버튼
+    @ViewBuilder
+    private func kakoLoginButton() -> some View {
+        Button {
+            if let delegate = delegate {
+                delegate.snsLoginSuccess()
+                snsloginManager.kakoLogin()
+            }
+        } label: {
+            Image("kakao_login")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(height: 50)
+        }
+        .cornerRadius(20)
+        .padding(.horizontal)
+        
+    }
+    //MARK: - 애플 로그인 버튼
+    @ViewBuilder
+    private func appleLoginButton() -> some View {
+        SignInWithAppleButton(.signIn) { request in
+            viewModel.nonce =   UIApplication.shared.randomNonceString()
+            request.requestedScopes = [.fullName, .email]
+            request.nonce =  UIApplication.shared.sha256(viewModel.nonce)
+        } onCompletion: { result in
+            switch result {
+            case .success(let authResults):
+                
+                print("로그인 성공")
+                
+                guard let credential =  authResults.credential as?
+                        ASAuthorizationAppleIDCredential  else  {
+                    debugPrint("파이어 베이스 로그인 에러 ")
+                    return
+                }
+                
+                viewModel.appleLogin(credential: credential)
+            case .failure(let error):
+                print("Authorisation failed: \(error.localizedDescription)")
+            }
+        }
+        .signInWithAppleButtonStyle(.black)
+        .frame(height: 50)
+        .clipShape(Capsule())
+        .overlay(
+            RoundedRectangle(cornerRadius: 25)
+                .stroke(Color.fontColor.accentColor, lineWidth: 1)
+        )
+        .padding(.horizontal, 30)
+    }
+    //MARK:  - 구글 로그인 버튼
+    @ViewBuilder
+    private func googleLoginButton() -> some View {
+        Button{
+            viewModel.googleLogin()
+        } label: {
+            HStack {
+                Spacer()
+                    .frame(width: 10)
+                
+                Image("google")
+                    .frame(width: 30, height: 30)
+                Spacer()
+                    .frame(width: 10)
+                 
+                Text("구굴 계정으로 로그인")
+                    .font(.custom(FontAsset.mediumFont, size: 20))
+                    .foregroundColor(Color.fontColor.accentColor)
+                
+            Spacer()
+            }
+        }
+        .frame(height: 50)
+        .clipShape(Capsule())
+        .overlay(
+            RoundedRectangle(cornerRadius: 25)
+                .stroke(Color.fontColor.accentColor, lineWidth: 1)
+        )
+        .padding(.horizontal, 32)
+        
     }
 }
 
