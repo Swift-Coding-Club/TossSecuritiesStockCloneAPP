@@ -15,6 +15,7 @@
 			dependencies = (
 			);
 			name = SwiftLint;
+			productName = SwiftLint;
 		};
 		CAD3534FC55B0333104E5117C0A9A324 /* GoogleSignIn */ = {
 			isa = PBXAggregateTarget;
@@ -27,6 +28,7 @@
 				E965986214E873DAC4A115D3953631F5 /* PBXTargetDependency */,
 			);
 			name = GoogleSignIn;
+			productName = GoogleSignIn;
 		};
 /* End PBXAggregateTarget section */
 
@@ -563,7 +565,7 @@
 		9B1F80377EAEEC554609A2F59BCA1FF3 /* OIDAuthorizationService+IOS.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "OIDAuthorizationService+IOS.h"; path = "Source/AppAuth/iOS/OIDAuthorizationService+IOS.h"; sourceTree = "<group>"; };
 		9B5C3BA37836B8895D880F067D2D2063 /* TokenManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TokenManager.swift; path = sources/KakaoSDKAuth/auth/TokenManager.swift; sourceTree = "<group>"; };
 		9CAC640CB37397BD7CC5186BE88A1C61 /* HTTPHeaders.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPHeaders.swift; path = Source/HTTPHeaders.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E05D87129E2261F84131437CD0C6F3C /* KakaoSDKAuth-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KakaoSDKAuth-prefix.pch"; sourceTree = "<group>"; };
 		9F453801F27585052F413F613C847DB2 /* KakaoSDKAuth */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = KakaoSDKAuth; path = KakaoSDKAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FE61C955696065B8019EB22724D1AF0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -626,7 +628,7 @@
 		CE7A36DB2294621A3057DB48EB43309E /* OIDExternalUserAgentIOSCustomBrowser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDExternalUserAgentIOSCustomBrowser.m; path = Source/AppAuth/iOS/OIDExternalUserAgentIOSCustomBrowser.m; sourceTree = "<group>"; };
 		CFEBB9FAA1C3F7B115430FE8871967BB /* KakaoSDKUser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KakaoSDKUser.debug.xcconfig; sourceTree = "<group>"; };
 		D1ABA221CD8382138F4B6FC3436B9E1C /* URL+Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URL+Utils.swift"; path = "sources/KakaoSDKCommon/common/extension/URL+Utils.swift"; sourceTree = "<group>"; };
-		D1F8F2CA85821233DAA574FFB6E6C922 /* Pods-StockApp */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-StockApp"; path = Pods_StockApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1F8F2CA85821233DAA574FFB6E6C922 /* Pods_StockApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StockApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A509D7C02380E223467CE87023C327 /* KakaoSDKUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KakaoSDKUser.h; path = sources/KakaoSDKUser/KakaoSDKUser.h; sourceTree = "<group>"; };
 		D8B67FAE621620B3BA94544E30203326 /* OIDError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDError.m; path = Source/AppAuthCore/OIDError.m; sourceTree = "<group>"; };
 		D9011F5D13666AEC441966BEAC8D87F5 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
@@ -776,7 +778,6 @@
 				9B5C3BA37836B8895D880F067D2D2063 /* TokenManager.swift */,
 				5963D80841A1C624B8B71B25DCEB02D9 /* Support Files */,
 			);
-			name = KakaoSDKAuth;
 			path = KakaoSDKAuth;
 			sourceTree = "<group>";
 		};
@@ -830,7 +831,6 @@
 			children = (
 				3A89BBBB5E8F726108EAEEB4C91EE80B /* Support Files */,
 			);
-			name = SwiftLint;
 			path = SwiftLint;
 			sourceTree = "<group>";
 		};
@@ -850,7 +850,6 @@
 				D6BC9C484276D247EBF21989A670FB28 /* Resources */,
 				37641F7E2ED40BAD6AA5174624E0DB94 /* Support Files */,
 			);
-			name = GoogleSignIn;
 			path = GoogleSignIn;
 			sourceTree = "<group>";
 		};
@@ -896,7 +895,6 @@
 				1D689C639BC37DA860EA1CBC95C47315 /* Network */,
 				86C45FDEA70B432C7F328F4B03F0000C /* Support Files */,
 			);
-			name = KakaoSDKCommon;
 			path = KakaoSDKCommon;
 			sourceTree = "<group>";
 		};
@@ -927,7 +925,6 @@
 				0B6FFC77261585805026665A1D778BC2 /* UserShippingAddresses.swift */,
 				4B014C781DF730216C95AC8293729E4E /* Support Files */,
 			);
-			name = KakaoSDKUser;
 			path = KakaoSDKUser;
 			sourceTree = "<group>";
 		};
@@ -972,7 +969,6 @@
 				A93E77B303F365FDD57C43C39875E14B /* Validation.swift */,
 				42ECEA176901005AD21850B2517A71D8 /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -1033,7 +1029,6 @@
 				BB7B54FA4B9A3D1690EEB3C54034086C /* Core */,
 				A62E908379B92F6D4ADAC86990D212A4 /* Support Files */,
 			);
-			name = GTMSessionFetcher;
 			path = GTMSessionFetcher;
 			sourceTree = "<group>";
 		};
@@ -1204,7 +1199,6 @@
 				F77F9B26D7FAFE7CFF2DF3735E86050B /* ExternalUserAgent */,
 				A0E0DD3ADE12FD45150F73155C57DCC9 /* Support Files */,
 			);
-			name = AppAuth;
 			path = AppAuth;
 			sourceTree = "<group>";
 		};
@@ -1257,7 +1251,6 @@
 				74F8879E732D2DC202A43C4988353777 /* GTMOAuth2KeychainCompatibility.m */,
 				BD6A05ECEC6B6459C873F411AE18399C /* Support Files */,
 			);
-			name = GTMAppAuth;
 			path = GTMAppAuth;
 			sourceTree = "<group>";
 		};
@@ -1299,7 +1292,7 @@
 				9F453801F27585052F413F613C847DB2 /* KakaoSDKAuth */,
 				25BDA6E824AD6CBD857358A023C694AD /* KakaoSDKCommon */,
 				1353D6A467F43A6A3EA21D310BD35A31 /* KakaoSDKUser */,
-				D1F8F2CA85821233DAA574FFB6E6C922 /* Pods-StockApp */,
+				D1F8F2CA85821233DAA574FFB6E6C922 /* Pods_StockApp.framework */,
 				2909873F5D72A419FFC3D7E262EB6552 /* Pods-StockApp-StockAppUITests */,
 				7BA59415770AFF381EC3A30D69F38121 /* Pods-StockAppTests */,
 			);
@@ -1539,7 +1532,7 @@
 			);
 			name = "Pods-StockApp";
 			productName = Pods_StockApp;
-			productReference = D1F8F2CA85821233DAA574FFB6E6C922 /* Pods-StockApp */;
+			productReference = D1F8F2CA85821233DAA574FFB6E6C922 /* Pods_StockApp.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		83CA882AD877ED964BDF66235E416BC1 /* KakaoSDKAuth */ = {

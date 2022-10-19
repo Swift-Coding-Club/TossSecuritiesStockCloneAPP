@@ -37,7 +37,6 @@ struct AnotherLoginModalView: View {
                 
                 googleLoginButton()
                 
-                
                 Spacer(minLength: .zero)
                 
             }
@@ -89,7 +88,7 @@ struct AnotherLoginModalView: View {
             switch result {
             case .success(let authResults):
                 
-                print("로그인 성공")
+                print("로그인 성공 \(authResults)")
                 
                 guard let credential =  authResults.credential as?
                         ASAuthorizationAppleIDCredential  else  {

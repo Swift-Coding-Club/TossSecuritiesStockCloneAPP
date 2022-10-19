@@ -44,10 +44,6 @@ struct SIgnUpVIew: View {
                     
                     signUPButton()
                  
-
-
-                    
-                    
                     Spacer()
                     //MARK: - 이미계정이 있는 경우 버튼
                     alreadyAccount()
@@ -108,7 +104,7 @@ struct SIgnUpVIew: View {
         .showCheckAlertMessage(showAlert: $checkNickNameRegister,  message: "별명을 확인해주세요")
         .showCheckAlertMessage(showAlert: $checkEmailRegister, message: "이메일 양식을 확인 해주세요")
         .showCheckAlertMessage(showAlert: $checkPhoneRegister, message: "핸드폰 번호를 확인해주세요")
-        //        .showCheckAlertMessage(showAlert: $checkPassowrdRegister,  message: "비밀 번호를 확인해주세요")
+        .showCheckAlertMessage(showAlert: $checkPassowrdRegister,  message: "비밀 번호를 확인해주세요")
     }
     private func checkRegisterSIgnUpTextFileld() {
         checkUserNameRegister.toggle()

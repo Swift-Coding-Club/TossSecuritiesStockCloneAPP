@@ -48,7 +48,9 @@ struct CryptoMainView: View {
                     .padding(.bottom, 5)
                 Spacer(minLength: .zero)
             }
+           
         }
+       
         .padding(.vertical)
         //MARK: - 코인을 선택해을때  네빅게이션
         .background(
@@ -58,6 +60,7 @@ struct CryptoMainView: View {
                 label: { EmptyView() }
             )
         )
+       
     }
 }
 

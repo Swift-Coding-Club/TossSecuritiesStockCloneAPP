@@ -10,12 +10,13 @@ import UIKit
 
 struct MainTabVIew: View {
     @EnvironmentObject var viewModel: AuthorizationVIewModel
+    @State private var showMenu = false
     
     var body: some View {
         if viewModel.userSession == nil {
             LoginView()
         } else  {
-            //MARK: - 로그인 을 했으면  maintab view  로직을
+            //MARK: - 로그인 을 했으면  maintab view 로직을
             mainTabView()
         }
     }
@@ -68,7 +69,40 @@ struct MainTabVIew: View {
 struct MainTabVIew_Previews: PreviewProvider {
     static var previews: some View {
         MainTabVIew()
-//            .environmentObject(dev.coinViewModel)
+        //            .environmentObject(dev.coinViewModel)
             .environmentObject(dev.signUpViewModel)
     }
 }
+
+//    .navigationBarHidden(showMenu)
+//if  showMenu {
+//    ZStack {
+//        Color.black
+//            .opacity(0.25)
+//    }
+//    .onTapGesture {
+//        withAnimation(.easeInOut) {
+//            showMenu = false
+//        }
+//    }
+//    .ignoresSafeArea()
+//}
+//
+//SideMenuView()
+//    .frame(width: 300)
+//    .offset(x: showMenu ? 0 : -300, y: .zero)
+//    .background(showMenu ? Color.white : Color.clear)
+//}
+//.navigationBarTitle("")
+//.navigationBarTitleDisplayMode(.inline)
+//.toolbar {
+//ToolbarItem(placement: .navigationBarLeading) {
+//    Button {
+//        showMenu.toggle()
+//    } label: {
+//        Circle()
+//            .frame(width: 32, height: 32)
+//            .foregroundColor(Color.colorAssets.blue3)
+//    }
+//}
+////}

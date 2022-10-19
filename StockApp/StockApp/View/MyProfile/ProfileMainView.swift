@@ -25,8 +25,6 @@ struct ProfileMainView: View {
                 
                 tweetFilterBar()
                
-                
-                
                  Button (action: {
                      viewModel.signOut()
                  }, label: {
@@ -69,7 +67,6 @@ struct ProfileMainView: View {
                 .foregroundColor(Color.colorAssets.white)
         }
     }
-    
     //MARK: - 상단  배경
     @ViewBuilder
     private func topHeader() -> some View {
@@ -94,7 +91,7 @@ struct ProfileMainView: View {
             Spacer()
             
             Image(systemName: "bell.badge")
-                .font(.custom(FontAsset.mediumFont, size: 15))
+                .spoqaHan(family: .Medium, size: 20)
                 .padding(6)
                 .overlay (
                     Circle()
@@ -112,8 +109,6 @@ struct ProfileMainView: View {
                         .stroke(Color.gray, lineWidth: 0.75)
                     )
             }
-
-            
         }
         .padding(.trailing)
     }
@@ -123,8 +118,7 @@ struct ProfileMainView: View {
         VStack(alignment: .leading, spacing: 4) {
             HStack  {
                 Text("로이")
-                    .font(.custom(FontAsset.mediumFont, size: 25))
-                    .bold()
+                    .spoqaHan(family: .Bold, size: 25)
                 
                 Image(systemName: "checkmark.seal.fill")
                     .foregroundColor(Color.colorAssets.blue3)
