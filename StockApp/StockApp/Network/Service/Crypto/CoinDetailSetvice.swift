@@ -32,7 +32,5 @@ class CoinDetailSetvice {
                 self.coinDetail = returnedCoinDetail
                 self.coinDetailSubscription?.cancel()
             })
-        
-        
     }
 }

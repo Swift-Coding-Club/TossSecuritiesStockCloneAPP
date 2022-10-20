@@ -8,7 +8,6 @@
 import Foundation
 
 enum TweetFilterViewModel: Int, CustomStringConvertible, CaseIterable {
-
     case tweets
     case replies
     case likes
@@ -23,5 +22,4 @@ enum TweetFilterViewModel: Int, CustomStringConvertible, CaseIterable {
             return "좋아요"
         }
     }
-    
 }

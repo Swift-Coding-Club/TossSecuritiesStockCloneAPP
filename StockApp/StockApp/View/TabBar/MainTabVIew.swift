@@ -10,12 +10,13 @@ import UIKit
 
 struct MainTabVIew: View {
     @EnvironmentObject var viewModel: AuthorizationVIewModel
+    @State private var showMenu = false
     
     var body: some View {
         if viewModel.userSession == nil {
             LoginView()
         } else  {
-            //MARK: - 로그인 을 했으면  maintab view  로직을
+            //MARK: - 로그인 을 했으면  maintab view 로직을
             mainTabView()
         }
     }
@@ -55,7 +56,7 @@ struct MainTabVIew: View {
                         .foregroundColor(Color.colorAssets.blue)
                 }
         }
-        .navigationBarHidden(true)
+        .navigationBarHidden(showMenu)
         .accentColor(Color.colorAssets.skyblue2)
         .onAppear(){
             UITabBar.appearance().barTintColor = .white
@@ -67,8 +68,10 @@ struct MainTabVIew: View {
 
 struct MainTabVIew_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabVIew()
-//            .environmentObject(dev.coinViewModel)
-            .environmentObject(dev.signUpViewModel)
+        NavigationView {
+            MainTabVIew()
+            .environmentObject(dev.coinViewModel)
+                .environmentObject(dev.signUpViewModel)
+        }
     }
 }
