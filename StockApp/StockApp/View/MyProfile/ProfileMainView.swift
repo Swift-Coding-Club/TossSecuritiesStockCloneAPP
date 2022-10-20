@@ -25,7 +25,6 @@ struct ProfileMainView: View {
                 
                 tweetFilterBar()
                
-                
                  Spacer()
             }
             .toolbar {
