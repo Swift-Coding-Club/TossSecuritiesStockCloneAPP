@@ -29,7 +29,7 @@ struct CryptoMainView: View {
             //MARK: - 각 뷰에 관련 된 부분
             ScrollView(showsIndicators: false) {
                 //MARK: - 상단  hedaer 부분
-                homeHeader
+                homeHeader()
                     .padding(.vertical, 3)
                 //MARK: - 마켓 시세 관련 뷰
                 CryptoStatView(showPortfolio: $showPortfolio)
@@ -42,16 +42,16 @@ struct CryptoMainView: View {
                 //MARK: - 코인 검색창
                 SearchBarView(searchBarTextField:  $viewModel.searchText)
                 //MARK: - 코인 리스트 타이틀
-                columnTitles
+                columnTitles()
                 //MARK:  -  코인 및 보유  시세 리스트
-                allCoinList
+                allCoinList()
                     .padding(.bottom, 5)
                 Spacer(minLength: .zero)
             }
-           
         }
-       
         .padding(.vertical)
+//        .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
         //MARK: - 코인을 선택해을때  네빅게이션
         .background(
             NavigationLink(
@@ -60,24 +60,14 @@ struct CryptoMainView: View {
                 label: { EmptyView() }
             )
         )
-       
+        
     }
-}
-
-struct CryptoMainView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            CryptoMainView()
-                .navigationBarHidden(true)
-        }
-        .environmentObject(dev.coinViewModel)
-    }
-}
-
-//MARK: - CryptoMainView 확장으로 main body 뷰 코드를 줄이기
-extension CryptoMainView {
+    //MARK: - CryptoMainView 확장으로 main body 뷰 코드를 줄이기
+    
+    
     //MARK: - 코인 뷰 에 상단 부분
-    private var homeHeader: some View {
+    @ViewBuilder
+    private func homeHeader()  -> some View {
         HStack {
             CircleButtonView(iconName: "plus" )
                 .animation(.none)
@@ -102,7 +92,8 @@ extension CryptoMainView {
             .padding(.horizontal)
     }
     //MARK:  - 코인 리스트 타이틀
-    private var columnTitles: some View {
+    @ViewBuilder
+    private func columnTitles() -> some View {
         HStack {
             HStack(spacing: 4) {
                 Text("코인")
@@ -144,7 +135,8 @@ extension CryptoMainView {
         .padding(.horizontal)
     }
     //MARK:  - 코인시세 리스트
-    private var allCoinList: some View {
+    @ViewBuilder
+    private func allCoinList() -> some View {
         ScrollView {
             ForEach(viewModel.allCoins) { coin in
                 CoinRowView(coin: coin, showHoldingsColumn: false)
@@ -160,4 +152,16 @@ extension CryptoMainView {
         selectionCoin = coin
         showDetailView.toggle()
     }
+    
 }
+
+struct CryptoMainView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            CryptoMainView()
+                .navigationBarHidden(true)
+        }
+        .environmentObject(dev.coinViewModel)
+    }
+}
+

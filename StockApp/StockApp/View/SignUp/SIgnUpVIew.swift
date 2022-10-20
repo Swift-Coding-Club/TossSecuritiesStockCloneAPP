@@ -106,6 +106,7 @@ struct SIgnUpVIew: View {
         .showCheckAlertMessage(showAlert: $checkPhoneRegister, message: "핸드폰 번호를 확인해주세요")
         .showCheckAlertMessage(showAlert: $checkPassowrdRegister,  message: "비밀 번호를 확인해주세요")
     }
+    //MARK: - 유효성 검사 버튼 눌렀을떄 
     private func checkRegisterSIgnUpTextFileld() {
         checkUserNameRegister.toggle()
         checkNickNameRegister.toggle()
@@ -113,7 +114,6 @@ struct SIgnUpVIew: View {
         checkPhoneRegister.toggle()
         checkPassowrdRegister.toggle()
     }
-    
     //MARK: - 이미 계정이 있으면  로그인 하러 가기 버튼
     @ViewBuilder
     private func alreadyAccount() -> some  View {

@@ -56,7 +56,7 @@ struct MainTabVIew: View {
                         .foregroundColor(Color.colorAssets.blue)
                 }
         }
-        .navigationBarHidden(true)
+        .navigationBarHidden(showMenu)
         .accentColor(Color.colorAssets.skyblue2)
         .onAppear(){
             UITabBar.appearance().barTintColor = .white
@@ -68,41 +68,10 @@ struct MainTabVIew: View {
 
 struct MainTabVIew_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabVIew()
-        //            .environmentObject(dev.coinViewModel)
-            .environmentObject(dev.signUpViewModel)
+        NavigationView {
+            MainTabVIew()
+            .environmentObject(dev.coinViewModel)
+                .environmentObject(dev.signUpViewModel)
+        }
     }
 }
-
-//    .navigationBarHidden(showMenu)
-//if  showMenu {
-//    ZStack {
-//        Color.black
-//            .opacity(0.25)
-//    }
-//    .onTapGesture {
-//        withAnimation(.easeInOut) {
-//            showMenu = false
-//        }
-//    }
-//    .ignoresSafeArea()
-//}
-//
-//SideMenuView()
-//    .frame(width: 300)
-//    .offset(x: showMenu ? 0 : -300, y: .zero)
-//    .background(showMenu ? Color.white : Color.clear)
-//}
-//.navigationBarTitle("")
-//.navigationBarTitleDisplayMode(.inline)
-//.toolbar {
-//ToolbarItem(placement: .navigationBarLeading) {
-//    Button {
-//        showMenu.toggle()
-//    } label: {
-//        Circle()
-//            .frame(width: 32, height: 32)
-//            .foregroundColor(Color.colorAssets.blue3)
-//    }
-//}
-////}

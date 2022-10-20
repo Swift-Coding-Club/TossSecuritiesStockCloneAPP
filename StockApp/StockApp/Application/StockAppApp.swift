@@ -40,7 +40,7 @@ struct StockAppApp: App {
                             AuthController.handleOpenUrl(url: url)
                         }
                     })
-//                    .navigationBarHidden(true)
+                    .navigationBarHidden(true)
             }
             .environmentObject(signUpViewModel)
             .environmentObject(viewModel)

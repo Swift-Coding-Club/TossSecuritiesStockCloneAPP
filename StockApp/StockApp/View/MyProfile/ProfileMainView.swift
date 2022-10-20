@@ -25,12 +25,6 @@ struct ProfileMainView: View {
                 
                 tweetFilterBar()
                
-                 Button (action: {
-                     viewModel.signOut()
-                 }, label: {
-                     Text("로그아웃")
-                 })
-                     .font(.title)
                 
                  Spacer()
             }
@@ -38,35 +32,34 @@ struct ProfileMainView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     navigationTrallingItem()
                 }
-                
-                ToolbarItem(placement: .navigationBarLeading) {
-                    navigationLeadingItem()
-                }
             }
         }
     }
     //MARK: - 네비게이션 오른쪽 버튼
     @ViewBuilder
     private func navigationTrallingItem() -> some View {
-        NavigationLink {
-            SettingView()
-        } label: {
-            Image(systemName: "gearshape.fill")
-                .resizable()
-                .foregroundColor(Color.colorAssets.white)
+        HStack {
+            NavigationLink {
+                FeedView()
+            } label: {
+                Image(systemName: "message.fill")
+                    .resizable()
+                    .foregroundColor(Color.colorAssets.white)
+            }
+            
+            Spacer()
+                .frame(width: 10)
+            
+            NavigationLink {
+                SettingView()
+            } label: {
+                Image(systemName: "gearshape.fill")
+                    .resizable()
+                    .foregroundColor(Color.colorAssets.white)
+            }
         }
     }
-    //MARK: - 네비게이션 왼쪽 버튼
-    @ViewBuilder
-    private func navigationLeadingItem() -> some View {
-        Button {
-            dismiss()
-        } label: {
-            Image(systemName: "arrow.left")
-                .resizable()
-                .foregroundColor(Color.colorAssets.white)
-        }
-    }
+   
     //MARK: - 상단  배경
     @ViewBuilder
     private func topHeader() -> some View {

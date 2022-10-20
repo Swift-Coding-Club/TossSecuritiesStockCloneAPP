@@ -11,23 +11,24 @@ struct HomeView: View {
     @EnvironmentObject private var viewModel: CoinViewModel
     @State private var showMenu = false
     var body: some View {
-        ZStack {
-            Color.colorAssets.backGroundColor
-            
-            ScrollView {
-                //MARK: - 모든 코인 리스트
-                coinListHeader()
-                Divider()
-                coinList()
-                Spacer()
-                    .frame(height: 30)
-                portfolioHeader()
-                Divider()
-                portfolioCoinList()
-                Spacer()
-                    .frame(height: 20)
+        NavigationView {
+            ZStack {
+                Color.colorAssets.backGroundColor
+                
+                ScrollView {
+                    //MARK: - 모든 코인 리스트
+                    coinListHeader()
+                    Divider()
+                    coinList()
+                    Spacer()
+                        .frame(height: 30)
+                    portfolioHeader()
+                    Divider()
+                    portfolioCoinList()
+                    Spacer()
+                        .frame(height: 20)
+                }
             }
-          
         }
         
     }
@@ -101,7 +102,9 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
-            .environmentObject(dev.coinViewModel)
+        NavigationView {
+            HomeView()
+                .environmentObject(dev.coinViewModel)
+        }
     }
 }
