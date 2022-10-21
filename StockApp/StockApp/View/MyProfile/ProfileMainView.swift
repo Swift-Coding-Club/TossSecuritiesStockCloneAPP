@@ -17,7 +17,7 @@ struct ProfileMainView: View {
         NavigationView {
             
             VStack(alignment: .leading) {
-                topHeader()
+                profileHeader()
                 
                 editProfileButton()
                 
@@ -25,7 +25,6 @@ struct ProfileMainView: View {
                 
                 tweetFilterBar()
                
-                
                  Spacer()
             }
             .toolbar {
@@ -59,10 +58,9 @@ struct ProfileMainView: View {
             }
         }
     }
-   
     //MARK: - 상단  배경
     @ViewBuilder
-    private func topHeader() -> some View {
+    private func profileHeader() -> some View {
         ZStack(alignment: .bottomLeading) {
             Color.colorAssets.blue3
                 .clipShape(RoundShape(corners: [.bottomRight]))
