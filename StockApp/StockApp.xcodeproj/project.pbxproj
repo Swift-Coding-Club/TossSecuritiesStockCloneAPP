@@ -438,13 +438,6 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
-		7F4C7D9728FEF9F50058ECD5 /* SideMenu */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SideMenu;
-			sourceTree = "<group>";
-		};
 		7F729ED828D9FFC100FEAE43 /* CryptoModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -771,7 +764,6 @@
 		7FE8371328BF970D003761FE /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				7F4C7D9728FEF9F50058ECD5 /* SideMenu */,
 				7F1C8EE228BFABC9004E49A1 /* TabBarKind.swift */,
 				7F1C8EE428BFACA3004E49A1 /* MainTabVIew.swift */,
 			);
