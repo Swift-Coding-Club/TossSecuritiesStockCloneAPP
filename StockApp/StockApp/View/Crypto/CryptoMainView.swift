@@ -50,9 +50,7 @@ struct CryptoMainView: View {
             }
         }
         .padding(.vertical)
-//        .navigationBarHidden(true)
-            .navigationBarBackButtonHidden(true)
-        //MARK: - 코인을 선택해을때  네빅게이션
+        //MARK: - 코인을 선택해을때 네비게이션
         .background(
             NavigationLink(
                 destination: CryptoDetailLoadingView(coin: $selectionCoin),
@@ -63,8 +61,6 @@ struct CryptoMainView: View {
         
     }
     //MARK: - CryptoMainView 확장으로 main body 뷰 코드를 줄이기
-    
-    
     //MARK: - 코인 뷰 에 상단 부분
     @ViewBuilder
     private func homeHeader()  -> some View {
