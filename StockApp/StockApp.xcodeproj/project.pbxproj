@@ -113,6 +113,10 @@
 		7FF19D5828E1EB3600BF93B3 /* CoinLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF19D5728E1EB3600BF93B3 /* CoinLogoView.swift */; };
 		7FF3434E28F05C4400FD34EC /* SIgnUpVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF3434D28F05C4400FD34EC /* SIgnUpVIew.swift */; };
 		7FF3435028F05C5000FD34EC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF3434F28F05C5000FD34EC /* LoginView.swift */; };
+		7FF3BF3A2903F5FC00ED0B81 /* GoogleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF3BF392903F5FC00ED0B81 /* GoogleLoginButton.swift */; };
+		7FF3BF3F2904067600ED0B81 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF3BF3E2904067600ED0B81 /* ContainerView.swift */; };
+		7FF3BF4229040BC600ED0B81 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 7FF3BF4129040BC600ED0B81 /* GoogleSignIn */; };
+		7FF3BF4429040BC600ED0B81 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7FF3BF4329040BC600ED0B81 /* GoogleSignInSwift */; };
 		7FF4835A28E51DC2004DEC37 /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF4835928E51DC2004DEC37 /* SortOption.swift */; };
 		7FFEF7CA28EF090E0023AACC /* StockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEF7C928EF090D0023AACC /* StockModel.swift */; };
 		80F05FC9B56D11ECB5690C94 /* Pods_StockApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A04C9DD73DC3CFF6691BEC92 /* Pods_StockApp.framework */; };
@@ -242,6 +246,8 @@
 		7FF19D5728E1EB3600BF93B3 /* CoinLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinLogoView.swift; sourceTree = "<group>"; };
 		7FF3434D28F05C4400FD34EC /* SIgnUpVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIgnUpVIew.swift; sourceTree = "<group>"; };
 		7FF3434F28F05C5000FD34EC /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		7FF3BF392903F5FC00ED0B81 /* GoogleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginButton.swift; sourceTree = "<group>"; };
+		7FF3BF3E2904067600ED0B81 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		7FF4835928E51DC2004DEC37 /* SortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOption.swift; sourceTree = "<group>"; };
 		7FFEF7C928EF090D0023AACC /* StockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockModel.swift; sourceTree = "<group>"; };
 		850A2B80330CE2E329948726 /* Pods-StockApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockApp.debug.xcconfig"; path = "Target Support Files/Pods-StockApp/Pods-StockApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -261,9 +267,11 @@
 			files = (
 				80F05FC9B56D11ECB5690C94 /* Pods_StockApp.framework in Frameworks */,
 				7FBA185F28F7135100025001 /* FirebaseAuth in Frameworks */,
+				7FF3BF4429040BC600ED0B81 /* GoogleSignInSwift in Frameworks */,
 				7FBA186128F7135100025001 /* FirebaseFirestore in Frameworks */,
 				7FBA186528F7135100025001 /* FirebaseStorage in Frameworks */,
 				7FBA186328F7135100025001 /* FirebaseFirestoreSwift in Frameworks */,
+				7FF3BF4229040BC600ED0B81 /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +357,7 @@
 			isa = PBXGroup;
 			children = (
 				7F174E7828F591FB00352189 /* AuthHeaderView.swift */,
+				7FF3BF392903F5FC00ED0B81 /* GoogleLoginButton.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -681,6 +690,7 @@
 		7FE8370C28BF9681003761FE /* Utills */ = {
 			isa = PBXGroup;
 			children = (
+				7FF3BF3B290405C800ED0B81 /* View */,
 				7FED2A6D28FA5C8E00D7A7C7 /* ViewRouter */,
 				7F174E7428F590BC00352189 /* checkRegister */,
 				7FEF4F7728DF439600DA9AEB /* FileManger */,
@@ -875,6 +885,14 @@
 			path = SignUp;
 			sourceTree = "<group>";
 		};
+		7FF3BF3B290405C800ED0B81 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7FF3BF3E2904067600ED0B81 /* ContainerView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		7FF4835B28E51DCE004DEC37 /* Sort */ = {
 			isa = PBXGroup;
 			children = (
@@ -917,7 +935,6 @@
 				7FE836DC28BF95B0003761FE /* Resources */,
 				215B2030A4FA8C76314A3951 /* [CP] Embed Pods Frameworks */,
 				7FE8371628BF9800003761FE /* ShellScript */,
-				FA697928DFC6CC7897993FFF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -929,6 +946,8 @@
 				7FBA186028F7135100025001 /* FirebaseFirestore */,
 				7FBA186228F7135100025001 /* FirebaseFirestoreSwift */,
 				7FBA186428F7135100025001 /* FirebaseStorage */,
+				7FF3BF4129040BC600ED0B81 /* GoogleSignIn */,
+				7FF3BF4329040BC600ED0B81 /* GoogleSignInSwift */,
 			);
 			productName = StockApp;
 			productReference = 7FE836DE28BF95B0003761FE /* StockApp.app */;
@@ -962,7 +981,6 @@
 				7FE836F528BF95B7003761FE /* Frameworks */,
 				7FE836F628BF95B7003761FE /* Resources */,
 				6AB2050CCC3493A6C698F480 /* [CP] Embed Pods Frameworks */,
-				EC99490AC176E04995894437 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1008,6 +1026,7 @@
 			mainGroup = 7FE836D528BF95B0003761FE;
 			packageReferences = (
 				7FBA185D28F7135100025001 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				7FF3BF4029040BC600ED0B81 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 7FE836DF28BF95B0003761FE /* Products */;
 			projectDirPath = "";
@@ -1173,40 +1192,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EC99490AC176E04995894437 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StockApp-StockAppUITests/Pods-StockApp-StockAppUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StockApp-StockAppUITests/Pods-StockApp-StockAppUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StockApp-StockAppUITests/Pods-StockApp-StockAppUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FA697928DFC6CC7897993FFF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StockApp/Pods-StockApp-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-StockApp/Pods-StockApp-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StockApp/Pods-StockApp-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1234,6 +1219,7 @@
 				7FC3563A28D8A221002E0E63 /* CryptoMainView.swift in Sources */,
 				7FEF4F9E28E0809E00DA9AEB /* UIApplication.swift in Sources */,
 				7F2160BE290187D400217585 /* InformationVIewModel.swift in Sources */,
+				7FF3BF3F2904067600ED0B81 /* ContainerView.swift in Sources */,
 				7FCD241628FBC5F5002C5C18 /* SnsLoginDelegate.swift in Sources */,
 				7F324C7328E9F3D900A22FFC /* CardStatisticView.swift in Sources */,
 				7FE792A328FD87FC00E3D6E3 /* CustomFont.swift in Sources */,
@@ -1285,6 +1271,7 @@
 				7F39713B28D23444007823C4 /* GradiantColor.swift in Sources */,
 				7F174E7628F590E000352189 /* CheckRegister.swift in Sources */,
 				7F1C8EE328BFABC9004E49A1 /* TabBarKind.swift in Sources */,
+				7FF3BF3A2903F5FC00ED0B81 /* GoogleLoginButton.swift in Sources */,
 				7F729EDF28DB3B0000FEAE43 /* PreviewProvider.swift in Sources */,
 				7F324C7728EB122C00A22FFC /* Date.swift in Sources */,
 				7FEF4F6C28DF144300DA9AEB /* NetworkingManger.swift in Sources */,
@@ -1464,6 +1451,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"StockApp/Preview Content\"";
 				DEVELOPMENT_TEAM = N94CS4N6VR;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StockApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "코인모여";
@@ -1674,6 +1662,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		7FF3BF4029040BC600ED0B81 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1696,6 +1692,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7FBA185D28F7135100025001 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		7FF3BF4129040BC600ED0B81 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7FF3BF4029040BC600ED0B81 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		7FF3BF4329040BC600ED0B81 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7FF3BF4029040BC600ED0B81 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 

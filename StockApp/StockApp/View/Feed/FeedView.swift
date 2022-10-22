@@ -9,10 +9,14 @@ import SwiftUI
 
 struct FeedView: View {
     var body: some View {
-        ScrollView {
-            ForEach(0...10, id: \.self) { _ in
-                TweetRowVIew()
-                    .padding()
+        ZStack {
+            Color.colorAssets.backGroundColor
+            
+            ScrollView {
+                ForEach(0...10, id: \.self) { _ in
+                    TweetRowVIew()
+                        .padding()
+                }
             }
         }
     }

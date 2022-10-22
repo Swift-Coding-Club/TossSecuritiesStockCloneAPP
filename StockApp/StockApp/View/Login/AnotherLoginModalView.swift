@@ -18,7 +18,6 @@ struct AnotherLoginModalView: View {
     
     @EnvironmentObject var viewModel: AuthorizationVIewModel
     
-    
     public var delegate: SnsLoginDelegate?
     
     var body: some View {
@@ -116,14 +115,18 @@ struct AnotherLoginModalView: View {
         Button{
             viewModel.googleLogin()
         } label: {
-            HStack {
-                Spacer()
-                    .frame(width: 10)
+            HStack(spacing: 10) {
                 
-                Image("google")
-                    .frame(width: 30, height: 30)
                 Spacer()
-                    .frame(width: 10)
+                    .frame(width: 25)
+              
+                Image("google_logo")
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                    .foregroundColor(Color.colorAssets.backGroundColor)
+                
+               Spacer()
+                    .frame(width: 4)
                  
                 Text("구굴 계정으로 로그인")
                     .font(.custom(FontAsset.mediumFont, size: 20))
