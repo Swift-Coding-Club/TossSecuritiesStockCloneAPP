@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject private var viewModel: CoinViewModel
     @State private var showMenu = false
+    
     var body: some View {
         NavigationView {
             ZStack {

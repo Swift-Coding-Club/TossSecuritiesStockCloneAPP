@@ -22,8 +22,8 @@ struct StockAppApp: App {
     init() {
         //MARK: - 카카오 로그인  관련
         KakaoSDK.initSDK(appKey: SecretKey.kakoNativeAppKey)
-      
-        //MARK: - 네비게이션 바 설정
+              //MARK: - 네비게이션 바 설정
+        
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.fontColor.mainFontColor)]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor(Color.fontColor.mainFontColor),
                                                             .font : UIFont(name: FontAsset.regularFont, size: 28) ?? ""]

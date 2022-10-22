@@ -22,7 +22,7 @@ enum SignType: String, Codable {
     case apple = "apple"
 }
 
-class SNSLoginManger: NSObject, GIDSignInDelegate ,ObservableObject {
+class SNSLoginManger: NSObject, ObservableObject {
     //MARK: - sns callback
     var snsCallback: ((_ snsId: String, _ email: String, _ accessToken: String) -> Void)?
     fileprivate var currentNonce: String?
@@ -31,7 +31,6 @@ class SNSLoginManger: NSObject, GIDSignInDelegate ,ObservableObject {
     override init() {
         
         super.init()
-        GIDSignIn.sharedInstance().delegate = self
         
     }
     
@@ -88,30 +87,5 @@ extension SNSLoginManger {
         }
     }
     
-}
-
-//MARK: - 구글 로그인
-extension SNSLoginManger {
-    func googleLogin() {
-        GIDSignIn.sharedInstance().signIn()
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if let error = error {
-            if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
-                print("The user has not signed in before or they have since signed out.")
-            } else {
-                print("\(error.localizedDescription)")
-            }
-            return
-        }
-        
-        let userId = user.userID ?? ""
-        let email = user.profile.email ?? ""
-        let accessToken = user.authentication.accessToken ?? ""
-        if let callback = self.snsCallback{
-            callback(userId, email, accessToken)
-        }
-    }
 }
 
