@@ -11,7 +11,6 @@ import KakaoSDKAuth
 import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
-import GoogleSignIn
 
 @main
 struct StockAppApp: App {

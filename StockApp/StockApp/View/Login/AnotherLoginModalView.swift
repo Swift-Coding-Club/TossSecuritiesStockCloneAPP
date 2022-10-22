@@ -123,26 +123,28 @@ struct AnotherLoginModalView: View {
                 Image("google_logo")
                     .resizable()
                     .frame(width: 30, height: 30)
-                    .foregroundColor(Color.colorAssets.backGroundColor)
+                    .foregroundColor(Color.fontColor.mainFontColor)
                 
                Spacer()
                     .frame(width: 4)
                  
-                Text("구굴 계정으로 로그인")
+                Text("구글 계정으로 로그인")
                     .font(.custom(FontAsset.mediumFont, size: 20))
-                    .foregroundColor(Color.fontColor.accentColor)
+                    .foregroundColor(Color.fontColor.mainFontColor)
                 
             Spacer()
             }
         }
+       
         .frame(height: 50)
         .clipShape(Capsule())
         .overlay(
             RoundedRectangle(cornerRadius: 25)
                 .stroke(Color.fontColor.accentColor, lineWidth: 1)
+        
         )
         .padding(.horizontal, 32)
-        
+
     }
 }
 

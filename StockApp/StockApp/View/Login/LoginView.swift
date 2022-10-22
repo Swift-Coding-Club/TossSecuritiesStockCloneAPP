@@ -27,7 +27,7 @@ struct LoginView: View {
                 .sheet(isPresented: $showBottomSheet) {
                     if #available(iOS 16.0, *) {
                         AnotherLoginModalView()
-                            .presentationDetents([.height(300)])
+                            .presentationDetents([.height(200)])
                     } else {
                         // Fallback on earlier versions
                     }
