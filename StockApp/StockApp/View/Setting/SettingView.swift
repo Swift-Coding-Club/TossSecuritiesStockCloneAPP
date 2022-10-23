@@ -9,6 +9,9 @@ import SwiftUI
 
 struct SettingView: View {
     @EnvironmentObject var viewModel: AuthorizationVIewModel
+    
+    @State private var developerListButton: Bool  = false
+    @State private var personalInformationButton: Bool = false
     var body: some View {
         ZStack {
             Color.colorAssets.backGroundColor
@@ -27,7 +30,7 @@ struct SettingView: View {
                     logoutListButton()
                     
                     appInformationListButton()
-                          
+                    
                 }
                 .listStyle(PlainListStyle())
                 
@@ -62,62 +65,52 @@ struct SettingView: View {
                     Button {
                         viewModel.signOut()
                     } label: {
-                        HStack{
-                            Image(systemName: item.imageName)
-                                .resizable()
-                                .frame(width: 15, height: 15)
-                            
-                            Spacer()
-                                .frame(width: 10)
-                            
-                            Text(item.description)
-                                .spoqaHan(family: .Medium, size: 20)
-                                .foregroundColor(Color.fontColor.mainFontColor)
-                            
-                            Spacer()
-                            
-                            Image(systemName: "chevron.right")
-                                .resizable()
-                                .frame(width: 10, height: 15)
-                                .foregroundColor(Color.fontColor.mainFontColor)
-                        }
+                        ListRowSystemImageTextView(title: item.description, imageName: item.imageName)
                     }
                 }
             }
+        }header: {
+            Text("나의 계정 설정")
+                .spoqaHan(family: .Bold, size: 18)
+                .foregroundColor(Color.fontColor.mainFontColor)
         }
     }
+    //MARK: - 앱 정보
     @ViewBuilder
     private func appInformationListButton()  -> some View {
         Section {
             ForEach(InformationVIewModel.allCases, id: \.rawValue) { item in
                 if item == .developer {
-                    NavigationLink {
-                        DeveloperView()
+                    Button {
+                        developerListButton.toggle()
                     } label: {
-                        HStack{
-                            Image(item.imageName)
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                                .foregroundColor(Color.fontColor.mainFontColor)
-                            
-                            Spacer()
-                                .frame(width: 10)
-                            
-                            Text(item.description)
-                                .spoqaHan(family: .Medium, size: 20)
-                                .foregroundColor(Color.fontColor.mainFontColor)
-                        }
+                        ListRowTextView(title: item.description, imageName: item.imageName)
+                        .background(
+                            NavigationLink(destination:
+                                            DeveloperView(),
+                                           isActive: $developerListButton,
+                                           label: {EmptyView()}))
+                    }
+                    
+                } else if item == .personalInformation {
+                    Button {
+                        personalInformationButton.toggle()
+                    } label: {
+                        ListRowTextView(title: item.description, imageName: item.imageName)
+                        .background(
+                            NavigationLink(destination:
+                                            PersonalInformationView(),
+                                           isActive: $personalInformationButton,
+                                           label: {EmptyView()}))
                     }
                 }
             }
         } header: {
             Text("코인 모여 앱 정보")
-                .spoqaHan(family: .Medium, size: 15)
-                .foregroundColor(Color.fontColor.sideMenuColor)
+                .spoqaHan(family: .Bold, size: 18)
+                .foregroundColor(Color.fontColor.mainFontColor)
         }
-        
     }
-    
 }
 
 struct SettingView_Previews: PreviewProvider {
