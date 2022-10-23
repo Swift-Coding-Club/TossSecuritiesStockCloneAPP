@@ -41,8 +41,8 @@ struct StockAppApp: App {
 //                    })
                     .navigationBarHidden(true)
             }
-            .environmentObject(signUpViewModel)
             .environmentObject(viewModel)
+            .environmentObject(signUpViewModel)
         }
     }
 }
