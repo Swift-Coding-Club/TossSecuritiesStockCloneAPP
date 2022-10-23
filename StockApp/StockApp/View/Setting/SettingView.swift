@@ -6,40 +6,52 @@
 //
 
 import SwiftUI
+import Introspect
+import ExytePopupView
 
 struct SettingView: View {
     @EnvironmentObject var viewModel: AuthorizationVIewModel
     
     @State private var developerListButton: Bool  = false
     @State private var personalInformationButton: Bool = false
+    @State private var showAlert: Bool = false
+    
+    
     var body: some View {
         ZStack {
-            Color.colorAssets.backGroundColor
-            
-            VStack {
-                Spacer()
-                    .frame(height: 10)
+            ZStack {
+                Color.colorAssets.backGroundColor
                 
-                settingHeader()
-                
-                Spacer()
-                    .frame(height: 10)
-                
-                List {
-                    //MARK: - 로그아웃 리스트
-                    logoutListButton()
+                VStack {
+                    Spacer()
+                        .frame(height: 10)
                     
-                    appInformationListButton()
+                    settingHeader()
+                    
+                    Spacer()
+                        .frame(height: 10)
+                    
+                    List {
+                        //MARK: - 로그아웃 리스트
+                        logoutListButton()
+                        
+                        appInformationListButton()
+                        
+                    }
+                    .listStyle(PlainListStyle())
+                    
+                    Spacer(minLength: .zero)
                     
                 }
-                .listStyle(PlainListStyle())
-                
-                Spacer(minLength: .zero)
-                
+                .navigationTitle("")
+                .spoqaHan(family: .Medium, size: 10)
+                .navigationBarTitleDisplayMode(.automatic)
+                .popup(isPresented: $showAlert,  type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
+                    PopupView()
+                        .environmentObject(viewModel)
+            
+                }
             }
-            .navigationTitle("")
-            .spoqaHan(family: .Medium, size: 10)
-            .navigationBarTitleDisplayMode(.automatic)
         }
     }
     
@@ -55,7 +67,6 @@ struct SettingView: View {
         }
         .padding(.horizontal)
     }
-    
     //MARK: - 로그아웃 버튼
     @ViewBuilder
     private func logoutListButton() -> some View  {
@@ -63,7 +74,7 @@ struct SettingView: View {
             ForEach(AppLogoutViewModel.allCases, id: \.rawValue) { item in
                 if item == .logout {
                     Button {
-                        viewModel.signOut()
+                        showAlert.toggle()
                     } label: {
                         ListRowSystemImageTextView(title: item.description, imageName: item.imageName)
                     }
@@ -85,11 +96,11 @@ struct SettingView: View {
                         developerListButton.toggle()
                     } label: {
                         ListRowTextView(title: item.description, imageName: item.imageName)
-                        .background(
-                            NavigationLink(destination:
-                                            DeveloperView(),
-                                           isActive: $developerListButton,
-                                           label: {EmptyView()}))
+                            .background(
+                                NavigationLink(destination:
+                                                DeveloperView(),
+                                               isActive: $developerListButton,
+                                               label: {EmptyView()}))
                     }
                     
                 } else if item == .personalInformation {
@@ -97,11 +108,12 @@ struct SettingView: View {
                         personalInformationButton.toggle()
                     } label: {
                         ListRowTextView(title: item.description, imageName: item.imageName)
-                        .background(
-                            NavigationLink(destination:
-                                            PersonalInformationView(),
-                                           isActive: $personalInformationButton,
-                                           label: {EmptyView()}))
+                            .background(
+                                NavigationLink(destination:
+                                               PersonalInformationView(),
+                                               isActive: $personalInformationButton,
+                                               label: {EmptyView()})
+                                )
                     }
                 }
             }

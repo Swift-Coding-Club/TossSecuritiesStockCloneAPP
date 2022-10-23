@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-//import KakaoSDKCommon
-//import KakaoSDKAuth
 import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
@@ -22,7 +20,7 @@ struct StockAppApp: App {
         //MARK: - 카카오 로그인  관련
 //        KakaoSDK.initSDK(appKey: SecretKey.kakoNativeAppKey)
               //MARK: - 네비게이션 바 설정
-        
+        FirebaseApp.configure()
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.fontColor.mainFontColor)]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor(Color.fontColor.mainFontColor),
                                                             .font : UIFont(name: FontAsset.regularFont, size: 28) ?? ""]

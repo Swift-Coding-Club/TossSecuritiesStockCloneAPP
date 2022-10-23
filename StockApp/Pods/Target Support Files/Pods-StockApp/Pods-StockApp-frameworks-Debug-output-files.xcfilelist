@@ -1,1 +1,3 @@
 ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework
+${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExytePopupView.framework
+${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Introspect.framework

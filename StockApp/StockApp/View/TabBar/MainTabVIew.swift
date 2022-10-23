@@ -56,7 +56,7 @@ struct MainTabVIew: View {
                         .foregroundColor(Color.colorAssets.blue)
                 }
         }
-        .navigationBarHidden(showMenu)
+        .navigationBarHidden(false)
         .accentColor(Color.colorAssets.skyblue2)
         .onAppear(){
             UITabBar.appearance().barTintColor = .white

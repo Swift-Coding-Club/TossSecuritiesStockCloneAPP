@@ -11,7 +11,7 @@ struct AddMainView: View {
     var body: some View {
         VStack {
             Text("추가 페이지")
-                .font(.title)
+                .font(.custom("나눔손글씨 둥근인연", size: 30))
         }
     }
 }

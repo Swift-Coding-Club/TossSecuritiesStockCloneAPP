@@ -9,26 +9,26 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject private var viewModel: CoinViewModel
-    @State private var showMenu = false
+    @State private var selectionCoin: CoinModel? = nil      // 코인이  선택 되었을때
+    @State private var showDetailView: Bool = false          // 다테일 뷰 보여주기
+    
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color.colorAssets.backGroundColor
-                
-                ScrollView {
-                    //MARK: - 모든 코인 리스트
-                    coinListHeader()
-                    Divider()
-                    coinList()
-                    Spacer()
-                        .frame(height: 30)
-                    portfolioHeader()
-                    Divider()
-                    portfolioCoinList()
-                    Spacer()
-                        .frame(height: 20)
-                }
+        ZStack {
+            Color.colorAssets.backGroundColor
+            
+            ScrollView {
+                //MARK: - 모든 코인 리스트
+                coinListHeader()
+                Divider()
+                coinList()
+                Spacer()
+                    .frame(height: 30)
+                portfolioHeader()
+                Divider()
+                portfolioCoinList()
+                Spacer()
+                    .frame(height: 20)
             }
         }
         
@@ -97,6 +97,11 @@ struct HomeView: View {
             }
         }
         .padding(.horizontal)
+    }
+    //MARK: - 코인을 눌렀을때 코인세부 페이지로 이동
+    private func segue(coin: CoinModel) {
+        selectionCoin = coin
+        showDetailView.toggle()
     }
 
 }

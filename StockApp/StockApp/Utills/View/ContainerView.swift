@@ -34,7 +34,3 @@ struct ContainerView<Content>: UIViewControllerRepresentable where Content : Vie
     }
 }
 
-
-let LayoutMargin: CGFloat = 20
-let LayoutMarginAll: CGFloat = 40
-let ContentsWidth: CGFloat = (UIScreen.main.bounds.size.width - LayoutMarginAll)
