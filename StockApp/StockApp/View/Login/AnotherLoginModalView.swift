@@ -22,7 +22,7 @@ struct AnotherLoginModalView: View {
     
     var body: some View {
         ZStack {
-            Color.colorAssets.navy
+            Color.colorAssets.navy.opacity(0.8)
             
             VStack {
                 //MARK: - 창을  닫는 버튼
@@ -52,7 +52,7 @@ struct AnotherLoginModalView: View {
             }label: {
                 Image(systemName: "xmark")
                     .font(.title)
-                    .foregroundColor(Color.fontColor.mainFontColor)
+                    .foregroundColor(Color.colorAssets.white)
                     .padding(20)
             }
             Spacer()
@@ -102,7 +102,7 @@ struct AnotherLoginModalView: View {
         .clipShape(Capsule())
         .overlay(
             RoundedRectangle(cornerRadius: 25)
-                .stroke(Color.fontColor.accentColor, lineWidth: 1)
+                .stroke(Color.colorAssets.white, lineWidth: 1)
         )
         .padding(.horizontal, 30)
     }
@@ -120,11 +120,11 @@ struct AnotherLoginModalView: View {
                 Image("google_logo")
                     .resizable()
                     .frame(width: 15, height: 15)
-                    .foregroundColor(Color.fontColor.mainFontColor)
+                    .foregroundColor(Color.colorAssets.white)
                            
                 Text("구글 계정으로 로그인")
                     .font(.custom(FontAsset.mediumFont, size: 20))
-                    .foregroundColor(Color.fontColor.mainFontColor)
+                    .foregroundColor(Color.colorAssets.white)
                 
             Spacer()
             }
@@ -134,7 +134,7 @@ struct AnotherLoginModalView: View {
         .clipShape(Capsule())
         .overlay(
             RoundedRectangle(cornerRadius: 25)
-                .stroke(Color.fontColor.accentColor, lineWidth: 1)
+                .stroke(Color.colorAssets.white, lineWidth: 1)
         
         )
         .padding(.horizontal, 32)

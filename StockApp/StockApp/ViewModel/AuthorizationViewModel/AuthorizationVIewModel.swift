@@ -8,7 +8,6 @@
 import SwiftUI
 import Firebase
 import FirebaseAuth
-import KakaoSDKAuth
 import AuthenticationServices
 import GoogleSignIn
 
