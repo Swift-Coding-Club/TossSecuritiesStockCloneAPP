@@ -6,8 +6,8 @@
 //
 
 import SwiftUI
-import KakaoSDKCommon
-import KakaoSDKAuth
+//import KakaoSDKCommon
+//import KakaoSDKAuth
 import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
@@ -20,7 +20,7 @@ struct StockAppApp: App {
     
     init() {
         //MARK: - 카카오 로그인  관련
-        KakaoSDK.initSDK(appKey: SecretKey.kakoNativeAppKey)
+//        KakaoSDK.initSDK(appKey: SecretKey.kakoNativeAppKey)
               //MARK: - 네비게이션 바 설정
         
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.fontColor.mainFontColor)]
@@ -34,11 +34,11 @@ struct StockAppApp: App {
                 MainTabVIew()
 //                HomeView()
 //                    .environmentObject(signUpViewModel)
-                    .onOpenURL(perform: { url in
-                        if(AuthApi.isKakaoTalkLoginUrl(url)) {
-                            AuthController.handleOpenUrl(url: url)
-                        }
-                    })
+//                    .onOpenURL(perform: { url in
+//                        if(AuthApi.isKakaoTalkLoginUrl(url)) {
+//                            AuthController.handleOpenUrl(url: url)
+//                        }
+//                    })
                     .navigationBarHidden(true)
             }
             .environmentObject(signUpViewModel)

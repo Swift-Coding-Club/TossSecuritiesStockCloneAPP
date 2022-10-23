@@ -22,7 +22,7 @@ struct AnotherLoginModalView: View {
     
     var body: some View {
         ZStack {
-            Color.colorAssets.backGroundColor
+            Color.colorAssets.navy
             
             VStack {
                 //MARK: - 창을  닫는 버튼
@@ -62,10 +62,7 @@ struct AnotherLoginModalView: View {
     @ViewBuilder
     private func kakoLoginButton() -> some View {
         Button {
-            if let delegate = delegate {
-                delegate.snsLoginSuccess()
-                snsloginManager.kakoLogin()
-            }
+
         } label: {
             Image("kakao_login")
                 .resizable()
@@ -122,12 +119,9 @@ struct AnotherLoginModalView: View {
               
                 Image("google_logo")
                     .resizable()
-                    .frame(width: 30, height: 30)
+                    .frame(width: 15, height: 15)
                     .foregroundColor(Color.fontColor.mainFontColor)
-                
-               Spacer()
-                    .frame(width: 4)
-                 
+                           
                 Text("구글 계정으로 로그인")
                     .font(.custom(FontAsset.mediumFont, size: 20))
                     .foregroundColor(Color.fontColor.mainFontColor)
