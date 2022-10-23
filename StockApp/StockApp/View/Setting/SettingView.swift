@@ -69,6 +69,10 @@ struct SettingView: View {
                     }
                 }
             }
+        }header: {
+            Text("나의 계정 설정")
+                .spoqaHan(family: .Bold, size: 18)
+                .foregroundColor(Color.fontColor.mainFontColor)
         }
     }
     //MARK: - 앱 정보
@@ -103,9 +107,9 @@ struct SettingView: View {
             }
         } header: {
             Text("코인 모여 앱 정보")
-                .spoqaHan(family: .Medium, size: 15)
-                .foregroundColor(Color.fontColor.sideMenuColor)
-        }   
+                .spoqaHan(family: .Bold, size: 18)
+                .foregroundColor(Color.fontColor.mainFontColor)
+        }
     }
 }
 
