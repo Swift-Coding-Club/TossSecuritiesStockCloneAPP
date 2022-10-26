@@ -23,7 +23,7 @@ struct SettingView: View {
             ZStack {
                 Color.colorAssets.backGroundColor
                 
-                VStack {
+                VStack { 
                     Spacer()
                         .frame(height: 10)
                     
