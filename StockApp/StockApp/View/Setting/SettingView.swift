@@ -30,7 +30,7 @@ struct SettingView: View {
                     
                     Spacer()
                         .frame(height: 10)
-                    
+                     
                     List {
                         //MARK: - 로그아웃 리스트
                         logoutListButton()
