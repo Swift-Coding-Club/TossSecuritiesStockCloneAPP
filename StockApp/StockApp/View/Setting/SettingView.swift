@@ -8,6 +8,7 @@
 import SwiftUI
 import Introspect
 import ExytePopupView
+import HidableTabView
 
 struct SettingView: View {
     @EnvironmentObject var viewModel: AuthorizationVIewModel
@@ -51,6 +52,9 @@ struct SettingView: View {
                         .environmentObject(viewModel)
             
                 }
+            }
+            .onAppear() {
+                UITabBar.hideTabBar(animated: false)
             }
         }
     }

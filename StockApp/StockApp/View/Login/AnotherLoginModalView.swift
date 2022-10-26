@@ -115,13 +115,13 @@ struct AnotherLoginModalView: View {
             HStack(spacing: 10) {
                 
                 Spacer()
-                    .frame(width: 25)
+                    
               
                 Image("google_logo")
                     .resizable()
                     .frame(width: 15, height: 15)
                     .foregroundColor(Color.colorAssets.white)
-                           
+                
                 Text("구글 계정으로 로그인")
                     .font(.custom(FontAsset.mediumFont, size: 20))
                     .foregroundColor(Color.colorAssets.white)

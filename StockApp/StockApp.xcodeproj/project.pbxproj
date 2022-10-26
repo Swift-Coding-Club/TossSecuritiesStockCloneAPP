@@ -61,6 +61,13 @@
 		7F4A831628FC523D00A3561A /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4A831528FC523C00A3561A /* SettingView.swift */; };
 		7F4C7D9B28FEFFAF0058ECD5 /* UserStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4C7D9A28FEFFAF0058ECD5 /* UserStatusView.swift */; };
 		7F4C7D9E28FF01C10058ECD5 /* AppLogoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4C7D9D28FF01C10058ECD5 /* AppLogoutViewModel.swift */; };
+		7F4E82DE2909809B00B65D97 /* SignupPopupVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E82DD2909809B00B65D97 /* SignupPopupVIew.swift */; };
+		7F4E82E02909892100B65D97 /* TabCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E82DF2909892100B65D97 /* TabCurve.swift */; };
+		7F4E82E22909896F00B65D97 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E82E12909896F00B65D97 /* CustomTabBar.swift */; };
+		7F4E82E42909899F00B65D97 /* TabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E82E32909899F00B65D97 /* TabBarButton.swift */; };
+		7F4E82E629098A5C00B65D97 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E82E529098A5C00B65D97 /* Test.swift */; };
+		7F4E82E829098BA000B65D97 /* TabViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E82E729098BA000B65D97 /* TabViewManager.swift */; };
+		7F4E82EB29098E5800B65D97 /* HidableTabView in Frameworks */ = {isa = PBXBuildFile; productRef = 7F4E82EA29098E5800B65D97 /* HidableTabView */; };
 		7F729EDA28DA013600FEAE43 /* CoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F729ED928DA013600FEAE43 /* CoinModel.swift */; };
 		7F729EDC28DB3A0E00FEAE43 /* CoinRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F729EDB28DB3A0E00FEAE43 /* CoinRowView.swift */; };
 		7F729EDF28DB3B0000FEAE43 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F729EDE28DB3B0000FEAE43 /* PreviewProvider.swift */; };
@@ -199,6 +206,12 @@
 		7F4A831528FC523C00A3561A /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		7F4C7D9A28FEFFAF0058ECD5 /* UserStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatusView.swift; sourceTree = "<group>"; };
 		7F4C7D9D28FF01C10058ECD5 /* AppLogoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogoutViewModel.swift; sourceTree = "<group>"; };
+		7F4E82DD2909809B00B65D97 /* SignupPopupVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPopupVIew.swift; sourceTree = "<group>"; };
+		7F4E82DF2909892100B65D97 /* TabCurve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCurve.swift; sourceTree = "<group>"; };
+		7F4E82E12909896F00B65D97 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		7F4E82E32909899F00B65D97 /* TabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarButton.swift; sourceTree = "<group>"; };
+		7F4E82E529098A5C00B65D97 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		7F4E82E729098BA000B65D97 /* TabViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewManager.swift; sourceTree = "<group>"; };
 		7F729ED928DA013600FEAE43 /* CoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinModel.swift; sourceTree = "<group>"; };
 		7F729EDB28DB3A0E00FEAE43 /* CoinRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRowView.swift; sourceTree = "<group>"; };
 		7F729EDE28DB3B0000FEAE43 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
@@ -287,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80F05FC9B56D11ECB5690C94 /* Pods_StockApp.framework in Frameworks */,
+				7F4E82EB29098E5800B65D97 /* HidableTabView in Frameworks */,
 				7FBA185F28F7135100025001 /* FirebaseAuth in Frameworks */,
 				7FF3BF4429040BC600ED0B81 /* GoogleSignInSwift in Frameworks */,
 				7FF3BF4F290432A500ED0B81 /* AttributedText in Frameworks */,
@@ -363,6 +377,7 @@
 			children = (
 				7F15F7692905828A00B06452 /* TypePopup.swift */,
 				7F15F76B290582B400B06452 /* PopupView.swift */,
+				7F4E82DD2909809B00B65D97 /* SignupPopupVIew.swift */,
 			);
 			path = POPUP;
 			sourceTree = "<group>";
@@ -820,6 +835,11 @@
 			children = (
 				7F1C8EE228BFABC9004E49A1 /* TabBarKind.swift */,
 				7F1C8EE428BFACA3004E49A1 /* MainTabVIew.swift */,
+				7F4E82DF2909892100B65D97 /* TabCurve.swift */,
+				7F4E82E12909896F00B65D97 /* CustomTabBar.swift */,
+				7F4E82E32909899F00B65D97 /* TabBarButton.swift */,
+				7F4E82E529098A5C00B65D97 /* Test.swift */,
+				7F4E82E729098BA000B65D97 /* TabViewManager.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -1013,6 +1033,7 @@
 				7FF3BF4129040BC600ED0B81 /* GoogleSignIn */,
 				7FF3BF4329040BC600ED0B81 /* GoogleSignInSwift */,
 				7FF3BF4E290432A500ED0B81 /* AttributedText */,
+				7F4E82EA29098E5800B65D97 /* HidableTabView */,
 			);
 			productName = StockApp;
 			productReference = 7FE836DE28BF95B0003761FE /* StockApp.app */;
@@ -1093,6 +1114,7 @@
 				7FBA185D28F7135100025001 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				7FF3BF4029040BC600ED0B81 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				7FF3BF4D290432A500ED0B81 /* XCRemoteSwiftPackageReference "AttributedText" */,
+				7F4E82E929098E5800B65D97 /* XCRemoteSwiftPackageReference "HidableTabView-SwiftUI" */,
 			);
 			productRefGroup = 7FE836DF28BF95B0003761FE /* Products */;
 			projectDirPath = "";
@@ -1281,7 +1303,9 @@
 				7FED2A6F28FA5CAC00D7A7C7 /* ViewRouter.swift in Sources */,
 				7FC3564D28D8C3C9002E0E63 /* CircleButtonAnimationVIew.swift in Sources */,
 				7F492D1128CDFA45004E5142 /* ClosedButtonView.swift in Sources */,
+				7F4E82E829098BA000B65D97 /* TabViewManager.swift in Sources */,
 				7F21333B28E32B2E00CE0BE2 /* PortofolioModel.xcdatamodeld in Sources */,
+				7F4E82E629098A5C00B65D97 /* Test.swift in Sources */,
 				7F98D131290564560088A052 /* WebView.swift in Sources */,
 				7F98D139290569540088A052 /* ShareFont.swift in Sources */,
 				7FEE221B28FC670100792003 /* TweetFilterViewModel.swift in Sources */,
@@ -1294,6 +1318,7 @@
 				7F324C7328E9F3D900A22FFC /* CardStatisticView.swift in Sources */,
 				7F15F76A2905828A00B06452 /* TypePopup.swift in Sources */,
 				7FF3BF542904474900ED0B81 /* ListRowTextView.swift in Sources */,
+				7F4E82E42909899F00B65D97 /* TabBarButton.swift in Sources */,
 				7FE792A328FD87FC00E3D6E3 /* SpoqaHanFont.swift in Sources */,
 				7FC3564328D8B06F002E0E63 /* HomeView.swift in Sources */,
 				7F01DFB628F70068000ECB96 /* AuthorizationVIewModel.swift in Sources */,
@@ -1332,6 +1357,7 @@
 				7F29425928F329A400A44CDD /* ModalShapeCorner.swift in Sources */,
 				7FED2A7128FA5ED800D7A7C7 /* UserDefaults.swift in Sources */,
 				7FF3BF5629044B7600ED0B81 /* ListRowSystemImageTextView.swift in Sources */,
+				7F4E82DE2909809B00B65D97 /* SignupPopupVIew.swift in Sources */,
 				7FCD241428FAEF30002C5C18 /* ErroAlertMessage.swift in Sources */,
 				7F39713928D2336F007823C4 /* GradiantColorAsset.swift in Sources */,
 				7F174E7328F58DF900352189 /* CustomSecureInputField.swift in Sources */,
@@ -1361,7 +1387,9 @@
 				7F2AEB4128E8395D00FA86AD /* CryptoDetailViewModel.swift in Sources */,
 				7F4C7D9E28FF01C10058ECD5 /* AppLogoutViewModel.swift in Sources */,
 				7FEF4F7428DF2D6B00DA9AEB /* CoinImageViewModel.swift in Sources */,
+				7F4E82E02909892100B65D97 /* TabCurve.swift in Sources */,
 				7FFEF7CA28EF090E0023AACC /* StockModel.swift in Sources */,
+				7F4E82E22909896F00B65D97 /* CustomTabBar.swift in Sources */,
 				7FEF4F9C28E078B900DA9AEB /* SearchBarView.swift in Sources */,
 				7FC3564628D8B0EC002E0E63 /* AddMainView.swift in Sources */,
 				7F2AEB4528E83E0500FA86AD /* CoinDetailSetvice.swift in Sources */,
@@ -1730,6 +1758,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7F4E82E929098E5800B65D97 /* XCRemoteSwiftPackageReference "HidableTabView-SwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AliMert/HidableTabView-SwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		7FBA185D28F7135100025001 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1757,6 +1793,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7F4E82EA29098E5800B65D97 /* HidableTabView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7F4E82E929098E5800B65D97 /* XCRemoteSwiftPackageReference "HidableTabView-SwiftUI" */;
+			productName = HidableTabView;
+		};
 		7FBA185E28F7135100025001 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7FBA185D28F7135100025001 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

@@ -18,6 +18,7 @@ struct PersonalInformationView: View {
         VStack(alignment: .leading) {
            WebView(urlToLoad: personalInformationUrl)
         }
+        .ignoresSafeArea()
             .introspectTabBarController { (UITabBarController) in
                 UITabBarController.tabBar.isHidden = true
                 uiTabarController = UITabBarController
