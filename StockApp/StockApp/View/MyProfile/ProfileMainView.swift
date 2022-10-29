@@ -67,7 +67,7 @@ struct ProfileMainView: View {
     @ViewBuilder
     private func profileHeader() -> some View {
         ZStack(alignment: .bottomLeading) {
-            Color.colorAssets.blue3
+            Color.colorAssets.navy2
                 .clipShape(RoundShape(corners: [.bottomRight]))
                 .ignoresSafeArea()
             
