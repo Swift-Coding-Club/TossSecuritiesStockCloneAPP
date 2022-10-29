@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import AttributedText
+import HidableTabView
 
 struct PersonalInformationView: View {
     
@@ -14,10 +14,15 @@ struct PersonalInformationView: View {
     
     @State var uiTabarController: UITabBarController?
     
+    init() {
+        UITabBar.hideTabBar(animated: false)
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
            WebView(urlToLoad: personalInformationUrl)
         }
+        .ignoresSafeArea()
             .introspectTabBarController { (UITabBarController) in
                 UITabBarController.tabBar.isHidden = true
                 uiTabarController = UITabBarController

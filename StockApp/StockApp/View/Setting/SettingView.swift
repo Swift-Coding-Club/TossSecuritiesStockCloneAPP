@@ -8,6 +8,7 @@
 import SwiftUI
 import Introspect
 import ExytePopupView
+import HidableTabView
 
 struct SettingView: View {
     @EnvironmentObject var viewModel: AuthorizationVIewModel
@@ -16,13 +17,12 @@ struct SettingView: View {
     @State private var personalInformationButton: Bool = false
     @State private var showAlert: Bool = false
     
-    
     var body: some View {
         ZStack {
             ZStack {
                 Color.colorAssets.backGroundColor
                 
-                VStack {
+                VStack { 
                     Spacer()
                         .frame(height: 10)
                     

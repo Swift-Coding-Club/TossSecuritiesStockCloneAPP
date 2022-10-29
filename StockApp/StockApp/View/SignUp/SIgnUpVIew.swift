@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ExytePopupView
 
 struct SIgnUpVIew: View {
     @State private var email: String = ""
@@ -51,6 +52,21 @@ struct SIgnUpVIew: View {
                 }
             }
             .ignoresSafeArea(.all)
+            .popup(isPresented: $checkUserNameRegister, type: .floater(verticalPadding: 20), position: .bottom, animation: .spring(), autohideIn: 2,  closeOnTap: true, closeOnTapOutside: true,  view: {
+                SignupPopupVIew(image: "person", title: "회원가입 양식을 확인 해주세요", alertMessage: "이름을 확인해주세요")
+            })
+            .popup(isPresented: $checkNickNameRegister, type: .floater(verticalPadding: 20), position: .bottom, animation: .spring(), autohideIn: 2,  closeOnTap: true, closeOnTapOutside: true,  view: {
+                SignupPopupVIew(image: "person", title: "회원가입 양식을 확인 해주세요", alertMessage: "별명을 확인해주세요")
+            })
+            .popup(isPresented: $checkEmailRegister, type: .floater(verticalPadding: 20), position: .bottom, animation: .spring(), autohideIn: 2,  closeOnTap: true, closeOnTapOutside: true,  view: {
+                SignupPopupVIew(image: "envelope", title: "회원가입 양식을 확인 해주세요", alertMessage: "이메일 확인해주세요")
+            })
+            .popup(isPresented: $checkPhoneRegister, type: .floater(verticalPadding: 20), position: .bottom, animation: .spring(), autohideIn: 2,  closeOnTap: true, closeOnTapOutside: true,  view: {
+                SignupPopupVIew(image: "phone", title: "회원가입 양식을 확인 해주세요", alertMessage: "핸드폰 번호을 입력해주세요")
+            })
+            .popup(isPresented: $checkPassowrdRegister, type: .floater(verticalPadding: 20), position: .bottom, animation: .spring(), autohideIn: 2,  closeOnTap: true, closeOnTapOutside: true,  view: {
+                SignupPopupVIew(image: "lock", title: "회원가입 양식을 확인 해주세요", alertMessage: "비밀번호를 입력해주세요")
+            })
         }
     }
     //MARK: - 회원가입textfield
@@ -85,7 +101,6 @@ struct SIgnUpVIew: View {
     private func signUPButton() -> some View {
         Button {
             checkRegisterTextField()
-            checkRegisterSIgnUpTextFileld()
             viewModel.register(withEmail: email, password: passowrd, fullname: nickName, phoneNumber: phoneNumber, userName: userName)
             UIApplication.shared.endEditing()
         }label: {
@@ -99,21 +114,8 @@ struct SIgnUpVIew: View {
         }
         .padding(.bottom, keyboardHandler.keyboardHeight)
         .shadow(color: .gray.opacity(0.5), radius: 10, x: .zero, y: .zero)
-        
-        .showCheckAlertMessage(showAlert: $checkUserNameRegister,  message: "이름을 확인해주세요")
-        .showCheckAlertMessage(showAlert: $checkNickNameRegister,  message: "별명을 확인해주세요")
-        .showCheckAlertMessage(showAlert: $checkEmailRegister, message: "이메일 양식을 확인 해주세요")
-        .showCheckAlertMessage(showAlert: $checkPhoneRegister, message: "핸드폰 번호를 확인해주세요")
-        .showCheckAlertMessage(showAlert: $checkPassowrdRegister,  message: "비밀 번호를 확인해주세요")
     }
     //MARK: - 유효성 검사 버튼 눌렀을떄 
-    private func checkRegisterSIgnUpTextFileld() {
-        checkUserNameRegister.toggle()
-        checkNickNameRegister.toggle()
-        checkEmailRegister.toggle()
-        checkPhoneRegister.toggle()
-        checkPassowrdRegister.toggle()
-    }
     //MARK: - 이미 계정이 있으면  로그인 하러 가기 버튼
     @ViewBuilder
     private func alreadyAccount() -> some  View {
@@ -134,14 +136,19 @@ struct SIgnUpVIew: View {
     //MARK: - 유효성 검사
     private func checkRegisterTextField() {
         if !CheckRegister.isValidateNickName(userName) {
+            checkUserNameRegister.toggle()
             debugPrint("check userName \(userName)")
         } else if !CheckRegister.isValidateNickName(nickName) {
+            checkNickNameRegister.toggle()
             debugPrint("check nickName \(nickName)")
         } else if !CheckRegister.isValidateEmail(email)  {
+            checkEmailRegister.toggle()
             debugPrint("check email \(email)")
         } else if !CheckRegister.isValidatePhoneNumber(phoneNumber) {
+            checkPhoneRegister.toggle()
             debugPrint("check phoneNumber \(phoneNumber)")
         } else if !CheckRegister.isValidatePassword(passowrd) {
+            checkPassowrdRegister.toggle()
             debugPrint("check passowrd \(passowrd)")
         }else {}
     }

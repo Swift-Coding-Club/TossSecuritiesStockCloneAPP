@@ -14,7 +14,6 @@ static let instance = DevloperPreview( )
     
     let coinViewModel = CoinViewModel()
     let signUpViewModel = AuthorizationVIewModel()
-    
     let state1 = StatisticModel(title: "Market Cap" , value: "$12.58m", percentageChange: 25.34)
     let state2 = StatisticModel(title: "TotalVolume", value: "$12.31Tr")
     let state3 = StatisticModel(title: "보유 수량" , value: "$12.58m", percentageChange: -12.34)
