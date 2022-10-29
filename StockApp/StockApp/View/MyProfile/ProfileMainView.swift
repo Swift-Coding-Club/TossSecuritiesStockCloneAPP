@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct ProfileMainView: View {
+    
     @Environment(\.dismiss)  private var dismiss
     @EnvironmentObject var viewModel: AuthorizationVIewModel
     @State private var selectedFilter: TweetFilterViewModel = .tweets
+    
+    
     @Namespace var animation
+    
     
     var body: some View {
         NavigationView {
@@ -32,6 +36,12 @@ struct ProfileMainView: View {
                     navigationTrallingItem()
                 }
             }
+            //            .introspectTabBarController { (UITabBarController) in
+            //                UITabBarController.tabBar.isHidden = true
+            //                uiTabarController = UITabBarController
+            //            }.onDisappear{
+            //                uiTabarController?.tabBar.isHidden = false
+            //            }
         }
     }
     //MARK: - 네비게이션 오른쪽 버튼

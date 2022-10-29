@@ -32,11 +32,6 @@ struct StockAppApp: App {
                 MainTabVIew()
 //                HomeView()
 //                    .environmentObject(signUpViewModel)
-//                    .onOpenURL(perform: { url in
-//                        if(AuthApi.isKakaoTalkLoginUrl(url)) {
-//                            AuthController.handleOpenUrl(url: url)
-//                        }
-//                    })
                     .navigationBarHidden(true)
             }
             .environmentObject(viewModel)

@@ -17,7 +17,6 @@ struct SettingView: View {
     @State private var personalInformationButton: Bool = false
     @State private var showAlert: Bool = false
     
-    
     var body: some View {
         ZStack {
             ZStack {
@@ -52,9 +51,6 @@ struct SettingView: View {
                         .environmentObject(viewModel)
             
                 }
-            }
-            .onAppear() {
-                UITabBar.hideTabBar(animated: false)
             }
         }
     }

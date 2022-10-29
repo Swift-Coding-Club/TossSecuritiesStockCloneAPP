@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import _AuthenticationServices_SwiftUI
+import AuthenticationServices
 
 struct LoginView: View {
     @State private var emailTextField: String = ""
@@ -16,8 +16,6 @@ struct LoginView: View {
     @State private var showmainview : Bool = false
     
     @StateObject var snsloginManager: SNSLoginManger = SNSLoginManger()
-    
- 
     
     @EnvironmentObject var viewModel: AuthorizationVIewModel
     

@@ -141,7 +141,9 @@ class AuthorizationVIewModel:  ObservableObject {
     
     //MARK: - 로그아웃
     func signOut() {
-        userSession = nil
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.userSession = nil
+        }
         let firebaseAuth = Auth.auth()
       do {
         try firebaseAuth.signOut()
