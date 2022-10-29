@@ -30,7 +30,7 @@ struct AuthHeaderView: View {
         }
         .frame(height: (UIScreen.main.bounds.height / 4) + 30)
         .padding(.leading)
-        .background(Color.colorAssets.mainColor)
+        .background(Color.colorAssets.navy2)
         .foregroundColor(Color.colorAssets.white)
         //MARK:  - 바텀 쪽 코너를 둥굴게 구현
         .clipShape(RoundShape(corners: [.bottomRight]))

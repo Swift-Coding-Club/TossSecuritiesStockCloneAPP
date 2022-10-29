@@ -35,7 +35,7 @@ struct SignupPopupVIew: View {
         }
         .padding()
         .frame(width: UIScreen.screenWidth - 70, height: UIScreen.screenHeight  / 8 )
-        .background(Color.colorAssets.navy.opacity(0.8))
+        .background(Color.colorAssets.navy2)
         .cornerRadius(20)
     }
 }

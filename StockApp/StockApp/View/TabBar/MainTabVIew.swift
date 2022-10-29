@@ -59,8 +59,9 @@ struct MainTabVIew: View {
             }
             .frame(height: 50)
             .padding(.horizontal , 35)
+            .padding(.bottom,getSafeArea().bottom == 0 ? 10 : 0)
         }
-        .background(Color.colorAssets.navy.opacity(0.7))
+        .background(Color.colorAssets.navy2)
         .ignoresSafeArea(.container, edges: .top)
         .navigationBarHidden(false)
 //        .accentColor(Color.colorAssets.skyblue2)
@@ -86,12 +87,12 @@ struct MainTabVIew: View {
                 } label: {
                     
                     Image(systemName: "\(image)\(currentTab == image ? ".fill" : "")")
-                        .spoqaHan(family: .Medium, size: 20)
+                        .spoqaHan(family: .Bold, size: 20)
                         .foregroundColor(Color.colorAssets.white)
                         .frame(width: 45, height: 45)
                         .background(
                             Circle()
-                                .fill(Color.colorAssets.navy.opacity(0.7))
+                                .fill(Color.colorAssets.navy2)
                         )
                     
                         .offset(y: currentTab == image ? -25 : .zero )

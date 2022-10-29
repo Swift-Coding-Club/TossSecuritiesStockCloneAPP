@@ -84,7 +84,7 @@ struct LoginView: View {
                 Text("비밀 번호를 잊으셨나요 ?")
                     .font(.custom(FontAsset.mediumFont, size: 15))
                     .fontWeight(.semibold)
-                    .foregroundColor(Color.colorAssets.subColor)
+                    .foregroundColor(Color.colorAssets.navy2)
                     .padding(.top)
                     .padding(.trailing, 24)
             }
@@ -100,7 +100,7 @@ struct LoginView: View {
                 .font(.custom(FontAsset.regularFont, size: 20))
                 .foregroundColor(.white)
                 .frame(width: 340, height: 50)
-                .background(Color.colorAssets.mainColor)
+                .background(Color.colorAssets.navy2)
                 .clipShape(Capsule())
                 .padding()
         }
@@ -115,7 +115,7 @@ struct LoginView: View {
             Text("다른 방법으로 로그인 ")
                 .font(.custom(FontAsset.regularFont, size: 20))
                 .fontWeight(.semibold)
-                .foregroundColor(Color.colorAssets.subColor)
+                .foregroundColor(Color.colorAssets.navy2)
         }
     }
     //MARK: - 회원가입 버튼
@@ -135,7 +135,7 @@ struct LoginView: View {
             }
         }
         .padding(.bottom , 32)
-        .foregroundColor(Color.colorAssets.subColor)
+        .foregroundColor(Color.colorAssets.navy2)
     }
 }
 

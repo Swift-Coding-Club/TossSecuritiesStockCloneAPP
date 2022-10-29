@@ -108,7 +108,7 @@ struct SIgnUpVIew: View {
                 .font(.custom(FontAsset.regularFont, size: 20))
                 .foregroundColor(.white)
                 .frame(width: 340, height: 50)
-                .background(Color.colorAssets.mainColor)
+                .background(Color.colorAssets.navy2)
                 .clipShape(Capsule())
                 .padding()
         }
@@ -131,7 +131,7 @@ struct SIgnUpVIew: View {
             }
         }
         .padding(.bottom , 32)
-        .foregroundColor(Color.colorAssets.subColor)
+        .foregroundColor(Color.colorAssets.navy2)
     }
     //MARK: - 유효성 검사
     private func checkRegisterTextField() {
