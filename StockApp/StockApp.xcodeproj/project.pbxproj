@@ -65,6 +65,7 @@
 		7F4E82EB29098E5800B65D97 /* HidableTabView in Frameworks */ = {isa = PBXBuildFile; productRef = 7F4E82EA29098E5800B65D97 /* HidableTabView */; };
 		7F4E8335290CF48900B65D97 /* CustomTabCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8334290CF48900B65D97 /* CustomTabCurve.swift */; };
 		7F4E8337290D605C00B65D97 /* TabBarTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8336290D605C00B65D97 /* TabBarTheme.swift */; };
+		7F6910132915497E00BE9A3F /* LanchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6910122915497E00BE9A3F /* LanchView.swift */; };
 		7F729EDA28DA013600FEAE43 /* CoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F729ED928DA013600FEAE43 /* CoinModel.swift */; };
 		7F729EDC28DB3A0E00FEAE43 /* CoinRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F729EDB28DB3A0E00FEAE43 /* CoinRowView.swift */; };
 		7F729EDF28DB3B0000FEAE43 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F729EDE28DB3B0000FEAE43 /* PreviewProvider.swift */; };
@@ -206,6 +207,7 @@
 		7F4E82DD2909809B00B65D97 /* SignupPopupVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPopupVIew.swift; sourceTree = "<group>"; };
 		7F4E8334290CF48900B65D97 /* CustomTabCurve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabCurve.swift; sourceTree = "<group>"; };
 		7F4E8336290D605C00B65D97 /* TabBarTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarTheme.swift; sourceTree = "<group>"; };
+		7F6910122915497E00BE9A3F /* LanchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanchView.swift; sourceTree = "<group>"; };
 		7F729ED928DA013600FEAE43 /* CoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinModel.swift; sourceTree = "<group>"; };
 		7F729EDB28DB3A0E00FEAE43 /* CoinRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRowView.swift; sourceTree = "<group>"; };
 		7F729EDE28DB3B0000FEAE43 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
@@ -485,6 +487,14 @@
 				7FF3BF48290427E000ED0B81 /* PersonalInformationView.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		7F6910112915496200BE9A3F /* LanchView */ = {
+			isa = PBXGroup;
+			children = (
+				7F6910122915497E00BE9A3F /* LanchView.swift */,
+			);
+			path = LanchView;
 			sourceTree = "<group>";
 		};
 		7F729ED828D9FFC100FEAE43 /* CryptoModel */ = {
@@ -810,6 +820,7 @@
 			isa = PBXGroup;
 			children = (
 				7FC3564828D8B4A7002E0E63 /* Components */,
+				7F6910112915496200BE9A3F /* LanchView */,
 				7FF3434C28F05C3000FD34EC /* SignUp */,
 				7FF3434B28F05C1F00FD34EC /* Login */,
 				7FE8371328BF970D003761FE /* TabBar */,
@@ -1331,6 +1342,7 @@
 				7F174E7C28F59E8800352189 /* CheckRegisterAlert.swift in Sources */,
 				7FEF4F7628DF316D00DA9AEB /* CoinImageService.swift in Sources */,
 				7F06912128CB14E3005F840E /* NetworkManger.swift in Sources */,
+				7F6910132915497E00BE9A3F /* LanchView.swift in Sources */,
 				7F15F76C290582B400B06452 /* PopupView.swift in Sources */,
 				7F4C7D9B28FEFFAF0058ECD5 /* UserStatusView.swift in Sources */,
 				7FF19D5828E1EB3600BF93B3 /* CoinLogoView.swift in Sources */,
