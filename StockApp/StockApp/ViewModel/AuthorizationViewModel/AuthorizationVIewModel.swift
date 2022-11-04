@@ -15,8 +15,9 @@ class AuthorizationVIewModel:  ObservableObject {
     
     //MARK: - 유저
     @Published var userSession: FirebaseAuth.User?
-    @StateObject var snsloginManager: SNSLoginManger = SNSLoginManger()
     @Published var nonce = ""
+    @Published var didAuthenticateUser = false
+    
     @AppStorage("log_status") var log_Status = false
         
     init() {
@@ -63,6 +64,7 @@ class AuthorizationVIewModel:  ObservableObject {
                 .document(user.uid)
                 .setData(data) { data in
                     debugPrint("DEBUG : Upload user data : \(data)")
+                    self.didAuthenticateUser = true
                 }
         }
     }
