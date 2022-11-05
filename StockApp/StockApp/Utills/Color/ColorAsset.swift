@@ -38,6 +38,7 @@ struct ColorAsset {
     let white2 = Color("White2")
     let textColor = Color("SecondaryTextColor")
     let backGroundColor = Color("BackgroundColor")
+    let loginColor = Color("LoginColor")
 }
 
 extension Color {

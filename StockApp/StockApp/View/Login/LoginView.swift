@@ -15,58 +15,70 @@ struct LoginView: View {
     @State private var saveloginInfo: Bool = false
     @State private var showmainview : Bool = false
     
-    @StateObject var snsloginManager: SNSLoginManger = SNSLoginManger()
-    
     @EnvironmentObject var viewModel: AuthorizationVIewModel
     
     var body: some View {
-        ZStack {
-            Color.colorAssets.backGroundColor
-                .sheet(isPresented: $showBottomSheet) {
-                    if #available(iOS 16.0, *) {
-                        AnotherLoginModalView()
-                            .presentationDetents([.height(200)])
-                    } else {
-                        // Fallback on earlier versions
-                    }
+        NavigationView {
+            ZStack {
+                Color.colorAssets.backGroundColor
+                    .ignoresSafeArea()
+                VStack {
+                    
+                    Spacer()
+                        .frame(height: 30)
+                    
+                    loginViewTitle()
+                    
+                    authorizationTextField()
+                    
+                    spacerView(height: 15)
+                    
+                    forgotPasswordButton()
+                    
+                    spacerView(height: 20)
+                    
+                    loginButton()
+                    
+                    spacerView(height: 20)
+                    
+                    signUPButton()
+                    
+                    Spacer(minLength: .zero)
                 }
-            
-            VStack {
-                //MARK: - 로그인 상단  타이틀
-                AuthHeaderView(authTopHeaderTitle: "안녕하세요",
-                               authCenterHeaderTitle: "어서오세요 코인 모여 서비스에 오신걸 ",
-                               authBottomHeaderTitle: "환영합니다")
-                //MARK: -  이메일 및  텍스트 필드
-                authorizationTextField()
-                //MARK: - 비밀 번호 찾기 버튼
-                forgotPasswordButton()
-                //MARK: - 로그인 버튼
-                loginButton()
-                //MARK: - 다른 방법으로 로그인
-                
-                anotherLoginButton()
-                
-                Spacer()
-                //MARK: - 회원 가입 버튼
-                signUPButton()
+                .navigationBarHidden(true)
                 
             }
-            .ignoresSafeArea()
-            .navigationBarHidden(true)
         }
-        
     }
     
+    //MARK: - 로그인 뷰 상단  타이틀
+    @ViewBuilder
+    private func loginViewTitle() -> some View {
+        HStack{
+            Text("Coin Moya")
+                .spoqaHan(family: .Bold, size: 30)
+                .foregroundColor(Color.fontColor.mainFontColor)
+            
+            Rectangle()
+                    .frame(width: 15, height: 15)
+                    .rotationEffect(Angle(degrees: 130))
+                    .foregroundColor(Color.colorAssets.skyblue4)
+                    .offset(y: -15)
+        }
+        .padding(.bottom, 20)
+        .padding()
+    }
+
     //MARK:  -  이메일  & 비빌번호  텍스트 필드
     @ViewBuilder
     private func authorizationTextField() -> some View {
         VStack(spacing: 40) {
             CustomInputField(imageName: "envelope",
-                             placeHolderText: "이메일을 입력해주세요",
+                             placeHolderText: "이메일",
                              text: $emailTextField)
             
             CustomSecureInputField(imageName: "lock",
-                                   placeHolderText: "비밀 번호를 입력 해주세요",
+                                   placeHolderText: "비밀 번호",
                                    text: $passworldTextField)
         }
         .padding(.horizontal, 32)
@@ -79,16 +91,16 @@ struct LoginView: View {
             Spacer()
             
             NavigationLink {
-                
+                ForgotPasswordView()
             } label: {
                 Text("비밀 번호를 잊으셨나요 ?")
-                    .font(.custom(FontAsset.mediumFont, size: 15))
-                    .fontWeight(.semibold)
+                    .spoqaHan(family: .Bold, size: 15)
                     .foregroundColor(Color.colorAssets.navy2)
                     .padding(.top)
                     .padding(.trailing, 24)
             }
         }
+        .padding(.horizontal, 25)
     }
     //MARK:  - 로그인 버튼
     @ViewBuilder
@@ -97,26 +109,13 @@ struct LoginView: View {
             viewModel.login(withEmail: emailTextField, password: passworldTextField)
         }label: {
             Text("로그인")
-                .font(.custom(FontAsset.regularFont, size: 20))
+                .spoqaHan(family: .Bold, size: 20)
                 .foregroundColor(.white)
                 .frame(width: 340, height: 50)
                 .background(Color.colorAssets.navy2)
-                .clipShape(Capsule())
-                .padding()
+                .cornerRadius(15)
         }
         .shadow(color: .gray.opacity(0.5), radius: 10, x: .zero, y: .zero)
-    }
-    //MARK: - 다른 뷰 로그인
-    @ViewBuilder
-    private func anotherLoginButton() -> some View {
-        Button {
-            showBottomSheet.toggle()
-        } label: {
-            Text("다른 방법으로 로그인 ")
-                .font(.custom(FontAsset.regularFont, size: 20))
-                .fontWeight(.semibold)
-                .foregroundColor(Color.colorAssets.navy2)
-        }
     }
     //MARK: - 회원가입 버튼
     @ViewBuilder
@@ -125,17 +124,21 @@ struct LoginView: View {
             SIgnUpVIew()
             //                        .navigationBarHidden(true)
         } label: {
-            HStack {
-                Text("혹시 계정이 없으신가요 ??")
-                    .font(.custom(FontAsset.lightFont, size: 13))
-                
-                Text("회원 가입")
-                    .font(.custom(FontAsset.mediumFont, size: 15))
-                    .fontWeight(.semibold)
-            }
+            Text("회원 가입 하기")
+                .spoqaHan(family: .Bold, size: 20)
+                .foregroundColor(.white)
+                .frame(width: 340, height: 50)
+                .background(Color.colorAssets.darkblue)
+                .cornerRadius(15)
         }
-        .padding(.bottom , 32)
-        .foregroundColor(Color.colorAssets.navy2)
+        .shadow(color: .gray.opacity(0.5), radius: 10, x: .zero, y: .zero)
+    }
+    
+    @ViewBuilder
+    private func spacerView(height: CGFloat) -> some View {
+        Spacer()
+            .frame(height: height)
+        
     }
 }
 

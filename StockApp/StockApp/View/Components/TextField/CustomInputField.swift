@@ -21,13 +21,21 @@ struct CustomInputField: View {
                     .frame(width: 20, height: 20)
                     .foregroundColor(Color(.darkGray))
                 
+                Spacer()
+                    .frame(width: 10)
+                
                 TextField(placeHolderText, text: $text)
-                    .font(.custom(FontAsset.shareCircleFont, size: 20))
+                    .spoqaHan(family: .Regular, size: 20)
             }
-            
-            Divider()
-                .background(Color(.darkGray))
+            .padding()
+            .background(
+            RoundedRectangle(cornerRadius: 15)
+                .stroke(Color(.darkGray), lineWidth: 1)
+                .shadow(color: .gray.opacity(0.5), radius: 10, x: .zero, y: .zero)
+            )
         }
+        .padding(20)
+        .frame(width: UIScreen.screenWidth ,height: 50)
     }
 }
 

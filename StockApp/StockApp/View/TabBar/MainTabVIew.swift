@@ -21,7 +21,7 @@ struct MainTabVIew: View {
     
     var body: some View {
         if viewModel.userSession == nil {
-            LoginView()
+            LoginMainView()
         } else  {
             //MARK: - 로그인 을 했으면  maintab view 로직을
             mainTabView()

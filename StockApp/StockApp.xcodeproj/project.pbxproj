@@ -57,10 +57,12 @@
 		7F39713D28D234F2007823C4 /* FontColorAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F39713C28D234F2007823C4 /* FontColorAsset.swift */; };
 		7F492D1128CDFA45004E5142 /* ClosedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F492D1028CDFA45004E5142 /* ClosedButtonView.swift */; };
 		7F492D1328CDFB51004E5142 /* BottomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F492D1228CDFB51004E5142 /* BottomModel.swift */; };
+		7F4A108429167BFF000EF43D /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4A108329167BFF000EF43D /* ForgotPasswordView.swift */; };
 		7F4A831128FC1BE700A3561A /* AppleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4A831028FC1BE700A3561A /* AppleLogin.swift */; };
 		7F4A831628FC523D00A3561A /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4A831528FC523C00A3561A /* SettingView.swift */; };
 		7F4C7D9B28FEFFAF0058ECD5 /* UserStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4C7D9A28FEFFAF0058ECD5 /* UserStatusView.swift */; };
 		7F4C7D9E28FF01C10058ECD5 /* AppLogoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4C7D9D28FF01C10058ECD5 /* AppLogoutViewModel.swift */; };
+		7F4E4EC4291613F0007A32B7 /* LoginMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E4EC3291613F0007A32B7 /* LoginMainView.swift */; };
 		7F4E82DE2909809B00B65D97 /* SignupPopupVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E82DD2909809B00B65D97 /* SignupPopupVIew.swift */; };
 		7F4E82EB29098E5800B65D97 /* HidableTabView in Frameworks */ = {isa = PBXBuildFile; productRef = 7F4E82EA29098E5800B65D97 /* HidableTabView */; };
 		7F4E8335290CF48900B65D97 /* CustomTabCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8334290CF48900B65D97 /* CustomTabCurve.swift */; };
@@ -90,7 +92,6 @@
 		7FC3564D28D8C3C9002E0E63 /* CircleButtonAnimationVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC3564C28D8C3C9002E0E63 /* CircleButtonAnimationVIew.swift */; };
 		7FCD241428FAEF30002C5C18 /* ErroAlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD241328FAEF30002C5C18 /* ErroAlertMessage.swift */; };
 		7FCD241628FBC5F5002C5C18 /* SnsLoginDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD241528FBC5F5002C5C18 /* SnsLoginDelegate.swift */; };
-		7FD9E45228F4057E003528D4 /* AnotherLoginModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD9E45128F4057E003528D4 /* AnotherLoginModalView.swift */; };
 		7FD9E45628F40FF8003528D4 /* SNSLoginManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD9E45528F40FF8003528D4 /* SNSLoginManger.swift */; };
 		7FE7929F28FD81A900E3D6E3 /* TweetRowVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE7929E28FD81A900E3D6E3 /* TweetRowVIew.swift */; };
 		7FE792A128FD81BE00E3D6E3 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE792A028FD81BE00E3D6E3 /* FeedView.swift */; };
@@ -200,10 +201,12 @@
 		7F39713C28D234F2007823C4 /* FontColorAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontColorAsset.swift; sourceTree = "<group>"; };
 		7F492D1028CDFA45004E5142 /* ClosedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosedButtonView.swift; sourceTree = "<group>"; };
 		7F492D1228CDFB51004E5142 /* BottomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomModel.swift; sourceTree = "<group>"; };
+		7F4A108329167BFF000EF43D /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		7F4A831028FC1BE700A3561A /* AppleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLogin.swift; sourceTree = "<group>"; };
 		7F4A831528FC523C00A3561A /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		7F4C7D9A28FEFFAF0058ECD5 /* UserStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatusView.swift; sourceTree = "<group>"; };
 		7F4C7D9D28FF01C10058ECD5 /* AppLogoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogoutViewModel.swift; sourceTree = "<group>"; };
+		7F4E4EC3291613F0007A32B7 /* LoginMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMainView.swift; sourceTree = "<group>"; };
 		7F4E82DD2909809B00B65D97 /* SignupPopupVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPopupVIew.swift; sourceTree = "<group>"; };
 		7F4E8334290CF48900B65D97 /* CustomTabCurve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabCurve.swift; sourceTree = "<group>"; };
 		7F4E8336290D605C00B65D97 /* TabBarTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarTheme.swift; sourceTree = "<group>"; };
@@ -229,7 +232,6 @@
 		7FCD240F28FAE031002C5C18 /* StockApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StockApp.entitlements; sourceTree = "<group>"; };
 		7FCD241328FAEF30002C5C18 /* ErroAlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErroAlertMessage.swift; sourceTree = "<group>"; };
 		7FCD241528FBC5F5002C5C18 /* SnsLoginDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnsLoginDelegate.swift; sourceTree = "<group>"; };
-		7FD9E45128F4057E003528D4 /* AnotherLoginModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherLoginModalView.swift; sourceTree = "<group>"; };
 		7FD9E45528F40FF8003528D4 /* SNSLoginManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSLoginManger.swift; sourceTree = "<group>"; };
 		7FE7929E28FD81A900E3D6E3 /* TweetRowVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetRowVIew.swift; sourceTree = "<group>"; };
 		7FE792A028FD81BE00E3D6E3 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
@@ -938,8 +940,9 @@
 			isa = PBXGroup;
 			children = (
 				7FF3434F28F05C5000FD34EC /* LoginView.swift */,
-				7FD9E45128F4057E003528D4 /* AnotherLoginModalView.swift */,
 				7FCD241528FBC5F5002C5C18 /* SnsLoginDelegate.swift */,
+				7F4E4EC3291613F0007A32B7 /* LoginMainView.swift */,
+				7F4A108329167BFF000EF43D /* ForgotPasswordView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1334,6 +1337,7 @@
 				7F2AEB4328E839D900FA86AD /* CryptoDetailModel.swift in Sources */,
 				7FE792A128FD81BE00E3D6E3 /* FeedView.swift in Sources */,
 				7F4A831128FC1BE700A3561A /* AppleLogin.swift in Sources */,
+				7F4A108429167BFF000EF43D /* ForgotPasswordView.swift in Sources */,
 				7FEF4F7228DF297800DA9AEB /* CoinImageView.swift in Sources */,
 				7F2382C528DEB39C00103AE7 /* APIKey.swift in Sources */,
 				7F324C6828E9A8A800A22FFC /* CardViews.swift in Sources */,
@@ -1348,7 +1352,6 @@
 				7FF19D5828E1EB3600BF93B3 /* CoinLogoView.swift in Sources */,
 				7FEF4FA728E0B4D400DA9AEB /* MarketDataModel.swift in Sources */,
 				7F98D13B29056F730088A052 /* TabBar.swift in Sources */,
-				7FD9E45228F4057E003528D4 /* AnotherLoginModalView.swift in Sources */,
 				7FEF4FA528E0A32800DA9AEB /* CryptoStatView.swift in Sources */,
 				7F324C7528EB06F400A22FFC /* CryptoChartView.swift in Sources */,
 				7F38DA0A28F5CAAB00D0D324 /* SecretKey.swift in Sources */,
@@ -1368,6 +1371,7 @@
 				7F15F7722905872500B06452 /* ScreenSize.swift in Sources */,
 				7F2382C228DDED4400103AE7 /* URlManager.swift in Sources */,
 				7FF3434E28F05C4400FD34EC /* SIgnUpVIew.swift in Sources */,
+				7F4E4EC4291613F0007A32B7 /* LoginMainView.swift in Sources */,
 				7F01DFBA28F70961000ECB96 /* AppDelegate.swift in Sources */,
 				7F729EDC28DB3A0E00FEAE43 /* CoinRowView.swift in Sources */,
 				7FE8372328BF9D37003761FE /* FontAsset.swift in Sources */,

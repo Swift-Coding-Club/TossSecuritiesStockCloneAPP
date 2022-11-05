@@ -21,17 +21,17 @@ struct StockAppApp: App {
 //        KakaoSDK.initSDK(appKey: SecretKey.kakoNativeAppKey)
               //MARK: - 네비게이션 바 설정
         FirebaseApp.configure()
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.fontColor.mainFontColor)]
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor(Color.fontColor.mainFontColor),
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.colorAssets.black)]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor(Color.colorAssets.black),
                                                             .font : UIFont(name: FontAsset.regularFont, size: 28) ?? ""]
+        
+        UINavigationBar.appearance().tintColor = UIColor(Color.colorAssets.black)
     }
     
     var body: some Scene {
         WindowGroup {
             NavigationView {
                 MainTabVIew()
-//                HomeView()
-//                    .environmentObject(signUpViewModel)
                     .navigationBarHidden(true)
             }
             .environmentObject(viewModel)
