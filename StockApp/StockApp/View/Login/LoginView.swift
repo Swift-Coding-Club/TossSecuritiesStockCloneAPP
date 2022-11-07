@@ -22,6 +22,7 @@ struct LoginView: View {
             ZStack {
                 Color.colorAssets.backGroundColor
                     .ignoresSafeArea()
+                
                 VStack {
                     
                     Spacer()
@@ -68,7 +69,6 @@ struct LoginView: View {
         .padding(.bottom, 20)
         .padding()
     }
-
     //MARK:  -  이메일  & 비빌번호  텍스트 필드
     @ViewBuilder
     private func authorizationTextField() -> some View {
@@ -133,7 +133,7 @@ struct LoginView: View {
         }
         .shadow(color: .gray.opacity(0.5), radius: 10, x: .zero, y: .zero)
     }
-    
+    //MARK: - spacer
     @ViewBuilder
     private func spacerView(height: CGFloat) -> some View {
         Spacer()

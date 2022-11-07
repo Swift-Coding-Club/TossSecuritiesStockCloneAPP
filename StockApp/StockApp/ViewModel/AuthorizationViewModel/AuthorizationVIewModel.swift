@@ -23,7 +23,6 @@ class AuthorizationVIewModel:  ObservableObject {
     init() {
         self.userSession = Auth.auth().currentUser
         debugPrint("DEBUG: User session is \(self.userSession)")
-        
     }
     
     //MARK: - 로그인

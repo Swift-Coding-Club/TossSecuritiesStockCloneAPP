@@ -46,12 +46,10 @@ struct SIgnUpVIew: View {
                     signUPTextField()
                     
                     signUPButton()
-                 
-                    Spacer()
-                    //MARK: - 이미계정이 있는 경우 버튼
-                    alreadyAccount()
-                    
                 }
+                
+                alreadyAccount()
+                
                 Spacer(minLength: .zero)
             }
             .popup(isPresented: $checkUserNameRegister, type: .floater(verticalPadding: 20), position: .bottom, animation: .spring(), autohideIn: 2,  closeOnTap: true, closeOnTapOutside: true,  view: {

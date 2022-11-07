@@ -141,7 +141,6 @@ struct LoginMainView: View {
         .padding(.horizontal, 30)
 
     }
-    
     //MARK:  - 로그인 버튼
     @ViewBuilder
     private func loginButton() -> some View {
