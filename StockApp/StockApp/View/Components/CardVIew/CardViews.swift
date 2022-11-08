@@ -16,47 +16,57 @@ struct CardViews: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(stat.title)
-                .foregroundColor(Color.colorAssets.subColor)
-                .font(.custom(FontAsset.mediumFont, size: 23))
+                .spoqaHan(family: .Medium, size: 14)
+                .foregroundColor(Color.colorAssets.textColor)
                 .padding(.top, 10)
-                .padding(.leading , 12)
+                .padding(.leading , 15)
+            
             LazyVGrid(columns: colums,
                       alignment: .leading,
                       spacing:  spacing,
                       pinnedViews: [ ] ) {
                 Text(stat.value)
-                    .font(.custom(FontAsset.boldFont, size: 15))
+                    .kerning(-0.5)
+                    .font(.custom(FontAsset.boldFont, size: 23))
                     .foregroundColor(Color.fontColor.mainFontColor)
-                HStack{
-                    Spacer(minLength: 45)
-                    VStack(alignment: .leading){
-                        Text("시세 변화율")
-                            .foregroundColor(Color.colorAssets.subColor)
-                            .font(.custom(FontAsset.mediumFont, size: 20))
-                        HStack(spacing: 4) {
-                            Image(systemName: "triangle.fill")
-                                .font(.caption2)
-                                .rotationEffect(Angle(degrees:
-                                                        (stat.percentageChange ?? .zero) >= .zero ? 0 : 180 ))
+        
+                        HStack {
+                            Text("KRW")
+                                .spoqaHan(family: .Bold, size: 14)
+                                .foregroundColor(Color.colorAssets.white)
+                                .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color.colorAssets.skyblue4)
+                                    .frame(width: 51, height: 25)
+                                )
+                                .padding(.horizontal, 10)
+                            
+                            Spacer()
+                                .frame(width: 12)
+                                
                             Text(stat.percentageChange?.asPercentString() ?? "")
-                                .font(.custom(FontAsset.lightFont, size: 15))
-                                .bold()
-                        }
-                        .foregroundColor((stat.percentageChange ?? .zero) >= .zero ? Color.colorAssets.green : Color.colorAssets.red )
+                                .spoqaHan(family: .Regular, size: 12)
+                                .foregroundColor((stat.percentageChange ?? .zero) >= .zero ? Color.colorAssets.skyblue4.opacity(0.8) : Color.colorAssets.red )
                         .opacity(stat.percentageChange == nil ? 0.0: 1.0)
-                        
-                    }
+                        .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+                        .background((stat.percentageChange ?? .zero) >= .zero ? Color.colorAssets.skyblue4.opacity(0.3) : Color.colorAssets.lightRed.opacity(0.3))
+                        .clipShape(Capsule())
+                            
+                        }
+                Spacer()
                 }
-            }
                       .padding(.horizontal)
+            Spacer()
         }
         .padding(.vertical)
+        .frame(width: ContentsWidth, height: 100)
         .background(
             RoundedRectangle(cornerRadius: 15)
                 .foregroundColor(Color.colorAssets.backGroundColor)
                 .shadow(color:Color.fontColor.accentColor.opacity(0.15), radius: 5, x: .zero, y: .zero)
         )
         .padding(.horizontal, 20)
+       
     }
 }
 

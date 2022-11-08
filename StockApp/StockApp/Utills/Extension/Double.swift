@@ -22,6 +22,23 @@ extension Double {
         return formatter
     }
 
+    private var currencyForatterValue: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.usesGroupingSeparator = true
+        formatter.numberStyle = .currency // 숫자 스타일
+        formatter.locale = .current   // 국가 관련
+        formatter.currencyCode = "kr"
+        formatter.currencySymbol = ""
+        formatter.minimumIntegerDigits = 1
+        formatter.maximumIntegerDigits = 8
+        return formatter
+    }
+    
+    func asCurrencyWith2DecimalsValue() -> String {
+        let number = NSNumber(value: self)
+        return currencyForatterValue.string(from: number) ?? "0.00 KRW"
+    }
+    
     func asCurrencyWith6Decimals() -> String {
         let number = NSNumber(value: self)
         return currencyForatter6.string(from: number) ?? "0.00 KRW"
