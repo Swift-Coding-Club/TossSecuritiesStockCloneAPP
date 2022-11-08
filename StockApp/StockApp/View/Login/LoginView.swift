@@ -21,7 +21,7 @@ struct LoginView: View {
         NavigationView {
             ZStack {
                 Color.colorAssets.backGroundColor
-                    .ignoresSafeArea()      
+                    .ignoresSafeArea()        
                 
                 VStack {
                     
