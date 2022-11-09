@@ -58,18 +58,18 @@ class CryptoDetailViewModel: ObservableObject {
     //MARK: - 코인 개요 생성 함수
     private func createOverViewArray(coinModel: CoinModel) -> [StatisticModel]{
         //MARK: - 코인 개요
-        let price = coinModel.currentPrice.asCurrencyWith6Decimals()   // 코인 가격
+        let price = coinModel.currentPrice.asCurrencyWith2DecimalsValue()  + "  KRW" // 코인 가격
         let pricePercentChange = coinModel.priceChangePercentage24H             // 코인 환율
         let priceStat = StatisticModel(title: "코인 시세", value: price, percentageChange: pricePercentChange)
         //MARK: - 시가 총액
-        let marketCap = "KRW " + (coinModel.marketCap?.formattedWithAbbreviations() ?? "")   // 마켓  시세
+        let marketCap =  (coinModel.marketCap?.formattedWithAbbreviations() ?? "")  + "  KRW "  // 마켓  시세
         let marketCapPercentChange =  coinModel.marketCapChangePercentage24H
         let marketCapStat = StatisticModel(title: "시가 총액", value: marketCap, percentageChange: marketCapPercentChange)
         
         let rank = "\(coinModel.rank)"
         let rankStat = StatisticModel(title: "코인 순위", value: rank)
         
-        let volume = "KRW " +  (coinModel.totalVolume?.formattedWithAbbreviations() ?? "")
+        let volume = (coinModel.totalVolume?.formattedWithAbbreviations() ?? "") + "  KRW "
         let volumeStat = StatisticModel(title: "시세", value: volume)
         
         let overViewArray: [StatisticModel] = [
@@ -80,17 +80,17 @@ class CryptoDetailViewModel: ObservableObject {
     //MARK: - 코인 세부 사항 생성 함수
     private func createAdditionalArray(coinDetailModel: CoinDetailModel?, coinModel: CoinModel) -> [StatisticModel] {
         //MARK:  - 추가 세부사항 통계
-        let high = coinModel.high24H?.asCurrencyWith6Decimals() ?? "n/a"
-        let highStat = StatisticModel(title: "코인 최고가", value: high)
+        let high = coinModel.high24H?.asCurrencyWith2DecimalsValue() ?? "n/a"
+        let highStat = StatisticModel(title: "코인 최고가", value: high + " KRW")
         
-        let low = coinModel.low24H?.asCurrencyWith6Decimals() ?? "n/a"
-        let lowStat = StatisticModel(title: "코인 최저가", value: low)
+        let low = coinModel.low24H?.asCurrencyWith2DecimalsValue() ?? "n/a"
+        let lowStat = StatisticModel(title: "코인 최저가", value: low + " KRW")
         
-        let priceChange = coinModel.priceChange24H?.asCurrencyWith2Decimals() ??  "n/a"
+        let priceChange = coinModel.priceChange24H?.asCurrencyWith2DecimalsValue() ??  "n/a"
         let pricePercentChange = coinModel.priceChangePercentage24H
-        let priceChangeStat = StatisticModel(title: "24시간 변화량", value: priceChange, percentageChange: pricePercentChange)
+        let priceChangeStat = StatisticModel(title: "24시간 변화량", value: priceChange + " KRW", percentageChange: pricePercentChange)
         
-        let markertCapChange = "KRW " + (coinModel.marketCapChange24H?.formattedWithAbbreviations() ?? "")
+        let markertCapChange = (coinModel.marketCapChange24H?.formattedWithAbbreviations() ?? "") + " KRW "
         let marketCapPercentChange = coinModel.marketCapChangePercentage24H
         let marketCapChangeStat = StatisticModel(title: "24시간 시가 총액", value: markertCapChange, percentageChange: marketCapPercentChange)
         

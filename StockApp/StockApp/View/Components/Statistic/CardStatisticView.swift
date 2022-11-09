@@ -15,17 +15,23 @@ struct CardStatisticView: View {
                 .spoqaHan(family: .Bold, size: 14)
                 .foregroundColor(Color.colorAssets.textColor)
             
+            Spacer()
+                .frame(height: 10)
+            
+            Text(stat.value)
+                .spoqaHan(family: .Bold, size: 15)
+                .foregroundColor(Color.fontColor.mainFontColor)
+            
             Text(stat.percentageChange?.asPercentString() ?? "")
                 .spoqaHan(family: .Regular, size: 12)
                 .foregroundColor((stat.percentageChange ?? .zero) >= .zero ? Color.colorAssets.blue.opacity(0.8) : Color.colorAssets.red )
             .opacity(stat.percentageChange == nil ? 0.0: 1.0)
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-            .background((stat.percentageChange ?? .zero) >= .zero ? Color.colorAssets.skyblue4.opacity(0.3) : Color.colorAssets.lightRed.opacity(0.3))
+            .background((stat.percentageChange ?? .zero) == .zero ?
+                        Color.clear :
+                            (stat.percentageChange ?? .zero) >= .zero ? Color.colorAssets.skyblue4.opacity(0.3) : Color.colorAssets.lightRed.opacity(0.3))
             .clipShape(Capsule())
             
-            Text(stat.value)
-                .font(.custom(FontAsset.boldFont, size: 15))
-                .foregroundColor(Color.fontColor.mainFontColor)
         }
         .frame(width: 110, height: 130)
         .background() {
