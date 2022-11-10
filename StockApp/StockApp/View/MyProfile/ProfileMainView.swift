@@ -17,7 +17,6 @@ struct ProfileMainView: View {
     
     @Namespace var animation
     
-    
     var body: some View {
         NavigationView {
             

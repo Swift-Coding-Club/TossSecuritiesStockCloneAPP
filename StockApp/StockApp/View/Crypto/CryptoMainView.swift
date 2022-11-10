@@ -41,7 +41,6 @@ struct CryptoMainView: View {
                 //MARK: - 마켓 시세 관련 뷰
                 CryptoStatView(showPortfolio: $showPortfolio)
                     .padding(.vertical, 5)
-                
                 //MARK: - 코인 검색창
                 SearchBarView(searchBarTextField:  $viewModel.searchText)
                 //MARK: - 코인 리스트 타이틀

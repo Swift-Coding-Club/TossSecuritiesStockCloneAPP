@@ -33,9 +33,9 @@ struct CardStatisticView: View {
             .clipShape(Capsule())
             
         }
-        .frame(width: 110, height: 130)
+        .frame(width: 110, height: 120)
         .background() {
-            RoundedRectangle(cornerRadius: 15)
+            RoundedRectangle(cornerRadius: 18)
                 .foregroundColor(Color.colorAssets.backGroundColor)
                 .shadow(color: Color.fontColor.accentColor.opacity(0.15),
                          radius: 10, x: .zero, y: .zero)
