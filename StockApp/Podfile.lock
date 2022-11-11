@@ -1,8 +1,8 @@
 PODS:
-  - Alamofire (5.6.1)
-  - ExytePopupView (1.1.6)
+  - Alamofire (5.6.2)
+  - ExytePopupView (1.2.1)
   - Introspect (0.1.4)
-  - SwiftLint (0.47.1)
+  - SwiftLint (0.49.1)
 
 DEPENDENCIES:
   - Alamofire
@@ -18,10 +18,10 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
-  Alamofire: 87bd8c952f9a4454320fce00d9cc3de57bcadaf5
-  ExytePopupView: da827797316240e93b67d7ca57b01bb693a28b01
+  Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
+  ExytePopupView: e0554c9713665a386a54b356c596858811e84621
   Introspect: b62c4dd2063072327c21d618ef2bedc3c87bc366
-  SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
+  SwiftLint: 32ee33ded0636d0905ef6911b2b67bbaeeedafa5
 
 PODFILE CHECKSUM: 869012bece0bb1561d1a64ad48c34a468dadda80
 

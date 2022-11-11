@@ -16,8 +16,8 @@ struct ListRowTextView: View {
         HStack{
             Image(imageName)
                 .resizable()
-                .frame(width: 20, height: 20)
-                .foregroundColor(Color.fontColor.accentColor)
+                .frame(width: 15, height: 20)
+                .foregroundColor(Color.fontColor.mainFontColor)
             
             Spacer()
                 .frame(width: 10)
@@ -31,7 +31,7 @@ struct ListRowTextView: View {
             Image(systemName: "chevron.right")
                 .resizable()
                 .frame(width: 10, height: 15)
-                .foregroundColor(Color.fontColor.mainFontColor)
+                .foregroundColor(Color.colorAssets.iconColor)
         }
     }
 }
