@@ -10,8 +10,7 @@ import SwiftUI
 struct ListRowTextView: View {
     let title: String
     let imageName: String
-    
-    
+     
     var body: some View {
         HStack{
             Image(imageName)

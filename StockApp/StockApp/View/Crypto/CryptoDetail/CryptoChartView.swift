@@ -40,7 +40,7 @@ struct CryptoChartView: View {
             chartDateLabel()
                 .padding(.horizontal, 4)
         }
-        .font(.custom(FontAsset.mediumFont, size: 15))
+        .spoqaHan(family: .Medium, size: 15)
         .foregroundColor(Color.colorAssets.textColor)
         .onAppear{
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {

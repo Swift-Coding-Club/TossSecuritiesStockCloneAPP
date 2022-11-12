@@ -34,7 +34,7 @@ struct SearchBarView: View {
                     ,alignment: .trailing
                 )
         }
-        .font(.headline)
+        .spoqaHan(family: .Medium, size: 15)
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 15)
