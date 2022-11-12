@@ -31,6 +31,7 @@ struct LanchView: View {
                 ProgressView(value: loadingProgress, total: 100)
                     .progressViewStyle(LinearProgressViewStyle(tint: Color.colorAssets.mainColor2))
                     .padding()
+                    .padding(.horizontal, 20)
                 
                 Spacer()
             }

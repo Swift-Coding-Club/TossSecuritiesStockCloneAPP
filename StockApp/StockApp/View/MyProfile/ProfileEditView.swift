@@ -30,6 +30,6 @@ struct ProfileEditView: View {
 
 struct ProfileEditView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileEditView(image: "flame", title: "불")
+        ProfileEditView(image: "bell", title: "불")
     }
 }
