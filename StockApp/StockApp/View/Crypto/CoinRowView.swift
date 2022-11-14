@@ -14,17 +14,67 @@ struct CoinRowView: View {
     
     var body: some View {
         HStack(spacing: .zero) {
-            leftColumn
+            leftColumn()
             Spacer()
             if showHoldingsColumn {
-                centerColumn
+                centerColumn()
             }
-            rightColumn
+            rightColumn()
         }
-        .font(.custom(FontAsset.mediumFont, size: 15))
+        .spoqaHan(family: .Medium, size: 15)
         .background(
             Color.colorAssets.backGroundColor.opacity(0.001)
         )
+    }
+    //MARK: - 왼쪽
+
+    @ViewBuilder
+    private func leftColumn() ->  some View {
+        HStack(spacing: .zero) {
+            Text("\(coin.rank)")
+                .spoqaHan(family: .Regular, size: 15)
+                .foregroundColor(Color.colorAssets.textColor)
+                .frame(minWidth: 30)
+            
+            CoinImageView(coin: coin)
+                .frame(width: 30, height: 30)
+            Text(coin.symbol.uppercased())
+                .spoqaHan(family: .Medium, size: 15)
+                .padding(.leading, 6)
+                .foregroundColor(Color.fontColor.mainFontColor)
+        }
+    }
+    
+    
+    //MARK: - 중앙
+    @ViewBuilder
+    private func centerColumn() ->  some View {
+        VStack(alignment: .trailing) {
+            Text(coin.currentHoldingsValue.asCurrencyWith2DecimalsValue() + "  KRW")
+                .spoqaHan(family: .Bold, size: 12)
+            Text((coin.currentHoldings ?? .zero).asNumberString())
+        }
+        .foregroundColor(Color.fontColor.mainFontColor)
+    }
+    
+    @ViewBuilder
+    private func rightColumn() -> some View {
+        VStack(alignment: .trailing) {
+            Text(coin.currentPrice.asCurrencyWith2DecimalsValue() + "  KRW")
+                .spoqaHan(family: .Bold, size: 12)
+                .foregroundColor(Color.fontColor.mainFontColor)
+            Text(coin.priceChangePercentage24H?.asPercentString() ?? "")
+                .spoqaHan(family: .Regular, size: 10)
+                .foregroundColor(
+                    (coin.priceChangePercentage24H ?? 0) >= .zero ?
+                    Color.colorAssets.skyblue4.opacity(0.8) : Color.colorAssets.red
+                )
+                .padding(EdgeInsets(top: 5, leading: 7, bottom: 5, trailing: 7))
+                .background((coin.priceChangePercentage24H  ?? .zero) >= .zero ? Color.colorAssets.skyblue4.opacity(0.3) : Color.colorAssets.lightRed.opacity(0.3))
+                .clipShape(Capsule())
+
+        }
+        .frame(width: UIScreen.main.bounds.width / 3.5 , alignment: .trailing)
     }
 }
 
@@ -38,47 +88,5 @@ struct CoinRowView_Previews: PreviewProvider {
                 .previewLayout(.sizeThatFits)
                 .preferredColorScheme(.dark)
         }
-    }
-}
-
-extension CoinRowView {
-    
-    private var leftColumn: some View {
-        HStack(spacing: .zero) {
-            Text("\(coin.rank)")
-                .font(.custom(FontAsset.mediumFont, size: 15))
-                .foregroundColor(Color.colorAssets.textColor)
-                .frame(minWidth: 30)
-            
-            CoinImageView(coin: coin)
-                .frame(width: 30, height: 30)
-            Text(coin.symbol.uppercased())
-                .font(.custom(FontAsset.mediumFont, size: 15))
-                .padding(.leading, 6)
-                .foregroundColor(Color.fontColor.mainFontColor)
-        }
-    }
-    
-    private var centerColumn: some View {
-        VStack(alignment: .trailing) {
-            Text(coin.currentHoldingsValue.asCurrencyWith2Decimals())
-                .bold()
-            Text((coin.currentHoldings ?? .zero).asNumberString())
-        }
-        .foregroundColor(Color.fontColor.mainFontColor)
-    }
-    
-    private var rightColumn: some View {
-        VStack(alignment: .trailing) {
-            Text(coin.currentPrice.asCurrencyWith6Decimals())
-                .bold()
-                .foregroundColor(Color.fontColor.mainFontColor)
-            Text(coin.priceChangePercentage24H?.asPercentString() ?? "")
-                .foregroundColor(
-                    (coin.priceChangePercentage24H ?? 0) >= .zero ?
-                    Color.colorAssets.green : Color.colorAssets.red
-                )
-        }
-        .frame(width: UIScreen.main.bounds.width / 3.5 , alignment: .trailing)
     }
 }

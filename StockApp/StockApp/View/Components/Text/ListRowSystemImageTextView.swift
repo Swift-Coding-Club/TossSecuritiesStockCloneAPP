@@ -10,11 +10,13 @@ import SwiftUI
 struct ListRowSystemImageTextView: View {
     let title: String
     let imageName: String
+    let width: CGFloat
+    let height: CGFloat
     var body: some View {
         HStack{
             Image(systemName: imageName)
                 .resizable()
-                .frame(width: 20, height: 20)
+                .frame(width: width, height: height)
                 .foregroundColor(Color.fontColor.accentColor)
             
             Spacer()
@@ -29,13 +31,13 @@ struct ListRowSystemImageTextView: View {
             Image(systemName: "chevron.right")
                 .resizable()
                 .frame(width: 10, height: 15)
-                .foregroundColor(Color.fontColor.mainFontColor)
+                .foregroundColor(Color.colorAssets.iconColor)
         }
     }
 }
 
 struct ListRowSystemImageTextView_Previews: PreviewProvider {
     static var previews: some View {
-        ListRowSystemImageTextView(title: "로그아웃", imageName: "flame")
+        ListRowSystemImageTextView(title: "로그아웃", imageName: "flame", width: 8, height: 10)
     }
 }

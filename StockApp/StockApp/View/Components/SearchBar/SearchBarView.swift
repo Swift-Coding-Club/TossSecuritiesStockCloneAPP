@@ -34,10 +34,10 @@ struct SearchBarView: View {
                     ,alignment: .trailing
                 )
         }
-        .font(.headline)
+        .spoqaHan(family: .Medium, size: 15)
         .padding()
         .background(
-            RoundedRectangle(cornerRadius: 25)
+            RoundedRectangle(cornerRadius: 15)
                 .fill(Color.colorAssets.backGroundColor)
                 .shadow(
                     color: Color.fontColor.accentColor.opacity(0.15),

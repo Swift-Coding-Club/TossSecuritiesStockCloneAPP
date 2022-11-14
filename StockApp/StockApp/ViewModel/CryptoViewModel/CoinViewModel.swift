@@ -148,7 +148,7 @@ class CoinViewModel: ObservableObject {
         
         let portfolio = StatisticModel(
             title: "총 보유 수량 ",
-            value: portfolioValue.asCurrencyWith2Decimals(),
+            value: portfolioValue.asCurrencyWith2DecimalsValue(),
             percentageChange: percentageChange)
         //MARK:- StatisticModel에 append
         stats.append(contentsOf: [
@@ -178,7 +178,7 @@ class CoinViewModel: ObservableObject {
         
         let portfolio = StatisticModel(
             title: " 총 보유 수량 ",
-            value: portfolioValue.asCurrencyWith2Decimals(),
+            value: portfolioValue.asCurrencyWith2DecimalsValue(),
             percentageChange: percentageChange)
         //MARK:- StatisticModel에 append
         stats.append(contentsOf: [

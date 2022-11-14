@@ -16,7 +16,7 @@ struct CryptoStatView: View {
         HStack {
             ForEach(viewModel.statistic) { stat in
                 CardStatisticView(stat: stat)
-                    .frame(width: (UIScreen.main.bounds.width / 3) - 10)
+                    .frame(width: (UIScreen.main.bounds.width / 3) - 12)
             }
         }
         .frame(width: UIScreen.main.bounds.width, alignment: .center)

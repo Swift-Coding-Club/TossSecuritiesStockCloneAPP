@@ -94,7 +94,8 @@ struct PortfolioView: View {
             HStack {
                 Text("보유한 코인 \(selectedCoin?.symbol.uppercased() ?? "" ) : ")
                 Spacer()
-                Text(selectedCoin?.currentPrice.asCurrencyWith6Decimals() ?? "")
+                Text(selectedCoin?.currentPrice.asCurrencyWith2DecimalsValue() ?? "") +
+                Text(" KRW")
             }
             Divider()
             
@@ -109,12 +110,12 @@ struct PortfolioView: View {
             HStack {
                 Text("코인 총합 : ")
                 Spacer()
-                Text(getCurrentValue().asCurrencyWith2Decimals())
+                Text(getCurrentValue().asCurrencyWith2DecimalsValue() + " KRW")
             }
         }
         .animation(.none)
         .padding()
-        .font(.custom(FontAsset.mediumFont, size: 15))
+        .spoqaHan(family: .Medium, size: 15)
     }
     //MARK: - navigaionleadingtoolbar xmark button
     @ViewBuilder

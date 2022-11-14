@@ -31,14 +31,16 @@ struct CryptoMainView: View {
                 //MARK: - 상단  hedaer 부분
                 homeHeader()
                     .padding(.vertical, 3)
-                //MARK: - 마켓 시세 관련 뷰
-                CryptoStatView(showPortfolio: $showPortfolio)
-                    .padding(.vertical, 5)
+                
                 NavigationLink {
                     CryptoPortfolioView()
                 } label: {
                     CryptoCoinCardView()
                 }
+                
+                //MARK: - 마켓 시세 관련 뷰
+                CryptoStatView(showPortfolio: $showPortfolio)
+                    .padding(.vertical, 5)
                 //MARK: - 코인 검색창
                 SearchBarView(searchBarTextField:  $viewModel.searchText)
                 //MARK: - 코인 리스트 타이틀
@@ -58,6 +60,7 @@ struct CryptoMainView: View {
                 label: { EmptyView() }
             )
         )
+//        .ignoresSafeArea()
         
     }
     //MARK: - CryptoMainView 확장으로 main body 뷰 코드를 줄이기
@@ -77,8 +80,7 @@ struct CryptoMainView: View {
                 )
             Spacer()
             Text("코인 시세")
-                .font(.headline)
-                .fontWeight(.heavy)
+                .spoqaHan(family: .Bold, size: 15)
                 .foregroundColor(Color.fontColor.mainFontColor)
                 .animation(.none)
             Spacer()
@@ -126,7 +128,7 @@ struct CryptoMainView: View {
             .rotationEffect(Angle(degrees: viewModel.isLoading ? 360 : .zero),
                             anchor: .center)
         }
-        .font(.custom(FontAsset.regularFont, size: 13))
+        .spoqaHan(family: .Regular, size: 13)
         .foregroundColor(Color.colorAssets.textColor)
         .padding(.horizontal)
     }

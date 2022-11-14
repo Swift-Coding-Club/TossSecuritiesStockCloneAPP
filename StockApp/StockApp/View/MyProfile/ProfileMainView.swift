@@ -6,205 +6,184 @@
 //
 
 import SwiftUI
-import HidableTabView
+import ExytePopupView
 
 struct ProfileMainView: View {
     
     @Environment(\.dismiss)  private var dismiss
     
     @EnvironmentObject var viewModel: AuthorizationVIewModel
-    @State private var selectedFilter: TweetFilterViewModel = .tweets
-    
-    @Namespace var animation
-    
+
+    @State private var policyInformationButton: Bool = false
+    @State private var developerListButton: Bool  = false
+    @State private var personalInformationButton: Bool = false
+    @State private var showAlertLogout: Bool = false
+    @State private var sendEmailButton: Bool = false
     
     var body: some View {
         NavigationView {
-            
-            VStack(alignment: .leading) {
-                profileHeader()
+            ZStack {
+                Color.colorAssets.backGroundColor
+                    .ignoresSafeArea()
                 
-                editProfileButton()
-                
-                userInfoDetail()
-                
-                tweetFilterBar()
-               
-                 Spacer()
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    navigationTrallingItem()
+                VStack(alignment: .leading) {
+                   spacingHeight(height: 32)
+                    
+                   profileHeader()
+                    
+                    spacingHeight(height: 40)
+                    
+                    editProfile()
+                    
+                    appInformationListButton()
+                    
+                    feedBackListButton()
+                    
+                    logoutListButton()
+                    
+                    Spacer(minLength: .zero)
                 }
+            }
+            .popup(isPresented: $showAlertLogout,  type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
+                PopupView()
+                    .environmentObject(viewModel)
             }
         }
     }
-    //MARK: - 네비게이션 오른쪽 버튼
+    //MARK: - 프로필 상단
     @ViewBuilder
-    private func navigationTrallingItem() -> some View {
+    private func profileHeader() -> some View {
         HStack {
-            NavigationLink {
-                FeedView()
-            } label: {
-                Image(systemName: "message.fill")
-                    .resizable()
-                    .foregroundColor(Color.colorAssets.white)
-            }
+            Circle()
+                .frame(width: 72, height: 72)
             
             Spacer()
                 .frame(width: 10)
             
-            NavigationLink {
-                SettingView()
-            } label: {
-                Image(systemName: "gearshape.fill")
-                    .resizable()
-                    .foregroundColor(Color.colorAssets.white)
+            VStack(alignment: .leading , spacing: 5) {
+                Text("Roy")
+                    .spoqaHan(family: .Bold, size: 18)
+                Text("suhwj81@gmail.com")
             }
-        }
-    }
-    //MARK: - 상단  배경
-    @ViewBuilder
-    private func profileHeader() -> some View {
-        ZStack(alignment: .bottomLeading) {
-            Color.colorAssets.navy2
-                .clipShape(RoundShape(corners: [.bottomRight]))
-                .ignoresSafeArea()
-            
-            VStack {
-                
-                Circle()
-                    .frame(width: 72, height: 72)
-                    .offset(x: 16, y: 24)
-            }
-        }
-        .frame(height: (UIScreen.main.bounds.height / 6) - 30)
-    }
-    //MARK: - 프로필 수정 버튼
-    @ViewBuilder
-    private func editProfileButton() -> some View {
-        HStack(spacing: 12) {
             Spacer()
-            
-            Image(systemName: "bell.badge")
-                .spoqaHan(family: .Medium, size: 20)
-                .padding(6)
-                .overlay (
-                    Circle()
-                    .stroke(Color.gray, lineWidth: 0.75))
-            
-            Button {
-                
-            } label: {
-                Text("프로필 수정")
-                    .font(.custom(FontAsset.mediumFont, size: 20))
-                    .bold()
-                    .frame(width: 120, height: 32)
-                    .foregroundColor(Color.fontColor.mainFontColor)
-                    .overlay(RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color.gray, lineWidth: 0.75)
-                    )
-            }
         }
-        .padding(.trailing)
+        .padding(.horizontal, 30)
     }
-    //MARK: - 유정 정보
+    //MARK: - 스페이싱 높이
     @ViewBuilder
-    private func userInfoDetail() -> some View {
-        VStack(alignment: .leading, spacing: 4) {
-            HStack  {
-                Text("로이")
-                    .spoqaHan(family: .Bold, size: 25)
-                
-                Image(systemName: "checkmark.seal.fill")
-                    .foregroundColor(Color.colorAssets.blue3)
+    private func spacingHeight(height: CGFloat) -> some View {
+        Spacer()
+            .frame(height: height)
+    }
+    //MARK: - 스페이싱 넓이
+    @ViewBuilder
+    private func spacingWidth(width: CGFloat) -> some View {
+        Spacer()
+            .frame(width: width)
+    }
+    //MARK: - 공지 사항 및  환경설정 뷰
+    @ViewBuilder
+    private func editProfile() -> some View {
+        HStack(spacing: 20) {
+            Spacer()
+            ForEach(ProfileEditViewModel.allCases , id: \.rawValue) { item in
+                ProfileEditView(image: item.imageName, title: item.description)
             }
-            
-            Text("@로이2")
-                .font(.subheadline)
-                .foregroundColor(Color.gray)
-            
-            HStack(spacing: 24) {
-                HStack {
-                    Image(systemName: "mappin.and.ellipse")
-                    
-                    Text("판교역")
-                    
-                }
-                
-                HStack {
-                    Image(systemName: "link")
-                    
-                    Text("suhwj81@gmail.com")
-                }
-            }
-            .font(.custom(FontAsset.regularFont, size: 13))
-            .foregroundColor(.gray)
-            
-            HStack(spacing: 24) {
-                HStack(spacing: 4) {
-                    Text("807")
-                        .font(.custom(FontAsset.mediumFont, size: 18))
-                        .bold()
-                    
-                    Text("팔로윙")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                    
-                }
-                
-                HStack(spacing: 4) {
-                    Text("6.99")
-                        .font(.custom(FontAsset.mediumFont, size: 18))
-                        .bold()
-                    
-                    Text("팔로워")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                    
+            Spacer()
+        }
+        spacingHeight(height: 30)
+    }
+    //MARK: - 앱 정보
+    @ViewBuilder
+    private func appInformationListButton()  -> some View {
+        Section {
+            ForEach(InformationVIewModel.allCases, id: \.rawValue) { item in
+                if item == .termsOfService {
+                    Button {
+                        policyInformationButton.toggle()
+                    } label: {
+                        ListRowSystemImageTextView(title: item.description, imageName: item.imageName, width: 15,  height: 20)
+                            .background(
+                                NavigationLink(destination: DeveloperView(),
+                                               isActive: $policyInformationButton,
+                                               label: {EmptyView()}))
+                    }
+                } else if item == .personalInformation {
+                    Button {
+                        personalInformationButton.toggle()
+                    } label: {
+                        ListRowTextView(title: item.description, imageName: item.imageName)
+                            .background(
+                                NavigationLink(destination: PersonalInformationView(),
+                                               isActive: $personalInformationButton,
+                                               label: {EmptyView()}))
+                    }
+                } else if item == .developer {
+                    Button {
+                        developerListButton.toggle()
+                    } label: {
+                        ListRowTextView(title: item.description, imageName: item.imageName)
+                            .background(
+                                NavigationLink(destination: DeveloperView(),
+                                               isActive: $developerListButton,
+                                               label: {EmptyView()}))
+                    }
                 }
             }
-            .padding(.vertical)
-           
+        } header: {
+            Text("약관 및 정책")
+                .spoqaHan(family: .Medium, size: 18)
+                .foregroundColor(Color.fontColor.mainFontColor)
+        }
+        .padding(.horizontal)
+        spacingHeight(height: 30)
+    }
+    //MARK: - 피드백
+    @ViewBuilder
+    private func feedBackListButton() -> some View {
+        Section{
+            ForEach(FeedBackViewModel.allCases, id: \.rawValue) { item in
+                if item == .sendEmail {
+                    Button {
+                        sendEmailButton.toggle()
+                    } label: {
+                        ListRowSystemImageTextView(title: item.description, imageName: item.imageName, width: 15,  height: 12)
+                            .background(
+                            NavigationLink(destination: DeveloperView(),
+                                           isActive: $sendEmailButton,
+                                           label: {EmptyView()})
+                            )
+                    }
+                }
+            }
+        } header : {
+            Text("피드백")
+                .spoqaHan(family: .Medium, size: 18)
+                .foregroundColor(Color.fontColor.mainFontColor)
+        }
+        .padding(.horizontal)
+        spacingHeight(height: 30)
+    }
+    //MARK: - 앱 계정 관리
+    @ViewBuilder
+    private func logoutListButton() -> some View  {
+        Section {
+            ForEach(AppLogoutViewModel.allCases, id: \.rawValue) { item in
+                if item == .logout {
+                    Button {
+                        showAlertLogout.toggle()
+                    } label: {
+                        ListRowSystemImageTextView(title: item.description, imageName: item.imageName, width: 15, height: 20)
+                    }
+                }
+            }
+        }header: {
+            Text("계정 관리")
+                .spoqaHan(family: .Medium, size: 18)
+                .foregroundColor(Color.fontColor.mainFontColor)
         }
         .padding(.horizontal)
     }
-    //MARK: - 상단 투윗 일반 좋아요 한부분 header
-    @ViewBuilder
-    private func tweetFilterBar() -> some View {
-        HStack {
-            ForEach(TweetFilterViewModel.allCases, id: \.rawValue) { item  in
-                VStack {
-                    
-                    Text(item.description)
-                        .font(.subheadline)
-                        .fontWeight(selectedFilter == item ? .semibold : .regular)
-                        .foregroundColor(selectedFilter == item ? Color.fontColor.mainFontColor : .gray)
-                    
-                    if selectedFilter == item {
-                       Capsule()
-                            .foregroundColor(Color.colorAssets.blue3)
-                            .frame(height: 3)
-                            .matchedGeometryEffect(id: "filter", in: animation)
-                    } else {
-                        Capsule()
-                            .foregroundColor(Color(.clear))
-                             .frame(height: 3)
-                    }
-                }
-                .onTapGesture {
-                    withAnimation(.easeInOut) {
-                        self.selectedFilter = item
-                    }
-                }
-            }
-        }
-        .overlay(
-            Divider()
-                .offset(x: .zero, y: 16)
-        )
-    }
-
 }
 
 struct ProfileMainView_Previews: PreviewProvider {

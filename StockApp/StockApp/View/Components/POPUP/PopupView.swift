@@ -25,9 +25,9 @@ struct PopupView: View {
             
             alertConfirmButton()
         }
-        .padding(EdgeInsets(top: 40, leading: LayoutMargin, bottom: 31, trailing: LayoutMargin))
-        .frame(width: ContentsWidth)
-        .background(Color.colorAssets.subColor)
+        .padding(EdgeInsets(top: 40, leading: 30, bottom: 31, trailing: 30))
+        .frame(width: ContentsWidth, height: 200)
+        .background(Color.colorAssets.navy2)
         .cornerRadius(30.0)
         .shadow(color: Color.fontColor.accentColor, radius: 6, x: 0, y: .zero)
         .animation(.easeOut)
@@ -65,20 +65,20 @@ struct PopupView: View {
                     .kerning(-0.34)
                     .spoqaHan(family: .Bold, size: 18)
                     .foregroundColor(Color.colorAssets.white2)
-                    .frame(width: ContentsWidth-60, height: 55)
+                    .frame(width: 140, height: 40)
                     .overlay(
                         RoundedRectangle(cornerRadius: 30)
                             .stroke(Color.white, lineWidth: 1)
-                            .frame(width: (ContentsWidth-70)/2, height: 55)
+                            .frame(width: 140, height: 40)
                     )
             }
-            .frame(width: (ContentsWidth-70)/2, height: 55)
+            .frame(width: 140, height: 40)
 //            .background(Color.colorAssets.white)
             .cornerRadius(30.0)
             .shadow(color: Color.colorAssets.white.opacity(0.4), radius: 6, x: 0, y: 3)
             
             Spacer()
-                .frame(width: 16)
+                .frame(width: 30)
             
             Button {
                 viewModel.signOut()
@@ -87,9 +87,9 @@ struct PopupView: View {
                     .kerning(-0.34)
                     .spoqaHan(family: .Bold, size: 18)
                     .foregroundColor(Color.colorAssets.subColor)
-                    .frame(width: ContentsWidth-60, height: 55)
+                    .frame(width: 140, height: 40)
             }
-            .frame(width: (ContentsWidth-70)/2, height: 55)
+            .frame(width: 140, height: 40)
             .background(Color.colorAssets.white)
             .cornerRadius(30.0)
             .shadow(color: Color.colorAssets.white.opacity(0.4), radius: 6, x: 0, y: 3)
