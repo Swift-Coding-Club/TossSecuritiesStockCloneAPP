@@ -8,13 +8,13 @@
 import Foundation
 
 enum ProfileEditViewModel: Int , CaseIterable, CustomStringConvertible {
-    case notices
+    case notice
     case profileEdit
     case appSetting
     
     var description: String {
         switch self {
-        case .notices:
+        case .notice:
             return "공지사항"
         case .profileEdit:
             return "회원정보 수정"
@@ -25,7 +25,7 @@ enum ProfileEditViewModel: Int , CaseIterable, CustomStringConvertible {
     
     var imageName: String {
         switch self {
-        case .notices:
+        case .notice:
             return "bell.fill"
         case .profileEdit:
             return "lock"

@@ -10,7 +10,6 @@ import ExytePopupView
 
 struct ProfileMainView: View {
     
-    @Environment(\.dismiss)  private var dismiss
     
     @EnvironmentObject var viewModel: AuthorizationVIewModel
 
@@ -19,7 +18,11 @@ struct ProfileMainView: View {
     @State private var personalInformationButton: Bool = false
     @State private var showAlertLogout: Bool = false
     @State private var sendEmailButton: Bool = false
+    @State private var noticeButton: Bool = false
+    @State private var profileEditButton: Bool = false
+    @State private var  settingButton: Bool = false
     
+  
     var body: some View {
         NavigationView {
             ZStack {
@@ -29,7 +32,7 @@ struct ProfileMainView: View {
                 VStack(alignment: .leading) {
                    spacingHeight(height: 32)
                     
-                   profileHeader()
+                    profileHeader(userName: viewModel.currentUser?.fullname ?? "", email: viewModel.currentUser?.email ?? "")
                     
                     spacingHeight(height: 40)
                     
@@ -49,10 +52,11 @@ struct ProfileMainView: View {
                     .environmentObject(viewModel)
             }
         }
+     
     }
     //MARK: - 프로필 상단
     @ViewBuilder
-    private func profileHeader() -> some View {
+    private func profileHeader(userName: String, email: String) -> some View {
         HStack {
             Circle()
                 .frame(width: 72, height: 72)
@@ -61,9 +65,9 @@ struct ProfileMainView: View {
                 .frame(width: 10)
             
             VStack(alignment: .leading , spacing: 5) {
-                Text("Roy")
+                Text(userName)
                     .spoqaHan(family: .Bold, size: 18)
-                Text("suhwj81@gmail.com")
+                Text(email)
             }
             Spacer()
         }
@@ -87,7 +91,43 @@ struct ProfileMainView: View {
         HStack(spacing: 20) {
             Spacer()
             ForEach(ProfileEditViewModel.allCases , id: \.rawValue) { item in
-                ProfileEditView(image: item.imageName, title: item.description)
+                if item == .notice {
+                    Button {
+                        noticeButton.toggle()
+                    } label: {
+                        ProfileEditView(image: item.imageName, title: item.description)
+                            .background(
+                            NavigationLink(destination: ProfileNotice(),
+                                           isActive: $noticeButton,
+                                           label: { EmptyView()})
+                            )
+                    }
+
+                } else if item == .profileEdit {
+                    Button {
+                        profileEditButton.toggle()
+                    } label: {
+                        ProfileEditView(image: item.imageName, title: item.description)
+                            .background(
+                                NavigationLink(destination: MyProfileEditView(),
+                                               isActive: $profileEditButton,
+                                               label: { EmptyView()})
+                            )
+                    }
+
+                } else if item == .appSetting {
+                    Button {
+                        settingButton.toggle()
+                    } label: {
+                        ProfileEditView(image: item.imageName, title: item.description)
+                            .background(
+                                NavigationLink(destination: SettingView(),
+                                               isActive: $settingButton,
+                                               label: { EmptyView()})
+                            )
+                    }
+
+                }
             }
             Spacer()
         }

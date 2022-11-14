@@ -83,6 +83,11 @@
 		7FBA186128F7135100025001 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7FBA186028F7135100025001 /* FirebaseFirestore */; };
 		7FBA186328F7135100025001 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7FBA186228F7135100025001 /* FirebaseFirestoreSwift */; };
 		7FBA186528F7135100025001 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 7FBA186428F7135100025001 /* FirebaseStorage */; };
+		7FBB004829226EF7002380B7 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB004729226EF7002380B7 /* UserService.swift */; };
+		7FBB004B29227897002380B7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB004A29227897002380B7 /* UserModel.swift */; };
+		7FBB004D29229543002380B7 /* ProfileNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB004C29229543002380B7 /* ProfileNotice.swift */; };
+		7FBB004F292295C7002380B7 /* MyProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB004E292295C7002380B7 /* MyProfileEditView.swift */; };
+		7FBB005129229906002380B7 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB005029229906002380B7 /* SettingView.swift */; };
 		7FBF6B7928E34E710079D68A /* HapticManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBF6B7828E34E710079D68A /* HapticManger.swift */; };
 		7FC3563A28D8A221002E0E63 /* CryptoMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC3563928D8A221002E0E63 /* CryptoMainView.swift */; };
 		7FC3563D28D8AE7A002E0E63 /* StockMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC3563C28D8AE7A002E0E63 /* StockMainView.swift */; };
@@ -223,6 +228,11 @@
 		7FB1AC93291D497300A0B67C /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		7FB1AC95291E798A00A0B67C /* ProfileEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewModel.swift; sourceTree = "<group>"; };
 		7FB1AC97291E7FB400A0B67C /* FeedBackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackViewModel.swift; sourceTree = "<group>"; };
+		7FBB004729226EF7002380B7 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		7FBB004A29227897002380B7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		7FBB004C29229543002380B7 /* ProfileNotice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNotice.swift; sourceTree = "<group>"; };
+		7FBB004E292295C7002380B7 /* MyProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileEditView.swift; sourceTree = "<group>"; };
+		7FBB005029229906002380B7 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		7FBF6B7828E34E710079D68A /* HapticManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManger.swift; sourceTree = "<group>"; };
 		7FC3563928D8A221002E0E63 /* CryptoMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoMainView.swift; sourceTree = "<group>"; };
 		7FC3563C28D8AE7A002E0E63 /* StockMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockMainView.swift; sourceTree = "<group>"; };
@@ -536,6 +546,14 @@
 			path = WebView;
 			sourceTree = "<group>";
 		};
+		7FBB00492922787A002380B7 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				7FBB004A29227897002380B7 /* UserModel.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		7FC3563728D89339002E0E63 /* Crypto */ = {
 			isa = PBXGroup;
 			children = (
@@ -547,6 +565,7 @@
 				7F324C6B28E9B98600A22FFC /* CryptoPortfolioView.swift */,
 				7F324C6D28E9D4B600A22FFC /* CryptoCoinItemViews.swift */,
 				7F02A5FB28E730A400F4B56C /* CryptoDetail */,
+				7FBB005029229906002380B7 /* SettingView.swift */,
 			);
 			path = Crypto;
 			sourceTree = "<group>";
@@ -576,6 +595,8 @@
 				7FB1AC93291D497300A0B67C /* ProfileEditView.swift */,
 				7FB1AC95291E798A00A0B67C /* ProfileEditViewModel.swift */,
 				7FB1AC97291E7FB400A0B67C /* FeedBackViewModel.swift */,
+				7FBB004C29229543002380B7 /* ProfileNotice.swift */,
+				7FBB004E292295C7002380B7 /* MyProfileEditView.swift */,
 			);
 			path = MyProfile;
 			sourceTree = "<group>";
@@ -649,6 +670,7 @@
 			isa = PBXGroup;
 			children = (
 				7FD9E45528F40FF8003528D4 /* SNSLoginManger.swift */,
+				7FBB004729226EF7002380B7 /* UserService.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -773,6 +795,7 @@
 		7FE8370D28BF9699003761FE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7FBB00492922787A002380B7 /* User */,
 				7FF3BF45290423B900ED0B81 /* ProfileSettingModel */,
 				7FFEF7C828EF08DB0023AACC /* StockModel */,
 				7F729ED828D9FFC100FEAE43 /* CryptoModel */,
@@ -1305,6 +1328,7 @@
 				7FF3BF49290427E000ED0B81 /* PersonalInformationView.swift in Sources */,
 				7FD9E45628F40FF8003528D4 /* SNSLoginManger.swift in Sources */,
 				7FF4835A28E51DC2004DEC37 /* SortOption.swift in Sources */,
+				7FBB004D29229543002380B7 /* ProfileNotice.swift in Sources */,
 				7F2382C028DDEC4E00103AE7 /* CoinDataService.swift in Sources */,
 				7F729EE328DB533600FEAE43 /* CoinViewModel.swift in Sources */,
 				7F02A5FE28E7316E00F4B56C /* CryptoDetailView.swift in Sources */,
@@ -1348,6 +1372,7 @@
 				7FEF4FA028E0963300DA9AEB /* StatisticModel.swift in Sources */,
 				7F174E7C28F59E8800352189 /* CheckRegisterAlert.swift in Sources */,
 				7FEF4F7628DF316D00DA9AEB /* CoinImageService.swift in Sources */,
+				7FBB004F292295C7002380B7 /* MyProfileEditView.swift in Sources */,
 				7FB1AC98291E7FB400A0B67C /* FeedBackViewModel.swift in Sources */,
 				7F06912128CB14E3005F840E /* NetworkManger.swift in Sources */,
 				7F6910132915497E00BE9A3F /* LanchView.swift in Sources */,
@@ -1367,11 +1392,13 @@
 				7F729EE128DB3F6400FEAE43 /* Double.swift in Sources */,
 				7F29425928F329A400A44CDD /* ModalShapeCorner.swift in Sources */,
 				7FED2A7128FA5ED800D7A7C7 /* UserDefaults.swift in Sources */,
+				7FBB004B29227897002380B7 /* UserModel.swift in Sources */,
 				7FF3BF5629044B7600ED0B81 /* ListRowSystemImageTextView.swift in Sources */,
 				7F4E82DE2909809B00B65D97 /* SignupPopupVIew.swift in Sources */,
 				7FCD241428FAEF30002C5C18 /* ErroAlertMessage.swift in Sources */,
 				7F39713928D2336F007823C4 /* GradiantColorAsset.swift in Sources */,
 				7F174E7328F58DF900352189 /* CustomSecureInputField.swift in Sources */,
+				7FBB005129229906002380B7 /* SettingView.swift in Sources */,
 				7F15F7722905872500B06452 /* ScreenSize.swift in Sources */,
 				7F2382C228DDED4400103AE7 /* URlManager.swift in Sources */,
 				7FF3434E28F05C4400FD34EC /* SIgnUpVIew.swift in Sources */,
@@ -1390,6 +1417,7 @@
 				7FEF4F6C28DF144300DA9AEB /* NetworkingManger.swift in Sources */,
 				7F174E7928F591FB00352189 /* AuthHeaderView.swift in Sources */,
 				7FF3BF47290423D800ED0B81 /* ProfileSetttingModel.swift in Sources */,
+				7FBB004829226EF7002380B7 /* UserService.swift in Sources */,
 				7F174E7128F587D200352189 /* CustomInputField.swift in Sources */,
 				7FE836E228BF95B0003761FE /* StockAppApp.swift in Sources */,
 				7F324C6C28E9B98600A22FFC /* CryptoPortfolioView.swift in Sources */,
