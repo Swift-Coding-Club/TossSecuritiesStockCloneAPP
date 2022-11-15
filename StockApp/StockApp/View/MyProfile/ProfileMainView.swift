@@ -21,8 +21,11 @@ struct ProfileMainView: View {
     @State private var noticeButton: Bool = false
     @State private var profileEditButton: Bool = false
     @State private var  settingButton: Bool = false
+    private let user: UserModel
     
-  
+    init(user: UserModel) {
+        self.user = user
+    }
     var body: some View {
         NavigationView {
             ZStack {
@@ -228,7 +231,7 @@ struct ProfileMainView: View {
 
 struct ProfileMainView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileMainView()
+        ProfileMainView(user: UserModel(username: "로이", fullname: "로이", phonenumber: "010-1234-1234", email: "aaa@naver.com"))
             .environmentObject(dev.signUpViewModel)
     }
 }

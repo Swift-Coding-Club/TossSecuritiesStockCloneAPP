@@ -12,6 +12,7 @@ struct MainTabVIew: View {
     @EnvironmentObject var viewModel: AuthorizationVIewModel
     @EnvironmentObject var coinModel: CoinViewModel
     @State var currentTab = "house"
+    private let user: DevloperPreview = DevloperPreview()
     //MARK: - 커브 의 value
     @State var curveAxis: CGFloat = 0
     
@@ -46,7 +47,7 @@ struct MainTabVIew: View {
                 CryptoMainView()
                     .tag("dollarsign.circle")
                 
-                ProfileMainView()
+                ProfileMainView(user: viewModel.currentUser ?? user.user)
                     .tag("person")
             }
             .clipShape(
