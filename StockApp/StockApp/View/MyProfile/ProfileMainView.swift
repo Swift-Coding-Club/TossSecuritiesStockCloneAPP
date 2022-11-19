@@ -10,9 +10,7 @@ import ExytePopupView
 
 struct ProfileMainView: View {
     
-    
     @EnvironmentObject var viewModel: AuthorizationVIewModel
-
     @State private var policyInformationButton: Bool = false
     @State private var developerListButton: Bool  = false
     @State private var personalInformationButton: Bool = false
@@ -35,7 +33,8 @@ struct ProfileMainView: View {
                 VStack(alignment: .leading) {
                    spacingHeight(height: 32)
                     
-                    profileHeader(userName: viewModel.currentUser?.fullname ?? "", email: viewModel.currentUser?.email ?? "")
+                    profileHeader(userName: user.username,
+                                  email: user.email )
                     
                     spacingHeight(height: 40)
                     
@@ -129,7 +128,6 @@ struct ProfileMainView: View {
                                                label: { EmptyView()})
                             )
                     }
-
                 }
             }
             Spacer()

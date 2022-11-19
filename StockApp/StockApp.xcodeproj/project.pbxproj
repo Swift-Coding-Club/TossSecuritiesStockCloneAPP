@@ -88,6 +88,9 @@
 		7FBB004D29229543002380B7 /* ProfileNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB004C29229543002380B7 /* ProfileNotice.swift */; };
 		7FBB004F292295C7002380B7 /* MyProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB004E292295C7002380B7 /* MyProfileEditView.swift */; };
 		7FBB005129229906002380B7 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB005029229906002380B7 /* SettingView.swift */; };
+		7FBB00572923CBA1002380B7 /* StockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB00562923CBA1002380B7 /* StockAPI.swift */; };
+		7FBB00592923CE4A002380B7 /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB00582923CE4A002380B7 /* Agent.swift */; };
+		7FBB005B2923D000002380B7 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB005A2923D000002380B7 /* APIError.swift */; };
 		7FBF6B7928E34E710079D68A /* HapticManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBF6B7828E34E710079D68A /* HapticManger.swift */; };
 		7FC3563A28D8A221002E0E63 /* CryptoMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC3563928D8A221002E0E63 /* CryptoMainView.swift */; };
 		7FC3563D28D8AE7A002E0E63 /* StockMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC3563C28D8AE7A002E0E63 /* StockMainView.swift */; };
@@ -233,6 +236,9 @@
 		7FBB004C29229543002380B7 /* ProfileNotice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNotice.swift; sourceTree = "<group>"; };
 		7FBB004E292295C7002380B7 /* MyProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileEditView.swift; sourceTree = "<group>"; };
 		7FBB005029229906002380B7 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		7FBB00562923CBA1002380B7 /* StockAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAPI.swift; sourceTree = "<group>"; };
+		7FBB00582923CE4A002380B7 /* Agent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
+		7FBB005A2923D000002380B7 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		7FBF6B7828E34E710079D68A /* HapticManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManger.swift; sourceTree = "<group>"; };
 		7FC3563928D8A221002E0E63 /* CryptoMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoMainView.swift; sourceTree = "<group>"; };
 		7FC3563C28D8AE7A002E0E63 /* StockMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockMainView.swift; sourceTree = "<group>"; };
@@ -437,6 +443,8 @@
 		7F2382BE28DDEBF200103AE7 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				7FBB00552923CB8C002380B7 /* Stock */,
+				7FBB00522923C0EC002380B7 /* Error */,
 				7FD9E45428F40FE2003528D4 /* Login */,
 				7FD9E45328F40FCE003528D4 /* Crypto */,
 			);
@@ -552,6 +560,23 @@
 				7FBB004A29227897002380B7 /* UserModel.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		7FBB00522923C0EC002380B7 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				7FBB005A2923D000002380B7 /* APIError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		7FBB00552923CB8C002380B7 /* Stock */ = {
+			isa = PBXGroup;
+			children = (
+				7FBB00562923CBA1002380B7 /* StockAPI.swift */,
+				7FBB00582923CE4A002380B7 /* Agent.swift */,
+			);
+			path = Stock;
 			sourceTree = "<group>";
 		};
 		7FC3563728D89339002E0E63 /* Crypto */ = {
@@ -1331,6 +1356,7 @@
 				7FBB004D29229543002380B7 /* ProfileNotice.swift in Sources */,
 				7F2382C028DDEC4E00103AE7 /* CoinDataService.swift in Sources */,
 				7F729EE328DB533600FEAE43 /* CoinViewModel.swift in Sources */,
+				7FBB00592923CE4A002380B7 /* Agent.swift in Sources */,
 				7F02A5FE28E7316E00F4B56C /* CryptoDetailView.swift in Sources */,
 				7FBF6B7928E34E710079D68A /* HapticManger.swift in Sources */,
 				7F21333D28E32BE200CE0BE2 /* PortfolioDataService.swift in Sources */,
@@ -1384,6 +1410,7 @@
 				7FEF4FA528E0A32800DA9AEB /* CryptoStatView.swift in Sources */,
 				7F324C7528EB06F400A22FFC /* CryptoChartView.swift in Sources */,
 				7F38DA0A28F5CAAB00D0D324 /* SecretKey.swift in Sources */,
+				7FBB005B2923D000002380B7 /* APIError.swift in Sources */,
 				7F4E8335290CF48900B65D97 /* CustomTabCurve.swift in Sources */,
 				7FEF4F6F28DF17F300DA9AEB /* NetworkingError.swift in Sources */,
 				7F29425628F31C4D00A44CDD /* RoundShape.swift in Sources */,
@@ -1423,6 +1450,7 @@
 				7F324C6C28E9B98600A22FFC /* CryptoPortfolioView.swift in Sources */,
 				7F1F940B28F9AABA0012402E /* KeyboardHandler.swift in Sources */,
 				7F492D1328CDFB51004E5142 /* BottomModel.swift in Sources */,
+				7FBB00572923CBA1002380B7 /* StockAPI.swift in Sources */,
 				7F1C8EE528BFACA3004E49A1 /* MainTabVIew.swift in Sources */,
 				7F2AEB4128E8395D00FA86AD /* CryptoDetailViewModel.swift in Sources */,
 				7F4C7D9E28FF01C10058ECD5 /* AppLogoutViewModel.swift in Sources */,
