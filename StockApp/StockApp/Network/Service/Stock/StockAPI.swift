@@ -11,11 +11,20 @@ import Alamofire
 
 enum StockAPI {
     static let agent = Agent()
+    static var stockBaseURL : URL {
+        return URL(string: "https://yahoo-finance15.p.rapidapi.com")!
+    }
+    
+    static var cryptoBaseURL: URL {
+        return URL(string: "https://api.coingecko.com")!
+    }
     
     static func headers() -> HTTPHeaders {
         return [
-            "X-RapidAPI-Key" : "4886dc5b19msh2a9924cfca7e122p111b80jsn8dd7d40f51ac",
-            "X-RapidAPI-Host" : "apidojo-yahoo-finance-v1.p.rapidapi.com"
+            
+            "content-type": "application/json; charset=utf-8",
+            "X-RapidAPI-Key": "4886dc5b19msh2a9924cfca7e122p111b80jsn8dd7d40f51ac",
+            "X-RapidAPI-Host": "yahoo-finance15.p.rapidapi.com"
             ]
     }
 }

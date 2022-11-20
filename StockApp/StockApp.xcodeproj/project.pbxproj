@@ -145,6 +145,13 @@
 		7FF3BF5629044B7600ED0B81 /* ListRowSystemImageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF3BF5529044B7600ED0B81 /* ListRowSystemImageTextView.swift */; };
 		7FF4835A28E51DC2004DEC37 /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF4835928E51DC2004DEC37 /* SortOption.swift */; };
 		7FFEF7CA28EF090E0023AACC /* StockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEF7C928EF090D0023AACC /* StockModel.swift */; };
+		7FFFD5A92928AAB800A25207 /* StockMostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFFD5A82928AAB800A25207 /* StockMostViewModel.swift */; };
+		7FFFD5AD2928BD1200A25207 /* StockAPI-Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFFD5AC2928BD1200A25207 /* StockAPI-Market.swift */; };
+		7FFFD5AF292A36AA00A25207 /* StockConvertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFFD5AE292A36AA00A25207 /* StockConvertViewModel.swift */; };
+		7FFFD5B1292A3D6A00A25207 /* StockRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFFD5B0292A3D6A00A25207 /* StockRowView.swift */; };
+		7FFFD5B7292A523D00A25207 /* StockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFFD5B6292A523D00A25207 /* StockViewModel.swift */; };
+		7FFFD5B9292A58C900A25207 /* ScrollViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFFD5B8292A58C900A25207 /* ScrollViewModifier.swift */; };
+		7FFFD5BB292A701700A25207 /* StockTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFFD5BA292A701700A25207 /* StockTabBarButton.swift */; };
 		80F05FC9B56D11ECB5690C94 /* Pods_StockApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A04C9DD73DC3CFF6691BEC92 /* Pods_StockApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -300,6 +307,13 @@
 		7FF3BF5529044B7600ED0B81 /* ListRowSystemImageTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowSystemImageTextView.swift; sourceTree = "<group>"; };
 		7FF4835928E51DC2004DEC37 /* SortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOption.swift; sourceTree = "<group>"; };
 		7FFEF7C928EF090D0023AACC /* StockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockModel.swift; sourceTree = "<group>"; };
+		7FFFD5A82928AAB800A25207 /* StockMostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockMostViewModel.swift; sourceTree = "<group>"; };
+		7FFFD5AC2928BD1200A25207 /* StockAPI-Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StockAPI-Market.swift"; sourceTree = "<group>"; };
+		7FFFD5AE292A36AA00A25207 /* StockConvertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockConvertViewModel.swift; sourceTree = "<group>"; };
+		7FFFD5B0292A3D6A00A25207 /* StockRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockRowView.swift; sourceTree = "<group>"; };
+		7FFFD5B6292A523D00A25207 /* StockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewModel.swift; sourceTree = "<group>"; };
+		7FFFD5B8292A58C900A25207 /* ScrollViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewModifier.swift; sourceTree = "<group>"; };
+		7FFFD5BA292A701700A25207 /* StockTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTabBarButton.swift; sourceTree = "<group>"; };
 		850A2B80330CE2E329948726 /* Pods-StockApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockApp.debug.xcconfig"; path = "Target Support Files/Pods-StockApp/Pods-StockApp.debug.xcconfig"; sourceTree = "<group>"; };
 		9934495D29B85B6332BEF850 /* Pods-StockApp-StockAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockApp-StockAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-StockApp-StockAppUITests/Pods-StockApp-StockAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A04C9DD73DC3CFF6691BEC92 /* Pods_StockApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StockApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -575,6 +589,8 @@
 			children = (
 				7FBB00562923CBA1002380B7 /* StockAPI.swift */,
 				7FBB00582923CE4A002380B7 /* Agent.swift */,
+				7FFFD5A82928AAB800A25207 /* StockMostViewModel.swift */,
+				7FFFD5AC2928BD1200A25207 /* StockAPI-Market.swift */,
 			);
 			path = Stock;
 			sourceTree = "<group>";
@@ -609,6 +625,9 @@
 			isa = PBXGroup;
 			children = (
 				7FC3563C28D8AE7A002E0E63 /* StockMainView.swift */,
+				7FFFD5AE292A36AA00A25207 /* StockConvertViewModel.swift */,
+				7FFFD5B0292A3D6A00A25207 /* StockRowView.swift */,
+				7FFFD5BA292A701700A25207 /* StockTabBarButton.swift */,
 			);
 			path = Stock;
 			sourceTree = "<group>";
@@ -645,6 +664,7 @@
 		7FC3564728D8B22D002E0E63 /* StockViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				7FFFD5B6292A523D00A25207 /* StockViewModel.swift */,
 			);
 			path = StockViewModel;
 			sourceTree = "<group>";
@@ -1012,6 +1032,7 @@
 				7FF3BF3E2904067600ED0B81 /* ContainerView.swift */,
 				7F15F76F2905869300B06452 /* Size.swift */,
 				7F15F7712905872500B06452 /* ScreenSize.swift */,
+				7FFFD5B8292A58C900A25207 /* ScrollViewModifier.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1357,6 +1378,7 @@
 				7F2382C028DDEC4E00103AE7 /* CoinDataService.swift in Sources */,
 				7F729EE328DB533600FEAE43 /* CoinViewModel.swift in Sources */,
 				7FBB00592923CE4A002380B7 /* Agent.swift in Sources */,
+				7FFFD5B9292A58C900A25207 /* ScrollViewModifier.swift in Sources */,
 				7F02A5FE28E7316E00F4B56C /* CryptoDetailView.swift in Sources */,
 				7FBF6B7928E34E710079D68A /* HapticManger.swift in Sources */,
 				7F21333D28E32BE200CE0BE2 /* PortfolioDataService.swift in Sources */,
@@ -1370,6 +1392,7 @@
 				7FC3563A28D8A221002E0E63 /* CryptoMainView.swift in Sources */,
 				7FEF4F9E28E0809E00DA9AEB /* UIApplication.swift in Sources */,
 				7F15F7702905869300B06452 /* Size.swift in Sources */,
+				7FFFD5AD2928BD1200A25207 /* StockAPI-Market.swift in Sources */,
 				7F2160BE290187D400217585 /* InformationVIewModel.swift in Sources */,
 				7FF3BF3F2904067600ED0B81 /* ContainerView.swift in Sources */,
 				7FCD241628FBC5F5002C5C18 /* SnsLoginDelegate.swift in Sources */,
@@ -1389,6 +1412,7 @@
 				7FB1AC96291E798A00A0B67C /* ProfileEditViewModel.swift in Sources */,
 				7F2AEB4328E839D900FA86AD /* CryptoDetailModel.swift in Sources */,
 				7FE792A128FD81BE00E3D6E3 /* FeedView.swift in Sources */,
+				7FFFD5BB292A701700A25207 /* StockTabBarButton.swift in Sources */,
 				7F4A831128FC1BE700A3561A /* AppleLogin.swift in Sources */,
 				7F4A108429167BFF000EF43D /* ForgotPasswordView.swift in Sources */,
 				7FEF4F7228DF297800DA9AEB /* CoinImageView.swift in Sources */,
@@ -1396,6 +1420,7 @@
 				7F324C6828E9A8A800A22FFC /* CardViews.swift in Sources */,
 				7F39713D28D234F2007823C4 /* FontColorAsset.swift in Sources */,
 				7FEF4FA028E0963300DA9AEB /* StatisticModel.swift in Sources */,
+				7FFFD5B1292A3D6A00A25207 /* StockRowView.swift in Sources */,
 				7F174E7C28F59E8800352189 /* CheckRegisterAlert.swift in Sources */,
 				7FEF4F7628DF316D00DA9AEB /* CoinImageService.swift in Sources */,
 				7FBB004F292295C7002380B7 /* MyProfileEditView.swift in Sources */,
@@ -1405,6 +1430,7 @@
 				7F15F76C290582B400B06452 /* PopupView.swift in Sources */,
 				7F4C7D9B28FEFFAF0058ECD5 /* UserStatusView.swift in Sources */,
 				7FF19D5828E1EB3600BF93B3 /* CoinLogoView.swift in Sources */,
+				7FFFD5B7292A523D00A25207 /* StockViewModel.swift in Sources */,
 				7FEF4FA728E0B4D400DA9AEB /* MarketDataModel.swift in Sources */,
 				7F98D13B29056F730088A052 /* TabBar.swift in Sources */,
 				7FEF4FA528E0A32800DA9AEB /* CryptoStatView.swift in Sources */,
@@ -1429,6 +1455,7 @@
 				7F15F7722905872500B06452 /* ScreenSize.swift in Sources */,
 				7F2382C228DDED4400103AE7 /* URlManager.swift in Sources */,
 				7FF3434E28F05C4400FD34EC /* SIgnUpVIew.swift in Sources */,
+				7FFFD5A92928AAB800A25207 /* StockMostViewModel.swift in Sources */,
 				7F4E4EC4291613F0007A32B7 /* LoginMainView.swift in Sources */,
 				7F01DFBA28F70961000ECB96 /* AppDelegate.swift in Sources */,
 				7F729EDC28DB3A0E00FEAE43 /* CoinRowView.swift in Sources */,
@@ -1436,6 +1463,7 @@
 				7FEF4FA328E09E3800DA9AEB /* StatisticView.swift in Sources */,
 				7FE8371B28BF991C003761FE /* ColorAsset.swift in Sources */,
 				7F03A51428EB34300020079E /* String.swift in Sources */,
+				7FFFD5AF292A36AA00A25207 /* StockConvertViewModel.swift in Sources */,
 				7F39713B28D23444007823C4 /* GradiantColor.swift in Sources */,
 				7F174E7628F590E000352189 /* CheckRegister.swift in Sources */,
 				7F1C8EE328BFABC9004E49A1 /* TabBarKind.swift in Sources */,

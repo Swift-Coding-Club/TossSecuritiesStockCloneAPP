@@ -25,36 +25,72 @@ struct ProfileMainView: View {
         self.user = user
     }
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color.colorAssets.backGroundColor
-                    .ignoresSafeArea()
-                
-                VStack(alignment: .leading) {
-                   spacingHeight(height: 32)
+        if #available(iOS 16.0, *) {
+            NavigationStack {
+                ZStack {
+                    Color.colorAssets.backGroundColor
+                        .ignoresSafeArea()
                     
-                    profileHeader(userName: user.username,
-                                  email: user.email )
-                    
-                    spacingHeight(height: 40)
-                    
-                    editProfile()
-                    
-                    appInformationListButton()
-                    
-                    feedBackListButton()
-                    
-                    logoutListButton()
-                    
-                    Spacer(minLength: .zero)
+                    ScrollView(.vertical, showsIndicators: false) {
+                        VStack(alignment: .leading) {
+                            spacingHeight(height: 32)
+                            
+                            profileHeader(userName: user.fullname,
+                                          email: user.email )
+                            
+                            spacingHeight(height: 40)
+                            
+                            editProfile()
+                            
+                            appInformationListButton()
+                            
+                            feedBackListButton()
+                            
+                            logoutListButton()
+                            
+                            Spacer(minLength: .zero)
+                        }
+                    }
+                    .bounce(false)
+                }
+                .popup(isPresented: $showAlertLogout,  type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
+                    PopupView()
+                        .environmentObject(viewModel)
                 }
             }
-            .popup(isPresented: $showAlertLogout,  type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
-                PopupView()
-                    .environmentObject(viewModel)
+        } else {
+            NavigationView {
+                ZStack {
+                    Color.colorAssets.backGroundColor
+                        .ignoresSafeArea()
+                    
+                    ScrollView(.vertical, showsIndicators: false) {
+                        VStack(alignment: .leading) {
+                            spacingHeight(height: 32)
+                            
+                            profileHeader(userName: user.fullname,
+                                          email: user.email )
+                            
+                            spacingHeight(height: 40)
+                            
+                            editProfile()
+                            
+                            appInformationListButton()
+                            
+                            feedBackListButton()
+                            
+                            logoutListButton()
+                            
+                            Spacer(minLength: .zero)
+                        }
+                    }
+                }
+                .popup(isPresented: $showAlertLogout,  type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
+                    PopupView()
+                        .environmentObject(viewModel)
+                }
             }
         }
-     
     }
     //MARK: - 프로필 상단
     @ViewBuilder
@@ -99,12 +135,12 @@ struct ProfileMainView: View {
                     } label: {
                         ProfileEditView(image: item.imageName, title: item.description)
                             .background(
-                            NavigationLink(destination: ProfileNotice(),
-                                           isActive: $noticeButton,
-                                           label: { EmptyView()})
+                                NavigationLink(destination: ProfileNotice(),
+                                               isActive: $noticeButton,
+                                               label: { EmptyView()})
                             )
                     }
-
+                    
                 } else if item == .profileEdit {
                     Button {
                         profileEditButton.toggle()
@@ -116,7 +152,7 @@ struct ProfileMainView: View {
                                                label: { EmptyView()})
                             )
                     }
-
+                    
                 } else if item == .appSetting {
                     Button {
                         settingButton.toggle()
@@ -190,9 +226,9 @@ struct ProfileMainView: View {
                     } label: {
                         ListRowSystemImageTextView(title: item.description, imageName: item.imageName, width: 15,  height: 12)
                             .background(
-                            NavigationLink(destination: DeveloperView(),
-                                           isActive: $sendEmailButton,
-                                           label: {EmptyView()})
+                                NavigationLink(destination: DeveloperView(),
+                                               isActive: $sendEmailButton,
+                                               label: {EmptyView()})
                             )
                     }
                 }

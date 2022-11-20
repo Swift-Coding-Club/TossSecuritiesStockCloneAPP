@@ -10,7 +10,7 @@ import UIKit
 
 struct MainTabVIew: View {
     @EnvironmentObject var viewModel: AuthorizationVIewModel
-    @EnvironmentObject var coinModel: CoinViewModel
+    @EnvironmentObject var coinViewModel: CoinViewModel
     @State var currentTab = "house"
     private let user: DevloperPreview = DevloperPreview()
     //MARK: - 커브 의 value
@@ -35,10 +35,10 @@ struct MainTabVIew: View {
         VStack(spacing: .zero) {
             TabView(selection: $currentTab) {
                 HomeView()
-                    .environmentObject(coinModel)
+                    .environmentObject(coinViewModel)
                     .tag("house")
                 
-                StockMainView()
+                StockMainView(stockMostViewModel: StockMostViewModel())
                     .tag("chart.bar")
                 
                 AddMainView()
@@ -65,12 +65,7 @@ struct MainTabVIew: View {
         .background(Color.colorAssets.navy2)
         .ignoresSafeArea(.container, edges: .top)
         .navigationBarHidden(false)
-//        .accentColor(Color.colorAssets.skyblue2)
-//        .onAppear(){
-//            UITabBar.appearance().barTintColor = .white
-//            UITabBar.appearance().tintColor = UIColor(Color.colorAssets.subColor)
-//            UITabBar.appearance().unselectedItemTintColor = UIColor(Color.colorAssets.subColor)
-//        }
+
     }
     
     @ViewBuilder
@@ -116,7 +111,7 @@ struct MainTabVIew_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             MainTabVIew()
-            .environmentObject(dev.coinViewModel)
+                .environmentObject(dev.coinViewModel)
                 .environmentObject(dev.signUpViewModel)
         }
     }

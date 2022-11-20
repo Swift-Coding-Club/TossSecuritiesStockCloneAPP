@@ -45,7 +45,6 @@ struct CoinRowView: View {
         }
     }
     
-    
     //MARK: - 중앙
     @ViewBuilder
     private func centerColumn() ->  some View {

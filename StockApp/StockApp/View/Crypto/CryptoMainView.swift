@@ -50,6 +50,7 @@ struct CryptoMainView: View {
                     .padding(.bottom, 5)
                 Spacer(minLength: .zero)
             }
+            .bounce(false)
         }
         .padding(.vertical)
         //MARK: - 코인을 선택해을때 네비게이션
