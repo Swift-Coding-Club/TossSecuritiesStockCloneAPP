@@ -20,30 +20,32 @@ struct LoginMainView: View {
                 .ignoresSafeArea()
             
             VStack {
-                Image("login_logo")
-                    .resizable()
-                    .frame(width: UIScreen.screenWidth, height: 350)
-                    .ignoresSafeArea()
-                
-                loginTitle()
-                
-                Spacer()
-                    .frame(height: 50)
-                
-                appleLoginButton()
-                
-                Spacer()
-                    .frame(height: 15)
-                
-                googleLoginButton()
-                
-                Spacer()
-                    .frame(height: 15)
-                
-                loginButton()
+                ScrollView(.vertical, showsIndicators: false) {
+                    Image("login_logo")
+                        .resizable()
+                        .frame(width: UIScreen.screenWidth, height: 350)
+                        .ignoresSafeArea()
+                    
+                    loginTitle()
+                    
+                    Spacer()
+                        .frame(height: 50)
+                    
+                    appleLoginButton()
+                    
+                    Spacer()
+                        .frame(height: 15)
+                    
+                    googleLoginButton()
+                    
+                    Spacer()
+                        .frame(height: 15)
+                    
+                    loginButton()
 
-                Spacer()
-                    .frame(height: 15)
+                    Spacer()
+                        .frame(height: 15)
+                }
                 
                 Spacer(minLength: .zero)
             }
@@ -150,9 +152,11 @@ struct LoginMainView: View {
             Text("로그인 하러 가기")
                 .spoqaHan(family: .Bold, size: 20)
                 .foregroundColor(.white)
-                .frame(width: 340, height: 50)
+                .frame(width: 320, height: 50)
                 .background(Color.colorAssets.skyblue4)
+            
                 .cornerRadius(10)
+                
         }
         .background(
         NavigationLink(

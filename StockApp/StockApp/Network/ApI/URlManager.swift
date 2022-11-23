@@ -19,8 +19,15 @@ struct URLManager {
     
     static let localiztaion: String = "ko"
     
-    static let stockMarket: String = "api/yahoo/co/collections/most_actives"
+    static let stockMarket: String = "co/collections/"
     
+    static let stockMostMarket: String = ""
+    
+    static let stockSmallCapMarket: String = "/collections/small_cap_gainers"
+    
+    static let stockIncreaseCapMarket: String = "/collections/aggressive_small_caps"
+    
+    static let stockLargeCapMarket: String = "collections/undervalued_large_caps"
     
     static let coinURL: String = "\(mainUrl)\(coinCatergory)markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=true&price_change_percentage=24h"
     static let coinMartURL: String = "\(mainUrl)\(coinMartket)"

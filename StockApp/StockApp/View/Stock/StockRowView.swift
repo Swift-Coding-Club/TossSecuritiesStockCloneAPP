@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StockRowView: View {
-    let stock : StockMostModelResponseQuote
+    let stock : StockMostModelResponse
     
     var body: some View {
         HStack(spacing: .zero) {
@@ -19,7 +19,7 @@ struct StockRowView: View {
             
             Spacer()
             
-            VStack(alignment: .leading) {
+            VStack(alignment: .trailing) {
                 Text((stock.regularMarketVolume?.asCurrencyWith2DecimalsValue() ?? "") + "  KRW")
                     .spoqaHan(family: .Bold, size: 12)
                 Spacer()
@@ -43,8 +43,8 @@ struct StockRowView: View {
     }
 }
 
-struct StockRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        StockRowView(stock: dev.stock)
-    }
-}
+//struct StockRowView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        StockRowView(stock: dev.stock)
+//    }
+//}

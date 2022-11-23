@@ -10,7 +10,7 @@ import Combine
 
 class StockViewModel: ObservableObject  {
     
-    @Published var allStock :  [StockMostModelResponseQuote] = []             // 주식 관련
+//    @Published var allStock :  [StockMostModelResponseQuote] = []             // 주식 관련
     @Published var isLoading: Bool = false                                      // 로딩 관련
     private let stockMostService = StockMostViewModel()
     

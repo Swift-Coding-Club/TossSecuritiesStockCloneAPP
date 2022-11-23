@@ -12,19 +12,18 @@ import Alamofire
 enum StockAPI {
     static let agent = Agent()
     static var stockBaseURL : URL {
-        return URL(string: "https://yahoo-finance15.p.rapidapi.com")!
+        return URL(string: "https://mboum.com/api/v1")!
     }
     
     static var cryptoBaseURL: URL {
-        return URL(string: "https://api.coingecko.com")!
+        return URL(string: "https://api.coingecko.com/")!
     }
     
     static func headers() -> HTTPHeaders {
         return [
             
-            "content-type": "application/json; charset=utf-8",
-            "X-RapidAPI-Key": "4886dc5b19msh2a9924cfca7e122p111b80jsn8dd7d40f51ac",
-            "X-RapidAPI-Host": "yahoo-finance15.p.rapidapi.com"
+//            "content-type": "application/json; charset=utf-8",
+            "X-Mboum-Secret": SecretKey.stockSecretKey
             ]
     }
 }

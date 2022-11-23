@@ -24,6 +24,7 @@ struct ProfileMainView: View {
     init(user: UserModel) {
         self.user = user
     }
+    
     var body: some View {
         if #available(iOS 16.0, *) {
             NavigationStack {
