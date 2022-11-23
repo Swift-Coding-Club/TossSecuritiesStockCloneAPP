@@ -15,6 +15,7 @@ struct MyProfileEditView: View {
     var body: some View {
         ZStack {
             Color.colorAssets.backGroundColor
+                .ignoresSafeArea()
             
             VStack(spacing: 40){
                 Spacer()
@@ -44,7 +45,7 @@ struct MyProfileEditView: View {
     }
     
     @ViewBuilder
-    func imageEditView() -> some View {
+    private func imageEditView() -> some View {
         VStack(spacing: 20) {
             ZStack {
                 Circle()
@@ -59,7 +60,7 @@ struct MyProfileEditView: View {
     }
     
     @ViewBuilder
-    func nameEditView() -> some View {
+    private func nameEditView() -> some View {
         VStack(alignment: .leading) {
             Text("이름")
                 .font(.spoqaHan(family: .Medium, size: 18))
@@ -77,7 +78,7 @@ struct MyProfileEditView: View {
     }
     
     @ViewBuilder
-    func phoneNumberEditView() -> some View {
+    private func phoneNumberEditView() -> some View {
         VStack(alignment: .leading) {
             Text("전화번호")
                 .font(.spoqaHan(family: .Medium, size: 18))
@@ -98,7 +99,7 @@ struct MyProfileEditView: View {
     }
     
     @ViewBuilder
-    func emailView() -> some View {
+    private func emailView() -> some View {
         VStack(alignment: .leading) {
             Text("email")
                 .font(.spoqaHan(family: .Medium, size: 18))
