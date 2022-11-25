@@ -1,29 +1,26 @@
 //
-//  MyProfileEditView.swift
+//  ProfileEditMainView.swift
 //  StockApp
 //
-//  Created by 서원지 on 2022/11/15.
+//  Created by 권승용 on 2022/11/15.
 //
 
 import SwiftUI
 
 // MARK: - 프로필 수정 뷰
-struct MyProfileEditView: View {
+struct ProfileEditMainView: View {
     @State var name: String = ""
     @State var phoneNumber: String = ""
     
     var body: some View {
         ZStack {
             Color.colorAssets.backGroundColor
-                .ignoresSafeArea()
             
             VStack(spacing: 40){
                 Spacer()
                     .frame(height: 10)
                 
                 imageEditView()
-                
-                Divider()
                 
                 VStack(spacing: 20) {
                     
@@ -35,17 +32,10 @@ struct MyProfileEditView: View {
                 Spacer(minLength: .zero)
             }
         }
-        
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Text("회원정보 수정")
-                    .font(.spoqaHan(family: .Regular, size: 18))
-            }
-        }
     }
     
     @ViewBuilder
-    private func imageEditView() -> some View {
+    func imageEditView() -> some View {
         VStack(spacing: 20) {
             ZStack {
                 Circle()
@@ -60,36 +50,34 @@ struct MyProfileEditView: View {
     }
     
     @ViewBuilder
-    private func nameEditView() -> some View {
+    func nameEditView() -> some View {
         VStack(alignment: .leading) {
             Text("이름")
                 .font(.spoqaHan(family: .Medium, size: 18))
             
-            VStack {
+            ZStack {
                 TextField("홍길동", text: $name)
-                    .textFieldStyle(.plain)
+                    .textFieldStyle(.roundedBorder)
                     .autocorrectionDisabled()
                     .keyboardType(.namePhonePad)
-                Rectangle()
-                    .frame(height:1)
             }
+            .cornerRadius(4, corners: .allCorners)
+
         }
         .padding(.horizontal)
     }
     
     @ViewBuilder
-    private func phoneNumberEditView() -> some View {
+    func phoneNumberEditView() -> some View {
         VStack(alignment: .leading) {
             Text("전화번호")
                 .font(.spoqaHan(family: .Medium, size: 18))
             
-            VStack {
+            ZStack {
                 TextField("010-000-0000", text: $phoneNumber)
-                    .textFieldStyle(.plain)
+                    .textFieldStyle(.roundedBorder)
                     .autocorrectionDisabled()
                     .keyboardType(.namePhonePad)
-                Rectangle()
-                    .frame(height:1)
                 
             }
             .cornerRadius(4, corners: .allCorners)
@@ -99,19 +87,17 @@ struct MyProfileEditView: View {
     }
     
     @ViewBuilder
-    private func emailView() -> some View {
+    func emailView() -> some View {
         VStack(alignment: .leading) {
             Text("email")
                 .font(.spoqaHan(family: .Medium, size: 18))
             
-            VStack {
+            ZStack {
                 TextField("abc123@gmail.com", text: $phoneNumber)
-                    .textFieldStyle(.plain)
+                    .textFieldStyle(.roundedBorder)
                     .autocorrectionDisabled()
                     .keyboardType(.namePhonePad)
                     .disabled(true)
-                Rectangle()
-                    .frame(height:1)
                 
             }
             .cornerRadius(4, corners: .allCorners)
@@ -121,8 +107,8 @@ struct MyProfileEditView: View {
     }
 }
 
-struct MyProfileEditView_Previews: PreviewProvider {
+struct ProfileEditMainView_Previews: PreviewProvider {
     static var previews: some View {
-        MyProfileEditView()
+        ProfileEditMainView()
     }
 }
