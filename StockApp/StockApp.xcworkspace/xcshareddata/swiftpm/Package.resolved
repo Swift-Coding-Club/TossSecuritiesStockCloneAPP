@@ -152,6 +152,15 @@
         "revision" : "88c7d15e1242fdb6ecbafbc7926426a19be1e98a",
         "version" : "1.20.2"
       }
+    },
+    {
+      "identity" : "xcastocksapi",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/alfianlosari/XCAStocksAPI.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "2b2116f70ac12727a8e17918ea3e94fd5687bd0e"
+      }
     }
   ],
   "version" : 2

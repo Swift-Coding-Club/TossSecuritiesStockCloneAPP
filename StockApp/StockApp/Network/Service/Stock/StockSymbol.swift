@@ -7,10 +7,17 @@
 
 import Foundation
 
-struct StockSymbol {
-    private var nsdStockSymbol: [String] = [
-            "AAPL",
-            "MS",
-            "GOOG"
-    ]
+enum StockSymbol: Int , CaseIterable, CustomStringConvertible {
+    case nsdSymbol
+    case newyorkSymbol
+    
+    var description: String {
+        switch self {
+        case .nsdSymbol:
+            return "AAPL,MS,GOOG,GOOGL,AMZN,TSLA,NVDA,META,PEP,ASML,COST,AVGO,AZN,CSCO,TMUS,TXN,AMGN,ADBE,CMCSA,HON,QCOM,NFLX,INTC,AMD,SBUX"
+        case .newyorkSymbol:
+            return "UNH,XOM,JNJ,V,TSM,WMT,JPM,CVX,SPY,PG,LLY,HD,MA,BAC,ABBV,PFE,MRK,KO,NVO,IVV,ORCL,TMO,BABA,SHEL"
+        }
+    }
+    
 }

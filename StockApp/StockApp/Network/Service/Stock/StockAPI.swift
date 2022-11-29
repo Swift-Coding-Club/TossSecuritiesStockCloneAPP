@@ -12,7 +12,11 @@ import Alamofire
 enum StockAPI {
     static let agent = Agent()
     static var stockBaseURL : URL {
-        return URL(string: "https://mboum.com/api/v1")!
+        return URL(string: "https://query1.finance.yahoo.com")!
+    }
+    
+    static var stockOverViewURL: URL {
+        return URL(string: "https://www.alphavantage.co")!
     }
     
     static var cryptoBaseURL: URL {
@@ -23,7 +27,7 @@ enum StockAPI {
         return [
             
 //            "content-type": "application/json; charset=utf-8",
-            "X-Mboum-Secret": SecretKey.stockSecretKey
+//            "X-Mboum-Secret": SecretKey.stockSecretKey
             ]
     }
 }

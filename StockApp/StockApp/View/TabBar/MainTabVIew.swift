@@ -11,10 +11,15 @@ import UIKit
 struct MainTabVIew: View {
     @EnvironmentObject var viewModel: AuthorizationVIewModel
     @EnvironmentObject var coinViewModel: CoinViewModel
+    @EnvironmentObject var stockViewModel: StockViewModels
+    @EnvironmentObject var stockIntersetViewModel: StockViewModel
+    
     @State var currentTab = "house"
+    @State var curveAxis: CGFloat = 0
+    
     private let user: DevloperPreview = DevloperPreview()
     //MARK: - 커브 의 value
-    @State var curveAxis: CGFloat = 0
+    
     
     init() {
         UITabBar.appearance().isHidden = true
@@ -38,7 +43,9 @@ struct MainTabVIew: View {
                     .environmentObject(coinViewModel)
                     .tag("house")
                 
-                StockMainView(stockMostViewModel: StockMostViewModel())
+                StockMainView(searchViewModel: StockSearchViewModel())
+                    .environmentObject(stockViewModel)
+                    .environmentObject(stockIntersetViewModel)
                     .tag("chart.bar")
                 
                 AddMainView()

@@ -14,6 +14,11 @@ struct CryptoMainView: View {
     @State private var showPortfolioView: Bool = false       // + 버튼 누르면  bottomsheet 으로 나오게 구현
     @State private var selectionCoin: CoinModel? = nil      // 코인이  선택 되었을때
     @State private var showDetailView: Bool = false          // 다테일 뷰 보여주기 
+    @State var uiTabarController: UITabBarController?
+    
+    init() {
+        UITabBar.hideTabBar(animated: false)
+    }
     
     //MARK: - 뷰를 그리는 곳
     var body: some View {
@@ -43,6 +48,7 @@ struct CryptoMainView: View {
                     .padding(.vertical, 5)
                 //MARK: - 코인 검색창
                 SearchBarView(searchBarTextField:  $viewModel.searchText)
+                   
                 //MARK: - 코인 리스트 타이틀
                 columnTitles()
                 //MARK:  -  코인 및 보유  시세 리스트

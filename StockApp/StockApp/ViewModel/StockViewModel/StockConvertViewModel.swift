@@ -8,17 +8,20 @@
 import Foundation
 
 enum StockConvertViewModel : Int , CaseIterable, CustomStringConvertible  {
-    case most
-    case increase
+    case myInterestMarket
+    case nsdMarketCap
+    case newYorkStock
     case littleChange
     case largeChange
     
     var description: String {
         switch self {
-        case .most:
-            return "인기 순 "
-        case .increase:
-            return "주식이 상승률"
+        case .myInterestMarket:
+            return "관심 있는 주식"
+        case .nsdMarketCap:
+            return "나스닥 시가총액 "
+        case .newYorkStock:
+            return "뉴욕 거래소 시가총액"
         case .littleChange:
             return "변화량이 적은 순"
         case .largeChange:

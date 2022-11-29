@@ -8,20 +8,32 @@
 import SwiftUI
 
 struct StockRowView: View {
-    let stock : StockMostModelResponse
+    let stock : QuoteResponseRow
     
     var body: some View {
         HStack(spacing: .zero) {
-            Text(stock.shortName?.uppercased() ?? "")
-                .spoqaHan(family: .Bold, size: 12)
-                .minimumScaleFactor(0.8)
-                .foregroundColor(Color.fontColor.mainFontColor)
+            VStack(alignment: .leading) {
+                Text(stock.symbol?.uppercased() ?? "")
+                    .spoqaHan(family: .Bold, size: 12)
+                    .minimumScaleFactor(0.8)
+                    .foregroundColor(Color.fontColor.mainFontColor)
+                
+                Spacer()
+                    .frame(height: 3)
+                
+                Text(stock.shortName?.uppercased() ?? "")
+                    .spoqaHan(family: .Bold, size: 12)
+                    .minimumScaleFactor(0.8)
+                    .foregroundColor(Color.colorAssets.textColor)
+            }
             
             Spacer()
             
             VStack(alignment: .trailing) {
-                Text((stock.regularMarketVolume?.asCurrencyWith2DecimalsValue() ?? "") + "  KRW")
-                    .spoqaHan(family: .Bold, size: 12)
+                if let stockPrice = stock.regularMarketPrice {
+                    Text((stockPrice * 1326.95).asCurrencyWith2DecimalsValue() + " KRW")
+                        .spoqaHan(family: .Bold, size: 12)
+                }
                 Spacer()
                     .frame(height: 3)
                 
@@ -33,18 +45,14 @@ struct StockRowView: View {
                     )
                     .padding(EdgeInsets(top: 5, leading: 7, bottom: 5, trailing: 7))
                     .background((stock.regularMarketChangePercent  ?? .zero) >= .zero ? Color.colorAssets.skyblue4.opacity(0.3) : Color.colorAssets.lightRed.opacity(0.3))
-                    .clipShape(Capsule())
-                    
+                    .clipShape(Capsule())       
             }
-            
-            
-            
         }
     }
 }
 
-//struct StockRowView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        StockRowView(stock: dev.stock)
-//    }
-//}
+struct StockRowView_Previews: PreviewProvider {
+    static var previews: some View {
+        StockRowView(stock: dev.stock)
+    }
+}

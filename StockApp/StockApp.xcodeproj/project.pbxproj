@@ -73,6 +73,20 @@
 		7F729EDF28DB3B0000FEAE43 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F729EDE28DB3B0000FEAE43 /* PreviewProvider.swift */; };
 		7F729EE128DB3F6400FEAE43 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F729EE028DB3F6400FEAE43 /* Double.swift */; };
 		7F729EE328DB533600FEAE43 /* CoinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F729EE228DB533600FEAE43 /* CoinViewModel.swift */; };
+		7F8B658B2934DC2500C5203D /* TickerListRowData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B658A2934DC2500C5203D /* TickerListRowData.swift */; };
+		7F8B658D2934DDDC00C5203D /* TickerListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B658C2934DDDC00C5203D /* TickerListRowView.swift */; };
+		7F8B65902934E6E200C5203D /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B658F2934E6E200C5203D /* EmptyStateView.swift */; };
+		7F8B65922934E7B900C5203D /* ErrorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B65912934E7B900C5203D /* ErrorStateView.swift */; };
+		7F8B65952934EB5300C5203D /* LoadingStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B65942934EB5300C5203D /* LoadingStateView.swift */; };
+		7F8B65972934EBFD00C5203D /* StockViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B65962934EBFD00C5203D /* StockViewModels.swift */; };
+		7F8B659A2934EFF900C5203D /* Stubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B65992934EFF900C5203D /* Stubs.swift */; };
+		7F8B659C2934F16F00C5203D /* StockQuoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B659B2934F16F00C5203D /* StockQuoteViewModel.swift */; };
+		7F8B65A02934F3AC00C5203D /* StockQuote+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B659F2934F3AC00C5203D /* StockQuote+Extensions.swift */; };
+		7F8B65A22934F44700C5203D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B65A12934F44700C5203D /* Utils.swift */; };
+		7F8B65A4293624B600C5203D /* StockNewYorkRowList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B65A3293624B600C5203D /* StockNewYorkRowList.swift */; };
+		7F8B65A82936406200C5203D /* StockSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B65A72936406200C5203D /* StockSearchViewModel.swift */; };
+		7F8B65AA2936432300C5203D /* FetchPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B65A92936432300C5203D /* FetchPhase.swift */; };
+		7F8B65AC2936455300C5203D /* StockSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B65AB2936455300C5203D /* StockSearchView.swift */; };
 		7F98D131290564560088A052 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98D130290564560088A052 /* WebView.swift */; };
 		7F98D136290568580088A052 /* 나눔손글씨 맛있는체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7F98D134290568570088A052 /* 나눔손글씨 맛있는체.ttf */; };
 		7F98D137290568580088A052 /* 나눔손글씨 둥근인연.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7F98D135290568580088A052 /* 나눔손글씨 둥근인연.ttf */; };
@@ -133,6 +147,12 @@
 		7FEF4FA528E0A32800DA9AEB /* CryptoStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEF4FA428E0A32800DA9AEB /* CryptoStatView.swift */; };
 		7FEF4FA728E0B4D400DA9AEB /* MarketDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEF4FA628E0B4D400DA9AEB /* MarketDataModel.swift */; };
 		7FEF4FA928E0B88000DA9AEB /* CoinMarketDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEF4FA828E0B88000DA9AEB /* CoinMarketDataService.swift */; };
+		7FF132B92932306500FEFA3C /* StockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF132B82932306500FEFA3C /* StockModel.swift */; };
+		7FF132BD29323A9D00FEFA3C /* StockOverVIewFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF132BC29323A9D00FEFA3C /* StockOverVIewFunction.swift */; };
+		7FF132BF29336FBA00FEFA3C /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF132BE29336FBA00FEFA3C /* ErrorResponse.swift */; };
+		7FF132C329337A0400FEFA3C /* StockRowList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF132C229337A0400FEFA3C /* StockRowList.swift */; };
+		7FF132C72933870800FEFA3C /* StockSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF132C62933870800FEFA3C /* StockSearchModel.swift */; };
+		7FF132CA293392F200FEFA3C /* XCAStocksAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 7FF132C9293392F200FEFA3C /* XCAStocksAPI */; };
 		7FF19D5328E1E58D00BF93B3 /* PortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF19D5228E1E58D00BF93B3 /* PortfolioView.swift */; };
 		7FF19D5828E1EB3600BF93B3 /* CoinLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF19D5728E1EB3600BF93B3 /* CoinLogoView.swift */; };
 		7FF3434E28F05C4400FD34EC /* SIgnUpVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF3434D28F05C4400FD34EC /* SIgnUpVIew.swift */; };
@@ -145,9 +165,7 @@
 		7FF3BF542904474900ED0B81 /* ListRowTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF3BF532904474900ED0B81 /* ListRowTextView.swift */; };
 		7FF3BF5629044B7600ED0B81 /* ListRowSystemImageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF3BF5529044B7600ED0B81 /* ListRowSystemImageTextView.swift */; };
 		7FF4835A28E51DC2004DEC37 /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF4835928E51DC2004DEC37 /* SortOption.swift */; };
-		7FFEF7CA28EF090E0023AACC /* StockMostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEF7C928EF090D0023AACC /* StockMostModel.swift */; };
-		7FFFD5A92928AAB800A25207 /* StockMostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFFD5A82928AAB800A25207 /* StockMostViewModel.swift */; };
-		7FFFD5AD2928BD1200A25207 /* StockAPI-Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFFD5AC2928BD1200A25207 /* StockAPI-Market.swift */; };
+		7FFFD5AD2928BD1200A25207 /* StockAPI-Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFFD5AC2928BD1200A25207 /* StockAPI-Stock.swift */; };
 		7FFFD5AF292A36AA00A25207 /* StockConvertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFFD5AE292A36AA00A25207 /* StockConvertViewModel.swift */; };
 		7FFFD5B1292A3D6A00A25207 /* StockRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFFD5B0292A3D6A00A25207 /* StockRowView.swift */; };
 		7FFFD5B7292A523D00A25207 /* StockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFFD5B6292A523D00A25207 /* StockViewModel.swift */; };
@@ -233,6 +251,20 @@
 		7F729EDE28DB3B0000FEAE43 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 		7F729EE028DB3F6400FEAE43 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		7F729EE228DB533600FEAE43 /* CoinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinViewModel.swift; sourceTree = "<group>"; };
+		7F8B658A2934DC2500C5203D /* TickerListRowData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerListRowData.swift; sourceTree = "<group>"; };
+		7F8B658C2934DDDC00C5203D /* TickerListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerListRowView.swift; sourceTree = "<group>"; };
+		7F8B658F2934E6E200C5203D /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		7F8B65912934E7B900C5203D /* ErrorStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorStateView.swift; sourceTree = "<group>"; };
+		7F8B65942934EB5300C5203D /* LoadingStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingStateView.swift; sourceTree = "<group>"; };
+		7F8B65962934EBFD00C5203D /* StockViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewModels.swift; sourceTree = "<group>"; };
+		7F8B65992934EFF900C5203D /* Stubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stubs.swift; sourceTree = "<group>"; };
+		7F8B659B2934F16F00C5203D /* StockQuoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockQuoteViewModel.swift; sourceTree = "<group>"; };
+		7F8B659F2934F3AC00C5203D /* StockQuote+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StockQuote+Extensions.swift"; sourceTree = "<group>"; };
+		7F8B65A12934F44700C5203D /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		7F8B65A3293624B600C5203D /* StockNewYorkRowList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockNewYorkRowList.swift; sourceTree = "<group>"; };
+		7F8B65A72936406200C5203D /* StockSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSearchViewModel.swift; sourceTree = "<group>"; };
+		7F8B65A92936432300C5203D /* FetchPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhase.swift; sourceTree = "<group>"; };
+		7F8B65AB2936455300C5203D /* StockSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSearchView.swift; sourceTree = "<group>"; };
 		7F98D130290564560088A052 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		7F98D134290568570088A052 /* 나눔손글씨 맛있는체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 맛있는체.ttf"; sourceTree = "<group>"; };
 		7F98D135290568580088A052 /* 나눔손글씨 둥근인연.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 둥근인연.ttf"; sourceTree = "<group>"; };
@@ -299,6 +331,11 @@
 		7FEF4FA428E0A32800DA9AEB /* CryptoStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoStatView.swift; sourceTree = "<group>"; };
 		7FEF4FA628E0B4D400DA9AEB /* MarketDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDataModel.swift; sourceTree = "<group>"; };
 		7FEF4FA828E0B88000DA9AEB /* CoinMarketDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinMarketDataService.swift; sourceTree = "<group>"; };
+		7FF132B82932306500FEFA3C /* StockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockModel.swift; sourceTree = "<group>"; };
+		7FF132BC29323A9D00FEFA3C /* StockOverVIewFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockOverVIewFunction.swift; sourceTree = "<group>"; };
+		7FF132BE29336FBA00FEFA3C /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		7FF132C229337A0400FEFA3C /* StockRowList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockRowList.swift; sourceTree = "<group>"; };
+		7FF132C62933870800FEFA3C /* StockSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSearchModel.swift; sourceTree = "<group>"; };
 		7FF19D5228E1E58D00BF93B3 /* PortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioView.swift; sourceTree = "<group>"; };
 		7FF19D5728E1EB3600BF93B3 /* CoinLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinLogoView.swift; sourceTree = "<group>"; };
 		7FF3434D28F05C4400FD34EC /* SIgnUpVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIgnUpVIew.swift; sourceTree = "<group>"; };
@@ -308,9 +345,7 @@
 		7FF3BF532904474900ED0B81 /* ListRowTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowTextView.swift; sourceTree = "<group>"; };
 		7FF3BF5529044B7600ED0B81 /* ListRowSystemImageTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowSystemImageTextView.swift; sourceTree = "<group>"; };
 		7FF4835928E51DC2004DEC37 /* SortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOption.swift; sourceTree = "<group>"; };
-		7FFEF7C928EF090D0023AACC /* StockMostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockMostModel.swift; sourceTree = "<group>"; };
-		7FFFD5A82928AAB800A25207 /* StockMostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockMostViewModel.swift; sourceTree = "<group>"; };
-		7FFFD5AC2928BD1200A25207 /* StockAPI-Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StockAPI-Market.swift"; sourceTree = "<group>"; };
+		7FFFD5AC2928BD1200A25207 /* StockAPI-Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StockAPI-Stock.swift"; sourceTree = "<group>"; };
 		7FFFD5AE292A36AA00A25207 /* StockConvertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockConvertViewModel.swift; sourceTree = "<group>"; };
 		7FFFD5B0292A3D6A00A25207 /* StockRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockRowView.swift; sourceTree = "<group>"; };
 		7FFFD5B6292A523D00A25207 /* StockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewModel.swift; sourceTree = "<group>"; };
@@ -336,6 +371,7 @@
 				7FBA185F28F7135100025001 /* FirebaseAuth in Frameworks */,
 				7FF3BF4429040BC600ED0B81 /* GoogleSignInSwift in Frameworks */,
 				7FF3BF4F290432A500ED0B81 /* AttributedText in Frameworks */,
+				7FF132CA293392F200FEFA3C /* XCAStocksAPI in Frameworks */,
 				7FBA186128F7135100025001 /* FirebaseFirestore in Frameworks */,
 				7FBA186528F7135100025001 /* FirebaseStorage in Frameworks */,
 				7FBA186328F7135100025001 /* FirebaseFirestoreSwift in Frameworks */,
@@ -557,8 +593,28 @@
 				7F03A51328EB34300020079E /* String.swift */,
 				7F1F940A28F9AABA0012402E /* KeyboardHandler.swift */,
 				7FED2A7028FA5ED800D7A7C7 /* UserDefaults.swift */,
+				7F8B659F2934F3AC00C5203D /* StockQuote+Extensions.swift */,
+				7F8B65A12934F44700C5203D /* Utils.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		7F8B65932934EB1F00C5203D /* CommonStock */ = {
+			isa = PBXGroup;
+			children = (
+				7F8B658F2934E6E200C5203D /* EmptyStateView.swift */,
+				7F8B65912934E7B900C5203D /* ErrorStateView.swift */,
+				7F8B65942934EB5300C5203D /* LoadingStateView.swift */,
+			);
+			path = CommonStock;
+			sourceTree = "<group>";
+		};
+		7F8B65982934EFD700C5203D /* Mock & Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				7F8B65992934EFF900C5203D /* Stubs.swift */,
+			);
+			path = "Mock & Stubs";
 			sourceTree = "<group>";
 		};
 		7F98D12F290564360088A052 /* WebView */ = {
@@ -582,6 +638,7 @@
 			isa = PBXGroup;
 			children = (
 				7FBB005A2923D000002380B7 /* APIError.swift */,
+				7FF132BE29336FBA00FEFA3C /* ErrorResponse.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -590,8 +647,9 @@
 			isa = PBXGroup;
 			children = (
 				7FBB00562923CBA1002380B7 /* StockAPI.swift */,
+				7FF132BC29323A9D00FEFA3C /* StockOverVIewFunction.swift */,
 				7FBB00582923CE4A002380B7 /* Agent.swift */,
-				7FFFD5AC2928BD1200A25207 /* StockAPI-Market.swift */,
+				7FFFD5AC2928BD1200A25207 /* StockAPI-Stock.swift */,
 				7F3EF0F6292BCDB0007108D7 /* StocklistParm.swift */,
 				7F54F5E6292E531600D97AAF /* StockSymbol.swift */,
 			);
@@ -630,6 +688,10 @@
 				7FC3563C28D8AE7A002E0E63 /* StockMainView.swift */,
 				7FFFD5B0292A3D6A00A25207 /* StockRowView.swift */,
 				7FFFD5BA292A701700A25207 /* StockTabBarButton.swift */,
+				7FF132C229337A0400FEFA3C /* StockRowList.swift */,
+				7F8B658C2934DDDC00C5203D /* TickerListRowView.swift */,
+				7F8B65A3293624B600C5203D /* StockNewYorkRowList.swift */,
+				7F8B65AB2936455300C5203D /* StockSearchView.swift */,
 			);
 			path = Stock;
 			sourceTree = "<group>";
@@ -666,9 +728,12 @@
 		7FC3564728D8B22D002E0E63 /* StockViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				7FFFD5A82928AAB800A25207 /* StockMostViewModel.swift */,
 				7FFFD5AE292A36AA00A25207 /* StockConvertViewModel.swift */,
 				7FFFD5B6292A523D00A25207 /* StockViewModel.swift */,
+				7F8B658A2934DC2500C5203D /* TickerListRowData.swift */,
+				7F8B65962934EBFD00C5203D /* StockViewModels.swift */,
+				7F8B659B2934F16F00C5203D /* StockQuoteViewModel.swift */,
+				7F8B65A72936406200C5203D /* StockSearchViewModel.swift */,
 			);
 			path = StockViewModel;
 			sourceTree = "<group>";
@@ -676,6 +741,7 @@
 		7FC3564828D8B4A7002E0E63 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				7F8B65932934EB1F00C5203D /* CommonStock */,
 				7F15F7682905822600B06452 /* POPUP */,
 				7F98D12F290564360088A052 /* WebView */,
 				7FF3BF4A29042BAF00ED0B81 /* Text */,
@@ -782,6 +848,7 @@
 				7FE8370B28BF966F003761FE /* Application */,
 				7FE8370C28BF9681003761FE /* Utills */,
 				7FE8370E28BF969F003761FE /* ViewModel */,
+				7F8B65982934EFD700C5203D /* Mock & Stubs */,
 				7FE8370D28BF9699003761FE /* Model */,
 				7FE8371228BF96EC003761FE /* View */,
 				7FE8371028BF96C7003761FE /* Network */,
@@ -1060,7 +1127,9 @@
 		7FFEF7C828EF08DB0023AACC /* StockModel */ = {
 			isa = PBXGroup;
 			children = (
-				7FFEF7C928EF090D0023AACC /* StockMostModel.swift */,
+				7FF132B82932306500FEFA3C /* StockModel.swift */,
+				7FF132C62933870800FEFA3C /* StockSearchModel.swift */,
+				7F8B65A92936432300C5203D /* FetchPhase.swift */,
 			);
 			path = StockModel;
 			sourceTree = "<group>";
@@ -1106,6 +1175,7 @@
 				7FF3BF4329040BC600ED0B81 /* GoogleSignInSwift */,
 				7FF3BF4E290432A500ED0B81 /* AttributedText */,
 				7F4E82EA29098E5800B65D97 /* HidableTabView */,
+				7FF132C9293392F200FEFA3C /* XCAStocksAPI */,
 			);
 			productName = StockApp;
 			productReference = 7FE836DE28BF95B0003761FE /* StockApp.app */;
@@ -1187,6 +1257,7 @@
 				7FF3BF4029040BC600ED0B81 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				7FF3BF4D290432A500ED0B81 /* XCRemoteSwiftPackageReference "AttributedText" */,
 				7F4E82E929098E5800B65D97 /* XCRemoteSwiftPackageReference "HidableTabView-SwiftUI" */,
+				7FF132C8293392F200FEFA3C /* XCRemoteSwiftPackageReference "XCAStocksAPI" */,
 			);
 			productRefGroup = 7FE836DF28BF95B0003761FE /* Products */;
 			projectDirPath = "";
@@ -1364,6 +1435,8 @@
 				7FF19D5328E1E58D00BF93B3 /* PortfolioView.swift in Sources */,
 				7F729EDA28DA013600FEAE43 /* CoinModel.swift in Sources */,
 				7FC3564028D8AFB5002E0E63 /* ProfileMainView.swift in Sources */,
+				7F8B65A82936406200C5203D /* StockSearchViewModel.swift in Sources */,
+				7F8B65AA2936432300C5203D /* FetchPhase.swift in Sources */,
 				7FC3563D28D8AE7A002E0E63 /* StockMainView.swift in Sources */,
 				7FE7929F28FD81A900E3D6E3 /* TweetRowVIew.swift in Sources */,
 				7FF3BF49290427E000ED0B81 /* PersonalInformationView.swift in Sources */,
@@ -1374,6 +1447,7 @@
 				7F729EE328DB533600FEAE43 /* CoinViewModel.swift in Sources */,
 				7FBB00592923CE4A002380B7 /* Agent.swift in Sources */,
 				7FFFD5B9292A58C900A25207 /* ScrollViewModifier.swift in Sources */,
+				7F8B65A02934F3AC00C5203D /* StockQuote+Extensions.swift in Sources */,
 				7F02A5FE28E7316E00F4B56C /* CryptoDetailView.swift in Sources */,
 				7FBF6B7928E34E710079D68A /* HapticManger.swift in Sources */,
 				7F21333D28E32BE200CE0BE2 /* PortfolioDataService.swift in Sources */,
@@ -1383,11 +1457,13 @@
 				7F21333B28E32B2E00CE0BE2 /* PortofolioModel.xcdatamodeld in Sources */,
 				7F98D131290564560088A052 /* WebView.swift in Sources */,
 				7F98D139290569540088A052 /* ShareFont.swift in Sources */,
+				7FF132C72933870800FEFA3C /* StockSearchModel.swift in Sources */,
 				7FEE221B28FC670100792003 /* TweetFilterViewModel.swift in Sources */,
 				7FC3563A28D8A221002E0E63 /* CryptoMainView.swift in Sources */,
 				7FEF4F9E28E0809E00DA9AEB /* UIApplication.swift in Sources */,
+				7F8B65902934E6E200C5203D /* EmptyStateView.swift in Sources */,
 				7F15F7702905869300B06452 /* Size.swift in Sources */,
-				7FFFD5AD2928BD1200A25207 /* StockAPI-Market.swift in Sources */,
+				7FFFD5AD2928BD1200A25207 /* StockAPI-Stock.swift in Sources */,
 				7F2160BE290187D400217585 /* InformationVIewModel.swift in Sources */,
 				7FF3BF3F2904067600ED0B81 /* ContainerView.swift in Sources */,
 				7FCD241628FBC5F5002C5C18 /* SnsLoginDelegate.swift in Sources */,
@@ -1398,16 +1474,19 @@
 				7FC3564328D8B06F002E0E63 /* HomeView.swift in Sources */,
 				7F01DFB628F70068000ECB96 /* AuthorizationVIewModel.swift in Sources */,
 				7F324C6E28E9D4B600A22FFC /* CryptoCoinItemViews.swift in Sources */,
+				7F8B659A2934EFF900C5203D /* Stubs.swift in Sources */,
 				7F324C6A28E9AF2400A22FFC /* CryptoCoinCardView.swift in Sources */,
 				7FC3564B28D8B4CF002E0E63 /* CircleButtonView.swift in Sources */,
 				7FEF4F7928DF43AE00DA9AEB /* LocalFileManger.swift in Sources */,
 				7FB1AC94291D497300A0B67C /* ProfileEditView.swift in Sources */,
+				7FF132B92932306500FEFA3C /* StockModel.swift in Sources */,
 				7F54F5E7292E531600D97AAF /* StockSymbol.swift in Sources */,
 				7FF3435028F05C5000FD34EC /* LoginView.swift in Sources */,
 				7F2160C12901936B00217585 /* DeveloperView.swift in Sources */,
 				7FB1AC96291E798A00A0B67C /* ProfileEditViewModel.swift in Sources */,
 				7F2AEB4328E839D900FA86AD /* CryptoDetailModel.swift in Sources */,
 				7FE792A128FD81BE00E3D6E3 /* FeedView.swift in Sources */,
+				7FF132BD29323A9D00FEFA3C /* StockOverVIewFunction.swift in Sources */,
 				7F3EF0F7292BCDB0007108D7 /* StocklistParm.swift in Sources */,
 				7FFFD5BB292A701700A25207 /* StockTabBarButton.swift in Sources */,
 				7F4A831128FC1BE700A3561A /* AppleLogin.swift in Sources */,
@@ -1421,12 +1500,14 @@
 				7F174E7C28F59E8800352189 /* CheckRegisterAlert.swift in Sources */,
 				7FEF4F7628DF316D00DA9AEB /* CoinImageService.swift in Sources */,
 				7FBB004F292295C7002380B7 /* MyProfileEditView.swift in Sources */,
+				7F8B65AC2936455300C5203D /* StockSearchView.swift in Sources */,
 				7FB1AC98291E7FB400A0B67C /* FeedBackViewModel.swift in Sources */,
 				7F06912128CB14E3005F840E /* NetworkManger.swift in Sources */,
 				7F6910132915497E00BE9A3F /* LanchView.swift in Sources */,
 				7F15F76C290582B400B06452 /* PopupView.swift in Sources */,
 				7F4C7D9B28FEFFAF0058ECD5 /* UserStatusView.swift in Sources */,
 				7FF19D5828E1EB3600BF93B3 /* CoinLogoView.swift in Sources */,
+				7FF132BF29336FBA00FEFA3C /* ErrorResponse.swift in Sources */,
 				7FFFD5B7292A523D00A25207 /* StockViewModel.swift in Sources */,
 				7FEF4FA728E0B4D400DA9AEB /* MarketDataModel.swift in Sources */,
 				7F98D13B29056F730088A052 /* TabBar.swift in Sources */,
@@ -1443,23 +1524,28 @@
 				7F29425928F329A400A44CDD /* ModalShapeCorner.swift in Sources */,
 				7FED2A7128FA5ED800D7A7C7 /* UserDefaults.swift in Sources */,
 				7FBB004B29227897002380B7 /* UserModel.swift in Sources */,
+				7F8B658B2934DC2500C5203D /* TickerListRowData.swift in Sources */,
 				7FF3BF5629044B7600ED0B81 /* ListRowSystemImageTextView.swift in Sources */,
 				7F4E82DE2909809B00B65D97 /* SignupPopupVIew.swift in Sources */,
 				7FCD241428FAEF30002C5C18 /* ErroAlertMessage.swift in Sources */,
 				7F39713928D2336F007823C4 /* GradiantColorAsset.swift in Sources */,
 				7F174E7328F58DF900352189 /* CustomSecureInputField.swift in Sources */,
+				7F8B65922934E7B900C5203D /* ErrorStateView.swift in Sources */,
 				7FBB005129229906002380B7 /* SettingView.swift in Sources */,
 				7F15F7722905872500B06452 /* ScreenSize.swift in Sources */,
 				7F2382C228DDED4400103AE7 /* URlManager.swift in Sources */,
+				7F8B65952934EB5300C5203D /* LoadingStateView.swift in Sources */,
 				7FF3434E28F05C4400FD34EC /* SIgnUpVIew.swift in Sources */,
-				7FFFD5A92928AAB800A25207 /* StockMostViewModel.swift in Sources */,
 				7F4E4EC4291613F0007A32B7 /* LoginMainView.swift in Sources */,
 				7F01DFBA28F70961000ECB96 /* AppDelegate.swift in Sources */,
 				7F729EDC28DB3A0E00FEAE43 /* CoinRowView.swift in Sources */,
 				7FE8372328BF9D37003761FE /* FontAsset.swift in Sources */,
+				7F8B659C2934F16F00C5203D /* StockQuoteViewModel.swift in Sources */,
 				7FEF4FA328E09E3800DA9AEB /* StatisticView.swift in Sources */,
+				7F8B65972934EBFD00C5203D /* StockViewModels.swift in Sources */,
 				7FE8371B28BF991C003761FE /* ColorAsset.swift in Sources */,
 				7F03A51428EB34300020079E /* String.swift in Sources */,
+				7F8B65A22934F44700C5203D /* Utils.swift in Sources */,
 				7FFFD5AF292A36AA00A25207 /* StockConvertViewModel.swift in Sources */,
 				7F39713B28D23444007823C4 /* GradiantColor.swift in Sources */,
 				7F174E7628F590E000352189 /* CheckRegister.swift in Sources */,
@@ -1467,6 +1553,7 @@
 				7F729EDF28DB3B0000FEAE43 /* PreviewProvider.swift in Sources */,
 				7F324C7728EB122C00A22FFC /* Date.swift in Sources */,
 				7FEF4F6C28DF144300DA9AEB /* NetworkingManger.swift in Sources */,
+				7FF132C329337A0400FEFA3C /* StockRowList.swift in Sources */,
 				7F174E7928F591FB00352189 /* AuthHeaderView.swift in Sources */,
 				7FBB004829226EF7002380B7 /* UserService.swift in Sources */,
 				7F174E7128F587D200352189 /* CustomInputField.swift in Sources */,
@@ -1479,7 +1566,8 @@
 				7F2AEB4128E8395D00FA86AD /* CryptoDetailViewModel.swift in Sources */,
 				7F4C7D9E28FF01C10058ECD5 /* AppLogoutViewModel.swift in Sources */,
 				7FEF4F7428DF2D6B00DA9AEB /* CoinImageViewModel.swift in Sources */,
-				7FFEF7CA28EF090E0023AACC /* StockMostModel.swift in Sources */,
+				7F8B65A4293624B600C5203D /* StockNewYorkRowList.swift in Sources */,
+				7F8B658D2934DDDC00C5203D /* TickerListRowView.swift in Sources */,
 				7FEF4F9C28E078B900DA9AEB /* SearchBarView.swift in Sources */,
 				7FC3564628D8B0EC002E0E63 /* AddMainView.swift in Sources */,
 				7F2AEB4528E83E0500FA86AD /* CoinDetailSetvice.swift in Sources */,
@@ -1866,6 +1954,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		7FF132C8293392F200FEFA3C /* XCRemoteSwiftPackageReference "XCAStocksAPI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/alfianlosari/XCAStocksAPI.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		7FF3BF4029040BC600ED0B81 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
@@ -1909,6 +2005,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7FBA185D28F7135100025001 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		7FF132C9293392F200FEFA3C /* XCAStocksAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7FF132C8293392F200FEFA3C /* XCRemoteSwiftPackageReference "XCAStocksAPI" */;
+			productName = XCAStocksAPI;
 		};
 		7FF3BF4129040BC600ED0B81 /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;

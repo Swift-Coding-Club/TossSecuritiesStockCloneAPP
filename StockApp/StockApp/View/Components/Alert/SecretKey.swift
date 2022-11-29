@@ -18,4 +18,6 @@ struct SecretKey {
     static let googleLoginkey: String = "1060378286730-d080s67ukoj1bll1ejs0bu154mbna1j7.apps.googleusercontent.com"
     
     static let stockSecretKey: String = "S3FO1NGACeKYxocOCYMtpIhMtAyFruqR06haXrg6O9TFwXNOKoqmC3j7tQhn"
+    
+    static let stockOverViewApiKey: String = "OOQTH2ECPK4NB5ZR"
 }

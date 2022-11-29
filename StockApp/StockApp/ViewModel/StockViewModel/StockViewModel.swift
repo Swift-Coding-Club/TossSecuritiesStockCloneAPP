@@ -5,19 +5,64 @@
 //  Created by 서원지 on 2022/11/20.
 //
 
-import Foundation
+import SwiftUI
 import Combine
+import XCAStocksAPI
 
 class StockViewModel: ObservableObject  {
+
+    var stockSubscription: AnyCancellable?
+    var newyorkStockSubscription: AnyCancellable?
     
-//    @Published var allStock :  [StockMostModelResponseQuote] = []             // 주식 관련
-    @Published var isLoading: Bool = false                                      // 로딩 관련
-    private let stockMostService = StockMostViewModel()
-    
-    private var cancelables = Set <AnyCancellable>()                  // 구독 취소하는 변수
+    @Published var stockOverViewData: [QuoteResponseRow] = []
+    @Published var isLoading: Bool = false
     
     init() {
+        reloadData()
+    }
+    
+    private func toViewModel(_ model: StockModel) {
+        self.stockOverViewData = model.quoteResponse?.result ?? []
+    }
+    
+    //MARK: - 주식 데이터리스트
+    func getStockData() {
+        if let cancellable = stockSubscription {
+            cancellable.cancel()
+        }
+        let parm = getStockYahooDataListParm(symbols: StockSymbol.nsdSymbol.description)
+        stockSubscription = StockAPI.getStockYahooListData(parm)
+            .compactMap {$0}
+            .sink(receiveCompletion: { error in
+                print(error)
+            }, receiveValue: { [weak self] model in
+                self?.isLoading = false
+                self?.toViewModel(model)
+            })
+    }
+    
+    //MARK: - 뉴욕 주식 데이터 리스트
+    func getNewYorkStockData() {
+        if let cancellable = newyorkStockSubscription {
+            cancellable.cancel()
+        }
+        let parm = getStockYahooDataListParm(symbols: StockSymbol.newyorkSymbol.description)
+        newyorkStockSubscription = StockAPI.getStockYahooListData(parm)
+            .compactMap {$0}
+            .sink(receiveCompletion: { error in
+                print(error)
+            }, receiveValue: { [weak self] model in
+                self?.isLoading = false
+                self?.toViewModel(model)
+            })
     }
 
-
+    
+    //MARK: - 주식 리로드
+    func reloadData() {
+        isLoading = true
+        getStockData()
+        getNewYorkStockData()
+    }
 }
+

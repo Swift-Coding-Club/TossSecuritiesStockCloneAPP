@@ -39,6 +39,6 @@ struct StockTabBarButton: View {
 
 struct StockTabBarButton_Previews: PreviewProvider {
     static var previews: some View {
-        StockTabBarButton(type: .most, selectType: .constant(.most))
+        StockTabBarButton(type: .nsdMarketCap, selectType: .constant(.nsdMarketCap))
     }
 }

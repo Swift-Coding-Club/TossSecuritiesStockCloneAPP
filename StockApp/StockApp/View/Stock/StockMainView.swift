@@ -6,50 +6,128 @@
 //
 
 import SwiftUI
+import XCAStocksAPI
 
 struct StockMainView: View {
     @Namespace var animation
-    @State var selectStock : StockConvertViewModel = .most
-    @StateObject var stockMostViewModel: StockMostViewModel
+    @State var selectStock : StockConvertViewModel = .myInterestMarket
+    @EnvironmentObject var viewModel : StockViewModels
+    @EnvironmentObject var stockIntersetViewModel: StockViewModel
+    @StateObject var stockViewModel = StockQuoteViewModel()
+    @StateObject var searchViewModel: StockSearchViewModel
     
     var body: some View {
         ZStack {
             Color.colorAssets.backGroundColor
                 .ignoresSafeArea()
-            
-            VStack {
-                Spacer().frame(height: 20)
-                
-                stockHeader()
-                
-                convertTitle()
-                
-                ScrollView(.vertical , showsIndicators: false) {
+            if #available(iOS 16.0, *) {
+                if selectStock == .myInterestMarket {
+                    NavigationStack {
+                        VStack(spacing: .zero) {
+                            Spacer().frame(height: 20)
+                            
+                            
+                            convertTitle()
+                                .padding(.bottom , 10)
+                            
+                            //MARK: - 주식 검색
+                            
+                                stockListTitle()
+                                
+                                stockConvertList()
+                                    .padding(.bottom, 12)
+                                    .padding(.vertical , 30)
+                                
+                                Spacer(minLength: .zero)
+                            }
+                            .toolbar {
+                                titleToolbar
+                            }
+                            .searchable(text: $searchViewModel.searchStock)
+                        }
+                    } else {
+                        NavigationStack {
+                            VStack(spacing: .zero) {
+                                Spacer().frame(height: 20)
+                                
+                                convertTitle()
+                                    .padding(.bottom , 10)
+                                
+                                //MARK: - 주식 검색
+                                
+                                stockListTitle()
+                                ScrollView(.vertical , showsIndicators: false) {
+                                    
+                                    stockConvertList()
+                                        .padding(.bottom, 12)
+                                }
+                                .bounce(false)
+                                    .padding(.vertical , 30)
+                                
+                                Spacer(minLength: .zero)
+                            }
+                            .toolbar {
+                                titleToolbar
+                            }
+                        }
+                    }
                     
-                    stockListTitle()
-                    
-                    stockConvertList()
-                        .padding(.bottom, 12)
+                } else {
+                    if selectStock == .myInterestMarket {
+                        NavigationView {
+                            VStack(spacing: .zero) {
+                                Spacer().frame(height: 20)
+                                
+                                
+                                convertTitle()
+                                    .padding(.bottom , 10)
+                                
+                                //MARK: - 주식 검색
+                                
+                                    stockListTitle()
+                                    
+                                    stockConvertList()
+                                        .padding(.bottom, 12)
+                                        .padding(.vertical , 30)
+                                    
+                                    Spacer(minLength: .zero)
+                                }
+                            .toolbar {
+                                titleToolbar
+                            }
+                        }
+                    } else {
+                        NavigationView {
+                            VStack(spacing: .zero) {
+                                Spacer().frame(height: 20)
+                                
+                                convertTitle()
+                                    .padding(.bottom , 10)
+                                
+                                //MARK: - 주식 검색
+                                
+                                stockListTitle()
+                                ScrollView(.vertical , showsIndicators: false) {
+                                    
+                                    stockConvertList()
+                                        .padding(.bottom, 12)
+                                }
+                                .bounce(false)
+                                    .padding(.vertical , 30)
+                                
+                                Spacer(minLength: .zero)
+                            }
+                            .toolbar {
+                                titleToolbar
+                            }
+                        }
+                    }
+
                 }
-                .bounce(false)
-                .padding(.vertical , 30)
                 
-                Spacer(minLength: .zero)
             }
         }
-    }
-    //MARK: - 주식 관련 타이틀
-    @ViewBuilder
-    private func stockHeader() -> some View {
-        HStack(alignment: .center) {
-            Text("해외주식")
-                .spoqaHan(family: .Bold, size: 25)
-                .foregroundColor(Color.fontColor.mainFontColor)
-        }
-        Spacer().frame(height: 15)
-    }
-    //MARK: - 주식 검색
-    
+
     //MARK: - 주식  전환 타이틀
     @ViewBuilder
     private func convertTitle() -> some View {
@@ -67,7 +145,9 @@ struct StockMainView: View {
                             .clipShape(Capsule())
                             .onTapGesture {
                                 withAnimation(.easeInOut) {
-                                    self.selectStock = item
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                        self.selectStock = item
+                                    }
                                 }
                             }
                     }
@@ -89,13 +169,11 @@ struct StockMainView: View {
                 Text("가격")
                 
                 Button {
-                    stockMostViewModel.reloadData()
+                    stockIntersetViewModel.reloadData()
                 } label: {
                     Image(systemName: "goforward")
-                        
                 }
-                .rotationEffect(Angle(degrees: stockMostViewModel.isLoading ? 360 : .zero),
-                                anchor: .center)
+                .rotationEffect(Angle(degrees: stockIntersetViewModel.isLoading ? 360 : .zero), anchor: .center)
             }
         }
         .spoqaHan(family: .Regular, size: 13)
@@ -103,128 +181,114 @@ struct StockMainView: View {
         .padding(.horizontal)
         
     }
+    @ViewBuilder
+    private func stockTickerList() -> some View {
+       List{
+            ForEach(viewModel.tickers) { stcoks in
+                TickerListRowView(data: .init(symbol: stcoks.symbol , name: stcoks.shortname ?? "", price:stockViewModel.priceForTicker(stcoks) , type: .main))
+                    .contentShape(Rectangle())
+                    .padding(.horizontal)
+                    .onTapGesture { }
+            }
+            .onDelete { viewModel.removeTickers(atOffsets: $0) }
+            
+        }
+       .listStyle(.plain)
+    }
+    
+    @ViewBuilder
+    private func overlayView() -> some View {
+        if viewModel.tickers.isEmpty {
+            EmptyStateView(text: viewModel.emptyTickersText)
+        }
+        if searchViewModel.isSearching {
+            StockSearchView(searchViewModel: searchViewModel)
+        
+        }
+    }
+    
+    //MARK: - 네비게이션 바
+    private var titleToolbar:  some ToolbarContent {
+        ToolbarItem(placement: .navigationBarLeading) {
+            VStack(alignment: .leading, spacing: -4){
+                Text(viewModel.titleText)
+                Spacer()
+                Text(viewModel.subTitleText)
+                    .foregroundColor(Color(uiColor: .secondaryLabel))
+            }
+            .spoqaHan(family: .Bold, size: 25)
+            .padding(.bottom, 10)
+        }
+    }
+    
     //MARK: - 주식 전환 탭
     @ViewBuilder
     private func stockConvertList() -> some View {
-        if selectStock == .most {
-            stockMostList()
-        } else if selectStock == .increase {
-            stockIncreaseList()
+        if selectStock == .myInterestMarket {
+            stockTickerList()
+                .overlay { overlayView() }
+        } else if selectStock == .nsdMarketCap {
+            StockRowList(stockViewModel: stockIntersetViewModel)
+        } else if selectStock == .newYorkStock {
+            StockNewYorkRowList(stockViewModel: stockIntersetViewModel)
         } else if selectStock == .littleChange {
-            stockSmallCapList()
+
         } else if selectStock == . largeChange{
-            stockLargeCapList()
+
         }
     }
-    //MARK: - 주식 인기순
-    @ViewBuilder
-    private func stockMostList() -> some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack(spacing: 10) {
-                ForEach(Array(stockMostViewModel.stockData.enumerated()), id: \.offset ) { index , stock in
-                    LazyVStack {
-                        StockRowView(stock: stock)
-                            .padding(.horizontal, 20)
-                            .onAppear {
-                                let count = stockMostViewModel.stockData.count
-                                if count < stockMostViewModel.totalCount {
-                                    if index == count - 5 {
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                            stockMostViewModel.getStockMostData()
-                                        }
-                                    }
-                                }
-                            }
-                    }
-                }
-            }
-        }
-        .bounce(false)
-        .padding(.init(top: 26, leading: .zero, bottom: 48, trailing: 10))
-    }
-    //MARK: - 주식 상승률
-    @ViewBuilder
-    private func stockIncreaseList() -> some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack(spacing: 10) {
-                ForEach(Array(stockMostViewModel.stockData.enumerated()), id: \.offset ) { index , stock in
-                    LazyVStack {
-                        StockRowView(stock: stock)
-                            .padding(.horizontal, 20)
-                            .onAppear {
-                                let count = stockMostViewModel.stockData.count
-                                if count < stockMostViewModel.totalCount {
-                                    if index == count - 5 {
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                                            stockMostViewModel.getStockIncreaseCapData()
-                                        }
-                                    }
-                                }
-                            }
-                    }
-                }
-            }
-        }
-        .bounce(false)
-        .padding(.init(top: 26, leading: .zero, bottom: 48, trailing: 10))
-    }
-    //MARK: - 주식 변화량이 적은순
-    @ViewBuilder
-    private func stockSmallCapList() -> some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack(spacing: 10) {
-                ForEach(Array(stockMostViewModel.stockData.enumerated()), id: \.offset ) { index , stock in
-                    LazyVStack {
-                        StockRowView(stock: stock)
-                            .padding(.horizontal, 20)
-                            .onAppear {
-                                let count = stockMostViewModel.stockData.count
-                                if count < stockMostViewModel.totalCount {
-                                    if index == count - 5 {
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                                            stockMostViewModel.getStockSmallCapData()
-                                        }
-                                    }
-                                }
-                            }
-                    }
-                }
-            }
-        }
-        .bounce(false)
-        .padding(.init(top: 26, leading: .zero, bottom: 48, trailing: 10))
-    }
-    //MARK: - 주식 변화량이 많은순
-    @ViewBuilder
-    private func stockLargeCapList() -> some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack(spacing: 10) {
-                ForEach(Array(stockMostViewModel.stockData.enumerated()), id: \.offset ) { index , stock in
-                    LazyVStack {
-                        StockRowView(stock: stock)
-                            .padding(.horizontal, 20)
-                            .onAppear {
-                                let count = stockMostViewModel.stockData.count
-                                if count < stockMostViewModel.totalCount {
-                                    if index == count - 5 {
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                                            stockMostViewModel.getStockLargeCapData()
-                                        }
-                                    }
-                                }
-                            }
-                    }
-                }
-            }
-        }
-        .bounce(false)
-        .padding(.init(top: 26, leading: .zero, bottom: 48, trailing: 10))
-    }
-    
 }
 
 struct StockMainView_Previews: PreviewProvider {
+    @StateObject static var stockVM: StockViewModels =  {
+        let vm = StockViewModels()
+        vm.tickers = Ticker.stubs
+        return vm
+    }()
+    
+    @StateObject static var emptyVM: StockViewModels =  {
+        let vm = StockViewModels()
+        vm.tickers = []
+        return vm
+    }()
+    
+    static var quoteVM: StockQuoteViewModel =  {
+        let vm = StockQuoteViewModel()
+        vm.quotesDict = Quote.subsDict
+        return vm
+    }()
+    
+    static var searchVM: StockSearchViewModel =  {
+        let vm = StockSearchViewModel()
+        vm.phase = .success(Ticker.stubs)
+        return vm
+    }()
+    
     static var previews: some View {
-        StockMainView(stockMostViewModel: StockMostViewModel())
+        Group {
+            if #available(iOS 16.0, *) {
+                NavigationStack {
+                    StockMainView(stockViewModel: quoteVM, searchViewModel: searchVM)
+                       
+                }
+            } else {
+                NavigationView {
+                    StockMainView(stockViewModel: quoteVM, searchViewModel: searchVM)
+                       
+                }
+            }
+            if #available(iOS 16.0, *) {
+                NavigationStack {
+                    StockMainView(stockViewModel: quoteVM, searchViewModel: searchVM)
+                       
+                }
+            } else {
+                NavigationView {
+                    StockMainView(stockViewModel: quoteVM, searchViewModel: searchVM)
+                }
+            }
+        }
+        .environmentObject(stockVM)
+        .environmentObject(StockViewModel())
     }
 }

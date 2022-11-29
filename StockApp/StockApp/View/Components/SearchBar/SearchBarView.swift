@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct SearchBarView: View {
     @Binding var searchBarTextField: String
+    @State var uiTabarController: UITabBarController?
     
     var body: some View {
         HStack {
@@ -33,6 +35,12 @@ struct SearchBarView: View {
                         }
                     ,alignment: .trailing
                 )
+                .introspectTabBarController { (UITabBarController) in
+                    UITabBarController.tabBar.isHidden = true
+                    uiTabarController = UITabBarController
+                }.onDisappear{
+                    uiTabarController?.tabBar.isHidden = true
+                }
         }
         .spoqaHan(family: .Medium, size: 15)
         .padding()
@@ -44,7 +52,6 @@ struct SearchBarView: View {
                     radius: 10, x: .zero, y: .zero)
         )
         .padding()
-        
     }
 }
 
