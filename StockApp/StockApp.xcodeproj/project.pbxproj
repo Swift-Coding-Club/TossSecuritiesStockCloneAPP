@@ -55,7 +55,6 @@
 		7F39713928D2336F007823C4 /* GradiantColorAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F39713828D2336F007823C4 /* GradiantColorAsset.swift */; };
 		7F39713B28D23444007823C4 /* GradiantColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F39713A28D23444007823C4 /* GradiantColor.swift */; };
 		7F39713D28D234F2007823C4 /* FontColorAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F39713C28D234F2007823C4 /* FontColorAsset.swift */; };
-		7F3EF0F7292BCDB0007108D7 /* StocklistParm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3EF0F6292BCDB0007108D7 /* StocklistParm.swift */; };
 		7F492D1128CDFA45004E5142 /* ClosedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F492D1028CDFA45004E5142 /* ClosedButtonView.swift */; };
 		7F492D1328CDFB51004E5142 /* BottomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F492D1228CDFB51004E5142 /* BottomModel.swift */; };
 		7F4A108429167BFF000EF43D /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4A108329167BFF000EF43D /* ForgotPasswordView.swift */; };
@@ -87,6 +86,8 @@
 		7F8B65A82936406200C5203D /* StockSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B65A72936406200C5203D /* StockSearchViewModel.swift */; };
 		7F8B65AA2936432300C5203D /* FetchPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B65A92936432300C5203D /* FetchPhase.swift */; };
 		7F8B65AC2936455300C5203D /* StockSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B65AB2936455300C5203D /* StockSearchView.swift */; };
+		7F94E5EE29378765001F5F0D /* StockSortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F94E5ED29378765001F5F0D /* StockSortOption.swift */; };
+		7F94E5F429379D4A001F5F0D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F94E5F329379D4A001F5F0D /* GoogleService-Info.plist */; };
 		7F98D131290564560088A052 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98D130290564560088A052 /* WebView.swift */; };
 		7F98D136290568580088A052 /* 나눔손글씨 맛있는체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7F98D134290568570088A052 /* 나눔손글씨 맛있는체.ttf */; };
 		7F98D137290568580088A052 /* 나눔손글씨 둥근인연.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7F98D135290568580088A052 /* 나눔손글씨 둥근인연.ttf */; };
@@ -133,7 +134,6 @@
 		7FED2A6F28FA5CAC00D7A7C7 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FED2A6E28FA5CAC00D7A7C7 /* ViewRouter.swift */; };
 		7FED2A7128FA5ED800D7A7C7 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FED2A7028FA5ED800D7A7C7 /* UserDefaults.swift */; };
 		7FEE221B28FC670100792003 /* TweetFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE221A28FC670100792003 /* TweetFilterViewModel.swift */; };
-		7FEE221D28FC6FF200792003 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7FEE221C28FC6FF200792003 /* GoogleService-Info.plist */; };
 		7FEF4F6C28DF144300DA9AEB /* NetworkingManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEF4F6B28DF144300DA9AEB /* NetworkingManger.swift */; };
 		7FEF4F6F28DF17F300DA9AEB /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEF4F6E28DF17F300DA9AEB /* NetworkingError.swift */; };
 		7FEF4F7228DF297800DA9AEB /* CoinImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEF4F7128DF297800DA9AEB /* CoinImageView.swift */; };
@@ -234,7 +234,6 @@
 		7F39713828D2336F007823C4 /* GradiantColorAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradiantColorAsset.swift; sourceTree = "<group>"; };
 		7F39713A28D23444007823C4 /* GradiantColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradiantColor.swift; sourceTree = "<group>"; };
 		7F39713C28D234F2007823C4 /* FontColorAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontColorAsset.swift; sourceTree = "<group>"; };
-		7F3EF0F6292BCDB0007108D7 /* StocklistParm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocklistParm.swift; sourceTree = "<group>"; };
 		7F492D1028CDFA45004E5142 /* ClosedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosedButtonView.swift; sourceTree = "<group>"; };
 		7F492D1228CDFB51004E5142 /* BottomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomModel.swift; sourceTree = "<group>"; };
 		7F4A108329167BFF000EF43D /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
@@ -265,6 +264,9 @@
 		7F8B65A72936406200C5203D /* StockSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSearchViewModel.swift; sourceTree = "<group>"; };
 		7F8B65A92936432300C5203D /* FetchPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhase.swift; sourceTree = "<group>"; };
 		7F8B65AB2936455300C5203D /* StockSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSearchView.swift; sourceTree = "<group>"; };
+		7F94E5ED29378765001F5F0D /* StockSortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSortOption.swift; sourceTree = "<group>"; };
+		7F94E5F329379D4A001F5F0D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7F94E5F529379D62001F5F0D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7F98D130290564560088A052 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		7F98D134290568570088A052 /* 나눔손글씨 맛있는체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 맛있는체.ttf"; sourceTree = "<group>"; };
 		7F98D135290568580088A052 /* 나눔손글씨 둥근인연.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 둥근인연.ttf"; sourceTree = "<group>"; };
@@ -317,7 +319,6 @@
 		7FED2A6E28FA5CAC00D7A7C7 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		7FED2A7028FA5ED800D7A7C7 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		7FEE221A28FC670100792003 /* TweetFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetFilterViewModel.swift; sourceTree = "<group>"; };
-		7FEE221C28FC6FF200792003 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7FEF4F6B28DF144300DA9AEB /* NetworkingManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManger.swift; sourceTree = "<group>"; };
 		7FEF4F6E28DF17F300DA9AEB /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
 		7FEF4F7128DF297800DA9AEB /* CoinImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageView.swift; sourceTree = "<group>"; };
@@ -617,6 +618,14 @@
 			path = "Mock & Stubs";
 			sourceTree = "<group>";
 		};
+		7F94E5EC2937874D001F5F0D /* Sort */ = {
+			isa = PBXGroup;
+			children = (
+				7F94E5ED29378765001F5F0D /* StockSortOption.swift */,
+			);
+			path = Sort;
+			sourceTree = "<group>";
+		};
 		7F98D12F290564360088A052 /* WebView */ = {
 			isa = PBXGroup;
 			children = (
@@ -650,7 +659,6 @@
 				7FF132BC29323A9D00FEFA3C /* StockOverVIewFunction.swift */,
 				7FBB00582923CE4A002380B7 /* Agent.swift */,
 				7FFFD5AC2928BD1200A25207 /* StockAPI-Stock.swift */,
-				7F3EF0F6292BCDB0007108D7 /* StocklistParm.swift */,
 				7F54F5E6292E531600D97AAF /* StockSymbol.swift */,
 			);
 			path = Stock;
@@ -728,6 +736,7 @@
 		7FC3564728D8B22D002E0E63 /* StockViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				7F94E5EC2937874D001F5F0D /* Sort */,
 				7FFFD5AE292A36AA00A25207 /* StockConvertViewModel.swift */,
 				7FFFD5B6292A523D00A25207 /* StockViewModel.swift */,
 				7F8B658A2934DC2500C5203D /* TickerListRowData.swift */,
@@ -821,6 +830,7 @@
 			children = (
 				7FE8371828BF98EC003761FE /* .swiftlint.yml */,
 				7FE836E028BF95B0003761FE /* StockApp */,
+				7F94E5F529379D62001F5F0D /* GoogleService-Info.plist */,
 				7FE836F128BF95B7003761FE /* StockAppTests */,
 				7FE836FB28BF95B7003761FE /* StockAppUITests */,
 				7FE836DF28BF95B0003761FE /* Products */,
@@ -843,8 +853,8 @@
 			isa = PBXGroup;
 			children = (
 				7FCD240F28FAE031002C5C18 /* StockApp.entitlements */,
-				7FEE221C28FC6FF200792003 /* GoogleService-Info.plist */,
 				7FE8372128BF9CBD003761FE /* Info.plist */,
+				7F94E5F329379D4A001F5F0D /* GoogleService-Info.plist */,
 				7FE8370B28BF966F003761FE /* Application */,
 				7FE8370C28BF9681003761FE /* Utills */,
 				7FE8370E28BF969F003761FE /* ViewModel */,
@@ -1283,7 +1293,7 @@
 				7F1C8EE028BFA787004E49A1 /* SpoqaHanSansNeo-Regular.ttf in Resources */,
 				7F1C8EE128BFA787004E49A1 /* SpoqaHanSansNeo-Thin.ttf in Resources */,
 				7FE8371928BF98EC003761FE /* .swiftlint.yml in Resources */,
-				7FEE221D28FC6FF200792003 /* GoogleService-Info.plist in Resources */,
+				7F94E5F429379D4A001F5F0D /* GoogleService-Info.plist in Resources */,
 				7FE836E928BF95B7003761FE /* Preview Assets.xcassets in Resources */,
 				7FE836E628BF95B7003761FE /* Assets.xcassets in Resources */,
 			);
@@ -1485,9 +1495,9 @@
 				7F2160C12901936B00217585 /* DeveloperView.swift in Sources */,
 				7FB1AC96291E798A00A0B67C /* ProfileEditViewModel.swift in Sources */,
 				7F2AEB4328E839D900FA86AD /* CryptoDetailModel.swift in Sources */,
+				7F94E5EE29378765001F5F0D /* StockSortOption.swift in Sources */,
 				7FE792A128FD81BE00E3D6E3 /* FeedView.swift in Sources */,
 				7FF132BD29323A9D00FEFA3C /* StockOverVIewFunction.swift in Sources */,
-				7F3EF0F7292BCDB0007108D7 /* StocklistParm.swift in Sources */,
 				7FFFD5BB292A701700A25207 /* StockTabBarButton.swift in Sources */,
 				7F4A831128FC1BE700A3561A /* AppleLogin.swift in Sources */,
 				7F4A108429167BFF000EF43D /* ForgotPasswordView.swift in Sources */,

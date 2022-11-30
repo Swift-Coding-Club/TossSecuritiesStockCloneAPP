@@ -26,108 +26,106 @@ struct StockMainView: View {
                         VStack(spacing: .zero) {
                             Spacer().frame(height: 20)
                             
+                            convertTitle()
+                                .padding(.bottom , 10)
+                            
+                            //MARK: - 주식 검색
+                            SearchBarView(searchBarTextField: $searchViewModel.searchStock)
+                            stockListTitle()
+                            
+                            stockConvertList()
+                                .padding(.bottom, 12)
+                                .padding(.vertical , 30)
+                            
+                            Spacer(minLength: .zero)
+                        }
+                        .toolbar {
+                            titleToolbar
+                        }
+                    }
+                } else {
+                    NavigationStack {
+                        VStack(spacing: .zero) {
+                            Spacer().frame(height: 20)
+                            
+                            convertTitle()
+                                .padding(.bottom , 10)
+                            
+                            stockListTitle()
+                            ScrollView(.vertical , showsIndicators: false) {
+                                
+                                stockConvertList()
+                                    .padding(.bottom, 12)
+                            }
+                            .bounce(false)
+                            .padding(.vertical , 30)
+                            
+                            Spacer(minLength: .zero)
+                        }
+                        .toolbar {
+                            titleToolbar
+                        }
+                    }
+                }
+                
+            } else {
+                if selectStock == .myInterestMarket {
+                    NavigationView {
+                        VStack(spacing: .zero) {
+                            Spacer().frame(height: 20)
+                              
+                            convertTitle()
+                                .padding(.bottom , 10)
+                            
+                            //MARK: - 주식 검색
+                            SearchBarView(searchBarTextField: $searchViewModel.searchStock)
+                                .padding(.bottom, 5)
+                            stockListTitle()
+                            
+                            stockListTitle()
+                            
+                            stockConvertList()
+                                .padding(.bottom, 12)
+                                .padding(.vertical , 30)
+                            
+                            Spacer(minLength: .zero)
+                        }
+                        .toolbar {
+                            titleToolbar
+                        }
+                    }
+                } else {
+                    NavigationView {
+                        VStack(spacing: .zero) {
+                            Spacer().frame(height: 20)
                             
                             convertTitle()
                                 .padding(.bottom , 10)
                             
                             //MARK: - 주식 검색
                             
-                                stockListTitle()
+                            stockListTitle()
+                            ScrollView(.vertical , showsIndicators: false) {
                                 
                                 stockConvertList()
                                     .padding(.bottom, 12)
-                                    .padding(.vertical , 30)
-                                
-                                Spacer(minLength: .zero)
                             }
-                            .toolbar {
-                                titleToolbar
-                            }
-                            .searchable(text: $searchViewModel.searchStock)
+                            .bounce(false)
+                            .padding(.vertical , 30)
+                            
+                            Spacer(minLength: .zero)
                         }
-                    } else {
-                        NavigationStack {
-                            VStack(spacing: .zero) {
-                                Spacer().frame(height: 20)
-                                
-                                convertTitle()
-                                    .padding(.bottom , 10)
-                                
-                                //MARK: - 주식 검색
-                                
-                                stockListTitle()
-                                ScrollView(.vertical , showsIndicators: false) {
-                                    
-                                    stockConvertList()
-                                        .padding(.bottom, 12)
-                                }
-                                .bounce(false)
-                                    .padding(.vertical , 30)
-                                
-                                Spacer(minLength: .zero)
-                            }
-                            .toolbar {
-                                titleToolbar
-                            }
+                        .toolbar {
+                            titleToolbar
                         }
                     }
-                    
-                } else {
-                    if selectStock == .myInterestMarket {
-                        NavigationView {
-                            VStack(spacing: .zero) {
-                                Spacer().frame(height: 20)
-                                
-                                
-                                convertTitle()
-                                    .padding(.bottom , 10)
-                                
-                                //MARK: - 주식 검색
-                                
-                                    stockListTitle()
-                                    
-                                    stockConvertList()
-                                        .padding(.bottom, 12)
-                                        .padding(.vertical , 30)
-                                    
-                                    Spacer(minLength: .zero)
-                                }
-                            .toolbar {
-                                titleToolbar
-                            }
-                        }
-                    } else {
-                        NavigationView {
-                            VStack(spacing: .zero) {
-                                Spacer().frame(height: 20)
-                                
-                                convertTitle()
-                                    .padding(.bottom , 10)
-                                
-                                //MARK: - 주식 검색
-                                
-                                stockListTitle()
-                                ScrollView(.vertical , showsIndicators: false) {
-                                    
-                                    stockConvertList()
-                                        .padding(.bottom, 12)
-                                }
-                                .bounce(false)
-                                    .padding(.vertical , 30)
-                                
-                                Spacer(minLength: .zero)
-                            }
-                            .toolbar {
-                                titleToolbar
-                            }
-                        }
-                    }
-
                 }
                 
             }
+            
         }
-
+    }
+    
     //MARK: - 주식  전환 타이틀
     @ViewBuilder
     private func convertTitle() -> some View {
@@ -164,10 +162,8 @@ struct StockMainView: View {
             Text("주식")
             
             Spacer()
-            
             HStack(spacing: 10) {
                 Text("가격")
-                
                 Button {
                     stockIntersetViewModel.reloadData()
                 } label: {
@@ -183,7 +179,7 @@ struct StockMainView: View {
     }
     @ViewBuilder
     private func stockTickerList() -> some View {
-       List{
+        List{
             ForEach(viewModel.tickers) { stcoks in
                 TickerListRowView(data: .init(symbol: stcoks.symbol , name: stcoks.shortname ?? "", price:stockViewModel.priceForTicker(stcoks) , type: .main))
                     .contentShape(Rectangle())
@@ -193,7 +189,7 @@ struct StockMainView: View {
             .onDelete { viewModel.removeTickers(atOffsets: $0) }
             
         }
-       .listStyle(.plain)
+        .listStyle(.plain)
     }
     
     @ViewBuilder
@@ -203,7 +199,7 @@ struct StockMainView: View {
         }
         if searchViewModel.isSearching {
             StockSearchView(searchViewModel: searchViewModel)
-        
+            
         }
     }
     
@@ -211,13 +207,14 @@ struct StockMainView: View {
     private var titleToolbar:  some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
             VStack(alignment: .leading, spacing: -4){
+                Spacer()
                 Text(viewModel.titleText)
                 Spacer()
                 Text(viewModel.subTitleText)
                     .foregroundColor(Color(uiColor: .secondaryLabel))
             }
             .spoqaHan(family: .Bold, size: 25)
-            .padding(.bottom, 10)
+            .padding(.bottom)
         }
     }
     
@@ -231,10 +228,6 @@ struct StockMainView: View {
             StockRowList(stockViewModel: stockIntersetViewModel)
         } else if selectStock == .newYorkStock {
             StockNewYorkRowList(stockViewModel: stockIntersetViewModel)
-        } else if selectStock == .littleChange {
-
-        } else if selectStock == . largeChange{
-
         }
     }
 }
@@ -269,18 +262,18 @@ struct StockMainView_Previews: PreviewProvider {
             if #available(iOS 16.0, *) {
                 NavigationStack {
                     StockMainView(stockViewModel: quoteVM, searchViewModel: searchVM)
-                       
+                    
                 }
             } else {
                 NavigationView {
                     StockMainView(stockViewModel: quoteVM, searchViewModel: searchVM)
-                       
+                    
                 }
             }
             if #available(iOS 16.0, *) {
                 NavigationStack {
                     StockMainView(stockViewModel: quoteVM, searchViewModel: searchVM)
-                       
+                    
                 }
             } else {
                 NavigationView {

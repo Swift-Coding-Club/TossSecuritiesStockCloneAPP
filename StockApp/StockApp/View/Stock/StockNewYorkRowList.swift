@@ -32,7 +32,6 @@ struct StockNewYorkRowList: View {
     }
 }
 
-
 struct StockNewYorkRowList_Previews: PreviewProvider {
     static var previews: some View {
         StockNewYorkRowList(stockViewModel: dev.stockViewModel)

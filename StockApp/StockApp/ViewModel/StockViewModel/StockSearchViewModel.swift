@@ -35,20 +35,16 @@ class StockSearchViewModel : ObservableObject {
         
     }
     
-    
     private func searchToViewModel(_ model: StockSearchModel) {
         self.totalCount = model.count ?? .zero
         self.stockSearchData = model.quotes ?? []
     }
     
-    
-    
-    
+
     func getStockSearchData() {
         if let cancellable = stockSearchSubscription {
             cancellable.cancel()
         }
-        
         let parm = getStockSearchYahooDataListParm(q: searchStock)
         stockSearchSubscription = StockAPI.getStockSearchYahooListData(parm)
             .compactMap {$0}
@@ -58,5 +54,4 @@ class StockSearchViewModel : ObservableObject {
                 self?.searchToViewModel(model)
             })
     }
-    
 }

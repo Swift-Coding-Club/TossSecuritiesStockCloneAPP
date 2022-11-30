@@ -17,6 +17,7 @@ class StockViewModel: ObservableObject  {
     @Published var stockOverViewData: [QuoteResponseRow] = []
     @Published var isLoading: Bool = false
     
+    
     init() {
         reloadData()
     }
@@ -56,7 +57,6 @@ class StockViewModel: ObservableObject  {
                 self?.toViewModel(model)
             })
     }
-
     
     //MARK: - 주식 리로드
     func reloadData() {
