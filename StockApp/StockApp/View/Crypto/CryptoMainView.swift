@@ -16,6 +16,9 @@ struct CryptoMainView: View {
     @State private var showDetailView: Bool = false          // 다테일 뷰 보여주기 
     @State var uiTabarController: UITabBarController?
     
+    private let cyptoSearchPlaceholder: String = "검색할 코인을 입력해주세요..."
+    
+    
     init() {
         UITabBar.hideTabBar(animated: false)
     }
@@ -47,7 +50,7 @@ struct CryptoMainView: View {
                 CryptoStatView(showPortfolio: $showPortfolio)
                     .padding(.vertical, 5)
                 //MARK: - 코인 검색창
-                SearchBarView(searchBarTextField:  $viewModel.searchText)
+                SearchBarView(searchBarTextField:  $viewModel.searchText, placeholder: cyptoSearchPlaceholder)
                    
                 //MARK: - 코인 리스트 타이틀
                 columnTitles()

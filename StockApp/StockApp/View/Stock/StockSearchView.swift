@@ -22,14 +22,21 @@ struct StockSearchView: View {
                     price: stockQuoteViewModel.priceForTicker(ticker),
                     type: .search(
                         isSaved: viewModel.isAddedToMyTickers(ticker: ticker),
-                        onButtonTapped: {  viewModel.toggleTicker(ticker ) }
+                        onButtonTapped: {  Task{viewModel.toggleTicker(ticker )} }
                     )
                 )
             )
-            .contentShape(Rectangle())
-            .onTapGesture { }
+//            .contentShape(Rectangle())
+//            .onTapGesture {
+//               
+//            }
         }
         .listStyle(.plain)
+        .refreshable {
+            await stockQuoteViewModel.fetchQuote(tickers: searchViewModel.tickers)
+        }
+        .task(id: searchViewModel.tickers) {
+            await stockQuoteViewModel.fetchQuote(tickers: searchViewModel.tickers)}
         .overlay { listSearchOverlay() }
     }
     
@@ -37,7 +44,9 @@ struct StockSearchView: View {
     private func listSearchOverlay() -> some View {
         switch searchViewModel.phase {
         case .failuer(let error):
-            ErrorStateView(error: error.localizedDescription) { }
+            ErrorStateView(error: error.localizedDescription) {
+                Task { await searchViewModel.searchTicker()}
+            }
         case .empty:
             EmptyStateView(text: searchViewModel.emptyListText)
         case .fetching:
@@ -50,22 +59,26 @@ struct StockSearchView: View {
 
 struct StockSearchView_Previews: PreviewProvider {
     @StateObject static var stubbedSearchVM : StockSearchViewModel = {
-        let vm = StockSearchViewModel()
+        var mock = MockStockAPI()
+        mock.stubbedSearchTickerCallback = { Ticker.stubs }
+        let vm = StockSearchViewModel(searchStock: "Apple", stockAPI: mock)
         vm.phase = .success(Ticker.stubs)
         return vm
     }()
     
     @StateObject static var emptySearchVM : StockSearchViewModel = {
-        let vm = StockSearchViewModel()
-        vm.searchStock = "Theranos"
-        vm.phase = .empty
-        return vm
+        var mock = MockStockAPI()
+        mock.stubbedSearchTickerCallback = { [ ] }
+        return StockSearchViewModel(searchStock: "thje", stockAPI: mock)
     }()
     
     @StateObject static var loadingSearchVM : StockSearchViewModel = {
-        let vm = StockSearchViewModel()
-        vm.phase = .success(Ticker.stubs)
-        return vm
+        var mock = MockStockAPI()
+        mock.stubbedSearchTickerCallback = {
+            await withCheckedContinuation { _ in }
+        }
+        
+        return StockSearchViewModel(searchStock: "Apple", stockAPI: mock)
     }()
     
     @StateObject static var errorSearchVM : StockSearchViewModel = {

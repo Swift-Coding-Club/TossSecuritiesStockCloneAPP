@@ -13,8 +13,10 @@ struct StockMainView: View {
     @State var selectStock : StockConvertViewModel = .myInterestMarket
     @EnvironmentObject var viewModel : StockViewModels
     @EnvironmentObject var stockIntersetViewModel: StockViewModel
-    @StateObject var stockViewModel = StockQuoteViewModel()
+    @StateObject var stockQuoteViewModel = StockQuoteViewModel()
     @StateObject var searchViewModel: StockSearchViewModel
+    
+    private let stockSearchPlaceholder: String = "검색할 주식을 입력해주세요..."
     
     var body: some View {
         ZStack {
@@ -30,7 +32,13 @@ struct StockMainView: View {
                                 .padding(.bottom , 10)
                             
                             //MARK: - 주식 검색
-                            SearchBarView(searchBarTextField: $searchViewModel.searchStock)
+                            SearchBarView(searchBarTextField: $searchViewModel.searchStock, placeholder: stockSearchPlaceholder)
+                                .refreshable {
+                                    await stockQuoteViewModel.fetchQuote(tickers: viewModel.tickers)
+                                }
+                                .task(id: viewModel.tickers) {
+                                    await stockQuoteViewModel.fetchQuote(tickers: viewModel.tickers)
+                                }
                             stockListTitle()
                             
                             stockConvertList()
@@ -78,7 +86,16 @@ struct StockMainView: View {
                                 .padding(.bottom , 10)
                             
                             //MARK: - 주식 검색
-                            SearchBarView(searchBarTextField: $searchViewModel.searchStock)
+                                .refreshable {
+                                    await stockQuoteViewModel.fetchQuote(tickers: viewModel.tickers)
+                                }
+                            SearchBarView(searchBarTextField: $searchViewModel.searchStock, placeholder: stockSearchPlaceholder)
+                                  .refreshable {
+                                    await stockQuoteViewModel.fetchQuote(tickers: viewModel.tickers)
+                                }
+                                .task(id: viewModel.tickers) {
+                                    await stockQuoteViewModel.fetchQuote(tickers: viewModel.tickers)
+                                }
                                 .padding(.bottom, 5)
                             stockListTitle()
                             
@@ -180,8 +197,13 @@ struct StockMainView: View {
     @ViewBuilder
     private func stockTickerList() -> some View {
         List{
-            ForEach(viewModel.tickers) { stcoks in
-                TickerListRowView(data: .init(symbol: stcoks.symbol , name: stcoks.shortname ?? "", price:stockViewModel.priceForTicker(stcoks) , type: .main))
+            ForEach(viewModel.tickers) { stocks in
+                TickerListRowView(
+                    data: .init(
+                        symbol: stocks.symbol,
+                        name: stocks.shortname,
+                        price: stockQuoteViewModel.priceForTicker(stocks),
+                        type: .main))
                     .contentShape(Rectangle())
                     .padding(.horizontal)
                     .onTapGesture { }
@@ -189,6 +211,7 @@ struct StockMainView: View {
             .onDelete { viewModel.removeTickers(atOffsets: $0) }
             
         }
+        .opacity(searchViewModel.isSearching ? .zero : 1)
         .listStyle(.plain)
     }
     
@@ -261,23 +284,23 @@ struct StockMainView_Previews: PreviewProvider {
         Group {
             if #available(iOS 16.0, *) {
                 NavigationStack {
-                    StockMainView(stockViewModel: quoteVM, searchViewModel: searchVM)
+                    StockMainView(stockQuoteViewModel: quoteVM, searchViewModel: searchVM)
                     
                 }
             } else {
                 NavigationView {
-                    StockMainView(stockViewModel: quoteVM, searchViewModel: searchVM)
+                    StockMainView(stockQuoteViewModel: quoteVM, searchViewModel: searchVM)
                     
                 }
             }
             if #available(iOS 16.0, *) {
                 NavigationStack {
-                    StockMainView(stockViewModel: quoteVM, searchViewModel: searchVM)
+                    StockMainView(stockQuoteViewModel: quoteVM, searchViewModel: searchVM)
                     
                 }
             } else {
                 NavigationView {
-                    StockMainView(stockViewModel: quoteVM, searchViewModel: searchVM)
+                    StockMainView(stockQuoteViewModel: quoteVM, searchViewModel: searchVM)
                 }
             }
         }

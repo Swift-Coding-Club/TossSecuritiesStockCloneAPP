@@ -15,6 +15,6 @@ extension Quote {
     
     var regularDiffText: String? {
         guard let text = Utils.stockFormat(value: regularMarketChange) else { return nil }
-        return text.hasPrefix("-") ? text : "+\(text)"
+        return text.hasPrefix("-") ? text + "%" : "+\(text)" + "%"
     }
 }

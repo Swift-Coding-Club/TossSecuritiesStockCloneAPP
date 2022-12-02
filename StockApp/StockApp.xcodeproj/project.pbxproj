@@ -86,8 +86,10 @@
 		7F8B65A82936406200C5203D /* StockSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B65A72936406200C5203D /* StockSearchViewModel.swift */; };
 		7F8B65AA2936432300C5203D /* FetchPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B65A92936432300C5203D /* FetchPhase.swift */; };
 		7F8B65AC2936455300C5203D /* StockSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B65AB2936455300C5203D /* StockSearchView.swift */; };
-		7F94E5EE29378765001F5F0D /* StockSortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F94E5ED29378765001F5F0D /* StockSortOption.swift */; };
 		7F94E5F429379D4A001F5F0D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F94E5F329379D4A001F5F0D /* GoogleService-Info.plist */; };
+		7F94E5F82937A522001F5F0D /* StockAppCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F94E5F72937A522001F5F0D /* StockAppCheck.swift */; };
+		7F94E5FD2938C9B6001F5F0D /* StockApIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F94E5FC2938C9B6001F5F0D /* StockApIService.swift */; };
+		7F94E5FF2938CA7D001F5F0D /* MockStockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F94E5FE2938CA7D001F5F0D /* MockStockAPI.swift */; };
 		7F98D131290564560088A052 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98D130290564560088A052 /* WebView.swift */; };
 		7F98D136290568580088A052 /* 나눔손글씨 맛있는체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7F98D134290568570088A052 /* 나눔손글씨 맛있는체.ttf */; };
 		7F98D137290568580088A052 /* 나눔손글씨 둥근인연.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7F98D135290568580088A052 /* 나눔손글씨 둥근인연.ttf */; };
@@ -264,9 +266,11 @@
 		7F8B65A72936406200C5203D /* StockSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSearchViewModel.swift; sourceTree = "<group>"; };
 		7F8B65A92936432300C5203D /* FetchPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPhase.swift; sourceTree = "<group>"; };
 		7F8B65AB2936455300C5203D /* StockSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSearchView.swift; sourceTree = "<group>"; };
-		7F94E5ED29378765001F5F0D /* StockSortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSortOption.swift; sourceTree = "<group>"; };
 		7F94E5F329379D4A001F5F0D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		7F94E5F529379D62001F5F0D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7F94E5F72937A522001F5F0D /* StockAppCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAppCheck.swift; sourceTree = "<group>"; };
+		7F94E5FB2937B191001F5F0D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7F94E5FC2938C9B6001F5F0D /* StockApIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockApIService.swift; sourceTree = "<group>"; };
+		7F94E5FE2938CA7D001F5F0D /* MockStockAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStockAPI.swift; sourceTree = "<group>"; };
 		7F98D130290564560088A052 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		7F98D134290568570088A052 /* 나눔손글씨 맛있는체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 맛있는체.ttf"; sourceTree = "<group>"; };
 		7F98D135290568580088A052 /* 나눔손글씨 둥근인연.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 둥근인연.ttf"; sourceTree = "<group>"; };
@@ -614,16 +618,17 @@
 			isa = PBXGroup;
 			children = (
 				7F8B65992934EFF900C5203D /* Stubs.swift */,
+				7F94E5FE2938CA7D001F5F0D /* MockStockAPI.swift */,
 			);
 			path = "Mock & Stubs";
 			sourceTree = "<group>";
 		};
-		7F94E5EC2937874D001F5F0D /* Sort */ = {
+		7F94E5F62937A4F0001F5F0D /* AppCheck */ = {
 			isa = PBXGroup;
 			children = (
-				7F94E5ED29378765001F5F0D /* StockSortOption.swift */,
+				7F94E5F72937A522001F5F0D /* StockAppCheck.swift */,
 			);
-			path = Sort;
+			name = AppCheck;
 			sourceTree = "<group>";
 		};
 		7F98D12F290564360088A052 /* WebView */ = {
@@ -660,6 +665,7 @@
 				7FBB00582923CE4A002380B7 /* Agent.swift */,
 				7FFFD5AC2928BD1200A25207 /* StockAPI-Stock.swift */,
 				7F54F5E6292E531600D97AAF /* StockSymbol.swift */,
+				7F94E5FC2938C9B6001F5F0D /* StockApIService.swift */,
 			);
 			path = Stock;
 			sourceTree = "<group>";
@@ -736,7 +742,6 @@
 		7FC3564728D8B22D002E0E63 /* StockViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				7F94E5EC2937874D001F5F0D /* Sort */,
 				7FFFD5AE292A36AA00A25207 /* StockConvertViewModel.swift */,
 				7FFFD5B6292A523D00A25207 /* StockViewModel.swift */,
 				7F8B658A2934DC2500C5203D /* TickerListRowData.swift */,
@@ -830,7 +835,7 @@
 			children = (
 				7FE8371828BF98EC003761FE /* .swiftlint.yml */,
 				7FE836E028BF95B0003761FE /* StockApp */,
-				7F94E5F529379D62001F5F0D /* GoogleService-Info.plist */,
+				7F94E5FB2937B191001F5F0D /* GoogleService-Info.plist */,
 				7FE836F128BF95B7003761FE /* StockAppTests */,
 				7FE836FB28BF95B7003761FE /* StockAppUITests */,
 				7FE836DF28BF95B0003761FE /* Products */,
@@ -906,6 +911,7 @@
 		7FE8370C28BF9681003761FE /* Utills */ = {
 			isa = PBXGroup;
 			children = (
+				7F94E5F62937A4F0001F5F0D /* AppCheck */,
 				7FF3BF3B290405C800ED0B81 /* View */,
 				7FED2A6D28FA5C8E00D7A7C7 /* ViewRouter */,
 				7F174E7428F590BC00352189 /* checkRegister */,
@@ -1468,6 +1474,7 @@
 				7F98D131290564560088A052 /* WebView.swift in Sources */,
 				7F98D139290569540088A052 /* ShareFont.swift in Sources */,
 				7FF132C72933870800FEFA3C /* StockSearchModel.swift in Sources */,
+				7F94E5FF2938CA7D001F5F0D /* MockStockAPI.swift in Sources */,
 				7FEE221B28FC670100792003 /* TweetFilterViewModel.swift in Sources */,
 				7FC3563A28D8A221002E0E63 /* CryptoMainView.swift in Sources */,
 				7FEF4F9E28E0809E00DA9AEB /* UIApplication.swift in Sources */,
@@ -1491,11 +1498,11 @@
 				7FB1AC94291D497300A0B67C /* ProfileEditView.swift in Sources */,
 				7FF132B92932306500FEFA3C /* StockModel.swift in Sources */,
 				7F54F5E7292E531600D97AAF /* StockSymbol.swift in Sources */,
+				7F94E5F82937A522001F5F0D /* StockAppCheck.swift in Sources */,
 				7FF3435028F05C5000FD34EC /* LoginView.swift in Sources */,
 				7F2160C12901936B00217585 /* DeveloperView.swift in Sources */,
 				7FB1AC96291E798A00A0B67C /* ProfileEditViewModel.swift in Sources */,
 				7F2AEB4328E839D900FA86AD /* CryptoDetailModel.swift in Sources */,
-				7F94E5EE29378765001F5F0D /* StockSortOption.swift in Sources */,
 				7FE792A128FD81BE00E3D6E3 /* FeedView.swift in Sources */,
 				7FF132BD29323A9D00FEFA3C /* StockOverVIewFunction.swift in Sources */,
 				7FFFD5BB292A701700A25207 /* StockTabBarButton.swift in Sources */,
@@ -1549,6 +1556,7 @@
 				7F4E4EC4291613F0007A32B7 /* LoginMainView.swift in Sources */,
 				7F01DFBA28F70961000ECB96 /* AppDelegate.swift in Sources */,
 				7F729EDC28DB3A0E00FEAE43 /* CoinRowView.swift in Sources */,
+				7F94E5FD2938C9B6001F5F0D /* StockApIService.swift in Sources */,
 				7FE8372328BF9D37003761FE /* FontAsset.swift in Sources */,
 				7F8B659C2934F16F00C5203D /* StockQuoteViewModel.swift in Sources */,
 				7FEF4FA328E09E3800DA9AEB /* StatisticView.swift in Sources */,

@@ -9,6 +9,8 @@ import SwiftUI
 import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
+import Firebase
+import FirebaseAppCheck
 
 @main
 struct StockAppApp: App {
@@ -19,12 +21,15 @@ struct StockAppApp: App {
     @StateObject var stockIntersetViewModel = StockViewModel()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @State private var showLanchView: Bool = true
+    let providerFactory = StockAppCheck()
+    
     
     init() {
         //MARK: - 카카오 로그인  관련
 //        KakaoSDK.initSDK(appKey: SecretKey.kakoNativeAppKey)
               //MARK: - 네비게이션 바 설정
-        FirebaseApp.configure()
+        AppCheck.setAppCheckProviderFactory(providerFactory)
+        print("appcheck >> \(providerFactory)")
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.fontColor.mainFontColor)]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor(Color.fontColor.mainFontColor),
                                                             .font : UIFont(name: FontAsset.regularFont, size: 28) ?? ""]

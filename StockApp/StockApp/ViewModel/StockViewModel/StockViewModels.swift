@@ -16,6 +16,7 @@ class StockViewModels: ObservableObject {
     @Published var tickers: [Ticker] = []
     var emptyTickersText = "검색후 & 주식을 추가 하여 주식 시세를 보세요!"
     
+    @Published var selectedTicker: Ticker?
     @Published var subTitleText: String
     var attributionText = "Powered by Yahoo! finance API"
     

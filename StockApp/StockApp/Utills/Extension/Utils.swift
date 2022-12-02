@@ -10,19 +10,15 @@ import Foundation
 struct Utils {
     
     //MARK: - 주식 단위 절사
-    static var numberFormatter : NumberFormatter {
+    static let numberFormatter : NumberFormatter =  {
         let formatter = NumberFormatter()
-        formatter.usesGroupingSeparator = true
         formatter.numberStyle = .currency  // 숫자 스타일
         formatter.currencySymbol = ""
         formatter.currencyDecimalSeparator = ","
-//        formatter.locale = .current   // 국가 관련
-//        formatter.currencyCode = "krw"
-//        formatter.currencySymbol = "KRW"
-        formatter.minimumIntegerDigits = 2
-        formatter.maximumIntegerDigits = 2
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
         return formatter
-    }
+    }()
 
     static func stockFormat(value: Double?) -> String? {
         guard let value,
@@ -30,4 +26,13 @@ struct Utils {
         else { return nil }
         return text
     }
+    
+    func asNumberString(value: Double?) -> String {
+        return String(format: "%.2f", value ?? "") + "%"
+    }
+    
+//   static func asPercentString() -> String {
+//       return asNumberString(value: value) + "%"
+//    }
+    
 }

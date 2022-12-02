@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct TickerListRowView: View {
+    
     let data: TickerListRowData
+    
     var body: some View {
         HStack(alignment: .center) {
             if case let .search(isSaved, onButtonTapped) = data.type {
@@ -33,7 +35,7 @@ struct TickerListRowView: View {
             
             if let (price, change) = data.price {
                 VStack(alignment: .trailing, spacing: 4) {
-                    Text(price + " KRW")
+                    Text(price)
                     priceChangeView(title: change)
                 }
                 .spoqaHan(family: .Bold, size: 15)
@@ -51,8 +53,9 @@ struct TickerListRowView: View {
         } else {
             Image(systemName: "plus.circle.fill")
                 .symbolRenderingMode(.palette)
-                .foregroundStyle(Color.colorAssets.skyblue4.opacity(0.9) , Color.fontColor.mainFontColor.opacity(0.7))
+                .foregroundStyle(Color.colorAssets.skyblue4 , Color.fontColor.sideMenuColor.opacity(0.3))
                 .imageScale(.large)
+               
         }
     }
     //MARK: - 가격 변화량
@@ -68,7 +71,7 @@ struct TickerListRowView: View {
                 Text(title)
                     .foregroundColor(Color.white)
                     .spoqaHan(family: .Bold, size: 13)
-                    .padding(.horizontal, 6)
+                    .padding(.horizontal, 8)
             }
             .fixedSize()
         } else  {

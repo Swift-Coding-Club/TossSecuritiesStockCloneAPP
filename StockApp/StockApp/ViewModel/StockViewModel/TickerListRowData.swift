@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import XCAStocksAPI
 
 typealias PriceChange = (price: String, change: String)
 
@@ -18,8 +17,9 @@ struct TickerListRowData {
     }
     
     let symbol: String
-    let name: String
+    let name: String?
     let price: PriceChange?
     let type: RowType
 }
+
 
