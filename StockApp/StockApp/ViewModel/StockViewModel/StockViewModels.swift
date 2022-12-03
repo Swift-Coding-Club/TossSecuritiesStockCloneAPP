@@ -10,10 +10,15 @@ import SwiftUI
 import Combine
 import XCAStocksAPI
 
+@available(iOS 16.0, *)
+@MainActor
 class StockViewModels: ObservableObject {
     
     var titleText = "주식"
-    @Published var tickers: [Ticker] = []
+    @Published var tickers: [Ticker] = [] {
+        didSet { savedTickers() }
+    }
+    
     var emptyTickersText = "검색후 & 주식을 추가 하여 주식 시세를 보세요!"
     
     @Published var selectedTicker: Ticker?
@@ -26,10 +31,38 @@ class StockViewModels: ObservableObject {
         return dateFormatter
     }()
     
-    init() {
+    let tickerListRepository: TickerListRepository
+    
+    init(repository: TickerListRepository = TickerPlistRepository()) {
+        self.tickerListRepository = repository
         self.subTitleText = subTitleDateFormatter.string(from: Date())
+        loadTickers()
     }
     
+    //MARK: 주식 load
+    private func loadTickers() {
+        Task { [weak self] in
+            guard let self  = self else { return }
+            do {
+                self.tickers = try await tickerListRepository.load()
+            } catch {
+                print(error.localizedDescription)
+                self.tickers = []
+            }
+        }
+    }
+    
+    
+    private func savedTickers() {
+        Task { [weak self] in
+            guard let self  = self else { return }
+            do {
+                try await self.tickerListRepository.save(self.tickers)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
     //MARK: - 주식 삭제
     func removeTickers(atOffsets offsets: IndexSet) {
         tickers.remove(atOffsets: offsets)

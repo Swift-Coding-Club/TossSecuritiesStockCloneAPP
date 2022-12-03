@@ -8,6 +8,7 @@
 import SwiftUI
 import XCAStocksAPI
 
+@available(iOS 16.0, *)
 struct StockMainView: View {
     @Namespace var animation
     @State var selectStock : StockConvertViewModel = .myInterestMarket
@@ -22,6 +23,7 @@ struct StockMainView: View {
         ZStack {
             Color.colorAssets.backGroundColor
                 .ignoresSafeArea()
+            
             if #available(iOS 16.0, *) {
                 if selectStock == .myInterestMarket {
                     NavigationStack {
@@ -74,34 +76,27 @@ struct StockMainView: View {
                         }
                     }
                 }
-                
             } else {
                 if selectStock == .myInterestMarket {
-                    NavigationView {
+                    NavigationView{
                         VStack(spacing: .zero) {
                             Spacer().frame(height: 20)
-                              
+                            
                             convertTitle()
                                 .padding(.bottom , 10)
                             
                             //MARK: - 주식 검색
-                                .refreshable {
-                                    await stockQuoteViewModel.fetchQuote(tickers: viewModel.tickers)
-                                }
                             SearchBarView(searchBarTextField: $searchViewModel.searchStock, placeholder: stockSearchPlaceholder)
-                                  .refreshable {
+                                .refreshable {
                                     await stockQuoteViewModel.fetchQuote(tickers: viewModel.tickers)
                                 }
                                 .task(id: viewModel.tickers) {
                                     await stockQuoteViewModel.fetchQuote(tickers: viewModel.tickers)
                                 }
-                                .padding(.bottom, 5)
                             stockListTitle()
-                            
                             
                             stockConvertList()
                                 .padding(.bottom, 12)
-                                .padding(.vertical , 30)
                             
                             Spacer(minLength: .zero)
                         }
@@ -116,8 +111,6 @@ struct StockMainView: View {
                             
                             convertTitle()
                                 .padding(.bottom , 10)
-                            
-                            //MARK: - 주식 검색
                             
                             stockListTitle()
                             ScrollView(.vertical , showsIndicators: false) {
@@ -135,9 +128,7 @@ struct StockMainView: View {
                         }
                     }
                 }
-                
             }
-            
         }
     }
     
@@ -203,7 +194,6 @@ struct StockMainView: View {
                         price: stockQuoteViewModel.priceForTicker(stocks),
                         type: .main))
                     .contentShape(Rectangle())
-                    .padding(.horizontal)
                     .onTapGesture { }
             }
             .onDelete { viewModel.removeTickers(atOffsets: $0) }
@@ -252,29 +242,30 @@ struct StockMainView: View {
     }
 }
 
+@available(iOS 16.0, *)
 struct StockMainView_Previews: PreviewProvider {
     @StateObject static var stockVM: StockViewModels =  {
-        let vm = StockViewModels()
-        vm.tickers = Ticker.stubs
-        return vm
+        var mock = MockTickerListRepository()
+        mock.stubbedLoad = { Ticker.stubs }
+        return StockViewModels(repository: mock)
     }()
     
     @StateObject static var emptyVM: StockViewModels =  {
-        let vm = StockViewModels()
-        vm.tickers = []
-        return vm
+        var mock = MockTickerListRepository()
+        mock.stubbedLoad = { [ ] }
+        return StockViewModels(repository: mock)
     }()
     
     static var quoteVM: StockQuoteViewModel =  {
-        let vm = StockQuoteViewModel()
-        vm.quotesDict = Quote.subsDict
-        return vm
+        var mock = MockStockAPI()
+        mock.stubbedFetchQuoteCallBack = { Quote.stubs}
+        return StockQuoteViewModel(stocksAPI: mock)
     }()
     
     static var searchVM: StockSearchViewModel =  {
-        let vm = StockSearchViewModel()
-        vm.phase = .success(Ticker.stubs)
-        return vm
+        var mock = MockStockAPI()
+        mock.stubbedSearchTickerCallback = { Ticker.stubs }
+        return StockSearchViewModel(stockAPI: mock)
     }()
     
     static var previews: some View {

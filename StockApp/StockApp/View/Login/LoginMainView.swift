@@ -152,11 +152,9 @@ struct LoginMainView: View {
             Text("로그인 하러 가기")
                 .spoqaHan(family: .Bold, size: 20)
                 .foregroundColor(.white)
-                .frame(width: 320, height: 50)
+                .frame(width: UIScreen.main.bounds.width - 50, height: 50)
                 .background(Color.colorAssets.skyblue4)
-            
                 .cornerRadius(10)
-                
         }
         .background(
         NavigationLink(

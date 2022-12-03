@@ -36,7 +36,4 @@ extension Quote {
             return dict
         }
 }
-
-
-
 #endif

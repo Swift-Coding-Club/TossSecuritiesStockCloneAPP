@@ -16,7 +16,7 @@ struct StockRowList: View {
                 ForEach(Array(stockViewModel.stockOverViewData.enumerated()), id: \.offset ) { index , stock in
                     LazyVStack() {
                         StockRowView(stock: stock)
-                            .padding(.horizontal, 20)
+                            .padding(.horizontal, 10)
                             .onAppear {
                                 let count = stockViewModel.stockOverViewData.count
                                 if index == count - 5 {

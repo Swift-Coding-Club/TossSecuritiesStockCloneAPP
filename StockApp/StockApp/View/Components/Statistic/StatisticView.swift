@@ -20,7 +20,7 @@ struct StatisticView: View {
             
             Text(stat.percentageChange?.asPercentString() ?? "")
                 .spoqaHan(family: .Regular, size: 12)
-                .foregroundColor((stat.percentageChange ?? .zero) >= .zero ? Color.colorAssets.blue.opacity(0.8) : Color.colorAssets.red )
+                .foregroundColor((stat.percentageChange ?? .zero) >= .zero ? Color.colorAssets.skyblue4.opacity(0.8) : Color.colorAssets.red )
             .opacity(stat.percentageChange == nil ? 0.0: 1.0)
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
             .background((stat.percentageChange ?? .zero) == .zero ?

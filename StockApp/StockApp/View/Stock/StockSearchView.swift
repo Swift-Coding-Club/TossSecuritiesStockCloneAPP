@@ -8,6 +8,7 @@
 import SwiftUI
 import XCAStocksAPI
 
+@available(iOS 16.0, *)
 struct StockSearchView: View {
     @EnvironmentObject var viewModel : StockViewModels
     @StateObject var stockQuoteViewModel = StockQuoteViewModel()
@@ -82,67 +83,71 @@ struct StockSearchView_Previews: PreviewProvider {
     }()
     
     @StateObject static var errorSearchVM : StockSearchViewModel = {
-        let vm = StockSearchViewModel()
-        vm.phase = .failuer(NSError(domain: "", code: .zero , userInfo: [NSLocalizedDescriptionKey: "검색 에러가 났어요 "]))
-        return vm
+        var mock = MockStockAPI()
+        mock.stubbedSearchTickerCallback = { throw NSError(domain: "", code: .zero , userInfo: [NSLocalizedDescriptionKey: "검색 에러가 났어요 "])}
+        return StockSearchViewModel(searchStock: "Apple", stockAPI: mock)
     }()
     
+    @available(iOS 16.0, *)
     @StateObject static var stockVM: StockViewModels = {
-        let vm = StockViewModels()
-        vm.tickers = Array(Ticker.stubs.prefix(upTo: 2))
-        return vm
+        var mock = MockTickerListRepository()
+        mock.stubbedLoad = { Array(Ticker.stubs.prefix(upTo: 2)) }
+        return StockViewModels(repository: mock)
     }()
     
     static var quoteVM : StockQuoteViewModel = {
-        let vm  = StockQuoteViewModel()
-        vm.quotesDict = Quote.subsDict
-        return vm
+        var mock = MockStockAPI()
+        mock.stubbedFetchQuoteCallBack =  { Quote.stubs }
+        return  StockQuoteViewModel(stocksAPI: mock)
     }()
     
     static var previews: some View {
-        Group {
-            if #available(iOS 16.0, *) {
-                NavigationStack {
-                    StockSearchView(stockQuoteViewModel: quoteVM, searchViewModel: stubbedSearchVM)
+        if #available(iOS 16.0, *) {
+            Group {
+                if #available(iOS 16.0, *) {
+                    NavigationStack {
+                        StockSearchView(stockQuoteViewModel: quoteVM, searchViewModel: stubbedSearchVM)
+                    }
+                    .searchable(text: $stubbedSearchVM.searchStock)
+                    .previewDisplayName("Results")
+                } else {
+                    // Fallback on earlier versions
                 }
-                .searchable(text: $stubbedSearchVM.searchStock)
-                .previewDisplayName("Results")
-            } else {
-                // Fallback on earlier versions
-            }
-            
-            if #available(iOS 16.0, *) {
-                NavigationStack {
-                    StockSearchView(stockQuoteViewModel: quoteVM, searchViewModel: emptySearchVM)
+                
+                if #available(iOS 16.0, *) {
+                    NavigationStack {
+                        StockSearchView(stockQuoteViewModel: quoteVM, searchViewModel: emptySearchVM)
+                    }
+                    .searchable(text: $emptySearchVM.searchStock)
+                    .previewDisplayName("Empty Results")
+                } else {
+                    // Fallback on earlier versions
                 }
-                .searchable(text: $emptySearchVM.searchStock)
-                .previewDisplayName("Empty Results")
-            } else {
-                // Fallback on earlier versions
-            }
-            
-            if #available(iOS 16.0, *) {
-                NavigationStack {
-                    StockSearchView(stockQuoteViewModel: quoteVM, searchViewModel: loadingSearchVM)
+                
+                if #available(iOS 16.0, *) {
+                    NavigationStack {
+                        StockSearchView(stockQuoteViewModel: quoteVM, searchViewModel: loadingSearchVM)
+                    }
+                    .searchable(text: $loadingSearchVM.searchStock)
+                    .previewDisplayName("loading State")
+                } else {
+                    // Fallback on earlier versions
                 }
-                .searchable(text: $loadingSearchVM.searchStock)
-                .previewDisplayName("loading State")
-            } else {
-                // Fallback on earlier versions
-            }
-            
-            if #available(iOS 16.0, *) {
-                NavigationStack {
-                    StockSearchView(stockQuoteViewModel: quoteVM, searchViewModel: errorSearchVM)
+                
+                if #available(iOS 16.0, *) {
+                    NavigationStack {
+                        StockSearchView(stockQuoteViewModel: quoteVM, searchViewModel: errorSearchVM)
+                    }
+                    .searchable(text: $errorSearchVM.searchStock)
+                    .previewDisplayName("Error Results")
+                } else {
+                    
                 }
-                .searchable(text: $errorSearchVM.searchStock)
-                .previewDisplayName("Error Results")
-            } else {
-                // Fallback on earlier versions
+                
             }
-            
-    
+            .environmentObject(stockVM)
+        } else {
+            // Fallback on earlier versions
         }
-        .environmentObject(stockVM)
     }
 }

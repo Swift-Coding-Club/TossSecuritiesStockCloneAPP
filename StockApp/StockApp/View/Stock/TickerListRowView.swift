@@ -63,9 +63,8 @@ struct TickerListRowView: View {
     private func priceChangeView(title: String) -> some View {
         if case .main = data.type {
             ZStack(alignment: .trailing) {
-                RoundedRectangle(cornerRadius: 5)
-                    .foregroundColor(title.hasPrefix("-") ? Color.colorAssets.lightRed :
-                                        Color.colorAssets.skyblue4.opacity(0.8))
+              Capsule()
+                    .foregroundColor(title.hasPrefix("-") ?  Color.colorAssets.skyblue4.opacity(0.8) : Color.colorAssets.lightRed)
                     .frame(height: 24)
                 
                 Text(title)
@@ -80,7 +79,6 @@ struct TickerListRowView: View {
                                  Color.colorAssets.lightRed :
                                     Color.colorAssets.skyblue4.opacity(0.8))
         }
-        
     }
 }
 

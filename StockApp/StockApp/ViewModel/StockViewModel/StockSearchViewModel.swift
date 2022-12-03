@@ -76,7 +76,6 @@ class StockSearchViewModel : ObservableObject {
             .store(in: &stockSearchsubscription)
     }
     
-    
     func searchTicker() async {
         let searchQuery = trimmedQuery
         guard !searchQuery.isEmpty else { return }

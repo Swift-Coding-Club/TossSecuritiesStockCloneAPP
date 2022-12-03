@@ -65,6 +65,8 @@
 		7F4E82DE2909809B00B65D97 /* SignupPopupVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E82DD2909809B00B65D97 /* SignupPopupVIew.swift */; };
 		7F4E82EB29098E5800B65D97 /* HidableTabView in Frameworks */ = {isa = PBXBuildFile; productRef = 7F4E82EA29098E5800B65D97 /* HidableTabView */; };
 		7F4E8335290CF48900B65D97 /* CustomTabCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E8334290CF48900B65D97 /* CustomTabCurve.swift */; };
+		7F4EBEA8293B7CA400ED053F /* TickerListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4EBEA7293B7CA400ED053F /* TickerListRepository.swift */; };
+		7F4EBEAA293B842800ED053F /* MockTickerListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4EBEA9293B842800ED053F /* MockTickerListRepository.swift */; };
 		7F54F5E7292E531600D97AAF /* StockSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F54F5E6292E531600D97AAF /* StockSymbol.swift */; };
 		7F6910132915497E00BE9A3F /* LanchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6910122915497E00BE9A3F /* LanchView.swift */; };
 		7F729EDA28DA013600FEAE43 /* CoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F729ED928DA013600FEAE43 /* CoinModel.swift */; };
@@ -245,6 +247,8 @@
 		7F4E4EC3291613F0007A32B7 /* LoginMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMainView.swift; sourceTree = "<group>"; };
 		7F4E82DD2909809B00B65D97 /* SignupPopupVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPopupVIew.swift; sourceTree = "<group>"; };
 		7F4E8334290CF48900B65D97 /* CustomTabCurve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabCurve.swift; sourceTree = "<group>"; };
+		7F4EBEA7293B7CA400ED053F /* TickerListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerListRepository.swift; sourceTree = "<group>"; };
+		7F4EBEA9293B842800ED053F /* MockTickerListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTickerListRepository.swift; sourceTree = "<group>"; };
 		7F54F5E6292E531600D97AAF /* StockSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSymbol.swift; sourceTree = "<group>"; };
 		7F6910122915497E00BE9A3F /* LanchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanchView.swift; sourceTree = "<group>"; };
 		7F729ED928DA013600FEAE43 /* CoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinModel.swift; sourceTree = "<group>"; };
@@ -619,6 +623,7 @@
 			children = (
 				7F8B65992934EFF900C5203D /* Stubs.swift */,
 				7F94E5FE2938CA7D001F5F0D /* MockStockAPI.swift */,
+				7F4EBEA9293B842800ED053F /* MockTickerListRepository.swift */,
 			);
 			path = "Mock & Stubs";
 			sourceTree = "<group>";
@@ -666,6 +671,7 @@
 				7FFFD5AC2928BD1200A25207 /* StockAPI-Stock.swift */,
 				7F54F5E6292E531600D97AAF /* StockSymbol.swift */,
 				7F94E5FC2938C9B6001F5F0D /* StockApIService.swift */,
+				7F4EBEA7293B7CA400ED053F /* TickerListRepository.swift */,
 			);
 			path = Stock;
 			sourceTree = "<group>";
@@ -1242,7 +1248,7 @@
 		7FE836D628BF95B0003761FE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
@@ -1461,10 +1467,12 @@
 				7FBB004D29229543002380B7 /* ProfileNotice.swift in Sources */,
 				7F2382C028DDEC4E00103AE7 /* CoinDataService.swift in Sources */,
 				7F729EE328DB533600FEAE43 /* CoinViewModel.swift in Sources */,
+				7F4EBEA8293B7CA400ED053F /* TickerListRepository.swift in Sources */,
 				7FBB00592923CE4A002380B7 /* Agent.swift in Sources */,
 				7FFFD5B9292A58C900A25207 /* ScrollViewModifier.swift in Sources */,
 				7F8B65A02934F3AC00C5203D /* StockQuote+Extensions.swift in Sources */,
 				7F02A5FE28E7316E00F4B56C /* CryptoDetailView.swift in Sources */,
+				7F4EBEAA293B842800ED053F /* MockTickerListRepository.swift in Sources */,
 				7FBF6B7928E34E710079D68A /* HapticManger.swift in Sources */,
 				7F21333D28E32BE200CE0BE2 /* PortfolioDataService.swift in Sources */,
 				7FED2A6F28FA5CAC00D7A7C7 /* ViewRouter.swift in Sources */,
@@ -1831,7 +1839,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N94CS4N6VR;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Roy.com.StockAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1856,7 +1864,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N94CS4N6VR;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Roy.com.StockAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1924,7 +1932,7 @@
 				7FE8370128BF95B7003761FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		7FE8370228BF95B7003761FE /* Build configuration list for PBXNativeTarget "StockApp" */ = {
 			isa = XCConfigurationList;
@@ -1933,7 +1941,7 @@
 				7FE8370428BF95B7003761FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		7FE8370528BF95B7003761FE /* Build configuration list for PBXNativeTarget "StockAppTests" */ = {
 			isa = XCConfigurationList;
@@ -1942,7 +1950,7 @@
 				7FE8370728BF95B7003761FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		7FE8370828BF95B7003761FE /* Build configuration list for PBXNativeTarget "StockAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -1951,7 +1959,7 @@
 				7FE8370A28BF95B7003761FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 

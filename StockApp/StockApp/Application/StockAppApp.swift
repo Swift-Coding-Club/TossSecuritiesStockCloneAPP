@@ -12,9 +12,9 @@ import FirebaseAuth
 import Firebase
 import FirebaseAppCheck
 
+@available(iOS 16.0, *)
 @main
 struct StockAppApp: App {
-    
     @State var viewModel = CoinViewModel()
     @StateObject var signUpViewModel = AuthorizationVIewModel()
     @StateObject var stockViewModel = StockViewModels()

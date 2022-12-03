@@ -8,6 +8,7 @@
 import SwiftUI
 import UIKit
 
+@available(iOS 16.0, *)
 struct MainTabVIew: View {
     @EnvironmentObject var viewModel: AuthorizationVIewModel
     @EnvironmentObject var coinViewModel: CoinViewModel
@@ -114,9 +115,10 @@ struct MainTabVIew: View {
     }
 }
 
+@available(iOS 16.0, *)
 struct MainTabVIew_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
+        NavigationStack {
             MainTabVIew()
                 .environmentObject(dev.coinViewModel)
                 .environmentObject(dev.signUpViewModel)
