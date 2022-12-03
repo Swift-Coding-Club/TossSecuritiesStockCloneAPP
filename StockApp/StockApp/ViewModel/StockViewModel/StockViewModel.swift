@@ -17,7 +17,6 @@ class StockViewModel: ObservableObject  {
     @Published var stockOverViewData: [QuoteResponseRow] = []
     @Published var isLoading: Bool = false
     
-    
     init() {
         reloadData()
     }

@@ -38,7 +38,7 @@ class AuthorizationVIewModel:  ObservableObject {
                 guard let user = result?.user else { return }
                 self.userSession = user
                 self.fetchUser()
-                debugPrint("로그인에 성공 하였습니다")
+                debugPrint("로그인에 성공 하였습니다 \(self.fetchUser())")
             }
         }
     }

@@ -41,7 +41,6 @@ class StockSearchViewModel : ObservableObject {
         stockSearch()
     }
     
-    
     //MARK: - 데이터 통신 부분
     private func searchToViewModel(_ model: StockSearchModel) {
         self.totalCount = model.count ?? .zero

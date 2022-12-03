@@ -19,7 +19,6 @@ struct getStockSearchYahooDataListParm: Codable {
 }
 
 
-
 extension StockAPI {
     static func getStockYahooListData(_ parm: getStockYahooDataListParm) -> AnyPublisher<StockModel, APIError>{
         return get(stockBaseURL.appendingPathComponent(URLManager.yahoofiniance), parameters: parm)
@@ -28,5 +27,4 @@ extension StockAPI {
     static func getStockSearchYahooListData(_ parm: getStockSearchYahooDataListParm) -> AnyPublisher<StockSearchModel, APIError> {
         return get(stockBaseURL.appendingPathComponent(URLManager.yahooFinianceSearch), parameters: parm)
     }
-    
 }

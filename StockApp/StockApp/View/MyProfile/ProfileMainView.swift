@@ -69,8 +69,8 @@ struct ProfileMainView: View {
                         VStack(alignment: .leading) {
                             spacingHeight(height: 32)
                             
-                            profileHeader(userName: user.fullname,
-                                          email: user.email )
+                            profileHeader(userName: viewModel.currentUser?.username ?? "",
+                                          email: viewModel.currentUser?.email ?? "" )
                             
                             spacingHeight(height: 40)
                             

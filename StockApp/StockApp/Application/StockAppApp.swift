@@ -29,7 +29,7 @@ struct StockAppApp: App {
 //        KakaoSDK.initSDK(appKey: SecretKey.kakoNativeAppKey)
               //MARK: - 네비게이션 바 설정
         AppCheck.setAppCheckProviderFactory(providerFactory)
-        print("appcheck >> \(providerFactory)")
+        FirebaseApp.configure()
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.fontColor.mainFontColor)]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor(Color.fontColor.mainFontColor),
                                                             .font : UIFont(name: FontAsset.regularFont, size: 28) ?? ""]

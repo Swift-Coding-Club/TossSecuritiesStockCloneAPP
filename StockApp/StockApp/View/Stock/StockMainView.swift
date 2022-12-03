@@ -43,7 +43,6 @@ struct StockMainView: View {
                             
                             stockConvertList()
                                 .padding(.bottom, 12)
-                                .padding(.vertical , 30)
                             
                             Spacer(minLength: .zero)
                         }
@@ -99,7 +98,6 @@ struct StockMainView: View {
                                 .padding(.bottom, 5)
                             stockListTitle()
                             
-                            stockListTitle()
                             
                             stockConvertList()
                                 .padding(.bottom, 12)
@@ -213,6 +211,7 @@ struct StockMainView: View {
         }
         .opacity(searchViewModel.isSearching ? .zero : 1)
         .listStyle(.plain)
+        .overlay{ overlayView() }
     }
     
     @ViewBuilder
@@ -222,7 +221,6 @@ struct StockMainView: View {
         }
         if searchViewModel.isSearching {
             StockSearchView(searchViewModel: searchViewModel)
-            
         }
     }
     
@@ -246,7 +244,6 @@ struct StockMainView: View {
     private func stockConvertList() -> some View {
         if selectStock == .myInterestMarket {
             stockTickerList()
-                .overlay { overlayView() }
         } else if selectStock == .nsdMarketCap {
             StockRowList(stockViewModel: stockIntersetViewModel)
         } else if selectStock == .newYorkStock {
