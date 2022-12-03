@@ -10,6 +10,7 @@ import Combine
 import SwiftUI
 import XCAStocksAPI
 
+@MainActor
 class StockSearchViewModel : ObservableObject {
     
     @Published var searchStock: String = ""
