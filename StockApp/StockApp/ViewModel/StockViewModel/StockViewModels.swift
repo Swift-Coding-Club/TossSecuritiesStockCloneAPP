@@ -14,15 +14,15 @@ import XCAStocksAPI
 @MainActor
 class StockViewModels: ObservableObject {
     
-    var titleText = "주식"
     @Published var tickers: [Ticker] = [] {
         didSet { savedTickers() }
     }
     
-    var emptyTickersText = "검색후 & 주식을 추가 하여 주식 시세를 보세요!"
-    
     @Published var selectedTicker: Ticker?
     @Published var subTitleText: String
+    
+    var titleText = "주식"
+    var emptyTickersText = "검색후 & 주식을 추가 하여 주식 시세를 보세요!"
     var attributionText = "Powered by Yahoo! finance API"
     
     private let subTitleDateFormatter: DateFormatter = {

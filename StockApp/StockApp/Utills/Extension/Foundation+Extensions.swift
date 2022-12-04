@@ -1,5 +1,5 @@
 //
-//  Double.swift
+//  Foundation+Extensions.swift
 //  StockApp
 //
 //  Created by 서원지 on 2022/09/21.
@@ -79,19 +79,19 @@ extension Double {
         case 1_000_000_000_000...:
             let formatted = num / 1_000_000_000_000
             let stringFormatted = formatted.asNumberString()
-            return "\(sign)\(stringFormatted)Tr"
+            return "\(sign)\(stringFormatted)조"
         case 1_000_000_000...:
             let formatted = num / 1_000_000_000
             let stringFormatted = formatted.asNumberString()
-            return "\(sign)\(stringFormatted)Bn"
+            return "\(sign)\(stringFormatted)악"
         case 1_000_000...:
             let formatted = num / 1_000_000
             let stringFormatted = formatted.asNumberString()
-            return "\(sign)\(stringFormatted)M"
+            return "\(sign)\(stringFormatted)만"
         case 1_000...:
             let formatted = num / 1_000
             let stringFormatted = formatted.asNumberString()
-            return "\(sign)\(stringFormatted)K"
+            return "\(sign)\(stringFormatted)천"
         case 0...:
             return self.asNumberString()
 
@@ -99,5 +99,39 @@ extension Double {
             return "\(sign)\(self)"
         }
     }
+
+    //MARK: - 주식 단위
+    func formatUsingAbbrevation () -> String {
+              let numFormatter = NumberFormatter()
+              
+              typealias Abbrevation = (threshold:Double, divisor:Double, suffix:String)
+              let abbreviations:[Abbrevation] = [(0, 1, ""),
+                                                 (1000.0, 1000.0, "천"),
+                                                 (100_000.0, 1_000_000.0, "만"),
+                                                 (100_000_000.0, 1_000_000_000.0, "억"),
+                                                 (100_000_000_000.0, 1_000_000_000_000.0, "조")]
+              let startValue = Double (abs(self))
+              let abbreviation:Abbrevation = {
+                  var prevAbbreviation = abbreviations[0]
+                  for tmpAbbreviation in abbreviations {
+                      if (startValue < tmpAbbreviation.threshold) {
+                          break
+                      }
+                      prevAbbreviation = tmpAbbreviation
+                  }
+                  return prevAbbreviation
+              } ()
+              
+              let value = Double(self) / abbreviation.divisor
+              numFormatter.positiveSuffix = abbreviation.suffix
+              numFormatter.negativeSuffix = abbreviation.suffix
+              numFormatter.allowsFloats = true
+              numFormatter.minimumIntegerDigits = 1
+              numFormatter.minimumFractionDigits = 0
+              numFormatter.maximumFractionDigits = 3
+              numFormatter.decimalSeparator = ","
+              
+        return numFormatter.string(from: NSNumber (value:value)) ?? ""
+          }
 
 }

@@ -182,7 +182,7 @@ struct ProfileMainView: View {
                     } label: {
                         ListRowSystemImageTextView(title: item.description, imageName: item.imageName, width: 15,  height: 20)
                             .background(
-                                NavigationLink(destination: DeveloperView(),
+                                NavigationLink(destination: TermsServiceView(),
                                                isActive: $policyInformationButton,
                                                label: {EmptyView()}))
                     }

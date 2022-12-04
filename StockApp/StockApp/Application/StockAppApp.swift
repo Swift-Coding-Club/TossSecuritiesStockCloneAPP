@@ -23,7 +23,6 @@ struct StockAppApp: App {
     @State private var showLanchView: Bool = true
     let providerFactory = StockAppCheck()
     
-    
     init() {
         //MARK: - 카카오 로그인  관련
 //        KakaoSDK.initSDK(appKey: SecretKey.kakoNativeAppKey)
@@ -37,6 +36,7 @@ struct StockAppApp: App {
         UINavigationBar.appearance().tintColor = UIColor(Color.fontColor.mainFontColor)
     }
     
+    @MainActor
     var body: some Scene {
         WindowGroup {
             ZStack {

@@ -23,14 +23,20 @@ struct StockSearchView: View {
                     price: stockQuoteViewModel.priceForTicker(ticker),
                     type: .search(
                         isSaved: viewModel.isAddedToMyTickers(ticker: ticker),
-                        onButtonTapped: {  Task{viewModel.toggleTicker(ticker )} }
+                        onButtonTapped: {
+                            Task{ @MainActor in
+                            viewModel.toggleTicker(ticker)
+                            }
+                        }
                     )
                 )
             )
-//            .contentShape(Rectangle())
-//            .onTapGesture {
-//               
-//            }
+            .contentShape(Rectangle())
+            .onTapGesture {
+                Task { @MainActor in
+                    viewModel.selectedTicker  = ticker
+                }
+            }
         }
         .listStyle(.plain)
         .refreshable {

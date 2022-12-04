@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import XCAStocksAPI
 
 struct StockRowView: View {
     let stock : QuoteResponseRow

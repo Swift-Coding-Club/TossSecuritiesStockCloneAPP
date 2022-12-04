@@ -38,6 +38,10 @@ struct StockMainView: View {
                                 .refreshable {
                                     await stockQuoteViewModel.fetchQuote(tickers: viewModel.tickers)
                                 }
+                                .sheet(item: $viewModel.selectedTicker) {
+                                    StockTickerView(tickerQuoteViewModel: .init(ticker: $0, stocksAPI: stockQuoteViewModel.stocksAPI))
+                                        .presentationDetents([.height(560)])
+                                }
                                 .task(id: viewModel.tickers) {
                                     await stockQuoteViewModel.fetchQuote(tickers: viewModel.tickers)
                                 }
@@ -89,6 +93,10 @@ struct StockMainView: View {
                             SearchBarView(searchBarTextField: $searchViewModel.searchStock, placeholder: stockSearchPlaceholder)
                                 .refreshable {
                                     await stockQuoteViewModel.fetchQuote(tickers: viewModel.tickers)
+                                }
+                                .sheet(item: $viewModel.selectedTicker) {
+                                    StockTickerView(tickerQuoteViewModel: .init(ticker: $0, stocksAPI: stockQuoteViewModel.stocksAPI))
+                                        .presentationDetents([.height(560)])
                                 }
                                 .task(id: viewModel.tickers) {
                                     await stockQuoteViewModel.fetchQuote(tickers: viewModel.tickers)
@@ -194,7 +202,10 @@ struct StockMainView: View {
                         price: stockQuoteViewModel.priceForTicker(stocks),
                         type: .main))
                     .contentShape(Rectangle())
-                    .onTapGesture { }
+                    .onTapGesture {
+                        viewModel.selectedTicker = stocks
+                        
+                    }
             }
             .onDelete { viewModel.removeTickers(atOffsets: $0) }
             

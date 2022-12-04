@@ -19,7 +19,9 @@ struct TickerListRowView: View {
                 } label: {
                     iconImage(isSaved: isSaved)
                 }
+                .buttonStyle(.plain)
             }
+            
             VStack(alignment: .leading, spacing: 5) {
                 Text(data.symbol)
                     .spoqaHan(family: .Bold, size: 15)

@@ -14,7 +14,7 @@ class StockQuoteViewModel: ObservableObject {
     
     //MARK: - 주식의 데이터
     @Published var quotesDict: [String: Quote] = [:]
-    private let stocksAPI: StockApIService
+    let stocksAPI: StockApIService
     
     init(stocksAPI: StockApIService = XCAStocksAPI()) {
         self.stocksAPI = stocksAPI
