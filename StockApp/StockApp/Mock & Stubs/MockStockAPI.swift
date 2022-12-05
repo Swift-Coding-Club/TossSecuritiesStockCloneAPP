@@ -20,6 +20,10 @@ struct MockStockAPI : StockApIService {
     func fetchQuotes(symbols: String) async throws -> [Quote] {
         try await stubbedFetchQuoteCallBack()
     }
+    var stubbedFetchChartDataCallback: ((ChartRange) async throws -> ChartData?)! = { $0.stubs }
+    func fetchChartData(tickerSymbol: String, range: ChartRange) async throws -> ChartData? {
+         try await stubbedFetchChartDataCallback(range)
+    }
     
 }
 

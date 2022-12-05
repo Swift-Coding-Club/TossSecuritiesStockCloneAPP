@@ -9,11 +9,11 @@ import Foundation
 
 // MARK: - Response
 struct StockChartModel: Codable {
-    let chart: Chart?
+    let chart: Charts?
 }
 
 // MARK: - Chart
-struct Chart: Codable {
+struct Charts: Codable {
     let result: [StockChartRow]?
     let error: ErrorResponse?
 }

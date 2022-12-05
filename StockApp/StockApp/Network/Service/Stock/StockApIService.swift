@@ -13,6 +13,9 @@ protocol StockApIService {
     func searchTickers(query: String, isEquityTypeOnly: Bool) async throws -> [Ticker]
     //MARK: - 주식 fetch
     func fetchQuotes(symbols: String) async throws -> [Quote]
+    //MARK: - 주식 차트 데이터 가져오기
+    func fetchChartData(tickerSymbol: String, range: ChartRange) async throws -> ChartData?
+
 }
 
 

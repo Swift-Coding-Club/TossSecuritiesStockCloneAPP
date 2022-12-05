@@ -2,61 +2,73 @@
 //  StockChartViewModel.swift
 //  StockApp
 //
-//  Created by 서원지 on 2022/12/04.
+//  Created by 서원지 on 2022/12/05.
 //
 
+import Foundation
 import SwiftUI
-import Combine
 import XCAStocksAPI
 
 @MainActor
 class StockChartViewModel: ObservableObject {
- 
     
-    @Published var stockChartData: [StockChartRow] = []
-    @Published var phase = FetchPhase<Quote>.initial
-    var nsdStockChartSubscription: AnyCancellable?
-    var quote: Quote? { phase.value }
-    var error: Error? { phase.error }
+    @Published var fetchPhase = FetchPhase<ChartViewData>.initial
+    var chart : ChartViewData? { fetchPhase.value }
     
     let ticker: Ticker
-    let stocksAPI : StockApIService
+    let stockAPI: StockApIService
     
-    init(ticker: Ticker, stocksAPI: StockApIService = XCAStocksAPI()) {
+    @AppStorage("selectedRange") private var _range = ChartRange.oneDay.rawValue
+    
+    @Published var selectedRange = ChartRange.oneDay {
+        didSet {
+            _range = selectedRange.rawValue
+        }
+    }
+    
+    init(ticker: Ticker, stockAPI: StockApIService = XCAStocksAPI()) {
         self.ticker = ticker
-        self.stocksAPI = stocksAPI
+        self.stockAPI = stockAPI
+        self.selectedRange = ChartRange(rawValue: _range) ?? .oneDay
     }
     
-    private func toViewModel(_ model : StockChartModel) {
-        self.stockChartData = model.chart?.result ?? []
+    //MARK: - 차트 데이터 변화
+    func transformChartViewData(_ data: ChartData) -> ChartViewData {
+        let items = data.indicators.map { ChartViewItem(timestamp: $0.timestamp, value: $0.close)}
+        return ChartViewData(
+            itmes: items,
+            lineColor: getLineColor(data: data)
+        )
     }
     
-    func fetchQuote() async {
-        phase  = .fetching
+    //MARK: - 차트 관련한 데이터 가져오기
+    func fetchData()  async {
         do {
-            let response = try await stocksAPI.fetchQuotes(symbols: ticker.symbol)
-            if let quote = response.first {
-                phase = .success(quote)
+            fetchPhase = .fetching
+            let rangeType = self.selectedRange
+            let chartData = try await stockAPI.fetchChartData(tickerSymbol: ticker.symbol, range: rangeType)
+            
+            guard rangeType == self.selectedRange else { return }
+            
+            if let chartData {
+                fetchPhase = .success(transformChartViewData(chartData))
             } else {
-                phase = .empty
+                fetchPhase = .empty
             }
+            
         } catch {
-            print(error.localizedDescription)
-            phase = .failuer(error)
+            fetchPhase  = .failuer(error)
         }
     }
-    
-    func getStockNsdChartData() {
-        if let cancellable = nsdStockChartSubscription {
-            cancellable.cancel()
+    //MARK: - 차트 라인 컬러
+    func getLineColor(data: ChartData) -> Color {
+        if let last = data.indicators.last?.close {
+            if selectedRange == .oneDay, let prevClose = data.meta.previousClose {
+                return last >= prevClose ? .green : .red
+            } else if let first = data.indicators.first?.close {
+                return last >= first ? .green : .red
+            }
         }
-        let parm = getStockFininaceChartListParm(range: ChartRangeParm.oneday.description, interval: ChartintervalParm.oneMin.description, includeTimestamp: true, indicators: ChartindicatorsParm.quote.description)
-        nsdStockChartSubscription = StockAPI.getStockNsdFinianceChartData(parm)
-            .compactMap {$0}
-            .sink(receiveCompletion: { error in
-                print(error)
-            }, receiveValue: { [weak self] model in
-                self?.toViewModel(model)
-            })
+        return Color.colorAssets.skyblue4.opacity(0.8)
     }
 }

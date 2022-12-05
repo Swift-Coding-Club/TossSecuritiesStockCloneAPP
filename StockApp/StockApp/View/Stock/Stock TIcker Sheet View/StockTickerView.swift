@@ -10,11 +10,10 @@ import XCAStocksAPI
 
 struct StockTickerView: View {
     
-    @StateObject var tickerQuoteViewModel: StockChartViewModel
+    @StateObject var tickerQuoteViewModel: TickerQuoteViewModel
     @State var selectedRange = ChartRange.oneDay
     @Environment(\.dismiss) private var dismiss
-    
-    
+
     var body: some View {
         VStack(alignment: .leading,  spacing: .zero) {
             //MARK: - 헤더
@@ -137,9 +136,8 @@ struct StockTickerView: View {
         VStack(alignment: .leading) {
             HStack(alignment: .lastTextBaseline, spacing: 16) {
                 Text(price)
-                    .spoqaHan(family: .Bold, size: 18)
+                
                 Text(diff)
-                    .spoqaHan(family: .Bold, size: 18)
                     .foregroundColor(diff.hasPrefix("-") ?
                                      Color.colorAssets.lightRed :
                                         Color.colorAssets.skyblue4.opacity(0.8))
@@ -147,10 +145,10 @@ struct StockTickerView: View {
             Spacer()
             if let caption {
                 Text(caption)
-                    .spoqaHan(family: .Bold, size: 18)
                     .foregroundColor(Color.colorAssets.textColor)
             }
         }
+        .spoqaHan(family: .Bold, size: 15)
     }
     //MARK: - 주식 currency
     @ViewBuilder
@@ -164,7 +162,7 @@ struct StockTickerView: View {
                 Text(currency)
             }
         }
-        .spoqaHan(family: .Bold, size: 17)
+        .spoqaHan(family: .Bold, size: 14)
         .foregroundColor(Color.colorAssets.textColor)
     }
     //MARK: - 주식 디테일 뷰
@@ -196,38 +194,38 @@ struct StockTickerView: View {
 
 struct StockTickerView_Previews: PreviewProvider {
     
-    static var tradingStubsQuoteViewModel: StockChartViewModel = {
+    static var tradingStubsQuoteViewModel: TickerQuoteViewModel = {
         var mock  = MockStockAPI()
         mock.stubbedFetchQuoteCallBack = {
             [Quote.stub(isTrading: true)]
         }
-        return StockChartViewModel(ticker: .stub, stocksAPI: mock)
+        return TickerQuoteViewModel(ticker: .stub, stocksAPI: mock)
     }()
     
-    static var closedStubsQuoteViewModel: StockChartViewModel = {
+    static var closedStubsQuoteViewModel: TickerQuoteViewModel = {
         var mock  = MockStockAPI()
         mock.stubbedFetchQuoteCallBack = {
             [Quote.stub(isTrading: false)]
         }
-        return StockChartViewModel(ticker: .stub, stocksAPI: mock)
+        return TickerQuoteViewModel(ticker: .stub, stocksAPI: mock)
     }()
     
-    static var loadingStubsQuoteViewModel: StockChartViewModel = {
+    static var loadingStubsQuoteViewModel: TickerQuoteViewModel = {
         var mock  = MockStockAPI()
         mock.stubbedFetchQuoteCallBack = {
             await withCheckedContinuation { _ in
                 
             }
         }
-        return StockChartViewModel(ticker: .stub, stocksAPI: mock)
+        return TickerQuoteViewModel(ticker: .stub, stocksAPI: mock)
     }()
     
-    static var errorStubsQuoteViewModel: StockChartViewModel = {
+    static var errorStubsQuoteViewModel: TickerQuoteViewModel = {
         var mock  = MockStockAPI()
         mock.stubbedFetchQuoteCallBack = {
             throw NSError(domain: "error", code: .zero, userInfo: [NSLocalizedDescriptionKey: "에러 발생"])
         }
-        return StockChartViewModel(ticker: .stub, stocksAPI: mock)
+        return TickerQuoteViewModel(ticker: .stub, stocksAPI: mock)
     }()
     
     static var previews: some View {

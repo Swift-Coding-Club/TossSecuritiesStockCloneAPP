@@ -27,6 +27,8 @@ disabled_rules :
 - no_space_in_method_call
 - type_body_length
 - shorthand_operator
+- vertical_whitespace
+- force_try
 
 
 included :
