@@ -39,7 +39,7 @@ struct StockMainView: View {
                                     await stockQuoteViewModel.fetchQuote(tickers: viewModel.tickers)
                                 }
                                 .sheet(item: $viewModel.selectedTicker) {
-                                    StockTickerView(tickerQuoteViewModel: .init(ticker: $0, stocksAPI: stockQuoteViewModel.stocksAPI))
+                                    StockTickerView(chartViewModel: StockChartViewModel(ticker: $0, stockAPI: stockQuoteViewModel.stocksAPI), tickerQuoteViewModel: .init(ticker: $0, stocksAPI: stockQuoteViewModel.stocksAPI))
                                         .presentationDetents([.height(560)])
                                 }
                                 .task(id: viewModel.tickers) {
@@ -95,7 +95,7 @@ struct StockMainView: View {
                                     await stockQuoteViewModel.fetchQuote(tickers: viewModel.tickers)
                                 }
                                 .sheet(item: $viewModel.selectedTicker) {
-                                    StockTickerView(tickerQuoteViewModel: .init(ticker: $0, stocksAPI: stockQuoteViewModel.stocksAPI))
+                                    StockTickerView(chartViewModel: StockChartViewModel(ticker: $0, stockAPI: stockQuoteViewModel.stocksAPI), tickerQuoteViewModel: .init(ticker: $0, stocksAPI: stockQuoteViewModel.stocksAPI))
                                         .presentationDetents([.height(560)])
                                 }
                                 .task(id: viewModel.tickers) {

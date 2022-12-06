@@ -8,8 +8,10 @@
 import SwiftUI
 import XCAStocksAPI
 
+@available(iOS 16.0, *)
 struct StockTickerView: View {
     
+    @StateObject var chartViewModel: StockChartViewModel
     @StateObject var tickerQuoteViewModel: TickerQuoteViewModel
     @State var selectedRange = ChartRange.oneDay
     @Environment(\.dismiss) private var dismiss
@@ -30,10 +32,11 @@ struct StockTickerView: View {
         }
         .padding(.top)
         .background(Color.colorAssets.backGroundColor)
-        .onAppear {
-            Task {
+        .task (id: chartViewModel.selectedRange.rawValue){
+            if tickerQuoteViewModel.quote == nil {
                 await tickerQuoteViewModel.fetchQuote()
             }
+            await chartViewModel.fetchData()
         }
     }
     //MARK: - 헤더부분
@@ -83,13 +86,21 @@ struct StockTickerView: View {
             
             Divider()
             //MARK: - 날짜 선택
-            DateRangePickerView(selectedRange: $selectedRange)
+            ZStack {
+                DateRangePickerView(selectedRange: $chartViewModel.selectedRange)
+                    .opacity(chartViewModel.selectedXOpacity)
+                
+                Text(chartViewModel.selectedXDateText)
+                    .spoqaHan(family: .Regular, size: 14)
+                    .padding(.vertical, 4)
+                    .padding(.horizontal)
+            }
             
-            Divider()
+            Divider().opacity(chartViewModel.selectedXOpacity)
             
-            Text("차트 뷰 ")
+            chartView()
                 .padding(.horizontal)
-                .frame(maxWidth: .infinity, minHeight: 220)
+                .frame(maxWidth: .infinity, minHeight: 250)
             
             Divider()
                 .padding([.horizontal, .top])
@@ -165,6 +176,20 @@ struct StockTickerView: View {
         .spoqaHan(family: .Bold, size: 14)
         .foregroundColor(Color.colorAssets.textColor)
     }
+    //MARK: - 주식 차트 뷰
+    @ViewBuilder
+    private func chartView() -> some View {
+        switch chartViewModel.fetchPhase {
+        case .fetching:
+            LoadingStateView()
+        case .success(let data):
+            StockChartView(data: data, viewModel: chartViewModel)
+        case .failuer(let error):
+            ErrorStateView(error: "Chart : \(error.localizedDescription)")
+        default:
+            EmptyView()
+        }
+    }
     //MARK: - 주식 디테일 뷰
     @ViewBuilder
     private func quoteDetailView() -> some View {
@@ -192,6 +217,7 @@ struct StockTickerView: View {
     }
 }
 
+@available(iOS 16.0, *)
 struct StockTickerView_Previews: PreviewProvider {
     
     static var tradingStubsQuoteViewModel: TickerQuoteViewModel = {
@@ -228,21 +254,28 @@ struct StockTickerView_Previews: PreviewProvider {
         return TickerQuoteViewModel(ticker: .stub, stocksAPI: mock)
     }()
     
+    @available(iOS 16.0, *)
+    static var chartViewModel: StockChartViewModel {
+        StockChartViewModel(ticker: .stub, stockAPI: MockStockAPI())
+    }
+    
+    
+    
     static var previews: some View {
         Group{
-            StockTickerView(tickerQuoteViewModel: tradingStubsQuoteViewModel)
+            StockTickerView(chartViewModel: chartViewModel, tickerQuoteViewModel: tradingStubsQuoteViewModel)
                 .previewDisplayName("Trading")
                 .frame(height: 700)
             
-            StockTickerView(tickerQuoteViewModel: closedStubsQuoteViewModel)
+            StockTickerView(chartViewModel: chartViewModel, tickerQuoteViewModel: closedStubsQuoteViewModel)
                 .previewDisplayName("Closeing")
                 .frame(height: 700)
             
-            StockTickerView(tickerQuoteViewModel: loadingStubsQuoteViewModel)
+            StockTickerView(chartViewModel: chartViewModel, tickerQuoteViewModel: loadingStubsQuoteViewModel)
                 .previewDisplayName("loading Quote")
                 .frame(height: 700)
             
-            StockTickerView(tickerQuoteViewModel: errorStubsQuoteViewModel)
+            StockTickerView(chartViewModel: chartViewModel, tickerQuoteViewModel: errorStubsQuoteViewModel)
                 .previewDisplayName("Error Quote")
                 .frame(height: 700)
         }

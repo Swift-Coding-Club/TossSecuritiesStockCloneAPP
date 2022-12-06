@@ -10,8 +10,10 @@ import SwiftUI
 
 struct ChartViewData: Identifiable {
     let id = UUID()
+    let yAxisData: ChartAxisData
     let itmes: [ChartViewItem]
     let lineColor: Color
+    let previousCloseRuleMarkValue: Double?
 }
 
 

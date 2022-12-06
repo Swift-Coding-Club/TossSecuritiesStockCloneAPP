@@ -66,6 +66,10 @@ extension Double {
         return String(format: "%.2f", self)
     }
     
+    var roundedString: String {
+        String(format: "%.2f", self)
+    }
+    
     func asPercentString() -> String {
         return asNumberString() + "%"
     }
