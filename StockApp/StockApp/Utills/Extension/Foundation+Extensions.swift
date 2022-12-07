@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import XCAStocksAPI
 
 extension Double {
     
@@ -138,4 +139,20 @@ extension Double {
         return numFormatter.string(from: NSNumber (value:value)) ?? ""
           }
 
+}
+
+extension Date {
+    func dateComponents(timeZone: TimeZone, rangeType: ChartRange, calender: Calendar = .current) -> DateComponents {
+        let current = calender.dateComponents(in: timeZone, from: self)
+        var dateComponet = DateComponents(timeZone: timeZone, year: current.year, month: current.month)
+        
+        if rangeType == .oneMonth || rangeType == .oneWeek || rangeType == .oneDay {
+            dateComponet.day = current.day
+        }
+        
+        if rangeType == .oneDay {
+            dateComponet.hour = current.hour
+        }
+        return dateComponet
+    }
 }

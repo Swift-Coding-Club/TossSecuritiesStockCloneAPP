@@ -13,11 +13,15 @@ import XCAStocksAPI
 struct StockChartView: View {
     
     let data: ChartViewData
+    
     @ObservedObject var viewModel: StockChartViewModel
+    @State private var percentage: CGFloat = .zero
     
     var body: some View {
         chart()
-            .chartXScale(domain: data.itmes.first!.timestamp...data.itmes.last!.timestamp)
+            .chartXAxis { chartXAxis }
+            .chartXScale(domain: data.xAxisData.axisStart...data.xAxisData.axisEnd)
+            .chartYAxis { chartYAxis }
             .chartYScale(domain: data.yAxisData.axisStart...data.yAxisData.axisEnd)
             .chartPlotStyle { chartPlotStyle($0) }
             .chartOverlay {  proxy in
@@ -40,15 +44,15 @@ struct StockChartView: View {
     @ViewBuilder
     private func chart() -> some  View {
         Chart {
-            ForEach(data.itmes) {
-                LineMark(x: .value("Time", $0.timestamp),
-                         y: .value("Price", $0.value))
+            ForEach(Array(zip(data.itmes.indices, data.itmes)), id: \.0) { index, item in
+                LineMark(x: .value("Time", index),
+                         y: .value("Price", item.value))
                 .foregroundStyle(viewModel.forgroundMarkColor)
                 
                 AreaMark(
-                    x: .value("Time", $0.timestamp),
+                    x: .value("Time", index),
                     yStart: .value("Min", data.yAxisData.axisStart),
-                    yEnd: .value("Max", $0.value)
+                    yEnd: .value("Max", item.value)
                 )
                 .foregroundStyle(LinearGradient(gradient: Gradient(colors: [viewModel.forgroundMarkColor, .clear]), startPoint: .top, endPoint: .bottom))
                 .opacity(0.3)
@@ -68,6 +72,36 @@ struct StockChartView: View {
                                 .foregroundColor(Color.colorAssets.skyblue4.opacity(0.8))
                         }
                         .foregroundStyle(viewModel.forgroundMarkColor)
+                }
+            }
+        }
+    }
+    //MARK: - 차트 x 축
+    private var chartXAxis:  some AxisContent {
+        AxisMarks(values: .stride(by: data.xAxisData.strideBy)) { value in
+            if let text = data.xAxisData.map[String(value.index)] {
+                AxisGridLine(stroke: .init(lineWidth: 0.3))
+                AxisTick(stroke: .init(lineWidth: 0.3))
+                AxisValueLabel(collisionResolution: .greedy()) {
+                    Text(text)
+                        .foregroundColor(Color.fontColor.mainFontColor)
+                        .spoqaHan(family: .Bold, size: 13)
+                }
+            }
+        }
+    }
+    //MARK: 차트 yAxis
+
+    private var chartYAxis: some AxisContent {
+        AxisMarks(preset: .extended, values: .stride(by: data.yAxisData.strideBy)) { value in
+            if let yAxis = value.as(Double.self),
+               let text = data.yAxisData.map[yAxis.roundedString] {
+                AxisGridLine(stroke: .init(lineWidth: 0.3))
+                AxisTick(stroke: .init(lineWidth: 0.3))
+                AxisValueLabel(anchor: .topLeading, collisionResolution: .greedy) {
+                    Text(text)
+                        .foregroundColor(Color.fontColor.mainFontColor)
+                        .spoqaHan(family: .Bold, size: 13)
                 }
             }
         }
@@ -96,17 +130,13 @@ struct StockChartView: View {
             }
     }
     //MARK: - 드래그 해서 가격 확인
-    
     private func onChangeDrag(value: DragGesture.Value, chartProxy: ChartProxy, geometryProxy: GeometryProxy) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            let xCurrent = value.location.x - geometryProxy[chartProxy.plotAreaFrame].origin.x
-            
-            if let timestamp: Date = chartProxy.value(atX: xCurrent),
-               let startDate = data.itmes.first?.timestamp,
-               let lastDate = data.itmes.last?.timestamp,
-               timestamp >= startDate && timestamp <= lastDate {
-                viewModel.selectedX = timestamp
-            }
+        let xCurrent = value.location.x - geometryProxy[chartProxy.plotAreaFrame].origin.x
+        
+        if let index:  Double =  chartProxy.value(atX: xCurrent),
+           index >= .zero,
+           Int(index) <= data.itmes.count - 1 {
+            self.viewModel.selectedX = Int(index )
         }
     }
 
@@ -132,6 +162,7 @@ struct StockChartView_Previews: PreviewProvider {
         var mockStockAPI = MockStockAPI()
         mockStockAPI.stubbedFetchChartDataCallback = { _ in stub }
         let chartVM = StockChartViewModel(ticker: .stub, stockAPI: mockStockAPI)
+        chartVM.selectedRange = range
         return chartVM
     }
 }

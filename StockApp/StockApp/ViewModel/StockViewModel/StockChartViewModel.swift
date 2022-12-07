@@ -29,10 +29,9 @@ class StockChartViewModel: ObservableObject {
     
     @Published var selectedX: ( any Plottable)?
     
-    var selectedXRuleMark: (value: Date, text: String)? {
-        guard let selectedX = selectedX as? Date, let chart else { return nil }
-        let index = DateBins(thresholds: chart.itmes.map { $0.timestamp } ).index(for: selectedX)
-        return (selectedX, String(format: "%.2f",  chart.itmes[index].value))
+    var selectedXRuleMark: (value: Int, text: String)? {
+        guard let selectedX = selectedX as? Int, let chart else { return nil }
+        return (selectedX,  chart.itmes[selectedX].value.roundedString)
     }
     
     var forgroundMarkColor: Color {
@@ -45,15 +44,16 @@ class StockChartViewModel: ObservableObject {
         return dateFormatter
     }()
     
+    private let dateFormatter = DateFormatter() 
+    
     var selectedXDateText: String {
-        guard let selectedX = selectedX as? Date,  let chart else { return "" }
+        guard let selectedX = selectedX as? Int,  let chart else { return "" }
         if selectedRange == .oneDay || selectedRange == .oneWeek {
             selectedValueDateFormatter.timeStyle = .short
         } else {
             selectedValueDateFormatter.timeStyle = .none
         }
-        let index = DateBins(thresholds: chart.itmes.map { $0.timestamp }).index(for: selectedX)
-        let item = chart.itmes[index]
+        let item = chart.itmes[selectedX]
         return selectedValueDateFormatter.string(from: item.timestamp)
     }
     
@@ -89,9 +89,10 @@ class StockChartViewModel: ObservableObject {
     
     //MARK: - 차트 데이터 변화
     func transformChartViewData(_ data: ChartData) -> ChartViewData {
-        let items = data.indicators.map { ChartViewItem(timestamp: $0.timestamp, value: $0.close)}
+        let (xAxisChartData, items) = xAxisChartDataAndItems(data)
         let yAxisChartData = yAxisChartData(data)
         return ChartViewData(
+            xAxisData: xAxisChartData,
             yAxisData: yAxisChartData,
             itmes: items,
             lineColor: getLineColor(data: data),
@@ -111,6 +112,63 @@ class StockChartViewModel: ObservableObject {
         }
         return Color.colorAssets.skyblue4.opacity(0.8)
     }
+    //MARK: - 차트 Xaxis 데이터
+    func xAxisChartDataAndItems(_ data: ChartData) -> (ChartAxisData, [ChartViewItem]) {
+        let timezone = TimeZone(secondsFromGMT: data.meta.gmtOffset) ?? .gmt
+        dateFormatter.timeZone = timezone
+        selectedValueDateFormatter.timeZone = timezone
+        dateFormatter.dateFormat = selectedRange.dateFormat
+        
+        var xAxisDateComponents = Set<DateComponents>()
+        if let startTimeStamp = data.indicators.first?.timestamp {
+            if selectedRange == .oneDay {
+                xAxisDateComponents = selectedRange.getDateComponents(startDate: startTimeStamp, endDate: data.meta.regularTradingPeriodEndDate, timezone: timezone)
+            } else if let endTimeStamp = data.indicators.last?.timestamp {
+                xAxisDateComponents = selectedRange.getDateComponents(startDate: startTimeStamp, endDate: endTimeStamp , timezone: timezone)
+            }
+        }
+        var map = [String : String]()
+        var axisEnd : Int
+        var items = [ChartViewItem]()
+        
+        for(index, value) in data.indicators.enumerated() {
+            let dateComponets = value.timestamp.dateComponents(timeZone: timezone, rangeType: selectedRange)
+            
+            if xAxisDateComponents.contains(dateComponets) {
+                map[String(index)] = dateFormatter.string(from: value.timestamp)
+                xAxisDateComponents.remove(dateComponets)
+            }
+            items.append(ChartViewItem(
+                timestamp: value.timestamp,
+                value: value.close))
+        }
+        axisEnd = items.count - 1
+        
+        
+        if selectedRange == .oneDay,
+           var date = items.last?.timestamp,
+           date >= data.meta.regularTradingPeriodStartDate &&
+           date < data.meta.regularTradingPeriodEndDate {
+            while date < data.meta.regularTradingPeriodEndDate {
+                axisEnd += 1
+                date = Calendar.current.date(byAdding: .minute, value: 2, to: date)!
+                let dc = date.dateComponents(timeZone: timezone, rangeType: selectedRange)
+                if xAxisDateComponents.contains(dc) {
+                    map[String(axisEnd)] = dateFormatter.string(from: date)
+                    xAxisDateComponents.remove(dc)
+                }
+            }
+        }
+        
+        let xAxisData = ChartAxisData(
+            axisStart: .zero,
+            axisEnd: Double(axisEnd),
+            strideBy: 1,
+            map: map)
+        
+        return (xAxisData, items)
+    }
+    
     //MARK: - 차트 Yaxis 데이터
     func yAxisChartData(_ data: ChartData) -> ChartAxisData {
         let closes = data.indicators.map { $0.close }
@@ -124,13 +182,53 @@ class StockChartViewModel: ObservableObject {
                 highest = prevClose
             }
         }
+        
+        let diff = highest - lowest
+        
+        // 3
+        let numberOfLines: Double = 4
+        let shouldCeilIncrement: Bool
+        let strideBy: Double
+        
+        if diff < (numberOfLines * 2) {
+            // 4A
+            shouldCeilIncrement = false
+            strideBy = 0.01
+        } else {
+            // 4B
+            shouldCeilIncrement = true
+            lowest = floor(lowest)
+            highest = ceil(highest)
+            strideBy = 1.0
+        }
+        
+        let increment = ((highest - lowest) / numberOfLines)
+        var map = [String : String]()
+        map[highest.roundedString] = formatYAxisValueLabel(value: highest, shouldCellIncrement: shouldCeilIncrement)
+        
+        var current = lowest
+        (0..<Int(numberOfLines) - 1).forEach {  index in
+            current += increment
+            map[(shouldCeilIncrement ? ceil(current) : current).roundedString] = formatYAxisValueLabel(value: current, shouldCellIncrement: shouldCeilIncrement)
+        }
+        
         return ChartAxisData(
             axisStart: lowest + 0.01,
-            axisEnd: highest + 0.01
+            axisEnd: highest + 0.01,
+            strideBy: strideBy,
+            map: map
         )
     }
-    //MARK: - previousCloseRuleMarkValue
     
+    func formatYAxisValueLabel(value: Double, shouldCellIncrement: Bool) -> String {
+        if shouldCellIncrement {
+            return String(Int(ceil(value)))
+        } else {
+            return Utils.numberFormatter.string(from: NSNumber(value: value)) ?? value.roundedString
+        }
+    }
+    
+    //MARK: - previousCloseRuleMarkValue
     func previousCloseRuleMarkValue(data: ChartData, yAxisData: ChartAxisData) -> Double? {
         guard let previousClose = data.meta.previousClose, selectedRange == .oneDay else {
             return nil
