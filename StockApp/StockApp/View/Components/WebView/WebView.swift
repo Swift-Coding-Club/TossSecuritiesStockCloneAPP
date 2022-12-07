@@ -21,7 +21,9 @@ struct WebView: UIViewRepresentable {
         let webView = WKWebView()
         
         //웹뷰를 로드한다
-        webView.load(URLRequest(url: url))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            webView.load(URLRequest(url: url))
+        }
         return webView
     }
     

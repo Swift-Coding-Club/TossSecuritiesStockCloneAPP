@@ -50,6 +50,7 @@ struct CustomTabCurve: Shape {
     }
 }
 
+@available(iOS 16.0, *)
 struct CustomTabCurve_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {

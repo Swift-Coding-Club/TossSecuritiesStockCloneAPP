@@ -10,9 +10,7 @@ import ExytePopupView
 
 struct ProfileMainView: View {
     
-    
     @EnvironmentObject var viewModel: AuthorizationVIewModel
-
     @State private var policyInformationButton: Bool = false
     @State private var developerListButton: Bool  = false
     @State private var personalInformationButton: Bool = false
@@ -26,36 +24,74 @@ struct ProfileMainView: View {
     init(user: UserModel) {
         self.user = user
     }
+    
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color.colorAssets.backGroundColor
-                    .ignoresSafeArea()
-                
-                VStack(alignment: .leading) {
-                   spacingHeight(height: 32)
+        if #available(iOS 16.0, *) {
+            NavigationStack {
+                ZStack {
+                    Color.colorAssets.backGroundColor
+                        .ignoresSafeArea()
                     
-                    profileHeader(userName: viewModel.currentUser?.fullname ?? "", email: viewModel.currentUser?.email ?? "")
-                    
-                    spacingHeight(height: 40)
-                    
-                    editProfile()
-                    
-                    appInformationListButton()
-                    
-                    feedBackListButton()
-                    
-                    logoutListButton()
-                    
-                    Spacer(minLength: .zero)
+                    ScrollView(.vertical, showsIndicators: false) {
+                        VStack(alignment: .leading) {
+                            spacingHeight(height: 32)
+                            
+                            profileHeader(userName: user.fullname,
+                                          email: user.email )
+                            
+                            spacingHeight(height: 40)
+                            
+                            editProfile()
+                            
+                            appInformationListButton()
+                            
+                            feedBackListButton()
+                            
+                            logoutListButton()
+                            
+                            Spacer(minLength: .zero)
+                        }
+                    }
+                    .bounce(false)
+                }
+                .popup(isPresented: $showAlertLogout,  type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
+                    PopupView()
+                        .environmentObject(viewModel)
                 }
             }
-            .popup(isPresented: $showAlertLogout,  type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
-                PopupView()
-                    .environmentObject(viewModel)
+        } else {
+            NavigationView {
+                ZStack {
+                    Color.colorAssets.backGroundColor
+                        .ignoresSafeArea()
+                    
+                    ScrollView(.vertical, showsIndicators: false) {
+                        VStack(alignment: .leading) {
+                            spacingHeight(height: 32)
+                            
+                            profileHeader(userName: viewModel.currentUser?.username ?? "",
+                                          email: viewModel.currentUser?.email ?? "" )
+                            
+                            spacingHeight(height: 40)
+                            
+                            editProfile()
+                            
+                            appInformationListButton()
+                            
+                            feedBackListButton()
+                            
+                            logoutListButton()
+                            
+                            Spacer(minLength: .zero)
+                        }
+                    }
+                }
+                .popup(isPresented: $showAlertLogout,  type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
+                    PopupView()
+                        .environmentObject(viewModel)
+                }
             }
         }
-     
     }
     //MARK: - 프로필 상단
     @ViewBuilder
@@ -100,12 +136,12 @@ struct ProfileMainView: View {
                     } label: {
                         ProfileEditView(image: item.imageName, title: item.description)
                             .background(
-                            NavigationLink(destination: ProfileNotice(),
-                                           isActive: $noticeButton,
-                                           label: { EmptyView()})
+                                NavigationLink(destination: ProfileNotice(),
+                                               isActive: $noticeButton,
+                                               label: { EmptyView()})
                             )
                     }
-
+                    
                 } else if item == .profileEdit {
                     Button {
                         profileEditButton.toggle()
@@ -117,7 +153,7 @@ struct ProfileMainView: View {
                                                label: { EmptyView()})
                             )
                     }
-
+                    
                 } else if item == .appSetting {
                     Button {
                         settingButton.toggle()
@@ -129,7 +165,6 @@ struct ProfileMainView: View {
                                                label: { EmptyView()})
                             )
                     }
-
                 }
             }
             Spacer()
@@ -147,7 +182,7 @@ struct ProfileMainView: View {
                     } label: {
                         ListRowSystemImageTextView(title: item.description, imageName: item.imageName, width: 15,  height: 20)
                             .background(
-                                NavigationLink(destination: DeveloperView(),
+                                NavigationLink(destination: TermsServiceView(),
                                                isActive: $policyInformationButton,
                                                label: {EmptyView()}))
                     }
@@ -192,9 +227,9 @@ struct ProfileMainView: View {
                     } label: {
                         ListRowSystemImageTextView(title: item.description, imageName: item.imageName, width: 15,  height: 12)
                             .background(
-                            NavigationLink(destination: DeveloperView(),
-                                           isActive: $sendEmailButton,
-                                           label: {EmptyView()})
+                                NavigationLink(destination: DeveloperView(),
+                                               isActive: $sendEmailButton,
+                                               label: {EmptyView()})
                             )
                     }
                 }

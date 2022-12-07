@@ -38,7 +38,7 @@ class AuthorizationVIewModel:  ObservableObject {
                 guard let user = result?.user else { return }
                 self.userSession = user
                 self.fetchUser()
-                debugPrint("로그인에 성공 하였습니다")
+                debugPrint("로그인에 성공 하였습니다 \(self.fetchUser())")
             }
         }
     }
@@ -158,7 +158,7 @@ class AuthorizationVIewModel:  ObservableObject {
 
     func fetchUser() {
         guard let uid = self.userSession?.uid else { return }
-        
+
         service.fetchUser(withUid: uid) { user in
             self.currentUser = user
             debugPrint("유저는 이름은: \(user.username)")

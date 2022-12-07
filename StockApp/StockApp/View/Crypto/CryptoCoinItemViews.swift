@@ -22,7 +22,7 @@ struct CryptoCoinItemViews: View {
                 .foregroundColor(Color.colorAssets.textColor)
             
             Text(coin.priceChangePercentage24H?.asPercentString() ?? "")
-                .foregroundColor((coin.priceChangePercentage24H ?? .zero) >= .zero ? Color.colorAssets.blue.opacity(0.8) : Color.colorAssets.red )
+                .foregroundColor((coin.priceChangePercentage24H ?? .zero) >= .zero ? Color.colorAssets.skyblue4.opacity(0.8) : Color.colorAssets.red )
             .opacity(coin.priceChangePercentage24H == nil ? 0.0: 1.0)
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
             .background((coin.priceChangePercentage24H ?? .zero) == .zero ?

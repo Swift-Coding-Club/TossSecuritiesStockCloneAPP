@@ -18,7 +18,6 @@ struct UserService {
                 if let error = error {
                 debugPrint("[🔥] 유저 정보를 가져오는데 실패 하였습니다 \(error.localizedDescription)")
                 }
-                
                 guard let snapshot = snapshot else { return }
                 guard let user = try? snapshot.data(as: UserModel.self) else {return}
                 completion(user)

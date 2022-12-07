@@ -10,6 +10,7 @@ target 'StockApp' do
   pod 'SwiftLint'
   pod 'Introspect'
   pod 'ExytePopupView'
+  pod 'FirebaseAppCheck'
 #  pod 'KakaoSDKCommon', '~> 2.11.1'  # 필수 요소를 담은 공통 모듈
 #  pod 'KakaoSDKAuth', '~> 2.11.1'  # 사용자 인증
 #  pod 'KakaoSDKUser', '~> 2.11.1'  # 카카오 로그인, 사용자 관리

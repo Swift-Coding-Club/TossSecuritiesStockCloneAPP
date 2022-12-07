@@ -15,12 +15,14 @@ struct PortfolioView: View {
     @State private var quantityText: String = ""
     @State private var showCheckMark: Bool = false
     
+    private let cryptoSearchPlaceholder: String = "검색할 코인을 입력해주세요..."
+    
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: .zero) {
                     //MARK: - 검색 창
-                    SearchBarView(searchBarTextField: $viewModel.searchText)
+                    SearchBarView(searchBarTextField: $viewModel.searchText, placeholder: cryptoSearchPlaceholder)
                     //MARK: - 코인 로고
                     coinLogoList()
                     //MARK:  - 코인 서택 되었을겨우 form 보여주기
