@@ -13,11 +13,13 @@ struct SIgnUpVIew: View {
     @State private var userName: String = ""
     @State private var nickName: String = ""
     @State private var phoneNumber: String = ""
-    @State private var passowrd: String = ""
+    @State private var password: String = ""
+    @State private var passwordCheck: String = ""
     
     @State private var checkEmailRegister: Bool = false
     @State private var checkPhoneRegister: Bool = false
     @State private var checkPassowrdRegister: Bool = false
+    @State private var checkPasswordRecheck: Bool = false
     @State private var checkUserNameRegister: Bool = false
     @State private var checkNickNameRegister: Bool = false
     
@@ -25,6 +27,7 @@ struct SIgnUpVIew: View {
     
     @EnvironmentObject var viewModel: AuthorizationVIewModel
     @StateObject private var keyboardHandler = KeyboardHandler()
+    
     init() {
         checkRegisterTextField()
     }
@@ -47,6 +50,7 @@ struct SIgnUpVIew: View {
                     
                     signUPButton()
                 }
+                .bounce(false)
                 
                 alreadyAccount()
                 
@@ -54,6 +58,9 @@ struct SIgnUpVIew: View {
             }
             .popup(isPresented: $checkUserNameRegister, type: .floater(verticalPadding: 20), position: .bottom, animation: .spring(), autohideIn: 2,  closeOnTap: true, closeOnTapOutside: true,  view: {
                 SignupPopupVIew(image: "person", title: "회원가입 양식을 확인 해주세요", alertMessage: "이름을 확인해주세요")
+            })
+            .popup(isPresented: $checkNickNameRegister, type: .floater(verticalPadding: 20), position: .bottom, animation: .spring(), autohideIn: 2,  closeOnTap: true, closeOnTapOutside: true,  view: {
+                SignupPopupVIew(image: "person", title: "회원가입 양식을 확인 해주세요", alertMessage: "별명을 확인해주세요")
             })
             .popup(isPresented: $checkEmailRegister, type: .floater(verticalPadding: 20), position: .bottom, animation: .spring(), autohideIn: 2,  closeOnTap: true, closeOnTapOutside: true,  view: {
                 SignupPopupVIew(image: "envelope", title: "회원가입 양식을 확인 해주세요", alertMessage: "이메일 확인해주세요")
@@ -63,6 +70,9 @@ struct SIgnUpVIew: View {
             })
             .popup(isPresented: $checkPassowrdRegister, type: .floater(verticalPadding: 20), position: .bottom, animation: .spring(), autohideIn: 2,  closeOnTap: true, closeOnTapOutside: true,  view: {
                 SignupPopupVIew(image: "lock", title: "회원가입 양식을 확인 해주세요", alertMessage: "비밀번호를 입력해주세요")
+            })
+            .popup(isPresented: $checkPasswordRecheck, type: .floater(verticalPadding: 20), position: .bottom, animation: .spring(), autohideIn: 2,  closeOnTap: true, closeOnTapOutside: true,  view: {
+                SignupPopupVIew(image: "lock", title: "회원가입 양식을 확인 해주세요", alertMessage: "비밀번호를  한번더 확인 해주세요")
             })
         }
         .navigationBarHidden(true)
@@ -96,6 +106,10 @@ struct SIgnUpVIew: View {
                              placeHolderText: "이름을  입력해주세요",
                              text: $userName)
             
+            CustomInputField(imageName: "person",
+                             placeHolderText: "닉네임을 입력해주세요",
+                             text: $nickName)
+            
             CustomInputField(imageName: "envelope",
                              placeHolderText: "이메일을 입력 해주세요",
                              text: $email)
@@ -106,7 +120,11 @@ struct SIgnUpVIew: View {
             
             CustomSecureInputField(imageName: "lock",
                                    placeHolderText: "비밀번호를 입력해주세요",
-                                   text: $passowrd)
+                                   text: $password)
+            
+            CustomSecureInputField(imageName: "lock",
+                                   placeHolderText: "비밀번호를 다시 입력해주세요",
+                                   text: $passwordCheck)
         }
         .padding(15)
         .foregroundColor(Color.fontColor.mainFontColor)
@@ -116,8 +134,10 @@ struct SIgnUpVIew: View {
     private func signUPButton() -> some View {
         Button {
             checkRegisterTextField()
-            viewModel.register(withEmail: email, password: passowrd, fullname: nickName, phoneNumber: phoneNumber, userName: userName)
+            viewModel.register(withEmail: email, password: password, fullname: nickName, phoneNumber: phoneNumber, userName: userName)
+            
             UIApplication.shared.endEditing()
+            
         }label: {
             Text("회원가입")
                 .font(.custom(FontAsset.regularFont, size: 20))
@@ -154,16 +174,20 @@ struct SIgnUpVIew: View {
         if !CheckRegister.isValidateNickName(userName) {
             checkUserNameRegister.toggle()
             debugPrint("check userName \(userName)")
+        } else if !CheckRegister.isValidateNickName(nickName) {
+            checkNickNameRegister.toggle()
         } else if !CheckRegister.isValidateEmail(email)  {
             checkEmailRegister.toggle()
             debugPrint("check email \(email)")
         } else if !CheckRegister.isValidatePhoneNumber(phoneNumber) {
             checkPhoneRegister.toggle()
             debugPrint("check phoneNumber \(phoneNumber)")
-        } else if !CheckRegister.isValidatePassword(passowrd) {
+        } else if !CheckRegister.isValidatePassword(password) {
             checkPassowrdRegister.toggle()
-            debugPrint("check passowrd \(passowrd)")
-        }else {}
+            debugPrint("check passowrd \(password)")
+        }else if !CheckRegister.isValidatePassword(passwordCheck){
+            checkPasswordRecheck.toggle()
+        } else {}
     }
 }
 
