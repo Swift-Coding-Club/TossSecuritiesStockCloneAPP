@@ -58,6 +58,15 @@ struct ProfileMainView: View {
                     PopupView()
                         .environmentObject(viewModel)
                 }
+                .popup(isPresented: $noticeButton, type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
+                    ReadyPopUPview()
+                }
+                .popup(isPresented: $settingButton, type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
+                    ReadyPopUPview()
+                }
+                .popup(isPresented: $sendEmailButton, type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
+                    ReadyPopUPview()
+                }
             }
         } else {
             NavigationView {
@@ -69,8 +78,8 @@ struct ProfileMainView: View {
                         VStack(alignment: .leading) {
                             spacingHeight(height: 32)
                             
-                            profileHeader(userName: viewModel.currentUser?.username ?? "",
-                                          email: viewModel.currentUser?.email ?? "" )
+                            profileHeader(userName: user.fullname,
+                                          email: user.email )
                             
                             spacingHeight(height: 40)
                             
@@ -85,10 +94,20 @@ struct ProfileMainView: View {
                             Spacer(minLength: .zero)
                         }
                     }
+                    .bounce(false)
                 }
                 .popup(isPresented: $showAlertLogout,  type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
                     PopupView()
                         .environmentObject(viewModel)
+                }
+                .popup(isPresented: $noticeButton, type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
+                    ReadyPopUPview()
+                }
+                .popup(isPresented: $settingButton, type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
+                    ReadyPopUPview()
+                }
+                .popup(isPresented: $sendEmailButton, type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
+                    ReadyPopUPview()
                 }
             }
         }
@@ -135,11 +154,11 @@ struct ProfileMainView: View {
                         noticeButton.toggle()
                     } label: {
                         ProfileEditView(image: item.imageName, title: item.description)
-                            .background(
-                                NavigationLink(destination: ProfileNotice(),
-                                               isActive: $noticeButton,
-                                               label: { EmptyView()})
-                            )
+                        //                            .background(
+                        //                                NavigationLink(destination: ProfileNotice(),
+                        //                                               isActive: $noticeButton,
+                        //                                               label: { EmptyView()})
+                        //                            )
                     }
                     
                 } else if item == .profileEdit {
@@ -159,11 +178,11 @@ struct ProfileMainView: View {
                         settingButton.toggle()
                     } label: {
                         ProfileEditView(image: item.imageName, title: item.description)
-                            .background(
-                                NavigationLink(destination: SettingView(),
-                                               isActive: $settingButton,
-                                               label: { EmptyView()})
-                            )
+                        //                            .background(
+                        //                                NavigationLink(destination: SettingView(),
+                        //                                               isActive: $settingButton,
+                        //                                               label: { EmptyView()})
+                        //                            )
                     }
                 }
             }
@@ -226,11 +245,11 @@ struct ProfileMainView: View {
                         sendEmailButton.toggle()
                     } label: {
                         ListRowSystemImageTextView(title: item.description, imageName: item.imageName, width: 15,  height: 12)
-                            .background(
-                                NavigationLink(destination: DeveloperView(),
-                                               isActive: $sendEmailButton,
-                                               label: {EmptyView()})
-                            )
+                        //                            .background(
+                        //                                NavigationLink(destination: DeveloperView(),
+                        //                                               isActive: $sendEmailButton,
+                        //                                               label: {EmptyView()})
+                        //                            )
                     }
                 }
             }
