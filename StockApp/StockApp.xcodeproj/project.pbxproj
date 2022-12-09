@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5B3A62F5D906C92EE9FF9617 /* Pods_StockAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC84B86DC1B6E0A77842287F /* Pods_StockAppTests.framework */; };
+		602AE7EC293C40A90003B72D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 602AE7EB293C40A90003B72D /* GoogleService-Info.plist */; };
+		602AE7F0293DB4600003B72D /* AccountManageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602AE7EF293DB4600003B72D /* AccountManageViewModel.swift */; };
+		60E301ED2942873000DF5B6F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E301EC2942872F00DF5B6F /* ImagePicker.swift */; };
+		60E301F02942F4AB00DF5B6F /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E301EF2942F4AB00DF5B6F /* ImageUploader.swift */; };
 		62BDC5145DE85FF7DAE6C5A6 /* Pods_StockApp_StockAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAFD54349891F696D6153BCE /* Pods_StockApp_StockAppUITests.framework */; };
 		7F01DFB628F70068000ECB96 /* AuthorizationVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F01DFB528F70068000ECB96 /* AuthorizationVIewModel.swift */; };
 		7F01DFBA28F70961000ECB96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F01DFB928F70961000ECB96 /* AppDelegate.swift */; };
@@ -114,7 +118,6 @@
 		7FED2A6F28FA5CAC00D7A7C7 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FED2A6E28FA5CAC00D7A7C7 /* ViewRouter.swift */; };
 		7FED2A7128FA5ED800D7A7C7 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FED2A7028FA5ED800D7A7C7 /* UserDefaults.swift */; };
 		7FEE221B28FC670100792003 /* TweetFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEE221A28FC670100792003 /* TweetFilterViewModel.swift */; };
-		7FEE221D28FC6FF200792003 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7FEE221C28FC6FF200792003 /* GoogleService-Info.plist */; };
 		7FEF4F6C28DF144300DA9AEB /* NetworkingManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEF4F6B28DF144300DA9AEB /* NetworkingManger.swift */; };
 		7FEF4F6F28DF17F300DA9AEB /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEF4F6E28DF17F300DA9AEB /* NetworkingError.swift */; };
 		7FEF4F7228DF297800DA9AEB /* CoinImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEF4F7128DF297800DA9AEB /* CoinImageView.swift */; };
@@ -164,6 +167,10 @@
 
 /* Begin PBXFileReference section */
 		6029A6BEFA431F3632AB664E /* Pods-StockAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockAppTests.release.xcconfig"; path = "Target Support Files/Pods-StockAppTests/Pods-StockAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		602AE7EB293C40A90003B72D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		602AE7EF293DB4600003B72D /* AccountManageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManageViewModel.swift; sourceTree = "<group>"; };
+		60E301EC2942872F00DF5B6F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		60E301EF2942F4AB00DF5B6F /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		7F01DFB528F70068000ECB96 /* AuthorizationVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationVIewModel.swift; sourceTree = "<group>"; };
 		7F01DFB928F70961000ECB96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F02A5FD28E7316E00F4B56C /* CryptoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoDetailView.swift; sourceTree = "<group>"; };
@@ -269,7 +276,6 @@
 		7FED2A6E28FA5CAC00D7A7C7 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		7FED2A7028FA5ED800D7A7C7 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		7FEE221A28FC670100792003 /* TweetFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetFilterViewModel.swift; sourceTree = "<group>"; };
-		7FEE221C28FC6FF200792003 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7FEF4F6B28DF144300DA9AEB /* NetworkingManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManger.swift; sourceTree = "<group>"; };
 		7FEF4F6E28DF17F300DA9AEB /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
 		7FEF4F7128DF297800DA9AEB /* CoinImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageView.swift; sourceTree = "<group>"; };
@@ -340,6 +346,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		60E301EB2942871F00DF5B6F /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				60E301EC2942872F00DF5B6F /* ImagePicker.swift */,
+			);
+			path = ImagePicker;
+			sourceTree = "<group>";
+		};
+		60E301EE2942F4A000DF5B6F /* ImageUploader */ = {
+			isa = PBXGroup;
+			children = (
+				60E301EF2942F4AB00DF5B6F /* ImageUploader.swift */,
+			);
+			path = ImageUploader;
+			sourceTree = "<group>";
+		};
 		65160595160CACBB69F1079B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -728,7 +750,7 @@
 			isa = PBXGroup;
 			children = (
 				7FCD240F28FAE031002C5C18 /* StockApp.entitlements */,
-				7FEE221C28FC6FF200792003 /* GoogleService-Info.plist */,
+				602AE7EB293C40A90003B72D /* GoogleService-Info.plist */,
 				7FE8372128BF9CBD003761FE /* Info.plist */,
 				7FE8370B28BF966F003761FE /* Application */,
 				7FE8370C28BF9681003761FE /* Utills */,
@@ -780,6 +802,8 @@
 		7FE8370C28BF9681003761FE /* Utills */ = {
 			isa = PBXGroup;
 			children = (
+				60E301EE2942F4A000DF5B6F /* ImageUploader */,
+				60E301EB2942871F00DF5B6F /* ImagePicker */,
 				7FF3BF3B290405C800ED0B81 /* View */,
 				7FED2A6D28FA5C8E00D7A7C7 /* ViewRouter */,
 				7F174E7428F590BC00352189 /* checkRegister */,
@@ -812,6 +836,7 @@
 				7FC3564728D8B22D002E0E63 /* StockViewModel */,
 				7FC3563828D89365002E0E63 /* CryptoViewModel */,
 				7F2AEB3F28E8391800FA86AD /* CryotoDetailViewModel */,
+				602AE7EF293DB4600003B72D /* AccountManageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1168,10 +1193,10 @@
 				7F1C8EDE28BFA787004E49A1 /* SpoqaHanSansNeo-Light.ttf in Resources */,
 				7F1C8EDF28BFA787004E49A1 /* SpoqaHanSansNeo-Medium.ttf in Resources */,
 				7F98D137290568580088A052 /* 나눔손글씨 둥근인연.ttf in Resources */,
+				602AE7EC293C40A90003B72D /* GoogleService-Info.plist in Resources */,
 				7F1C8EE028BFA787004E49A1 /* SpoqaHanSansNeo-Regular.ttf in Resources */,
 				7F1C8EE128BFA787004E49A1 /* SpoqaHanSansNeo-Thin.ttf in Resources */,
 				7FE8371928BF98EC003761FE /* .swiftlint.yml in Resources */,
-				7FEE221D28FC6FF200792003 /* GoogleService-Info.plist in Resources */,
 				7FE836E928BF95B7003761FE /* Preview Assets.xcassets in Resources */,
 				7FE836E628BF95B7003761FE /* Assets.xcassets in Resources */,
 			);
@@ -1343,6 +1368,7 @@
 				7FEE221B28FC670100792003 /* TweetFilterViewModel.swift in Sources */,
 				7FC3563A28D8A221002E0E63 /* CryptoMainView.swift in Sources */,
 				7FEF4F9E28E0809E00DA9AEB /* UIApplication.swift in Sources */,
+				60E301F02942F4AB00DF5B6F /* ImageUploader.swift in Sources */,
 				7F15F7702905869300B06452 /* Size.swift in Sources */,
 				7F2160BE290187D400217585 /* InformationVIewModel.swift in Sources */,
 				7FF3BF3F2904067600ED0B81 /* ContainerView.swift in Sources */,
@@ -1393,8 +1419,10 @@
 				7F29425928F329A400A44CDD /* ModalShapeCorner.swift in Sources */,
 				7FED2A7128FA5ED800D7A7C7 /* UserDefaults.swift in Sources */,
 				7FBB004B29227897002380B7 /* UserModel.swift in Sources */,
+				602AE7F0293DB4600003B72D /* AccountManageViewModel.swift in Sources */,
 				7FF3BF5629044B7600ED0B81 /* ListRowSystemImageTextView.swift in Sources */,
 				7F4E82DE2909809B00B65D97 /* SignupPopupVIew.swift in Sources */,
+				60E301ED2942873000DF5B6F /* ImagePicker.swift in Sources */,
 				7FCD241428FAEF30002C5C18 /* ErroAlertMessage.swift in Sources */,
 				7F39713928D2336F007823C4 /* GradiantColorAsset.swift in Sources */,
 				7F174E7328F58DF900352189 /* CustomSecureInputField.swift in Sources */,

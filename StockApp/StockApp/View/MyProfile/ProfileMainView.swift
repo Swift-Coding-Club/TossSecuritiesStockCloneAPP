@@ -6,13 +6,13 @@
 //
 
 import SwiftUI
-import ExytePopupView
+import HidableTabView
 
 struct ProfileMainView: View {
     
-    
     @EnvironmentObject var viewModel: AuthorizationVIewModel
-
+    @EnvironmentObject var accountViewModel: AccountManageViewModel
+    
     @State private var policyInformationButton: Bool = false
     @State private var developerListButton: Bool  = false
     @State private var personalInformationButton: Bool = false
@@ -20,12 +20,8 @@ struct ProfileMainView: View {
     @State private var sendEmailButton: Bool = false
     @State private var noticeButton: Bool = false
     @State private var profileEditButton: Bool = false
-    @State private var  settingButton: Bool = false
-    private let user: UserModel
+    @State private var settingButton: Bool = false
     
-    init(user: UserModel) {
-        self.user = user
-    }
     var body: some View {
         NavigationView {
             ZStack {
@@ -33,9 +29,9 @@ struct ProfileMainView: View {
                     .ignoresSafeArea()
                 
                 VStack(alignment: .leading) {
-                   spacingHeight(height: 32)
+                    spacingHeight(height: 32)
                     
-                    profileHeader(userName: viewModel.currentUser?.fullname ?? "", email: viewModel.currentUser?.email ?? "")
+                    profileHeader(userName: accountViewModel.userName ?? "", email: accountViewModel.userEmail ?? "")
                     
                     spacingHeight(height: 40)
                     
@@ -55,7 +51,7 @@ struct ProfileMainView: View {
                     .environmentObject(viewModel)
             }
         }
-     
+        
     }
     //MARK: - 프로필 상단
     @ViewBuilder
@@ -100,12 +96,12 @@ struct ProfileMainView: View {
                     } label: {
                         ProfileEditView(image: item.imageName, title: item.description)
                             .background(
-                            NavigationLink(destination: ProfileNotice(),
-                                           isActive: $noticeButton,
-                                           label: { EmptyView()})
+                                NavigationLink(destination: ProfileNotice(),
+                                               isActive: $noticeButton,
+                                               label: { EmptyView()})
                             )
                     }
-
+                    
                 } else if item == .profileEdit {
                     Button {
                         profileEditButton.toggle()
@@ -117,7 +113,7 @@ struct ProfileMainView: View {
                                                label: { EmptyView()})
                             )
                     }
-
+                    
                 } else if item == .appSetting {
                     Button {
                         settingButton.toggle()
@@ -129,7 +125,7 @@ struct ProfileMainView: View {
                                                label: { EmptyView()})
                             )
                     }
-
+                    
                 }
             }
             Spacer()
@@ -192,9 +188,9 @@ struct ProfileMainView: View {
                     } label: {
                         ListRowSystemImageTextView(title: item.description, imageName: item.imageName, width: 15,  height: 12)
                             .background(
-                            NavigationLink(destination: DeveloperView(),
-                                           isActive: $sendEmailButton,
-                                           label: {EmptyView()})
+                                NavigationLink(destination: DeveloperView(),
+                                               isActive: $sendEmailButton,
+                                               label: {EmptyView()})
                             )
                     }
                 }
@@ -227,11 +223,12 @@ struct ProfileMainView: View {
         }
         .padding(.horizontal)
     }
+    
 }
 
 struct ProfileMainView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileMainView(user: UserModel(username: "로이", fullname: "로이", phonenumber: "010-1234-1234", email: "aaa@naver.com"))
+        ProfileMainView()
             .environmentObject(dev.signUpViewModel)
     }
 }

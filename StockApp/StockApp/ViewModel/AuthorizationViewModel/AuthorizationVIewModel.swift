@@ -15,16 +15,14 @@ class AuthorizationVIewModel:  ObservableObject {
     
     //MARK: - 유저
     @Published var userSession: FirebaseAuth.User?
+    @StateObject var snsloginManager: SNSLoginManger = SNSLoginManger()
     @Published var nonce = ""
-    @Published var didAuthenticateUser = false
     @AppStorage("log_status") var log_Status = false
-    @Published var currentUser: UserModel?
-    private let service = UserService()
-        
+    
     init() {
         self.userSession = Auth.auth().currentUser
         debugPrint("DEBUG: User session is \(self.userSession)")
-        self.fetchUser()
+        
     }
     
     //MARK: - 로그인
@@ -37,7 +35,7 @@ class AuthorizationVIewModel:  ObservableObject {
             } else {
                 guard let user = result?.user else { return }
                 self.userSession = user
-                self.fetchUser()
+                
                 debugPrint("로그인에 성공 하였습니다")
             }
         }
@@ -65,7 +63,6 @@ class AuthorizationVIewModel:  ObservableObject {
                 .document(user.uid)
                 .setData(data) { data in
                     debugPrint("DEBUG : Upload user data : \(data)")
-                    self.didAuthenticateUser = true
                 }
         }
     }
@@ -153,18 +150,5 @@ class AuthorizationVIewModel:  ObservableObject {
       } catch let signOutError as NSError {
         print("Error signing out: %@", signOutError)
       }
-    }
-    //MARK: - user fetch
-
-    func fetchUser() {
-        guard let uid = self.userSession?.uid else { return }
-        
-        service.fetchUser(withUid: uid) { user in
-            self.currentUser = user
-            debugPrint("유저는 이름은: \(user.username)")
-            debugPrint("유저는 별명은: \(user.fullname)")
-            debugPrint("유저는 이메일: \(user.email)")
-            debugPrint("유저는 핸드폰 번호는 : \(user.phonenumber)")
-        }
     }
 }

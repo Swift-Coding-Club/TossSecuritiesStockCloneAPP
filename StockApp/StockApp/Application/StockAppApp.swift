@@ -15,6 +15,7 @@ struct StockAppApp: App {
     
     @State var viewModel = CoinViewModel()
     @StateObject var signUpViewModel = AuthorizationVIewModel()
+    @StateObject var accountViewModel = AccountManageViewModel()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @State private var showLanchView: Bool = true
     
@@ -39,6 +40,7 @@ struct StockAppApp: App {
                 }
                 .environmentObject(viewModel)
                 .environmentObject(signUpViewModel)
+                .environmentObject(accountViewModel)
                 
                 ZStack {
                     if showLanchView {
