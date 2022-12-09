@@ -15,7 +15,6 @@ class AuthorizationVIewModel:  ObservableObject {
     
     //MARK: - 유저
     @Published var userSession: FirebaseAuth.User?
-    @StateObject var snsloginManager: SNSLoginManger = SNSLoginManger()
     @Published var nonce = ""
     @AppStorage("log_status") var log_Status = false
     

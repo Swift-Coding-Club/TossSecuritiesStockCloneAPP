@@ -23,12 +23,12 @@ class AccountManageViewModel: ObservableObject {
     
     func getUserInformation() {
         
-        let db = Firestore.firestore()
+        let collectionPath = Firestore.firestore().collection("users")
         let userID = Auth.auth().currentUser?.uid
         
         guard let userID = userID else { return }
         
-        db.collection("users").whereField("uid", isEqualTo: userID).addSnapshotListener { (snap, error) in
+        collectionPath.whereField("uid", isEqualTo: userID).addSnapshotListener { (snap, error) in
             if error != nil {
                 print("[❌] ERROR: 유저 가져오기 실패")
                 print((error?.localizedDescription)!)
@@ -44,11 +44,11 @@ class AccountManageViewModel: ObservableObject {
     }
     
     func saveUserInformation(name: String, phoneNumber: String) {
-        let db = Firestore.firestore()
+        let collectionPath = Firestore.firestore().collection("users")
         let userID = Auth.auth().currentUser?.uid
         let currentUser = Auth.auth()
         
-        db.collection("users").document("\(userID!)").updateData(["username": name, "phonenumber": phoneNumber]) { error in
+        collectionPath.document("\(userID!)").updateData(["username": name, "phonenumber": phoneNumber]) { error in
             if error != nil {
                 print("[❌] ERROR : 유저 정보 저장 실패")
                 print((error?.localizedDescription)!)
