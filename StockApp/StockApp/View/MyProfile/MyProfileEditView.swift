@@ -40,13 +40,14 @@ struct MyProfileEditView: View {
                     phoneNumberEditView()
                     emailView()
                 }
-                .task {
+                .onAppear() {
                     name = accountViewModel.userName ?? ""
                     phoneNumber = accountViewModel.userPhoneNumber ?? ""
                     email = authViewModel.userSession?.email ?? ""
                 }
                 
                 Spacer(minLength: .zero)
+                
                 saveButton()
                 
                 Spacer(minLength: .zero)
