@@ -40,7 +40,7 @@ struct MainTabVIew: View {
     private func mainTabView() -> some View {
         VStack(spacing: .zero) {
             TabView(selection: $currentTab) {
-                HomeView()
+                HomeView(stockViewModel: StockViewModel())
                     .environmentObject(coinViewModel)
                     .tag("house")
                 
@@ -52,7 +52,7 @@ struct MainTabVIew: View {
                 AddMainView()
                     .tag("plus.circle")
                 
-                CryptoMainView()
+                CryptoMainView(showView: .constant(false))
                     .tag("dollarsign.circle")
                 
                 ProfileMainView(user: viewModel.currentUser ?? user.user)

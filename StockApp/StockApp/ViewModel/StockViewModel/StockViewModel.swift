@@ -13,6 +13,7 @@ class StockViewModel: ObservableObject  {
 
     var stockSubscription: AnyCancellable?
     var newyorkStockSubscription: AnyCancellable?
+    var stockBest5Subscription: AnyCancellable?
     
     @Published var stockOverViewData: [QuoteResponseRow] = []
     @Published var isLoading: Bool = false
@@ -48,6 +49,21 @@ class StockViewModel: ObservableObject  {
         }
         let parm = getStockYahooDataListParm(symbols: StockSymbol.newyorkSymbol.description)
         newyorkStockSubscription = StockAPI.getStockYahooListData(parm)
+            .compactMap {$0}
+            .sink(receiveCompletion: { error in
+                print(error)
+            }, receiveValue: { [weak self] model in
+                self?.isLoading = false
+                self?.toViewModel(model)
+            })
+    }
+    
+    func getStockBest5Data(symbol: String) {
+        if let cancellable = stockSubscription {
+            cancellable.cancel()
+        }
+        let parm = getStockYahooDataListParm(symbols: symbol)
+        stockSubscription = StockAPI.getStockYahooListData(parm)
             .compactMap {$0}
             .sink(receiveCompletion: { error in
                 print(error)

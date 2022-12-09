@@ -18,9 +18,11 @@ struct CryptoMainView: View {
     
     private let cyptoSearchPlaceholder: String = "검색할 코인을 입력해주세요..."
     
+    @Binding var showView: Bool
     
-    init() {
+    init(showView: Binding<Bool>) {
         UITabBar.hideTabBar(animated: false)
+        self._showView = showView
     }
     
     //MARK: - 뷰를 그리는 곳
@@ -70,7 +72,9 @@ struct CryptoMainView: View {
                 label: { EmptyView() }
             )
         )
-//        .ignoresSafeArea()
+        .onAppear {
+            self.showView = true
+        }
         
     }
     //MARK: - CryptoMainView 확장으로 main body 뷰 코드를 줄이기
@@ -166,7 +170,7 @@ struct CryptoMainView: View {
 struct CryptoMainView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            CryptoMainView()
+            CryptoMainView(showView: .constant(false))
                 .navigationBarHidden(true)
         }
         .environmentObject(dev.coinViewModel)
