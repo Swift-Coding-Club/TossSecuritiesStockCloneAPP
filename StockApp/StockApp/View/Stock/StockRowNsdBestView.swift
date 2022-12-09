@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct StockRowBestView: View {
+    
     @StateObject var stockViewModel: StockViewModel
+    
     var symbol: String
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 10) {
