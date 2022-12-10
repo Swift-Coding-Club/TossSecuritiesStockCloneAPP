@@ -8,7 +8,7 @@
 import Foundation
 import XCAStocksAPI
 
-#if DEBUG
+
 struct MockStockAPI : StockApIService {
  
     var stubbedSearchTickerCallback: ( () async  throws -> [Ticker])!
@@ -27,4 +27,3 @@ struct MockStockAPI : StockApIService {
     
 }
 
-#endif
