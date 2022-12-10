@@ -34,26 +34,23 @@ struct MyProfileEditView: View {
                 
                 Divider()
                 
-                ScrollView() {
-                    VStack(spacing: 20) {
-                        
-                        nameEditView()
-                        phoneNumberEditView()
-                        emailView()
-                    }
-                    .onAppear() {
-                        name = accountViewModel.userName ?? ""
-                        phoneNumber = accountViewModel.userPhoneNumber ?? ""
-                        email = authViewModel.userSession?.email ?? ""
-                    }
+                VStack(spacing: 20) {
                     
-                    Spacer()
-                        .frame(height: 50)
-                    
-                    saveButton()
-                    
+                    nameEditView()
+                    phoneNumberEditView()
+                    emailView()
+                }
+                .onAppear() {
+                    name = accountViewModel.userName ?? ""
+                    phoneNumber = accountViewModel.userPhoneNumber ?? ""
+                    email = authViewModel.userSession?.email ?? ""
                 }
                 
+                Spacer(minLength: .zero)
+                
+                saveButton()
+                
+                Spacer(minLength: .zero)
             }
         }
         .toolbar {
