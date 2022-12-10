@@ -167,7 +167,7 @@ struct StockChartView_Previews: PreviewProvider {
     }
 }
 
-#if DEBUG
+
 @available(iOS 16.0, *)
 struct ChartContainerView_Previews: View {
     
@@ -190,4 +190,4 @@ struct ChartContainerView_Previews: View {
         }
     }
 }
-#endif
+
