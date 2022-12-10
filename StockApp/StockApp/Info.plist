@@ -10,9 +10,7 @@
 			<key>CFBundleURLName</key>
 			<string>url</string>
 			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>kako{fa99930d02eafd803fe53947279dca4c}</string>
-			</array>
+			<array/>
 		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
