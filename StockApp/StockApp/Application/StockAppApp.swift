@@ -19,7 +19,6 @@ struct StockAppApp: App {
     @StateObject var signUpViewModel = AuthorizationVIewModel()
     @StateObject var stockViewModel = StockViewModels()
     @StateObject var stockIntersetViewModel = StockViewModel()
-    @StateObject var accountViewModel = AccountManageViewModel()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @State private var showLanchView: Bool = true
     let providerFactory = StockAppCheck()
@@ -49,7 +48,6 @@ struct StockAppApp: App {
                 .environmentObject(signUpViewModel)
                 .environmentObject(stockViewModel)
                 .environmentObject(stockIntersetViewModel)
-                .environmentObject(accountViewModel)
                 
                 ZStack {
                     if showLanchView {

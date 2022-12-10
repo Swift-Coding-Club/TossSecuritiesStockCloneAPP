@@ -55,7 +55,7 @@ struct MainTabVIew: View {
                 CryptoMainView(showView: .constant(false))
                     .tag("dollarsign.circle")
                 
-                ProfileMainView()
+                ProfileMainView(user: viewModel.currentUser ?? user.user)
                     .tag("person")
             }
             .clipShape(

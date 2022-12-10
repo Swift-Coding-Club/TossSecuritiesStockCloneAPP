@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import HidableTabView
 import ExytePopupView
 
 struct ProfileMainView: View {
@@ -19,7 +18,8 @@ struct ProfileMainView: View {
     @State private var sendEmailButton: Bool = false
     @State private var noticeButton: Bool = false
     @State private var profileEditButton: Bool = false
-    @State private var settingButton: Bool = false
+    @State private var  settingButton: Bool = false
+    private let user: UserModel
     
     init(user: UserModel) {
         self.user = user
@@ -281,12 +281,11 @@ struct ProfileMainView: View {
         }
         .padding(.horizontal)
     }
-    
 }
 
 struct ProfileMainView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileMainView()
+        ProfileMainView(user: UserModel(username: "로이", fullname: "로이", phonenumber: "010-1234-1234", email: "aaa@naver.com"))
             .environmentObject(dev.signUpViewModel)
     }
 }
