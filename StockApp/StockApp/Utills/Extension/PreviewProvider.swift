@@ -15,6 +15,7 @@ class DevloperPreview {
     
     let coinViewModel = CoinViewModel()
     let signUpViewModel = AuthorizationVIewModel()
+    let accountViewModel = AccountManageViewModel()
     let stockViewModel = StockViewModel()
     let state1 = StatisticModel(title: "Market Cap" , value: "$12.58m", percentageChange: 25.34)
     let state2 = StatisticModel(title: "TotalVolume", value: "$12.31Tr")

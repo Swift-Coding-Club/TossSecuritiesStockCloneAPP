@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct CardStatisticView: View {
+    
     let stat : StatisticModel
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text(stat.title)

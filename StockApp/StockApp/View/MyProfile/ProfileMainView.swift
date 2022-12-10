@@ -11,7 +11,8 @@ import ExytePopupView
 struct ProfileMainView: View {
     
     @EnvironmentObject var viewModel: AuthorizationVIewModel
-        @EnvironmentObject var accountViewModel: AccountManageViewModel
+    @EnvironmentObject var accountViewModel: AccountManageViewModel
+    @StateObject var profileViewModel = ProfilViewModel()
     
     @State private var policyInformationButton: Bool = false
     @State private var developerListButton: Bool  = false
@@ -30,26 +31,30 @@ struct ProfileMainView: View {
                     Color.colorAssets.backGroundColor
                         .ignoresSafeArea()
                     
-                    ScrollView(.vertical, showsIndicators: false) {
-                        VStack(alignment: .leading) {
-                            spacingHeight(height: 32)
-                            
-                            profileHeader(userName: accountViewModel.userName ?? "", email: accountViewModel.userEmail ?? "")
-                            
-                            spacingHeight(height: 40)
-                            
-                            editProfile()
-                            
-                            appInformationListButton()
-                            
-                            feedBackListButton()
-                            
-                            logoutListButton()
-                            
-                            Spacer(minLength: .zero)
+                    Group {
+                        ScrollView(.vertical, showsIndicators: false) {
+                            VStack(alignment: .leading) {
+                                spacingHeight(height: 32)
+                                
+                                profileHeader(userName: accountViewModel.userName ?? "", email: accountViewModel.userEmail ?? "")
+                                
+                                spacingHeight(height: 40)
+                                
+                                editProfile()
+                                
+                                appInformationListButton()
+                                
+                                feedBackListButton()
+                                
+                                logoutListButton()
+                                
+                                appinformationEtcButton()
+                                
+                                Spacer(minLength: .zero)
+                            }
                         }
+                        .bounce(false)
                     }
-                    .bounce(false)
                 }
                 .popup(isPresented: $showAlertLogout,  type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
                     PopupView()
@@ -89,6 +94,8 @@ struct ProfileMainView: View {
                             feedBackListButton()
                             
                             logoutListButton()
+                            
+                            appinformationEtcButton()
                             
                             Spacer(minLength: .zero)
                         }
@@ -279,6 +286,24 @@ struct ProfileMainView: View {
                 .foregroundColor(Color.fontColor.mainFontColor)
         }
         .padding(.horizontal)
+        spacingHeight(height: 30)
+    }
+    //MARK: - 앱 정보 및  기타
+    @ViewBuilder
+    private func appinformationEtcButton() -> some View {
+        Section {
+            ForEach(ProfileInformationViewModel.allCases, id: \.rawValue) { item in
+                if item == .appVersion {
+                    ListAppRowView(title: item.description, appVersionTitle: profileViewModel.appVersion)
+                }
+            }
+        } header: {
+            Text("기타")
+                .spoqaHan(family: .Medium, size: 18)
+                .foregroundColor(Color.fontColor.mainFontColor)
+        }
+        .padding(.horizontal)
+        spacingHeight(height: 30)
     }
 }
 
@@ -286,5 +311,6 @@ struct ProfileMainView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileMainView()
             .environmentObject(dev.signUpViewModel)
+            .environmentObject(dev.accountViewModel)
     }
 }

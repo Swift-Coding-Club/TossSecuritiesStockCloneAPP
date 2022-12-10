@@ -32,21 +32,24 @@ struct HomeView: View {
         ZStack {
             Color.colorAssets.backGroundColor
             
-            ScrollView {
+            VStack{
                 //MARK: - 코인 헤더
                 coinHeader()
-                //MARK: - 코인 헤더 리스트
-                selectedCoinList()
-                Spacer()
-                    .frame(height: 40)
-                //MARK: - 주식 헤더
-                stockHeader()
-                //MARK: - 주식 헤더 리스트
-                stockList()
+                
+                ScrollView {
+                    //MARK: - 코인 헤더 리스트
+                    selectedCoinList()
+                    Spacer()
+                        .frame(height: 40)
+                    //MARK: - 주식 헤더
+                    stockHeader()
+                    //MARK: - 주식 헤더 리스트
+                    stockList()
 
-                Spacer().frame(height: 100)
+                    Spacer().frame(height: 100)
+                }
+                .bounce(false)
             }
-            .bounce(false)
         }
         .background(
             NavigationLink(destination: CryptoMainView(showView: $coinView), isActive: $showDetailView, label: {EmptyView()})
