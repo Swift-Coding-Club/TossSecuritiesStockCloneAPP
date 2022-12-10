@@ -11,6 +11,8 @@ import ExytePopupView
 struct ProfileMainView: View {
     
     @EnvironmentObject var viewModel: AuthorizationVIewModel
+        @EnvironmentObject var accountViewModel: AccountManageViewModel
+    
     @State private var policyInformationButton: Bool = false
     @State private var developerListButton: Bool  = false
     @State private var personalInformationButton: Bool = false
@@ -19,11 +21,7 @@ struct ProfileMainView: View {
     @State private var noticeButton: Bool = false
     @State private var profileEditButton: Bool = false
     @State private var  settingButton: Bool = false
-    private let user: UserModel
-    
-    init(user: UserModel) {
-        self.user = user
-    }
+  
     
     var body: some View {
         if #available(iOS 16.0, *) {
@@ -36,8 +34,7 @@ struct ProfileMainView: View {
                         VStack(alignment: .leading) {
                             spacingHeight(height: 32)
                             
-                            profileHeader(userName: user.fullname,
-                                          email: user.email )
+                            profileHeader(userName: accountViewModel.userName ?? "", email: accountViewModel.userEmail ?? "")
                             
                             spacingHeight(height: 40)
                             
@@ -68,6 +65,9 @@ struct ProfileMainView: View {
                     ReadyPopUPview()
                 }
             }
+            .onAppear {
+                accountViewModel.getUserInformation()
+            }
         } else {
             NavigationView {
                 ZStack {
@@ -78,8 +78,7 @@ struct ProfileMainView: View {
                         VStack(alignment: .leading) {
                             spacingHeight(height: 32)
                             
-                            profileHeader(userName: user.fullname,
-                                          email: user.email )
+                            profileHeader(userName: accountViewModel.userName ?? "", email: accountViewModel.userEmail ?? "")
                             
                             spacingHeight(height: 40)
                             
@@ -285,7 +284,7 @@ struct ProfileMainView: View {
 
 struct ProfileMainView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileMainView(user: UserModel(username: "로이", fullname: "로이", phonenumber: "010-1234-1234", email: "aaa@naver.com"))
+        ProfileMainView()
             .environmentObject(dev.signUpViewModel)
     }
 }

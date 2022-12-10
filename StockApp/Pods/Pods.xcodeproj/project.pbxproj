@@ -15,7 +15,6 @@
 			dependencies = (
 			);
 			name = SwiftLint;
-			productName = SwiftLint;
 		};
 /* End PBXAggregateTarget section */
 
@@ -681,7 +680,7 @@
 		9B9DF73A12B954400E681E1640010AF7 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
 		9BFCC9C75A4AE292900A7D8057B5ED88 /* Introspect.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Introspect.modulemap; sourceTree = "<group>"; };
 		9D6624D9D3C647E5CACA6ACE3DAB24F4 /* Protected.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Protected.swift; path = Source/Protected.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A0220961EA00B0F27894FF9264221C5E /* Pods-StockAppTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-StockAppTests-dummy.m"; sourceTree = "<group>"; };
 		A0AF9CEFC9AD461511A6E2215D57CCBD /* FBLPromise+Timeout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Timeout.m"; path = "Sources/FBLPromises/FBLPromise+Timeout.m"; sourceTree = "<group>"; };
 		A179E327E295E3BFAC99955699EE0859 /* FBLPromiseError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBLPromiseError.m; path = Sources/FBLPromises/FBLPromiseError.m; sourceTree = "<group>"; };
@@ -947,6 +946,7 @@
 				DECABA182F91F209729D46830BDFAA39 /* ViewExtensions.swift */,
 				E5D170A91D226936460424EF514D930A /* Support Files */,
 			);
+			name = Introspect;
 			path = Introspect;
 			sourceTree = "<group>";
 		};
@@ -1006,6 +1006,7 @@
 				9B9DF73A12B954400E681E1640010AF7 /* Validation.swift */,
 				5F392504C533979BA3FC474EFEF8EAC4 /* Support Files */,
 			);
+			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -1027,6 +1028,7 @@
 				3923FAE515E0B6DEE47F6F4B1B1DE2D3 /* NSData+zlib */,
 				ECAF20D9B74A9497F33E4B316FF5CD1A /* Support Files */,
 			);
+			name = GoogleUtilities;
 			path = GoogleUtilities;
 			sourceTree = "<group>";
 		};
@@ -1068,6 +1070,7 @@
 				6D8E5C6D3F663D381C948C11C4DE5FAD /* Utils.swift */,
 				D0EFB452C0E8D5DA0F42673FD8C7312B /* Support Files */,
 			);
+			name = ExytePopupView;
 			path = ExytePopupView;
 			sourceTree = "<group>";
 		};
@@ -1182,6 +1185,7 @@
 				98A5E020DD294141299EBA31E8546201 /* FIROptionsInternal.h */,
 				7E1BEB16876759E965738193DE18C89E /* Support Files */,
 			);
+			name = FirebaseAppCheck;
 			path = FirebaseAppCheck;
 			sourceTree = "<group>";
 		};
@@ -1216,6 +1220,7 @@
 			children = (
 				4398E2035DDC0C8B17B35B42FB7AC0F0 /* Support Files */,
 			);
+			name = SwiftLint;
 			path = SwiftLint;
 			sourceTree = "<group>";
 		};
@@ -1281,6 +1286,7 @@
 				D74FB79C6C2BC8FEDD89E94185F18019 /* WeakContainer.swift */,
 				237E10AD4817B572997B334B7D40637C /* Support Files */,
 			);
+			name = FirebaseCoreInternal;
 			path = FirebaseCoreInternal;
 			sourceTree = "<group>";
 		};
@@ -1387,6 +1393,7 @@
 				89235159D596201643E377237FF1E2AB /* FBLPromises.h */,
 				09554C02EE9600B4FA31256AD34BAC35 /* Support Files */,
 			);
+			name = PromisesObjC;
 			path = PromisesObjC;
 			sourceTree = "<group>";
 		};
@@ -1455,6 +1462,7 @@
 				F460F9B1B2BEE10E7FD45DA31CE20352 /* FIRVersion.m */,
 				E22BCA1D262AA4B48807ACFFF8F10A1F /* Support Files */,
 			);
+			name = FirebaseCore;
 			path = FirebaseCore;
 			sourceTree = "<group>";
 		};
@@ -2923,7 +2931,6 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2985,9 +2992,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";

@@ -188,6 +188,9 @@
 		7FF3BF5629044B7600ED0B81 /* ListRowSystemImageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF3BF5529044B7600ED0B81 /* ListRowSystemImageTextView.swift */; };
 		7FF4835A28E51DC2004DEC37 /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF4835928E51DC2004DEC37 /* SortOption.swift */; };
 		7FFC3CCC2944546A004FD061 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7FFC3CC72944428C004FD061 /* GoogleService-Info.plist */; };
+		7FFC3CD129446630004FD061 /* AccountManageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC3CD029446630004FD061 /* AccountManageViewModel.swift */; };
+		7FFC3CD5294467AA004FD061 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC3CD4294467AA004FD061 /* ImagePicker.swift */; };
+		7FFC3CD829446ABD004FD061 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC3CD729446ABD004FD061 /* ImageUploader.swift */; };
 		7FFFD5AD2928BD1200A25207 /* StockAPI-Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFFD5AC2928BD1200A25207 /* StockAPI-Stock.swift */; };
 		7FFFD5AF292A36AA00A25207 /* StockConvertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFFD5AE292A36AA00A25207 /* StockConvertViewModel.swift */; };
 		7FFFD5B1292A3D6A00A25207 /* StockRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFFD5B0292A3D6A00A25207 /* StockRowView.swift */; };
@@ -410,6 +413,9 @@
 		7FFC3CC42943A534004FD061 /* ci_pre_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_pre_xcodebuild.sh; sourceTree = "<group>"; };
 		7FFC3CC52943A546004FD061 /* ci_post_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_xcodebuild.sh; sourceTree = "<group>"; };
 		7FFC3CC72944428C004FD061 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7FFC3CD029446630004FD061 /* AccountManageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManageViewModel.swift; sourceTree = "<group>"; };
+		7FFC3CD4294467AA004FD061 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		7FFC3CD729446ABD004FD061 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		7FFFD5AC2928BD1200A25207 /* StockAPI-Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StockAPI-Stock.swift"; sourceTree = "<group>"; };
 		7FFFD5AE292A36AA00A25207 /* StockConvertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockConvertViewModel.swift; sourceTree = "<group>"; };
 		7FFFD5B0292A3D6A00A25207 /* StockRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockRowView.swift; sourceTree = "<group>"; };
@@ -1000,6 +1006,8 @@
 		7FE8370C28BF9681003761FE /* Utills */ = {
 			isa = PBXGroup;
 			children = (
+				7FFC3CD629446AA5004FD061 /* ImageUploaders */,
+				7FFC3CD329446718004FD061 /* ImagePickers */,
 				7F94E5F62937A4F0001F5F0D /* AppCheck */,
 				7FF3BF3B290405C800ED0B81 /* View */,
 				7FED2A6D28FA5C8E00D7A7C7 /* ViewRouter */,
@@ -1026,6 +1034,7 @@
 		7FE8370E28BF969F003761FE /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				7FFC3CCF294465AA004FD061 /* AccountManageViewModel. */,
 				7F2160BF29018F0100217585 /* SettingViewModel */,
 				7FEE221928FC66DE00792003 /* TweetFilterViewModel */,
 				7FD9E45728F413E0003528D4 /* AuthorizationViewModel */,
@@ -1245,6 +1254,30 @@
 				7FFC3CC72944428C004FD061 /* GoogleService-Info.plist */,
 			);
 			path = Firebase;
+			sourceTree = "<group>";
+		};
+		7FFC3CCF294465AA004FD061 /* AccountManageViewModel. */ = {
+			isa = PBXGroup;
+			children = (
+				7FFC3CD029446630004FD061 /* AccountManageViewModel.swift */,
+			);
+			path = AccountManageViewModel.;
+			sourceTree = "<group>";
+		};
+		7FFC3CD329446718004FD061 /* ImagePickers */ = {
+			isa = PBXGroup;
+			children = (
+				7FFC3CD4294467AA004FD061 /* ImagePicker.swift */,
+			);
+			path = ImagePickers;
+			sourceTree = "<group>";
+		};
+		7FFC3CD629446AA5004FD061 /* ImageUploaders */ = {
+			isa = PBXGroup;
+			children = (
+				7FFC3CD729446ABD004FD061 /* ImageUploader.swift */,
+			);
+			path = ImageUploaders;
 			sourceTree = "<group>";
 		};
 		7FFEF7C828EF08DB0023AACC /* StockModel */ = {
@@ -1636,6 +1669,7 @@
 				7F729EE328DB533600FEAE43 /* CoinViewModel.swift in Sources */,
 				7F4EBEA8293B7CA400ED053F /* TickerListRepository.swift in Sources */,
 				7FBB00592923CE4A002380B7 /* Agent.swift in Sources */,
+				7FFC3CD5294467AA004FD061 /* ImagePicker.swift in Sources */,
 				7FFFD5B9292A58C900A25207 /* ScrollViewModifier.swift in Sources */,
 				7F8B65A02934F3AC00C5203D /* StockQuote+Extensions.swift in Sources */,
 				7F02A5FE28E7316E00F4B56C /* CryptoDetailView.swift in Sources */,
@@ -1649,6 +1683,7 @@
 				7F98D131290564560088A052 /* WebView.swift in Sources */,
 				7F98D139290569540088A052 /* ShareFont.swift in Sources */,
 				7FF132C72933870800FEFA3C /* StockSearchModel.swift in Sources */,
+				7FFC3CD829446ABD004FD061 /* ImageUploader.swift in Sources */,
 				7F94E5FF2938CA7D001F5F0D /* MockStockAPI.swift in Sources */,
 				7FEE221B28FC670100792003 /* TweetFilterViewModel.swift in Sources */,
 				7FC3563A28D8A221002E0E63 /* CryptoMainView.swift in Sources */,
@@ -1709,6 +1744,7 @@
 				7F2EB3A6293C69F000D58B15 /* StockTickerView.swift in Sources */,
 				7F8DD5C729422F4200132799 /* HomeCoinConverTitleViewModel.swift in Sources */,
 				7F98D13B29056F730088A052 /* TabBar.swift in Sources */,
+				7FFC3CD129446630004FD061 /* AccountManageViewModel.swift in Sources */,
 				7FEF4FA528E0A32800DA9AEB /* CryptoStatView.swift in Sources */,
 				7F324C7528EB06F400A22FFC /* CryptoChartView.swift in Sources */,
 				7F2EB3BF293E27F900D58B15 /* StockChartView.swift in Sources */,
