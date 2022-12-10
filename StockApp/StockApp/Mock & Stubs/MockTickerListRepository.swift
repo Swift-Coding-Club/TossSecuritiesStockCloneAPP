@@ -8,7 +8,7 @@
 import Foundation
 import XCAStocksAPI
 
-#if DEBUG
+
 struct MockTickerListRepository: TickerListRepository {
     
     var stubbedLoad: (() async throws -> [Ticker])!
@@ -21,4 +21,4 @@ struct MockTickerListRepository: TickerListRepository {
         
     }
 }
-#endif
+
