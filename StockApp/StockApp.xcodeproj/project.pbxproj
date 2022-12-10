@@ -187,6 +187,7 @@
 		7FF3BF542904474900ED0B81 /* ListRowTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF3BF532904474900ED0B81 /* ListRowTextView.swift */; };
 		7FF3BF5629044B7600ED0B81 /* ListRowSystemImageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF3BF5529044B7600ED0B81 /* ListRowSystemImageTextView.swift */; };
 		7FF4835A28E51DC2004DEC37 /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF4835928E51DC2004DEC37 /* SortOption.swift */; };
+		7FFC3CCC2944546A004FD061 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7FFC3CC72944428C004FD061 /* GoogleService-Info.plist */; };
 		7FFFD5AD2928BD1200A25207 /* StockAPI-Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFFD5AC2928BD1200A25207 /* StockAPI-Stock.swift */; };
 		7FFFD5AF292A36AA00A25207 /* StockConvertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFFD5AE292A36AA00A25207 /* StockConvertViewModel.swift */; };
 		7FFFD5B1292A3D6A00A25207 /* StockRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFFD5B0292A3D6A00A25207 /* StockRowView.swift */; };
@@ -1406,6 +1407,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FFC3CCC2944546A004FD061 /* GoogleService-Info.plist in Resources */,
 				7F1C8EDD28BFA787004E49A1 /* SpoqaHanSansNeo-Bold.ttf in Resources */,
 				7F98D136290568580088A052 /* 나눔손글씨 맛있는체.ttf in Resources */,
 				7F1C8EDE28BFA787004E49A1 /* SpoqaHanSansNeo-Light.ttf in Resources */,
@@ -1570,7 +1572,7 @@
 		};
 		7FFC3CCB29444C0D004FD061 /* FirebaseCraplis Script */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -1584,7 +1586,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
