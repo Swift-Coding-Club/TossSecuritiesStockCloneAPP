@@ -8,13 +8,19 @@
 import SwiftUI
 import UIKit
 
+@available(iOS 16.0, *)
 struct MainTabVIew: View {
     @EnvironmentObject var viewModel: AuthorizationVIewModel
-    @EnvironmentObject var coinModel: CoinViewModel
+    @EnvironmentObject var coinViewModel: CoinViewModel
+    @EnvironmentObject var stockViewModel: StockViewModels
+    @EnvironmentObject var stockIntersetViewModel: StockViewModel
+    
     @State var currentTab = "house"
+    @State var curveAxis: CGFloat = 0
+    
     private let user: DevloperPreview = DevloperPreview()
     //MARK: - 커브 의 value
-    @State var curveAxis: CGFloat = 0
+    
     
     init() {
         UITabBar.appearance().isHidden = true
@@ -34,20 +40,22 @@ struct MainTabVIew: View {
     private func mainTabView() -> some View {
         VStack(spacing: .zero) {
             TabView(selection: $currentTab) {
-                HomeView()
-                    .environmentObject(coinModel)
+                HomeView(stockViewModel: StockViewModel())
+                    .environmentObject(coinViewModel)
                     .tag("house")
                 
-                StockMainView()
+                StockMainView(searchViewModel: StockSearchViewModel())
+                    .environmentObject(stockViewModel)
+                    .environmentObject(stockIntersetViewModel)
                     .tag("chart.bar")
                 
                 AddMainView()
                     .tag("plus.circle")
                 
-                CryptoMainView()
+                CryptoMainView(showView: .constant(false))
                     .tag("dollarsign.circle")
                 
-                ProfileMainView()
+                ProfileMainView(user: viewModel.currentUser ?? user.user)
                     .tag("person")
             }
             .clipShape(
@@ -65,12 +73,7 @@ struct MainTabVIew: View {
         .background(Color.colorAssets.navy2)
         .ignoresSafeArea(.container, edges: .top)
         .navigationBarHidden(false)
-//        .accentColor(Color.colorAssets.skyblue2)
-//        .onAppear(){
-//            UITabBar.appearance().barTintColor = .white
-//            UITabBar.appearance().tintColor = UIColor(Color.colorAssets.subColor)
-//            UITabBar.appearance().unselectedItemTintColor = UIColor(Color.colorAssets.subColor)
-//        }
+
     }
     
     @ViewBuilder
@@ -112,11 +115,12 @@ struct MainTabVIew: View {
     }
 }
 
+@available(iOS 16.0, *)
 struct MainTabVIew_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
+        NavigationStack {
             MainTabVIew()
-            .environmentObject(dev.coinViewModel)
+                .environmentObject(dev.coinViewModel)
                 .environmentObject(dev.signUpViewModel)
         }
     }

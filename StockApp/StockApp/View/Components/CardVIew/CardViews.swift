@@ -27,7 +27,8 @@ struct CardViews: View {
                       pinnedViews: [ ] ) {
                 Text(stat.value)
                     .kerning(-0.5)
-                    .spoqaHan(family: .Bold, size: 23)
+                    .spoqaHan(family: .Bold, size: 20)
+                    .minimumScaleFactor(0.8)
                     .foregroundColor(Color.fontColor.mainFontColor)
         
                         HStack {

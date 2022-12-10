@@ -14,6 +14,8 @@ struct CryptoPortfolioView: View {
     @State private var selectionCoin: CoinModel? = nil      // 코인이  선택 되었을때
     @State private var showDetailView: Bool = false          // 다테일 뷰 보여주기
     
+    private let cryptoSearchPlaceholder: String = "검색할 코인을 입력해주세요..."
+    
     var body: some View {
         
         ZStack {
@@ -29,7 +31,7 @@ struct CryptoPortfolioView: View {
                     CryptoCoinCardView()
                         .padding(.vertical)
                     //MARK: - 코인 검색창
-                    SearchBarView(searchBarTextField:  $viewModel.searchText)
+                    SearchBarView(searchBarTextField:  $viewModel.searchText, placeholder: cryptoSearchPlaceholder)
                     //MARK: - 코인 리스트 타이틀
                     columnTitles()
                     //MARK:  -  코인 보유 시세

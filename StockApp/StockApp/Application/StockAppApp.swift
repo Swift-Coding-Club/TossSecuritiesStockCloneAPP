@@ -9,20 +9,25 @@ import SwiftUI
 import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
+import Firebase
+import FirebaseAppCheck
 
+@available(iOS 16.0, *)
 @main
 struct StockAppApp: App {
-    
     @State var viewModel = CoinViewModel()
     @StateObject var signUpViewModel = AuthorizationVIewModel()
-    @StateObject var accountViewModel = AccountManageViewModel()
+    @StateObject var stockViewModel = StockViewModels()
+    @StateObject var stockIntersetViewModel = StockViewModel()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @State private var showLanchView: Bool = true
+    let providerFactory = StockAppCheck()
     
     init() {
         //MARK: - 카카오 로그인  관련
 //        KakaoSDK.initSDK(appKey: SecretKey.kakoNativeAppKey)
               //MARK: - 네비게이션 바 설정
+        AppCheck.setAppCheckProviderFactory(providerFactory)
         FirebaseApp.configure()
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.fontColor.mainFontColor)]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor(Color.fontColor.mainFontColor),
@@ -31,6 +36,7 @@ struct StockAppApp: App {
         UINavigationBar.appearance().tintColor = UIColor(Color.fontColor.mainFontColor)
     }
     
+    @MainActor
     var body: some Scene {
         WindowGroup {
             ZStack {
@@ -40,7 +46,8 @@ struct StockAppApp: App {
                 }
                 .environmentObject(viewModel)
                 .environmentObject(signUpViewModel)
-                .environmentObject(accountViewModel)
+                .environmentObject(stockViewModel)
+                .environmentObject(stockIntersetViewModel)
                 
                 ZStack {
                     if showLanchView {
