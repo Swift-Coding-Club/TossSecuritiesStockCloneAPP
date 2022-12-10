@@ -49,8 +49,8 @@ struct MainTabVIew: View {
                     .environmentObject(stockIntersetViewModel)
                     .tag("chart.bar")
                 
-                AddMainView()
-                    .tag("plus.circle")
+//                AddMainView()
+//                    .tag("plus.circle")
                 
                 CryptoMainView(showView: .constant(false))
                     .tag("dollarsign.circle")
@@ -78,7 +78,8 @@ struct MainTabVIew: View {
     
     @ViewBuilder
     private func tabBarAnimation() -> some View {
-        ForEach(["house", "chart.bar" , "plus.circle" , "dollarsign.circle" , "person"] , id: \.self) { image in
+//        "plus.circle" ,
+        ForEach(["house", "chart.bar" ,  "dollarsign.circle" , "person"] , id: \.self) { image in
             
             GeometryReader  { proxy in
                 
