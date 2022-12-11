@@ -20,9 +20,10 @@ struct DeveloperRowView: View {
         VStack{
             HStack{
                 RoundedRectangle(cornerRadius: 20)
-                    .frame(width: UIScreen.main.bounds.width - 20, height: 200)
+                    .frame(width: (UIScreen.main.bounds.width - 40), height: 200)
                     .foregroundColor(Color.colorAssets.backGroundColor)
-                    .shadow(color: Color.gray.opacity(0.8), radius: 10, x: 10, y: .zero)
+                    .padding(.horizontal)
+                    .shadow(color: Color.fontColor.accentColor.opacity(0.15), radius: 5, x: 5, y: .zero)
                     .overlay {
                         HStack{
                             Image(profileImage)

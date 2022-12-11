@@ -40,7 +40,7 @@ enum DevloperViewModel: Int ,CaseIterable , CustomStringConvertible {
         case .nadine:
             return "같이 성장하는 PM 입니다"
         case .ruby:
-            return "다양한 디자인을 하는  디자이너 입니다"
+            return "다양한 디자인을 하는\n  디자이너 입니다"
         }
     }
     

@@ -13,6 +13,7 @@ import Firebase
 import FirebaseAppCheck
 
 @available(iOS 16.0, *)
+@MainActor
 @main
 struct StockAppApp: App {
     @State var viewModel = CoinViewModel()

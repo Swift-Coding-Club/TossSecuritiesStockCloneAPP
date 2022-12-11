@@ -83,7 +83,7 @@ struct ProfileMainView: View {
                         VStack(alignment: .leading) {
                             spacingHeight(height: 32)
                             
-                            profileHeader(userName: accountViewModel.userName ?? "", email: accountViewModel.userEmail ?? "")
+                            profileHeader(userName: accountViewModel.userName ?? "Roy", email: accountViewModel.userEmail ?? "shuwj199@gmail.com")
                             
                             spacingHeight(height: 40)
                             
@@ -135,6 +135,7 @@ struct ProfileMainView: View {
             }
             Spacer()
         }
+        .foregroundColor(Color.fontColor.mainFontColor)
         .padding(.horizontal, 30)
     }
     //MARK: - 스페이싱 높이
@@ -248,7 +249,12 @@ struct ProfileMainView: View {
             ForEach(FeedBackViewModel.allCases, id: \.rawValue) { item in
                 if item == .sendEmail {
                     Button {
-                        sendEmailButton.toggle()
+                        guard let url = URL(string: "mailto:shuwj81@daum.net") else {
+                            return
+                        }
+                        if UIApplication.shared.canOpenURL(url) {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        }
                     } label: {
                         ListRowSystemImageTextView(title: item.description, imageName: item.imageName, width: 15,  height: 12)
                         //                            .background(

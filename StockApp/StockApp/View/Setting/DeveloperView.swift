@@ -24,6 +24,10 @@ struct DeveloperView: View {
                     
                     developerRow()
                     
+                    
+                    Spacer()
+                        .frame(height: 85)
+                    
                 }
                 .padding(.horizontal, 20)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
@@ -40,28 +44,32 @@ struct DeveloperView: View {
             Text("서비스를 개발한 개발자들을 소개합니다.")
                 .spoqaHan(family: .Medium, size: 20)
                 .foregroundColor(Color.fontColor.mainFontColor)
-            Divider()
         }
+        .padding(.horizontal)
+        .padding(.bottom, 30)
     }
     
     @ViewBuilder
     private func developerRow() -> some View {
         ScrollView(.vertical, showsIndicators: false) {
-            ForEach(DevloperViewModel.allCases, id: \.rawValue) { item in
-                if item == .roy {
-                    DeveloperRowView(profileImage: item.profileImage, developerName: item.description, githubLinke: item.githublink, instagram: item.instagram, informationTitle: item.information)
-                } else if item == .eric {
-                    DeveloperRowView(profileImage: item.profileImage, developerName: item.description, githubLinke: item.githublink, instagram: item.instagram, informationTitle: item.information)
-                } else if item == .lia {
-                    DeveloperRowView(profileImage: item.profileImage, developerName: item.description, githubLinke: item.githublink, instagram: item.instagram, informationTitle: item.information)
-                } else if item == .nadine {
-                    DeveloperRowView(profileImage: item.profileImage, developerName: item.description, githubLinke: item.githublink, instagram: item.instagram, informationTitle: item.information)
-                } else if item == .ruby {
-                    DeveloperRowView(profileImage: item.profileImage, developerName: item.description, githubLinke: item.githublink, instagram: item.instagram, informationTitle: item.information)
+            VStack (spacing: 30){
+                ForEach(DevloperViewModel.allCases, id: \.rawValue) { item in
+                    if item == .roy {
+                        DeveloperRowView(profileImage: item.profileImage, developerName: item.description, githubLinke: item.githublink, instagram: item.instagram, informationTitle: item.information)
+                    } else if item == .eric {
+                        DeveloperRowView(profileImage: item.profileImage, developerName: item.description, githubLinke: item.githublink, instagram: item.instagram, informationTitle: item.information)
+                    } else if item == .lia {
+                        DeveloperRowView(profileImage: item.profileImage, developerName: item.description, githubLinke: item.githublink, instagram: item.instagram, informationTitle: item.information)
+                    } else if item == .nadine {
+                        DeveloperRowView(profileImage: item.profileImage, developerName: item.description, githubLinke: item.githublink, instagram: item.instagram, informationTitle: item.information)
+                    } else if item == .ruby {
+                        DeveloperRowView(profileImage: item.profileImage, developerName: item.description, githubLinke: item.githublink, instagram: item.instagram, informationTitle: item.information)
+                    }
                 }
             }
         }
         .bounce(false)
+        .padding(.horizontal)
     }
     
 }
