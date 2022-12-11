@@ -23,7 +23,8 @@ struct DeveloperRowView: View {
                     .frame(width: (UIScreen.main.bounds.width - 40), height: 200)
                     .foregroundColor(Color.colorAssets.backGroundColor)
                     .padding(.horizontal)
-                    .shadow(color: Color.fontColor.accentColor.opacity(0.15), radius: 5, x: 5, y: .zero)
+                    .foregroundColor(Color.colorAssets.backGroundColor)
+                    .shadow(color: Color.fontColor.accentColor.opacity(0.15), radius: 20, x: 10, y: .zero)
                     .overlay {
                         HStack{
                             Image(profileImage)
