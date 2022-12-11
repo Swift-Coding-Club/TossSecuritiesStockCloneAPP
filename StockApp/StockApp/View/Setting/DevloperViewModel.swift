@@ -34,11 +34,11 @@ enum DevloperViewModel: Int ,CaseIterable , CustomStringConvertible {
         case .roy:
             return "개인보다는 함께를 선호하며\n 지식의 나눔을 실천하는\n 개발자입니다."
         case .eric:
-            return "같이 성장하는 개발자 입니다"
+            return "사용자 경험 향상에 관심이 \n 많은 개발자 입니다"
         case .lia:
             return "함께 성장하는 개발자 입니다"
         case .nadine:
-            return "같이 성장하는 PM 입니다"
+            return "같이 성장하는 PO 입니다"
         case .ruby:
             return "다양한 디자인을 하는\n  디자이너 입니다"
         }

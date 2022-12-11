@@ -36,7 +36,7 @@ struct ProfileMainView: View {
                             VStack(alignment: .leading) {
                                 spacingHeight(height: 32)
                                 
-                                profileHeader(userName: accountViewModel.userName ?? "", email: accountViewModel.userEmail ?? "")
+                                profileHeader(userName: accountViewModel.userName ?? "Roy", email: accountViewModel.userEmail ?? "shuwj199@gmail.com")
                                 
                                 spacingHeight(height: 40)
                                 
@@ -123,10 +123,13 @@ struct ProfileMainView: View {
     private func profileHeader(userName: String, email: String) -> some View {
         HStack {
             Circle()
-                .frame(width: 72, height: 72)
+                .frame(width: 60, height: 60)
+                .overlay {
+                    Image("로이")
+                }
             
             Spacer()
-                .frame(width: 10)
+                .frame(width: 20)
             
             VStack(alignment: .leading , spacing: 5) {
                 Text(userName)
@@ -137,6 +140,7 @@ struct ProfileMainView: View {
         }
         .foregroundColor(Color.fontColor.mainFontColor)
         .padding(.horizontal, 30)
+        .padding(.bottom , 20)
     }
     //MARK: - 스페이싱 높이
     @ViewBuilder
