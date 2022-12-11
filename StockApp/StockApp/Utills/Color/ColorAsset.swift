@@ -10,6 +10,7 @@ import SwiftUI
 struct ColorAsset {
     let mainColor = Color("MainColor")
     let subColor = Color("MainColor2")
+    let mainColor2 = Color("MainColor3")
     let black = Color("Black")
     let blue = Color("Blue")
     let blue2 = Color("Blue2")
@@ -30,10 +31,15 @@ struct ColorAsset {
     let pink = Color("Pink")
     let skyblue = Color("Skyblue")
     let skyblue2 = Color("Skyblue2")
+    let skyblue3 = Color("Skyblue3")
+    let skyblue4 = Color("Skyblue4")
+    let darkblue = Color("darkBlue")
     let white = Color("White")
     let white2 = Color("White2")
     let textColor = Color("SecondaryTextColor")
     let backGroundColor = Color("BackgroundColor")
+    let loginColor = Color("LoginColor")
+    let iconColor = Color("iconColor")
 }
 
 extension Color {

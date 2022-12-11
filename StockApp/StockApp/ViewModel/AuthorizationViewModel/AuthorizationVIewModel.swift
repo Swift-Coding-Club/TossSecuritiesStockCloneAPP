@@ -8,24 +8,23 @@
 import SwiftUI
 import Firebase
 import FirebaseAuth
-import KakaoSDKAuth
 import AuthenticationServices
 import GoogleSignIn
 
-class AuthorizationVIewModel: ObservableObject {
+class AuthorizationVIewModel:  ObservableObject {
     
     //MARK: - 유저
     @Published var userSession: FirebaseAuth.User?
-    @StateObject var snsloginManager: SNSLoginManger = SNSLoginManger()
     @Published var nonce = ""
+    @StateObject var accountViewModel = AccountManageViewModel()
     @AppStorage("log_status") var log_Status = false
-    
     
     init() {
         self.userSession = Auth.auth().currentUser
         debugPrint("DEBUG: User session is \(self.userSession)")
         
     }
+    
     //MARK: - 로그인
     func login(withEmail email: String, password: String) {
         //        debugPrint("DEBUG: User login with email \(email)")
@@ -36,7 +35,7 @@ class AuthorizationVIewModel: ObservableObject {
             } else {
                 guard let user = result?.user else { return }
                 self.userSession = user
-                
+                self.accountViewModel.getUserInformation()
                 debugPrint("로그인에 성공 하였습니다")
             }
         }
@@ -103,13 +102,53 @@ class AuthorizationVIewModel: ObservableObject {
     }
     //MARK: - 구글 로그인
     func googleLogin() {
-        GIDSignIn.sharedInstance().signIn()
+        guard let clientID = FirebaseApp.app()?.options.clientID  else { return }
+        
+        let config = GIDConfiguration(clientID: clientID)
+        
+        GIDSignIn.sharedInstance.signIn(with: config, presenting:  UIApplication.shared.getRootViewController()) {[self] user, error in
+            if let error = error {
+                debugPrint("[🔥] 로그인 에 실패 하였습니다 \(error.localizedDescription)")
+                return
+            }
+            guard
+              let authentication = user?.authentication,
+              let idToken = authentication.idToken
+            else {
+                
+                debugPrint("[🔥]  로그인에  성공 하였습니다  \(user?.profile?.email)")
+//                self.userSession = user
+                return
+            }
+            
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                           accessToken: authentication.accessToken)
+            
+            Auth.auth().signIn(with: credential) { (authResult, error) in
+                if let error = error {
+                    debugPrint("[🔥] 로그인 에 실패 하였습니다 \(error.localizedDescription)")
+                    return
+                } else {
+                    debugPrint("[🔥]  로그인에  성공 하였습니다  \(user)")
+                    guard let user = authResult?.user else {return}
+                    self.userSession = user
+                }
+            }
+            
+        }
         
     }
     
     //MARK: - 로그아웃
     func signOut() {
-        userSession = nil
-        try? Auth.auth().signOut()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.userSession = nil
+        }
+        let firebaseAuth = Auth.auth()
+      do {
+        try firebaseAuth.signOut()
+      } catch let signOutError as NSError {
+        print("Error signing out: %@", signOutError)
+      }
     }
 }

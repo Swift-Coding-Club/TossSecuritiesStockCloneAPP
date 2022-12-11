@@ -128,7 +128,7 @@ class CoinViewModel: ObservableObject {
         let marketCap = StatisticModel(title: "시가 총액", value: data.marketCap,
                                        percentageChange: data.marketCapChangePercentage24HUsd)
         //MARK: - 24시간 코인 시세
-        let volume = StatisticModel(title: "24시간  코인 시세", value: data.volume)
+        let volume = StatisticModel(title: "24시간 코인 시세", value: data.volume)
         //MARK: - 비트 코인 시세
         let btcDomainance = StatisticModel(title: "비트코인 시세", value: data.btcDominance)
         //MARK: - 보유 수량
@@ -148,7 +148,7 @@ class CoinViewModel: ObservableObject {
         
         let portfolio = StatisticModel(
             title: "총 보유 수량 ",
-            value: portfolioValue.asCurrencyWith2Decimals(),
+            value: portfolioValue.asCurrencyWith2DecimalsValue(),
             percentageChange: percentageChange)
         //MARK:- StatisticModel에 append
         stats.append(contentsOf: [
@@ -178,7 +178,7 @@ class CoinViewModel: ObservableObject {
         
         let portfolio = StatisticModel(
             title: " 총 보유 수량 ",
-            value: portfolioValue.asCurrencyWith2Decimals(),
+            value: portfolioValue.asCurrencyWith2DecimalsValue(),
             percentageChange: percentageChange)
         //MARK:- StatisticModel에 append
         stats.append(contentsOf: [

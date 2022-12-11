@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CryptoKit
+import GoogleSignIn
 
 extension UIApplication {
     //MARK:  - 키보드에서 end 하면  키보드 내리기
@@ -19,6 +20,16 @@ extension UIApplication {
         guard let viewController = window.windows.last?.rootViewController else { return  .init()}
         
         return viewController
+    }
+    
+    func getRootViewController()->UIViewController{
+        guard let screen = UIApplication.shared.connectedScenes.first as? UIWindowScene else{
+            return .init()
+        }
+        guard let root = screen.windows.first?.rootViewController else{
+            return .init()
+        }
+        return root
     }
     
     func sha256(_ input: String) -> String {

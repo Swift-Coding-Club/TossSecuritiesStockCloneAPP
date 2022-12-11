@@ -12,23 +12,21 @@ struct StatisticView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(stat.title)
-                .font(.caption)
+                .spoqaHan(family: .Regular, size: 12)
                 .foregroundColor(Color.colorAssets.textColor)
             Text(stat.value)
-                .font(.custom(FontAsset.boldFont, size: 14))
+                .spoqaHan(family: .Bold, size: 15)
                 .foregroundColor(Color.fontColor.accentColor)
             
-            HStack(spacing: 4) {
-                Image(systemName: "triangle.fill")
-                    .font(.caption2)
-                    .rotationEffect(Angle(degrees:
-                                            (stat.percentageChange ?? .zero) >= .zero ? 0 : 180 ))
-                Text(stat.percentageChange?.asPercentString() ?? "")
-                    .font(.caption)
-                    .bold()
-            }
-            .foregroundColor((stat.percentageChange ?? .zero) >= .zero ? Color.colorAssets.green : Color.colorAssets.red )
+            Text(stat.percentageChange?.asPercentString() ?? "")
+                .spoqaHan(family: .Regular, size: 12)
+                .foregroundColor((stat.percentageChange ?? .zero) >= .zero ? Color.colorAssets.skyblue4.opacity(0.8) : Color.colorAssets.red )
             .opacity(stat.percentageChange == nil ? 0.0: 1.0)
+            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+            .background((stat.percentageChange ?? .zero) == .zero ?
+                        Color.clear :
+                            (stat.percentageChange ?? .zero) >= .zero ? Color.colorAssets.skyblue4.opacity(0.3) : Color.colorAssets.lightRed.opacity(0.3))
+            .clipShape(Capsule())
         }
     }
 }

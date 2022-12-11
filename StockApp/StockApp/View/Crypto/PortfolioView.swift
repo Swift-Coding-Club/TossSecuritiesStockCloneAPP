@@ -15,12 +15,14 @@ struct PortfolioView: View {
     @State private var quantityText: String = ""
     @State private var showCheckMark: Bool = false
     
+    private let cryptoSearchPlaceholder: String = "검색할 코인을 입력해주세요..."
+    
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: .zero) {
                     //MARK: - 검색 창
-                    SearchBarView(searchBarTextField: $viewModel.searchText)
+                    SearchBarView(searchBarTextField: $viewModel.searchText, placeholder: cryptoSearchPlaceholder)
                     //MARK: - 코인 로고
                     coinLogoList()
                     //MARK:  - 코인 서택 되었을겨우 form 보여주기
@@ -94,7 +96,8 @@ struct PortfolioView: View {
             HStack {
                 Text("보유한 코인 \(selectedCoin?.symbol.uppercased() ?? "" ) : ")
                 Spacer()
-                Text(selectedCoin?.currentPrice.asCurrencyWith6Decimals() ?? "")
+                Text(selectedCoin?.currentPrice.asCurrencyWith2DecimalsValue() ?? "") +
+                Text(" KRW")
             }
             Divider()
             
@@ -109,12 +112,12 @@ struct PortfolioView: View {
             HStack {
                 Text("코인 총합 : ")
                 Spacer()
-                Text(getCurrentValue().asCurrencyWith2Decimals())
+                Text(getCurrentValue().asCurrencyWith2DecimalsValue() + " KRW")
             }
         }
         .animation(.none)
         .padding()
-        .font(.custom(FontAsset.mediumFont, size: 15))
+        .spoqaHan(family: .Medium, size: 15)
     }
     //MARK: - navigaionleadingtoolbar xmark button
     @ViewBuilder

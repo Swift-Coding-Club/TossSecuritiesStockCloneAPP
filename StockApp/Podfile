@@ -8,10 +8,13 @@ target 'StockApp' do
   # Pods for StockApp
   pod 'Alamofire'
   pod 'SwiftLint'
-  pod 'KakaoSDKCommon', '~> 2.11.1'  # 필수 요소를 담은 공통 모듈
-  pod 'KakaoSDKAuth', '~> 2.11.1'  # 사용자 인증
-  pod 'KakaoSDKUser', '~> 2.11.1'  # 카카오 로그인, 사용자 관리
-  pod 'GoogleSignIn'
+  pod 'Introspect'
+  pod 'ExytePopupView'
+  pod 'FirebaseAppCheck'
+#  pod 'KakaoSDKCommon', '~> 2.11.1'  # 필수 요소를 담은 공통 모듈
+#  pod 'KakaoSDKAuth', '~> 2.11.1'  # 사용자 인증
+#  pod 'KakaoSDKUser', '~> 2.11.1'  # 카카오 로그인, 사용자 관리
+#  pod 'GoogleSignIn', '~> 5.0.2' # Google Login
   #파이어베이스 
   
   target 'StockAppTests' do

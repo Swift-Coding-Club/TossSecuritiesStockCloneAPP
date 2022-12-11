@@ -10,9 +10,7 @@
 			<key>CFBundleURLName</key>
 			<string>url</string>
 			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>kako{fa99930d02eafd803fe53947279dca4c}</string>
-			</array>
+			<array/>
 		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
@@ -26,9 +24,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>1060378286730-d080s67ukoj1bll1ejs0bu154mbna1j7.apps.googleusercontent.com</string>
-			</array>
+			<array/>
 		</dict>
 	</array>
 	<key>LSApplicationQueriesSchemes</key>
@@ -38,10 +34,15 @@
 	</array>
 	<key>Localizationnativedevelopmentregion</key>
 	<string>Korea</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>나눔손글씨 맛있는체.ttf</string>
 		<string>나눔손글씨 둥근인연.ttf</string>
+		<string>나눔손글씨 맛있는체.ttf</string>
 		<string>SpoqaHanSansNeo-Bold.ttf</string>
 		<string>SpoqaHanSansNeo-Light.ttf</string>
 		<string>SpoqaHanSansNeo-Medium.ttf</string>

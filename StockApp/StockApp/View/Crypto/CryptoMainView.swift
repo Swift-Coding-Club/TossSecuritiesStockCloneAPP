@@ -14,6 +14,16 @@ struct CryptoMainView: View {
     @State private var showPortfolioView: Bool = false       // + 버튼 누르면  bottomsheet 으로 나오게 구현
     @State private var selectionCoin: CoinModel? = nil      // 코인이  선택 되었을때
     @State private var showDetailView: Bool = false          // 다테일 뷰 보여주기 
+    @State var uiTabarController: UITabBarController?
+    
+    private let cyptoSearchPlaceholder: String = "검색할 코인을 입력해주세요..."
+    
+    @Binding var showView: Bool
+    
+    init(showView: Binding<Bool>) {
+        UITabBar.hideTabBar(animated: false)
+        self._showView = showView
+    }
     
     //MARK: - 뷰를 그리는 곳
     var body: some View {
@@ -31,16 +41,19 @@ struct CryptoMainView: View {
                 //MARK: - 상단  hedaer 부분
                 homeHeader()
                     .padding(.vertical, 3)
-                //MARK: - 마켓 시세 관련 뷰
-                CryptoStatView(showPortfolio: $showPortfolio)
-                    .padding(.vertical, 5)
+                
                 NavigationLink {
                     CryptoPortfolioView()
                 } label: {
                     CryptoCoinCardView()
                 }
+                
+                //MARK: - 마켓 시세 관련 뷰
+                CryptoStatView(showPortfolio: $showPortfolio)
+                    .padding(.vertical, 5)
                 //MARK: - 코인 검색창
-                SearchBarView(searchBarTextField:  $viewModel.searchText)
+                SearchBarView(searchBarTextField:  $viewModel.searchText, placeholder: cyptoSearchPlaceholder)
+                   
                 //MARK: - 코인 리스트 타이틀
                 columnTitles()
                 //MARK:  -  코인 및 보유  시세 리스트
@@ -48,11 +61,10 @@ struct CryptoMainView: View {
                     .padding(.bottom, 5)
                 Spacer(minLength: .zero)
             }
+            .bounce(false)
         }
         .padding(.vertical)
-//        .navigationBarHidden(true)
-            .navigationBarBackButtonHidden(true)
-        //MARK: - 코인을 선택해을때  네빅게이션
+        //MARK: - 코인을 선택해을때 네비게이션
         .background(
             NavigationLink(
                 destination: CryptoDetailLoadingView(coin: $selectionCoin),
@@ -60,11 +72,12 @@ struct CryptoMainView: View {
                 label: { EmptyView() }
             )
         )
+        .onAppear {
+            self.showView = true
+        }
         
     }
     //MARK: - CryptoMainView 확장으로 main body 뷰 코드를 줄이기
-    
-    
     //MARK: - 코인 뷰 에 상단 부분
     @ViewBuilder
     private func homeHeader()  -> some View {
@@ -81,8 +94,7 @@ struct CryptoMainView: View {
                 )
             Spacer()
             Text("코인 시세")
-                .font(.headline)
-                .fontWeight(.heavy)
+                .spoqaHan(family: .Bold, size: 15)
                 .foregroundColor(Color.fontColor.mainFontColor)
                 .animation(.none)
             Spacer()
@@ -130,7 +142,7 @@ struct CryptoMainView: View {
             .rotationEffect(Angle(degrees: viewModel.isLoading ? 360 : .zero),
                             anchor: .center)
         }
-        .font(.custom(FontAsset.regularFont, size: 13))
+        .spoqaHan(family: .Regular, size: 13)
         .foregroundColor(Color.colorAssets.textColor)
         .padding(.horizontal)
     }
@@ -158,7 +170,7 @@ struct CryptoMainView: View {
 struct CryptoMainView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            CryptoMainView()
+            CryptoMainView(showView: .constant(false))
                 .navigationBarHidden(true)
         }
         .environmentObject(dev.coinViewModel)

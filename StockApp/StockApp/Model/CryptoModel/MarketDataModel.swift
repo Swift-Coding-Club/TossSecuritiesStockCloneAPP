@@ -24,14 +24,14 @@ struct MarketDataModel: Codable {
     //MARK:  - 마켓의 종류줄  첫번째
     var marketCap: String {
         if let item = totalMarketCap.first(where: { $0.key == "krw"}) {
-            return "KRW " + item.value.formattedWithAbbreviations()
+            return item.value.formattedWithAbbreviations()
         }
         return ""
     }
     //MARK:  - 총가격
     var volume: String {
         if let item = totalVolume.first(where: {$0.key == "krw"}) {
-            return "KRW " + item.value.formattedWithAbbreviations()
+            return item.value.formattedWithAbbreviations()
         }
         return ""
     }

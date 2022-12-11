@@ -21,27 +21,33 @@ struct CryptoDetailView: View {
     }
     
     var body: some View {
-        ScrollView{
-            VStack {
-                //MARK:  - 차트 뷰
-                CryptoChartView(coin: viewModel.coin)
-                    .padding(.vertical)
+        ZStack{
+            Color.colorAssets.backGroundColor
+            
+            ScrollView{
+                Color.colorAssets.backGroundColor
                 
-                VStack(spacing: 20) {
-                    //MARK: - 코인 개요
-                    overViewTitle()
-                    //MARK: - 코인 개용 설명
-                    descriptionSection()
-                    //MARK: - 코인 개요 부분 grid
-                    overViewGrid()
-                    //MARK: - 추가 세부 사항
-                    additionalTitle()
-                    //MARK: - 추가 세부 사항 grid
-                    additionalGrid()
-                    //MARK:  - 코인 홈페이지 링크
-                    webSiteSection()
+                VStack {
+                    //MARK:  - 차트 뷰
+                    CryptoChartView(coin: viewModel.coin)
+                        .padding(.vertical)
+                    
+                    VStack(spacing: 20) {
+                        //MARK: - 코인 개요
+                        overViewTitle()
+                        //MARK: - 코인 개용 설명
+                        descriptionSection()
+                        //MARK: - 코인 개요 부분 grid
+                        overViewGrid()
+                        //MARK: - 추가 세부 사항
+                        additionalTitle()
+                        //MARK: - 추가 세부 사항 grid
+                        additionalGrid()
+                        //MARK:  - 코인 홈페이지 링크
+                        webSiteSection()
+                    }
+                    .padding()
                 }
-                .padding()
             }
         }
         .toolbar {
