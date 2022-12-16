@@ -10,7 +10,7 @@ import ExytePopupView
 
 struct ProfileMainView: View {
     
-    @EnvironmentObject var viewModel: AuthorizationVIewModel
+    @EnvironmentObject var authViewModel: AuthorizationVIewModel
     @EnvironmentObject var accountViewModel: AccountManageViewModel
     @StateObject var profileViewModel = ProfilViewModel()
     
@@ -36,7 +36,7 @@ struct ProfileMainView: View {
                             VStack(alignment: .leading) {
                                 spacingHeight(height: 32)
                                 
-                                profileHeader(userName: accountViewModel.userName ?? "Roy", email: accountViewModel.userEmail ?? "shuwj199@gmail.com")
+                                profileHeader()
                                 
                                 spacingHeight(height: 40)
                                 
@@ -58,7 +58,7 @@ struct ProfileMainView: View {
                 }
                 .popup(isPresented: $showAlertLogout,  type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
                     PopupView()
-                        .environmentObject(viewModel)
+                        .environmentObject(authViewModel)
                 }
                 .popup(isPresented: $noticeButton, type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
                     ReadyPopUPview()
@@ -71,7 +71,7 @@ struct ProfileMainView: View {
                 }
             }
             .onAppear {
-                accountViewModel.getUserInformation()
+//                accountViewModel.getUserInformation()
             }
         } else {
             NavigationView {
@@ -83,7 +83,7 @@ struct ProfileMainView: View {
                         VStack(alignment: .leading) {
                             spacingHeight(height: 32)
                             
-                            profileHeader(userName: accountViewModel.userName ?? "Roy", email: accountViewModel.userEmail ?? "shuwj199@gmail.com")
+                            profileHeader()
                             
                             spacingHeight(height: 40)
                             
@@ -104,7 +104,7 @@ struct ProfileMainView: View {
                 }
                 .popup(isPresented: $showAlertLogout,  type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
                     PopupView()
-                        .environmentObject(viewModel)
+                        .environmentObject(authViewModel)
                 }
                 .popup(isPresented: $noticeButton, type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
                     ReadyPopUPview()
@@ -118,9 +118,10 @@ struct ProfileMainView: View {
             }
         }
     }
+    
     //MARK: - 프로필 상단
     @ViewBuilder
-    private func profileHeader(userName: String, email: String) -> some View {
+    private func profileHeader() -> some View {
         HStack {
             Circle()
                 .frame(width: 60, height: 60)
@@ -132,9 +133,9 @@ struct ProfileMainView: View {
                 .frame(width: 20)
             
             VStack(alignment: .leading , spacing: 5) {
-                Text(userName)
+                Text(authViewModel.userSession?.displayName ?? "")
                     .spoqaHan(family: .Bold, size: 18)
-                Text(email)
+                Text(authViewModel.userSession?.email ?? "")
             }
             Spacer()
         }
@@ -142,18 +143,21 @@ struct ProfileMainView: View {
         .padding(.horizontal, 30)
         .padding(.bottom , 20)
     }
+    
     //MARK: - 스페이싱 높이
     @ViewBuilder
     private func spacingHeight(height: CGFloat) -> some View {
         Spacer()
             .frame(height: height)
     }
+    
     //MARK: - 스페이싱 넓이
     @ViewBuilder
     private func spacingWidth(width: CGFloat) -> some View {
         Spacer()
             .frame(width: width)
     }
+    
     //MARK: - 공지 사항 및  환경설정 뷰
     @ViewBuilder
     private func editProfile() -> some View {
@@ -201,6 +205,7 @@ struct ProfileMainView: View {
         }
         spacingHeight(height: 30)
     }
+    
     //MARK: - 앱 정보
     @ViewBuilder
     private func appInformationListButton()  -> some View {
@@ -246,6 +251,7 @@ struct ProfileMainView: View {
         .padding(.horizontal)
         spacingHeight(height: 30)
     }
+    
     //MARK: - 피드백
     @ViewBuilder
     private func feedBackListButton() -> some View {
@@ -277,6 +283,7 @@ struct ProfileMainView: View {
         .padding(.horizontal)
         spacingHeight(height: 30)
     }
+    
     //MARK: - 앱 계정 관리
     @ViewBuilder
     private func logoutListButton() -> some View  {
@@ -298,6 +305,7 @@ struct ProfileMainView: View {
         .padding(.horizontal)
         spacingHeight(height: 30)
     }
+    
     //MARK: - 앱 정보 및  기타
     @ViewBuilder
     private func appinformationEtcButton() -> some View {
