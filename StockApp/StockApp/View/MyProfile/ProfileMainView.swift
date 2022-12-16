@@ -36,7 +36,7 @@ struct ProfileMainView: View {
                             VStack(alignment: .leading) {
                                 spacingHeight(height: 32)
                                 
-                                profileHeader(userName: authViewModel.userSession?.displayName, email: authViewModel.userSession?.email)
+                                profileHeader()
                                 
                                 spacingHeight(height: 40)
                                 
@@ -83,7 +83,7 @@ struct ProfileMainView: View {
                         VStack(alignment: .leading) {
                             spacingHeight(height: 32)
                             
-                            profileHeader(userName: accountViewModel.userName ?? "Roy", email: accountViewModel.userEmail ?? "shuwj199@gmail.com")
+                            profileHeader()
                             
                             spacingHeight(height: 40)
                             
@@ -121,7 +121,7 @@ struct ProfileMainView: View {
     
     //MARK: - 프로필 상단
     @ViewBuilder
-    private func profileHeader(userName: String, email: String) -> some View {
+    private func profileHeader() -> some View {
         HStack {
             Circle()
                 .frame(width: 60, height: 60)
@@ -133,9 +133,9 @@ struct ProfileMainView: View {
                 .frame(width: 20)
             
             VStack(alignment: .leading , spacing: 5) {
-                Text(userName)
+                Text(authViewModel.userSession?.displayName ?? "")
                     .spoqaHan(family: .Bold, size: 18)
-                Text(email)
+                Text(authViewModel.userSession?.email ?? "")
             }
             Spacer()
         }

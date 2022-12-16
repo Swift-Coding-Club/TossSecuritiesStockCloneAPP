@@ -54,7 +54,7 @@ class AuthorizationVIewModel:  ObservableObject {
             
             let data = ["email" : email ,
                         "username" : userName.lowercased(),
-                        "fullname" : nickName,
+                        "nickname" : nickName,
                         "phonenumber" : phoneNumber,
                         "uid" : user.uid]
             
@@ -73,6 +73,7 @@ class AuthorizationVIewModel:  ObservableObject {
                 }
                 else {
                     print("[DEBUG] : dispalyName 변경 성공")
+                    self.userSession = user
                 }
             }
         }
