@@ -123,12 +123,12 @@
 		7FB1AC94291D497300A0B67C /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB1AC93291D497300A0B67C /* ProfileEditView.swift */; };
 		7FB1AC96291E798A00A0B67C /* ProfileEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB1AC95291E798A00A0B67C /* ProfileEditViewModel.swift */; };
 		7FB1AC98291E7FB400A0B67C /* FeedBackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB1AC97291E7FB400A0B67C /* FeedBackViewModel.swift */; };
+		7FB26362294CA6FD002349DB /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB26361294CA6FD002349DB /* UserModel.swift */; };
 		7FBA185F28F7135100025001 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7FBA185E28F7135100025001 /* FirebaseAuth */; };
 		7FBA186128F7135100025001 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7FBA186028F7135100025001 /* FirebaseFirestore */; };
 		7FBA186328F7135100025001 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7FBA186228F7135100025001 /* FirebaseFirestoreSwift */; };
 		7FBA186528F7135100025001 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 7FBA186428F7135100025001 /* FirebaseStorage */; };
 		7FBB004829226EF7002380B7 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB004729226EF7002380B7 /* UserService.swift */; };
-		7FBB004B29227897002380B7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB004A29227897002380B7 /* UserModel.swift */; };
 		7FBB004D29229543002380B7 /* ProfileNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB004C29229543002380B7 /* ProfileNotice.swift */; };
 		7FBB004F292295C7002380B7 /* MyProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB004E292295C7002380B7 /* MyProfileEditView.swift */; };
 		7FBB005129229906002380B7 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB005029229906002380B7 /* SettingView.swift */; };
@@ -352,8 +352,8 @@
 		7FB1AC93291D497300A0B67C /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		7FB1AC95291E798A00A0B67C /* ProfileEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewModel.swift; sourceTree = "<group>"; };
 		7FB1AC97291E7FB400A0B67C /* FeedBackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackViewModel.swift; sourceTree = "<group>"; };
+		7FB26361294CA6FD002349DB /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserModel.swift; path = StockApp/View/MyProfile/UserModel.swift; sourceTree = SOURCE_ROOT; };
 		7FBB004729226EF7002380B7 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		7FBB004A29227897002380B7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		7FBB004C29229543002380B7 /* ProfileNotice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNotice.swift; sourceTree = "<group>"; };
 		7FBB004E292295C7002380B7 /* MyProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileEditView.swift; sourceTree = "<group>"; };
 		7FBB005029229906002380B7 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -752,7 +752,7 @@
 		7FBB00492922787A002380B7 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				7FBB004A29227897002380B7 /* UserModel.swift */,
+				7FB26361294CA6FD002349DB /* UserModel.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1724,6 +1724,7 @@
 				7FFC3CD829446ABD004FD061 /* ImageUploader.swift in Sources */,
 				7F94E5FF2938CA7D001F5F0D /* MockStockAPI.swift in Sources */,
 				7FEE221B28FC670100792003 /* TweetFilterViewModel.swift in Sources */,
+				7FB26362294CA6FD002349DB /* UserModel.swift in Sources */,
 				7FC3563A28D8A221002E0E63 /* CryptoMainView.swift in Sources */,
 				7FEF4F9E28E0809E00DA9AEB /* UIApplication.swift in Sources */,
 				7F8B65902934E6E200C5203D /* EmptyStateView.swift in Sources */,
@@ -1800,7 +1801,6 @@
 				7F729EE128DB3F6400FEAE43 /* Foundation+Extensions.swift in Sources */,
 				7F29425928F329A400A44CDD /* ModalShapeCorner.swift in Sources */,
 				7FED2A7128FA5ED800D7A7C7 /* UserDefaults.swift in Sources */,
-				7FBB004B29227897002380B7 /* UserModel.swift in Sources */,
 				7F8B658B2934DC2500C5203D /* TickerListRowData.swift in Sources */,
 				7FF3BF5629044B7600ED0B81 /* ListRowSystemImageTextView.swift in Sources */,
 				7F4E82DE2909809B00B65D97 /* SignupPopupVIew.swift in Sources */,
