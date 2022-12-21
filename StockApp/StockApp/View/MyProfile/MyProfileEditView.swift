@@ -32,14 +32,18 @@ struct MyProfileEditView: View {
                     .frame(height: 10)
                 
                 imageEditView()
+                    .padding()
                 
                 Divider()
+                    .padding()
                 
                 VStack(spacing: 20) {
                     nameEditView()
                     nickNameEditView()
                     phoneNumberEditView()
                     emailView()
+                    Spacer()
+                    saveButton()
                 }
                 .onAppear() {
                     name = accountViewModel.userName ?? ""
@@ -47,18 +51,6 @@ struct MyProfileEditView: View {
                     phoneNumber = accountViewModel.userPhoneNumber ?? ""
                     email = accountViewModel.userEmail ?? ""
                 }
-                
-                Spacer(minLength: .zero)
-                
-                saveButton()
-                
-                Spacer(minLength: .zero)
-            }
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Text("회원정보 수정")
-                    .font(.spoqaHan(family: .Regular, size: 18))
             }
         }
     }
@@ -81,7 +73,6 @@ struct MyProfileEditView: View {
                                 .clipShape(Circle())
                             Image(systemName: "square.and.pencil")
                                 .modifier(EditImageModifier())
-                            
                         }
                     } else {
                         if accountViewModel.userImage == nil {
@@ -119,81 +110,22 @@ struct MyProfileEditView: View {
     
     @ViewBuilder
     private func nameEditView() -> some View {
-        VStack(alignment: .leading) {
-            Text("이름")
-                .font(.spoqaHan(family: .Medium, size: 18))
-            
-            VStack {
-                TextField("이름", text: $name)
-                    .textFieldStyle(.plain)
-                    .autocorrectionDisabled()
-                    .keyboardType(.namePhonePad)
-                Rectangle()
-                    .frame(height:1)
-            }
-        }
-        .padding(.horizontal)
+        CustomInputField(imageName: "", placeHolderText: "이름", text: $name)
     }
     
     @ViewBuilder
     private func nickNameEditView() -> some View {
-        VStack(alignment: .leading) {
-            Text("닉네임")
-                .font(.spoqaHan(family: .Medium, size: 18))
-            
-            VStack {
-                TextField("닉네임", text: $nickName)
-                    .textFieldStyle(.plain)
-                    .autocorrectionDisabled()
-                    .keyboardType(.namePhonePad)
-                Rectangle()
-                    .frame(height:1)
-            }
-        }
-        .padding(.horizontal)
+        CustomInputField(imageName: "", placeHolderText: "닉네임", text: $nickName)
     }
     
     @ViewBuilder
     private func phoneNumberEditView() -> some View {
-        VStack(alignment: .leading) {
-            Text("전화번호")
-                .font(.spoqaHan(family: .Medium, size: 18))
-            
-            VStack {
-                TextField("전화번호", text: $phoneNumber)
-                    .textFieldStyle(.plain)
-                    .autocorrectionDisabled()
-                    .keyboardType(.namePhonePad)
-                Rectangle()
-                    .frame(height:1)
-                
-            }
-            .cornerRadius(4, corners: .allCorners)
-            
-        }
-        .padding(.horizontal)
+        CustomInputField(imageName: "", placeHolderText: "전화번호", text: $phoneNumber)
     }
     
     @ViewBuilder
     private func emailView() -> some View {
-        VStack(alignment: .leading) {
-            Text("email")
-                .font(.spoqaHan(family: .Medium, size: 18))
-            
-            VStack {
-                TextField("이메일", text: $email)
-                    .textFieldStyle(.plain)
-                    .autocorrectionDisabled()
-                    .keyboardType(.namePhonePad)
-                    .disabled(true)
-                Rectangle()
-                    .frame(height:1)
-                
-            }
-            .cornerRadius(4, corners: .allCorners)
-            
-        }
-        .padding(.horizontal)
+        CustomDisabledInputField(imageName: "", placeHolderText: "이메일", text: $email)
     }
     
     @ViewBuilder

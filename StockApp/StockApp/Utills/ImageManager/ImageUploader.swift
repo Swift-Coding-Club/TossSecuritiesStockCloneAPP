@@ -14,7 +14,7 @@ struct ImageUploader {
         guard let imageData = image.jpegData(compressionQuality: 0.1) else { return }
         
         guard let fileName = Auth.auth().currentUser?.uid else {
-            print("[ERROR] : ImageUploader에서 유저 세션 nil")
+            debugPrint("[ERROR] : ImageUploader에서 유저 세션 nil")
             return
         }
         

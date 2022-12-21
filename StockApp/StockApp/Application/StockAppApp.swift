@@ -10,7 +10,6 @@ import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
 import Firebase
-//import FirebaseAppCheck
 
 @available(iOS 16.0, *)
 @MainActor
@@ -29,10 +28,6 @@ struct StockAppApp: App {
     let providerFactory = StockAppCheck()
     
     init() {
-        //MARK: - 카카오 로그인  관련
-//        KakaoSDK.initSDK(appKey: SecretKey.kakoNativeAppKey)
-              //MARK: - 네비게이션 바 설정
-//        AppCheck.setAppCheckProviderFactory(providerFactory)
         FirebaseApp.configure()
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.fontColor.mainFontColor)]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor(Color.fontColor.mainFontColor),

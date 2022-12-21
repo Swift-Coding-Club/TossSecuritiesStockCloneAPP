@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		41190DA09DB7F8906F173EB9 /* Pods_StockApp_StockAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F32E6C64CF278276E847CC5F /* Pods_StockApp_StockAppUITests.framework */; };
+		60FABEEC29536123007EEFC6 /* CustomDisabledInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FABEEB29536123007EEFC6 /* CustomDisabledInputField.swift */; };
 		7F01DFB628F70068000ECB96 /* AuthorizationVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F01DFB528F70068000ECB96 /* AuthorizationVIewModel.swift */; };
 		7F01DFBA28F70961000ECB96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F01DFB928F70961000ECB96 /* AppDelegate.swift */; };
 		7F02A5FE28E7316E00F4B56C /* CryptoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F02A5FD28E7316E00F4B56C /* CryptoDetailView.swift */; };
@@ -241,6 +242,7 @@
 		0A9C39889FC55D51A0332551 /* Pods-StockAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockAppTests.debug.xcconfig"; path = "Target Support Files/Pods-StockAppTests/Pods-StockAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0D3B0D33ED831495F84ACE87 /* Pods-StockApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockApp.release.xcconfig"; path = "Target Support Files/Pods-StockApp/Pods-StockApp.release.xcconfig"; sourceTree = "<group>"; };
 		2519109A32E05759C770FF92 /* Pods-StockApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockApp.debug.xcconfig"; path = "Target Support Files/Pods-StockApp/Pods-StockApp.debug.xcconfig"; sourceTree = "<group>"; };
+		60FABEEB29536123007EEFC6 /* CustomDisabledInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDisabledInputField.swift; sourceTree = "<group>"; };
 		6B2490BF17AD4DD05A87AF04 /* Pods_StockAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StockAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F01DFB528F70068000ECB96 /* AuthorizationVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationVIewModel.swift; sourceTree = "<group>"; };
 		7F01DFB928F70961000ECB96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -536,6 +538,7 @@
 			children = (
 				7F174E7028F587D200352189 /* CustomInputField.swift */,
 				7F174E7228F58DF900352189 /* CustomSecureInputField.swift */,
+				60FABEEB29536123007EEFC6 /* CustomDisabledInputField.swift */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -1698,6 +1701,7 @@
 				7F2382C028DDEC4E00103AE7 /* CoinDataService.swift in Sources */,
 				7F729EE328DB533600FEAE43 /* CoinViewModel.swift in Sources */,
 				7F4EBEA8293B7CA400ED053F /* TickerListRepository.swift in Sources */,
+				60FABEEC29536123007EEFC6 /* CustomDisabledInputField.swift in Sources */,
 				7FBB00592923CE4A002380B7 /* Agent.swift in Sources */,
 				7FFC3CD5294467AA004FD061 /* ImagePicker.swift in Sources */,
 				7FFFD5B9292A58C900A25207 /* ScrollViewModifier.swift in Sources */,
