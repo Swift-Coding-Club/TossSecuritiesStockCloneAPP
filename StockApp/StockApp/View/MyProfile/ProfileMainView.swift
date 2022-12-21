@@ -7,6 +7,7 @@
 
 import SwiftUI
 import ExytePopupView
+import Firebase
 
 struct ProfileMainView: View {
     
@@ -22,7 +23,7 @@ struct ProfileMainView: View {
     @State private var noticeButton: Bool = false
     @State private var profileEditButton: Bool = false
     @State private var  settingButton: Bool = false
-  
+    
     
     var body: some View {
         if #available(iOS 16.0, *) {
@@ -69,9 +70,6 @@ struct ProfileMainView: View {
                 .popup(isPresented: $sendEmailButton, type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
                     ReadyPopUPview()
                 }
-            }
-            .onAppear {
-//                accountViewModel.getUserInformation()
             }
         } else {
             NavigationView {
@@ -123,19 +121,29 @@ struct ProfileMainView: View {
     @ViewBuilder
     private func profileHeader() -> some View {
         HStack {
-            Circle()
-                .frame(width: 60, height: 60)
-                .overlay {
-                    Image("로이")
-                }
+            if accountViewModel.userImage == nil {
+                Image(systemName: "person.crop.circle.fill")
+                    .resizable()
+                    .renderingMode(.original)
+                    .scaledToFill()
+                    .frame(width: 80, height: 80)
+                    .clipShape(Circle())
+            } else {
+                Image(uiImage: accountViewModel.userImage!)
+                    .resizable()
+                    .renderingMode(.original)
+                    .scaledToFill()
+                    .frame(width: 80, height: 80)
+                    .clipShape(Circle())
+            }
             
             Spacer()
                 .frame(width: 20)
             
             VStack(alignment: .leading , spacing: 5) {
-                Text(authViewModel.userSession?.displayName ?? "")
+                Text(accountViewModel.userNickName ?? "")
                     .spoqaHan(family: .Bold, size: 18)
-                Text(authViewModel.userSession?.email ?? "")
+                Text(Auth.auth().currentUser?.email ?? "")
             }
             Spacer()
         }
