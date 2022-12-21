@@ -201,6 +201,7 @@ struct MyProfileEditView: View {
         Button {
             accountViewModel.saveUserInformation(name: name, nickName: nickName, phoneNumber: phoneNumber)
             if let selectedImage = selectedImage {
+                accountViewModel.userImage = selectedImage
                 accountViewModel.saveProfileImage(selectedImage)
             }
         } label : {
