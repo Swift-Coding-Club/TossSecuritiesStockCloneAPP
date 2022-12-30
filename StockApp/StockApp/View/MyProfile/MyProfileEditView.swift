@@ -14,6 +14,7 @@ struct MyProfileEditView: View {
     @EnvironmentObject var authViewModel: AuthorizationVIewModel
     
     @State private var name: String = ""
+    @State private var nickName: String = ""
     @State private var phoneNumber: String = ""
     @State private var email: String = ""
     
@@ -26,37 +27,30 @@ struct MyProfileEditView: View {
             Color.colorAssets.backGroundColor
                 .ignoresSafeArea()
             
-            VStack(spacing: 40){
+            ScrollView(){
                 Spacer()
                     .frame(height: 10)
                 
                 imageEditView()
+                    .padding()
                 
                 Divider()
+                    .padding()
                 
                 VStack(spacing: 20) {
-                    
                     nameEditView()
+                    nickNameEditView()
                     phoneNumberEditView()
                     emailView()
+                    Spacer()
+                    saveButton()
                 }
                 .onAppear() {
                     name = accountViewModel.userName ?? ""
+                    nickName = accountViewModel.userNickName ?? ""
                     phoneNumber = accountViewModel.userPhoneNumber ?? ""
-                    email = authViewModel.userSession?.email ?? ""
+                    email = accountViewModel.userEmail ?? ""
                 }
-                
-                Spacer(minLength: .zero)
-                
-                saveButton()
-                
-                Spacer(minLength: .zero)
-            }
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Text("회원정보 수정")
-                    .font(.spoqaHan(family: .Regular, size: 18))
             }
         }
     }
@@ -79,18 +73,31 @@ struct MyProfileEditView: View {
                                 .clipShape(Circle())
                             Image(systemName: "square.and.pencil")
                                 .modifier(EditImageModifier())
-                                
                         }
                     } else {
-                        ZStack {
-                            Image(systemName: "person.crop.circle.fill")
-                                .resizable()
-                                .renderingMode(.original)
-                                .scaledToFill()
-                                .frame(width: 120, height: 120)
-                                .clipShape(Circle())
-                            Image(systemName: "square.and.pencil")
-                                .modifier(EditImageModifier())
+                        if accountViewModel.userImage == nil {
+                            ZStack {
+                                Image(systemName: "person.crop.circle.fill")
+                                    .resizable()
+                                    .renderingMode(.original)
+                                    .scaledToFill()
+                                    .frame(width: 120, height: 120)
+                                    .clipShape(Circle())
+                                Image(systemName: "square.and.pencil")
+                                    .modifier(EditImageModifier())
+                            }
+                        } else {
+                            ZStack {
+                                Image(uiImage: accountViewModel.userImage!)
+                                    .resizable()
+                                    .renderingMode(.original)
+                                    .scaledToFill()
+                                    .clipShape(Circle())
+                                Image(systemName: "square.and.pencil")
+                                    .modifier(EditImageModifier())
+                            }
+                            .frame(width: 120 , height: 120)
+                            
                         }
                     }
                 }
@@ -103,72 +110,31 @@ struct MyProfileEditView: View {
     
     @ViewBuilder
     private func nameEditView() -> some View {
-        VStack(alignment: .leading) {
-            Text("이름")
-                .font(.spoqaHan(family: .Medium, size: 18))
-            
-            VStack {
-                TextField("이름", text: $name)
-                    .textFieldStyle(.plain)
-                    .autocorrectionDisabled()
-                    .keyboardType(.namePhonePad)
-                Rectangle()
-                    .frame(height:1)
-            }
-        }
-        .padding(.horizontal)
+        CustomInputField(imageName: "", placeHolderText: "이름", text: $name)
+    }
+    
+    @ViewBuilder
+    private func nickNameEditView() -> some View {
+        CustomInputField(imageName: "", placeHolderText: "닉네임", text: $nickName)
     }
     
     @ViewBuilder
     private func phoneNumberEditView() -> some View {
-        VStack(alignment: .leading) {
-            Text("전화번호")
-                .font(.spoqaHan(family: .Medium, size: 18))
-            
-            VStack {
-                TextField("전화번호", text: $phoneNumber)
-                    .textFieldStyle(.plain)
-                    .autocorrectionDisabled()
-                    .keyboardType(.namePhonePad)
-                Rectangle()
-                    .frame(height:1)
-                
-            }
-            .cornerRadius(4, corners: .allCorners)
-            
-        }
-        .padding(.horizontal)
+        CustomInputField(imageName: "", placeHolderText: "전화번호", text: $phoneNumber)
     }
     
     @ViewBuilder
     private func emailView() -> some View {
-        VStack(alignment: .leading) {
-            Text("email")
-                .font(.spoqaHan(family: .Medium, size: 18))
-            
-            VStack {
-                TextField("이메일", text: $email)
-                    .textFieldStyle(.plain)
-                    .autocorrectionDisabled()
-                    .keyboardType(.namePhonePad)
-                    .disabled(true)
-                    .foregroundColor(Color("Gray"))
-                Rectangle()
-                    .frame(height:1)
-                
-            }
-            .cornerRadius(4, corners: .allCorners)
-            
-        }
-        .padding(.horizontal)
+        CustomDisabledInputField(imageName: "", placeHolderText: "이메일", text: $email)
     }
     
     @ViewBuilder
     private func saveButton() -> some View {
         Button {
-            accountViewModel.saveUserInformation(name: name, phoneNumber: phoneNumber)
+            accountViewModel.saveUserInformation(name: name, nickName: nickName, phoneNumber: phoneNumber)
             if let selectedImage = selectedImage {
-                accountViewModel.uploadProfileImage(selectedImage)
+                accountViewModel.userImage = selectedImage
+                accountViewModel.saveProfileImage(selectedImage)
             }
         } label : {
             ZStack {
@@ -179,10 +145,8 @@ struct MyProfileEditView: View {
                     .foregroundColor(Color("White"))
                     .font(.spoqaHan(family: .Medium, size: 20))
             }
-            
         }
     }
-    
     
     // MARK: - 일반함수
     func loadImage() {
