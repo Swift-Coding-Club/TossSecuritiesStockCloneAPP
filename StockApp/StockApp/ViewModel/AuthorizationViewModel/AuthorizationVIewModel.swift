@@ -162,4 +162,24 @@ class AuthorizationVIewModel:  ObservableObject {
         print("Error signing out: %@", signOutError)
       }
     }
+    
+    func withdrawUser() {
+        let firebaseAuth = Auth.auth()
+        
+        firebaseAuth.currentUser?.delete(completion: { error  in
+            print("유저가 삭제 되었습니다 \(String(describing: error?.localizedDescription))")
+        })
+        
+        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+        changeRequest?.commitChanges() { error in
+            if let error = error {
+                print("[ERROR] : photoURL 변경 중 에러 발생 \(error.localizedDescription)")
+            }
+            else {
+                print("[DEBUG] : dispalyName 변경 성공")
+                self.log_Status = false
+            }
+        }
+        Auth.auth().currentUser?.reload()
+    }
 }

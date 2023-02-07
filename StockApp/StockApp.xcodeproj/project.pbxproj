@@ -41,6 +41,7 @@
 		7F2382C528DEB39C00103AE7 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2382C428DEB39C00103AE7 /* APIKey.swift */; };
 		7F29425628F31C4D00A44CDD /* RoundShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F29425528F31C4D00A44CDD /* RoundShape.swift */; };
 		7F29425928F329A400A44CDD /* ModalShapeCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F29425828F329A400A44CDD /* ModalShapeCorner.swift */; };
+		7F2AD631299207B3004DB28B /* withDrawPOPUPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2AD630299207B3004DB28B /* withDrawPOPUPView.swift */; };
 		7F2AEB4128E8395D00FA86AD /* CryptoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2AEB4028E8395C00FA86AD /* CryptoDetailViewModel.swift */; };
 		7F2AEB4328E839D900FA86AD /* CryptoDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2AEB4228E839D900FA86AD /* CryptoDetailModel.swift */; };
 		7F2AEB4528E83E0500FA86AD /* CoinDetailSetvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2AEB4428E83E0500FA86AD /* CoinDetailSetvice.swift */; };
@@ -269,6 +270,7 @@
 		7F2382C428DEB39C00103AE7 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		7F29425528F31C4D00A44CDD /* RoundShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundShape.swift; sourceTree = "<group>"; };
 		7F29425828F329A400A44CDD /* ModalShapeCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalShapeCorner.swift; sourceTree = "<group>"; };
+		7F2AD630299207B3004DB28B /* withDrawPOPUPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = withDrawPOPUPView.swift; sourceTree = "<group>"; };
 		7F2AEB4028E8395C00FA86AD /* CryptoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoDetailViewModel.swift; sourceTree = "<group>"; };
 		7F2AEB4228E839D900FA86AD /* CryptoDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoDetailModel.swift; sourceTree = "<group>"; };
 		7F2AEB4428E83E0500FA86AD /* CoinDetailSetvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailSetvice.swift; sourceTree = "<group>"; };
@@ -526,6 +528,7 @@
 				7F15F76B290582B400B06452 /* PopupView.swift */,
 				7F4E82DD2909809B00B65D97 /* SignupPopupVIew.swift */,
 				7F5A70422943927900453EAA /* ReadyPopUPview.swift */,
+				7F2AD630299207B3004DB28B /* withDrawPOPUPView.swift */,
 			);
 			path = POPUP;
 			sourceTree = "<group>";
@@ -1346,7 +1349,6 @@
 				7FE836DB28BF95B0003761FE /* Frameworks */,
 				7FE836DC28BF95B0003761FE /* Resources */,
 				7FE8371628BF9800003761FE /* ShellScript */,
-				7FFC3CC9294445CC004FD061 /* Firebase Script */,
 				7FFC3CCA29444C0A004FD061 /* CopyFiles */,
 				7F6B32502944FD470008FF1A /* Firebase Crsashlytics */,
 				D95702BD8ABEB152F7F210A6 /* [CP] Embed Pods Frameworks */,
@@ -1598,24 +1600,6 @@
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ \"$CONFIGURATION\" = \"release\" ]; then\nprintf \"creating release configuration\";\ncp -r \"$PROJECT_DIR/Firebase/GoogleService-Info.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\nelse \nprintf \"creating dev configuration\";\ncp -r \"$PROJECT_DIR/Firebase/GoogleService-Info.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		7FFC3CC9294445CC004FD061 /* Firebase Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Firebase Script";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ \"$CONFIGURATION\" = \"release\" ]; then\nprintf \"creating release configuration\";\ncp -r \"$PROJECT_DIR/Firebase/GoogleService-Info.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\nelse \nprintf \"creating dev configuration\";\ncp -r \"$PROJECT_DIR/Firebase/GoogleService-Info.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\nfi\n";
-		};
 		81227077A7D64464740ABF0C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1764,6 +1748,7 @@
 				7FBB004F292295C7002380B7 /* MyProfileEditView.swift in Sources */,
 				7F8B65AC2936455300C5203D /* StockSearchView.swift in Sources */,
 				7FB1AC98291E7FB400A0B67C /* FeedBackViewModel.swift in Sources */,
+				7F2AD631299207B3004DB28B /* withDrawPOPUPView.swift in Sources */,
 				7F06912128CB14E3005F840E /* NetworkManger.swift in Sources */,
 				7F6910132915497E00BE9A3F /* LanchView.swift in Sources */,
 				7F15F76C290582B400B06452 /* PopupView.swift in Sources */,

@@ -19,10 +19,11 @@ struct ProfileMainView: View {
     @State private var developerListButton: Bool  = false
     @State private var personalInformationButton: Bool = false
     @State private var showAlertLogout: Bool = false
+    @State private var showAlertWithDrawPOPView: Bool = false
     @State private var sendEmailButton: Bool = false
     @State private var noticeButton: Bool = false
     @State private var profileEditButton: Bool = false
-    @State private var  settingButton: Bool = false
+    @State private var settingButton: Bool = false
     
     
     var body: some View {
@@ -70,6 +71,11 @@ struct ProfileMainView: View {
                 .popup(isPresented: $sendEmailButton, type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
                     ReadyPopUPview()
                 }
+                .popup(isPresented: $showAlertWithDrawPOPView,  type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
+                    withDrawPOPUPView(title: "회원탈퇴", message: "진짜 회원 탈퇴를 하시겠어요 ??") {
+                        authViewModel.withdrawUser()
+                    }
+                }
             }
         } else {
             NavigationView {
@@ -112,6 +118,11 @@ struct ProfileMainView: View {
                 }
                 .popup(isPresented: $sendEmailButton, type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
                     ReadyPopUPview()
+                }
+                .popup(isPresented: $showAlertWithDrawPOPView,  type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
+                    withDrawPOPUPView(title: "회원탈퇴", message: "진짜 회원 탈퇴를 하시겠어요 ??") {
+                        authViewModel.withdrawUser()
+                    }
                 }
             }
         }
@@ -174,7 +185,7 @@ struct ProfileMainView: View {
             ForEach(ProfileEditViewModel.allCases , id: \.rawValue) { item in
                 if item == .notice {
                     Button {
-                        noticeButton.toggle()
+//                        noticeButton.toggle()
                     } label: {
                         ProfileEditView(image: item.imageName, title: item.description)
                         //                            .background(
@@ -198,7 +209,7 @@ struct ProfileMainView: View {
                     
                 } else if item == .appSetting {
                     Button {
-                        settingButton.toggle()
+//                        settingButton.toggle()
                     } label: {
                         ProfileEditView(image: item.imageName, title: item.description)
                         //                            .background(
@@ -303,6 +314,13 @@ struct ProfileMainView: View {
                     } label: {
                         ListRowSystemImageTextView(title: item.description, imageName: item.imageName, width: 15, height: 20)
                     }
+                } else if item == .withDraw {
+                    Button {
+                        showAlertWithDrawPOPView = true
+                    } label: {
+                        ListRowSystemImageTextView(title: item.description, imageName: item.imageName, width: 15, height: 20)
+                    }
+
                 }
             }
         }header: {
