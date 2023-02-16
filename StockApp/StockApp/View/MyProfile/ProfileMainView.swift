@@ -347,7 +347,7 @@ struct ProfileMainView: View {
                 .foregroundColor(Color.fontColor.mainFontColor)
         }
         .padding(.horizontal)
-        spacingHeight(height: 30)
+        spacingHeight(height: 100)
     }
 }
 
