@@ -16,13 +16,12 @@ class AuthorizationVIewModel:  ObservableObject {
     //MARK: - 유저
     @Published var userSession: FirebaseAuth.User?
     @Published var nonce = ""
-    @StateObject var accountViewModel = AccountManageViewModel()
+    
     @AppStorage("log_status") var log_Status = false
     
     init() {
         self.userSession = Auth.auth().currentUser
-        debugPrint("DEBUG: User session is \(self.userSession)")
-        
+        debugPrint("DEBUG: User session is \(String(describing: self.userSession))")
     }
     
     //MARK: - 로그인
@@ -35,14 +34,13 @@ class AuthorizationVIewModel:  ObservableObject {
             } else {
                 guard let user = result?.user else { return }
                 self.userSession = user
-                self.accountViewModel.getUserInformation()
                 debugPrint("로그인에 성공 하였습니다")
             }
         }
     }
     
     //MARK: - 회원 가입
-    func register(withEmail email: String, password: String, fullname: String, phoneNumber: String, userName: String) {
+    func register(withEmail email: String, password: String, nickName: String, phoneNumber: String, userName: String) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
                 debugPrint("[🔥] 회원가입에 실패 하였습니다 \(error.localizedDescription)")
@@ -52,18 +50,32 @@ class AuthorizationVIewModel:  ObservableObject {
             guard let user = result?.user else { return }
             self.userSession = user
             debugPrint("회원가입에 성공 하였습니다 ")
-            debugPrint("debug user is \(self.userSession)")
+            debugPrint("debug user is \(String(describing: self.userSession))")
             
             let data = ["email" : email ,
                         "username" : userName.lowercased(),
-                        "fullname" : fullname,
+                        "nickname" : nickName,
                         "phonenumber" : phoneNumber,
                         "uid" : user.uid]
+            
             Firestore.firestore().collection("users")
                 .document(user.uid)
                 .setData(data) { data in
-                    debugPrint("DEBUG : Upload user data : \(data)")
+                    debugPrint("DEBUG : Upload user data : \(String(describing: data))")
                 }
+            
+            let changeRequest = user.createProfileChangeRequest()
+            
+            changeRequest.displayName = nickName
+            changeRequest.commitChanges(){ error in
+                if let error = error {
+                    print("[ERROR] : displayName 변경 중 에러 발생 \(error.localizedDescription)")
+                }
+                else {
+                    print("[DEBUG] : dispalyName 변경 성공")
+                    self.userSession = user
+                }
+            }
         }
     }
     
@@ -100,6 +112,7 @@ class AuthorizationVIewModel:  ObservableObject {
             }
         }
     }
+
     //MARK: - 구글 로그인
     func googleLogin() {
         guard let clientID = FirebaseApp.app()?.options.clientID  else { return }
@@ -116,7 +129,7 @@ class AuthorizationVIewModel:  ObservableObject {
               let idToken = authentication.idToken
             else {
                 
-                debugPrint("[🔥]  로그인에  성공 하였습니다  \(user?.profile?.email)")
+                debugPrint("[🔥]  로그인에  성공 하였습니다  \(String(describing: user?.profile?.email))")
 //                self.userSession = user
                 return
             }
@@ -129,14 +142,12 @@ class AuthorizationVIewModel:  ObservableObject {
                     debugPrint("[🔥] 로그인 에 실패 하였습니다 \(error.localizedDescription)")
                     return
                 } else {
-                    debugPrint("[🔥]  로그인에  성공 하였습니다  \(user)")
+                    debugPrint("[🔥]  로그인에  성공 하였습니다  \(String(describing: user))")
                     guard let user = authResult?.user else {return}
                     self.userSession = user
                 }
             }
-            
         }
-        
     }
     
     //MARK: - 로그아웃
@@ -150,5 +161,25 @@ class AuthorizationVIewModel:  ObservableObject {
       } catch let signOutError as NSError {
         print("Error signing out: %@", signOutError)
       }
+    }
+    
+    func withdrawUser() {
+        let firebaseAuth = Auth.auth()
+        
+        firebaseAuth.currentUser?.delete(completion: { error  in
+            print("유저가 삭제 되었습니다 \(String(describing: error?.localizedDescription))")
+        })
+        
+        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+        changeRequest?.commitChanges() { error in
+            if let error = error {
+                print("[ERROR] : photoURL 변경 중 에러 발생 \(error.localizedDescription)")
+            }
+            else {
+                print("[DEBUG] : dispalyName 변경 성공")
+                self.log_Status = false
+            }
+        }
+        Auth.auth().currentUser?.reload()
     }
 }

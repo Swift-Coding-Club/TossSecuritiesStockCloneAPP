@@ -134,7 +134,7 @@ struct SIgnUpVIew: View {
     private func signUPButton() -> some View {
         Button {
             checkRegisterTextField()
-            viewModel.register(withEmail: email, password: password, fullname: nickName, phoneNumber: phoneNumber, userName: userName)
+            viewModel.register(withEmail: email, password: password, nickName: nickName, phoneNumber: phoneNumber, userName: userName)
             
             UIApplication.shared.endEditing()
             

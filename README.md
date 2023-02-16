@@ -14,8 +14,10 @@
 
 ## 앱아이콘 
 
-##  앱 UI
+<img src="https://user-images.githubusercontent.com/75601594/218899061-135bc416-785f-4424-a3fc-e2ec703a4798.png">
 
+##  앱 UI
+<img src="https://user-images.githubusercontent.com/75601594/218898659-94e9b871-bc09-41ee-aab0-97bcf59dde3a.png">
 
 ## 토스 코인앱은 어떤건가요??
 
@@ -30,8 +32,14 @@
 
 
 ## 팀원 소개
+IOS 메인 개발: [로이](https://github.com/Roy-wonji)<br>
+IOS 개발 및 PM : [성형](https://github.com/seonghyeonOrNot)<br>
+IOS 개발 : [승용](https://github.com/KSYong)
 
-
+## 앱스토어 
+## App stroe
+<a href="https://apps.apple.com/us/app/%EC%BD%94%EC%9D%B8%EB%AA%A8%EC%97%AC/id1662176617" style="display: inline-block; overflow: hidden; border-radius: 13px; width: 250px; height: 83px;"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-US?size=250x83&amp" alt="Download on the App Store" style="border-radius: 13px; width: 250px; height: 83px;">
+</a>
 
 
 ## 사용한 라이브러리

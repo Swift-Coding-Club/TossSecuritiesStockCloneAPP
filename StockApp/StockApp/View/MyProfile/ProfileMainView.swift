@@ -7,10 +7,11 @@
 
 import SwiftUI
 import ExytePopupView
+import Firebase
 
 struct ProfileMainView: View {
     
-    @EnvironmentObject var viewModel: AuthorizationVIewModel
+    @EnvironmentObject var authViewModel: AuthorizationVIewModel
     @EnvironmentObject var accountViewModel: AccountManageViewModel
     @StateObject var profileViewModel = ProfilViewModel()
     
@@ -18,11 +19,12 @@ struct ProfileMainView: View {
     @State private var developerListButton: Bool  = false
     @State private var personalInformationButton: Bool = false
     @State private var showAlertLogout: Bool = false
+    @State private var showAlertWithDrawPOPView: Bool = false
     @State private var sendEmailButton: Bool = false
     @State private var noticeButton: Bool = false
     @State private var profileEditButton: Bool = false
-    @State private var  settingButton: Bool = false
-  
+    @State private var settingButton: Bool = false
+    
     
     var body: some View {
         if #available(iOS 16.0, *) {
@@ -36,7 +38,7 @@ struct ProfileMainView: View {
                             VStack(alignment: .leading) {
                                 spacingHeight(height: 32)
                                 
-                                profileHeader(userName: accountViewModel.userName ?? "Roy", email: accountViewModel.userEmail ?? "shuwj199@gmail.com")
+                                profileHeader()
                                 
                                 spacingHeight(height: 40)
                                 
@@ -58,7 +60,7 @@ struct ProfileMainView: View {
                 }
                 .popup(isPresented: $showAlertLogout,  type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
                     PopupView()
-                        .environmentObject(viewModel)
+                        .environmentObject(authViewModel)
                 }
                 .popup(isPresented: $noticeButton, type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
                     ReadyPopUPview()
@@ -69,9 +71,11 @@ struct ProfileMainView: View {
                 .popup(isPresented: $sendEmailButton, type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
                     ReadyPopUPview()
                 }
-            }
-            .onAppear {
-                accountViewModel.getUserInformation()
+                .popup(isPresented: $showAlertWithDrawPOPView,  type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
+                    withDrawPOPUPView(title: "회원탈퇴", message: "진짜 회원 탈퇴를 하시겠어요 ??") {
+                        authViewModel.withdrawUser()
+                    }
+                }
             }
         } else {
             NavigationView {
@@ -83,7 +87,7 @@ struct ProfileMainView: View {
                         VStack(alignment: .leading) {
                             spacingHeight(height: 32)
                             
-                            profileHeader(userName: accountViewModel.userName ?? "Roy", email: accountViewModel.userEmail ?? "shuwj199@gmail.com")
+                            profileHeader()
                             
                             spacingHeight(height: 40)
                             
@@ -104,7 +108,7 @@ struct ProfileMainView: View {
                 }
                 .popup(isPresented: $showAlertLogout,  type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
                     PopupView()
-                        .environmentObject(viewModel)
+                        .environmentObject(authViewModel)
                 }
                 .popup(isPresented: $noticeButton, type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
                     ReadyPopUPview()
@@ -115,26 +119,42 @@ struct ProfileMainView: View {
                 .popup(isPresented: $sendEmailButton, type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
                     ReadyPopUPview()
                 }
+                .popup(isPresented: $showAlertWithDrawPOPView,  type: .default, position: .bottom, animation: .spring(), closeOnTap: true, closeOnTapOutside: true) {
+                    withDrawPOPUPView(title: "회원탈퇴", message: "진짜 회원 탈퇴를 하시겠어요 ??") {
+                        authViewModel.withdrawUser()
+                    }
+                }
             }
         }
     }
+    
     //MARK: - 프로필 상단
     @ViewBuilder
-    private func profileHeader(userName: String, email: String) -> some View {
+    private func profileHeader() -> some View {
         HStack {
-            Circle()
-                .frame(width: 60, height: 60)
-                .overlay {
-                    Image("로이")
-                }
+            if accountViewModel.userImage == nil {
+                Image(systemName: "person.crop.circle.fill")
+                    .resizable()
+                    .renderingMode(.original)
+                    .scaledToFill()
+                    .frame(width: 80, height: 80)
+                    .clipShape(Circle())
+            } else {
+                Image(uiImage: accountViewModel.userImage!)
+                    .resizable()
+                    .renderingMode(.original)
+                    .scaledToFill()
+                    .frame(width: 80, height: 80)
+                    .clipShape(Circle())
+            }
             
             Spacer()
                 .frame(width: 20)
             
             VStack(alignment: .leading , spacing: 5) {
-                Text(userName)
+                Text(accountViewModel.userNickName ?? "")
                     .spoqaHan(family: .Bold, size: 18)
-                Text(email)
+                Text(Auth.auth().currentUser?.email ?? "")
             }
             Spacer()
         }
@@ -142,18 +162,21 @@ struct ProfileMainView: View {
         .padding(.horizontal, 30)
         .padding(.bottom , 20)
     }
+    
     //MARK: - 스페이싱 높이
     @ViewBuilder
     private func spacingHeight(height: CGFloat) -> some View {
         Spacer()
             .frame(height: height)
     }
+    
     //MARK: - 스페이싱 넓이
     @ViewBuilder
     private func spacingWidth(width: CGFloat) -> some View {
         Spacer()
             .frame(width: width)
     }
+    
     //MARK: - 공지 사항 및  환경설정 뷰
     @ViewBuilder
     private func editProfile() -> some View {
@@ -162,7 +185,7 @@ struct ProfileMainView: View {
             ForEach(ProfileEditViewModel.allCases , id: \.rawValue) { item in
                 if item == .notice {
                     Button {
-                        noticeButton.toggle()
+//                        noticeButton.toggle()
                     } label: {
                         ProfileEditView(image: item.imageName, title: item.description)
                         //                            .background(
@@ -186,7 +209,7 @@ struct ProfileMainView: View {
                     
                 } else if item == .appSetting {
                     Button {
-                        settingButton.toggle()
+//                        settingButton.toggle()
                     } label: {
                         ProfileEditView(image: item.imageName, title: item.description)
                         //                            .background(
@@ -201,6 +224,7 @@ struct ProfileMainView: View {
         }
         spacingHeight(height: 30)
     }
+    
     //MARK: - 앱 정보
     @ViewBuilder
     private func appInformationListButton()  -> some View {
@@ -246,6 +270,7 @@ struct ProfileMainView: View {
         .padding(.horizontal)
         spacingHeight(height: 30)
     }
+    
     //MARK: - 피드백
     @ViewBuilder
     private func feedBackListButton() -> some View {
@@ -277,6 +302,7 @@ struct ProfileMainView: View {
         .padding(.horizontal)
         spacingHeight(height: 30)
     }
+    
     //MARK: - 앱 계정 관리
     @ViewBuilder
     private func logoutListButton() -> some View  {
@@ -288,6 +314,13 @@ struct ProfileMainView: View {
                     } label: {
                         ListRowSystemImageTextView(title: item.description, imageName: item.imageName, width: 15, height: 20)
                     }
+                } else if item == .withDraw {
+                    Button {
+                        showAlertWithDrawPOPView = true
+                    } label: {
+                        ListRowSystemImageTextView(title: item.description, imageName: item.imageName, width: 15, height: 20)
+                    }
+
                 }
             }
         }header: {
@@ -298,6 +331,7 @@ struct ProfileMainView: View {
         .padding(.horizontal)
         spacingHeight(height: 30)
     }
+    
     //MARK: - 앱 정보 및  기타
     @ViewBuilder
     private func appinformationEtcButton() -> some View {
@@ -313,7 +347,7 @@ struct ProfileMainView: View {
                 .foregroundColor(Color.fontColor.mainFontColor)
         }
         .padding(.horizontal)
-        spacingHeight(height: 30)
+        spacingHeight(height: 100)
     }
 }
 
